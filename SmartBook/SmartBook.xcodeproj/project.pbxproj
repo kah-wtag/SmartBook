@@ -6,76 +6,33 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		02B61B3E2E24C3FE008E790C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 02B61B1C2E24C3FA008E790C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 02B61B232E24C3FA008E790C;
-			remoteInfo = SmartBook;
-		};
-		02B61B482E24C3FE008E790C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 02B61B1C2E24C3FA008E790C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 02B61B232E24C3FA008E790C;
-			remoteInfo = SmartBook;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		02B61B242E24C3FA008E790C /* SmartBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		02B61B3D2E24C3FE008E790C /* SmartBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		02B61B472E24C3FE008E790C /* SmartBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		02E3DDA02E28CA9500E314AE /* SmartBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		02B61B4F2E24C3FE008E790C /* Exceptions for "SmartBook" folder in "SmartBook" target */ = {
+		02E3DDB22E28CA9700E314AE /* Exceptions for "SmartBook" folder in "SmartBook" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 02B61B232E24C3FA008E790C /* SmartBook */;
+			target = 02E3DD9F2E28CA9500E314AE /* SmartBook */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		02B61B262E24C3FA008E790C /* SmartBook */ = {
+		02E3DDA22E28CA9500E314AE /* SmartBook */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				02B61B4F2E24C3FE008E790C /* Exceptions for "SmartBook" folder in "SmartBook" target */,
+				02E3DDB22E28CA9700E314AE /* Exceptions for "SmartBook" folder in "SmartBook" target */,
 			);
 			path = SmartBook;
-			sourceTree = "<group>";
-		};
-		02B61B402E24C3FE008E790C /* SmartBookTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SmartBookTests;
-			sourceTree = "<group>";
-		};
-		02B61B4A2E24C3FE008E790C /* SmartBookUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SmartBookUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		02B61B212E24C3FA008E790C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		02B61B3A2E24C3FE008E790C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		02B61B442E24C3FE008E790C /* Frameworks */ = {
+		02E3DD9D2E28CA9500E314AE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -85,22 +42,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02B61B1B2E24C3FA008E790C = {
+		02E3DD972E28CA9500E314AE = {
 			isa = PBXGroup;
 			children = (
-				02B61B262E24C3FA008E790C /* SmartBook */,
-				02B61B402E24C3FE008E790C /* SmartBookTests */,
-				02B61B4A2E24C3FE008E790C /* SmartBookUITests */,
-				02B61B252E24C3FA008E790C /* Products */,
+				02E3DDA22E28CA9500E314AE /* SmartBook */,
+				02E3DDA12E28CA9500E314AE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		02B61B252E24C3FA008E790C /* Products */ = {
+		02E3DDA12E28CA9500E314AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				02B61B242E24C3FA008E790C /* SmartBook.app */,
-				02B61B3D2E24C3FE008E790C /* SmartBookTests.xctest */,
-				02B61B472E24C3FE008E790C /* SmartBookUITests.xctest */,
+				02E3DDA02E28CA9500E314AE /* SmartBook.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,134 +61,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		02B61B232E24C3FA008E790C /* SmartBook */ = {
+		02E3DD9F2E28CA9500E314AE /* SmartBook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 02B61B502E24C3FE008E790C /* Build configuration list for PBXNativeTarget "SmartBook" */;
+			buildConfigurationList = 02E3DDB32E28CA9700E314AE /* Build configuration list for PBXNativeTarget "SmartBook" */;
 			buildPhases = (
-				02B61B202E24C3FA008E790C /* Sources */,
-				02B61B212E24C3FA008E790C /* Frameworks */,
-				02B61B222E24C3FA008E790C /* Resources */,
+				02E3DD9C2E28CA9500E314AE /* Sources */,
+				02E3DD9D2E28CA9500E314AE /* Frameworks */,
+				02E3DD9E2E28CA9500E314AE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				02B61B262E24C3FA008E790C /* SmartBook */,
+				02E3DDA22E28CA9500E314AE /* SmartBook */,
 			);
 			name = SmartBook;
 			packageProductDependencies = (
 			);
 			productName = SmartBook;
-			productReference = 02B61B242E24C3FA008E790C /* SmartBook.app */;
+			productReference = 02E3DDA02E28CA9500E314AE /* SmartBook.app */;
 			productType = "com.apple.product-type.application";
-		};
-		02B61B3C2E24C3FE008E790C /* SmartBookTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 02B61B552E24C3FE008E790C /* Build configuration list for PBXNativeTarget "SmartBookTests" */;
-			buildPhases = (
-				02B61B392E24C3FE008E790C /* Sources */,
-				02B61B3A2E24C3FE008E790C /* Frameworks */,
-				02B61B3B2E24C3FE008E790C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				02B61B3F2E24C3FE008E790C /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				02B61B402E24C3FE008E790C /* SmartBookTests */,
-			);
-			name = SmartBookTests;
-			packageProductDependencies = (
-			);
-			productName = SmartBookTests;
-			productReference = 02B61B3D2E24C3FE008E790C /* SmartBookTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		02B61B462E24C3FE008E790C /* SmartBookUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 02B61B582E24C3FE008E790C /* Build configuration list for PBXNativeTarget "SmartBookUITests" */;
-			buildPhases = (
-				02B61B432E24C3FE008E790C /* Sources */,
-				02B61B442E24C3FE008E790C /* Frameworks */,
-				02B61B452E24C3FE008E790C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				02B61B492E24C3FE008E790C /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				02B61B4A2E24C3FE008E790C /* SmartBookUITests */,
-			);
-			name = SmartBookUITests;
-			packageProductDependencies = (
-			);
-			productName = SmartBookUITests;
-			productReference = 02B61B472E24C3FE008E790C /* SmartBookUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		02B61B1C2E24C3FA008E790C /* Project object */ = {
+		02E3DD982E28CA9500E314AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
-					02B61B232E24C3FA008E790C = {
+					02E3DD9F2E28CA9500E314AE = {
 						CreatedOnToolsVersion = 16.3;
-					};
-					02B61B3C2E24C3FE008E790C = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 02B61B232E24C3FA008E790C;
-					};
-					02B61B462E24C3FE008E790C = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 02B61B232E24C3FA008E790C;
 					};
 				};
 			};
-			buildConfigurationList = 02B61B1F2E24C3FA008E790C /* Build configuration list for PBXProject "SmartBook" */;
+			buildConfigurationList = 02E3DD9B2E28CA9500E314AE /* Build configuration list for PBXProject "SmartBook" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 02B61B1B2E24C3FA008E790C;
+			mainGroup = 02E3DD972E28CA9500E314AE;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 02B61B252E24C3FA008E790C /* Products */;
+			productRefGroup = 02E3DDA12E28CA9500E314AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				02B61B232E24C3FA008E790C /* SmartBook */,
-				02B61B3C2E24C3FE008E790C /* SmartBookTests */,
-				02B61B462E24C3FE008E790C /* SmartBookUITests */,
+				02E3DD9F2E28CA9500E314AE /* SmartBook */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		02B61B222E24C3FA008E790C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		02B61B3B2E24C3FE008E790C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		02B61B452E24C3FE008E790C /* Resources */ = {
+		02E3DD9E2E28CA9500E314AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -245,21 +128,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		02B61B202E24C3FA008E790C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		02B61B392E24C3FE008E790C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		02B61B432E24C3FE008E790C /* Sources */ = {
+		02E3DD9C2E28CA9500E314AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,21 +137,8 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		02B61B3F2E24C3FE008E790C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 02B61B232E24C3FA008E790C /* SmartBook */;
-			targetProxy = 02B61B3E2E24C3FE008E790C /* PBXContainerItemProxy */;
-		};
-		02B61B492E24C3FE008E790C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 02B61B232E24C3FA008E790C /* SmartBook */;
-			targetProxy = 02B61B482E24C3FE008E790C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		02B61B512E24C3FE008E790C /* Debug */ = {
+		02E3DDB42E28CA9700E314AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -309,7 +165,7 @@
 			};
 			name = Debug;
 		};
-		02B61B522E24C3FE008E790C /* Release */ = {
+		02E3DDB52E28CA9700E314AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -336,7 +192,7 @@
 			};
 			name = Release;
 		};
-		02B61B532E24C3FE008E790C /* Debug */ = {
+		02E3DDB62E28CA9700E314AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -399,7 +255,7 @@
 			};
 			name = Debug;
 		};
-		02B61B542E24C3FE008E790C /* Release */ = {
+		02E3DDB72E28CA9700E314AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -455,114 +311,28 @@
 			};
 			name = Release;
 		};
-		02B61B562E24C3FE008E790C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Kamrul.SmartBookTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SmartBook";
-			};
-			name = Debug;
-		};
-		02B61B572E24C3FE008E790C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Kamrul.SmartBookTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SmartBook";
-			};
-			name = Release;
-		};
-		02B61B592E24C3FE008E790C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Kamrul.SmartBookUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SmartBook;
-			};
-			name = Debug;
-		};
-		02B61B5A2E24C3FE008E790C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Kamrul.SmartBookUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SmartBook;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		02B61B1F2E24C3FA008E790C /* Build configuration list for PBXProject "SmartBook" */ = {
+		02E3DD9B2E28CA9500E314AE /* Build configuration list for PBXProject "SmartBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				02B61B532E24C3FE008E790C /* Debug */,
-				02B61B542E24C3FE008E790C /* Release */,
+				02E3DDB62E28CA9700E314AE /* Debug */,
+				02E3DDB72E28CA9700E314AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		02B61B502E24C3FE008E790C /* Build configuration list for PBXNativeTarget "SmartBook" */ = {
+		02E3DDB32E28CA9700E314AE /* Build configuration list for PBXNativeTarget "SmartBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				02B61B512E24C3FE008E790C /* Debug */,
-				02B61B522E24C3FE008E790C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		02B61B552E24C3FE008E790C /* Build configuration list for PBXNativeTarget "SmartBookTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				02B61B562E24C3FE008E790C /* Debug */,
-				02B61B572E24C3FE008E790C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		02B61B582E24C3FE008E790C /* Build configuration list for PBXNativeTarget "SmartBookUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				02B61B592E24C3FE008E790C /* Debug */,
-				02B61B5A2E24C3FE008E790C /* Release */,
+				02E3DDB42E28CA9700E314AE /* Debug */,
+				02E3DDB52E28CA9700E314AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 02B61B1C2E24C3FA008E790C /* Project object */;
+	rootObject = 02E3DD982E28CA9500E314AE /* Project object */;
 }
