@@ -13,7 +13,7 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet var containerView: UIView!
     
     private struct AuthStoryboard {
-        static let mainStoryBoardName = "Main"
+        static let mainStoryBoardName = "Authentication"
         
         struct Identifier {
             static let loginViewController = "LoginViewController"
