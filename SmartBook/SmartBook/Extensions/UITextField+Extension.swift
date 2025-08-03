@@ -39,13 +39,6 @@ extension UITextField {
         addBottomBorderWithColor(color, width: thickness)
     }
     
-    func buttonBorderStyle(borderColor: UIColor = .orange, borderWidth: CGFloat = 4, cornerRadius: CGFloat = 8) {
-        layer.borderWidth = borderWidth
-        layer.borderColor = borderColor.cgColor
-        layer.cornerRadius = cornerRadius
-        layer.masksToBounds = true
-    }
-    
 }
 
 
