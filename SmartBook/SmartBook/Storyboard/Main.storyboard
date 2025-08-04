@@ -243,6 +243,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="loginTapped:" destination="D4o-gr-Fgj" eventType="touchUpInside" id="khz-54-EhX"/>
                                     <segue destination="GLg-C8-Dvp" kind="showDetail" id="Dia-8Y-shK"/>
                                 </connections>
                             </button>
@@ -347,7 +348,7 @@
         <image name="google" width="512" height="512"/>
         <image name="twitter" width="512" height="512"/>
         <namedColor name="Color">
-            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

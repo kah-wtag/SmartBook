@@ -28,6 +28,10 @@ class LoginViewController: UIViewController {
         loginButton.applyButtonRoundBorder(borderColor: .darkGray, borderWidth: 3, cornerRadius: 10)
     }
 
+    @IBAction func loginTapped(_ sender: UIButton) {
+        Router.shared.navigate(to: .serviceList, from: self, presentationStyle: .presentInNavigation)
+
+    }
     
 }
 
