@@ -9,7 +9,7 @@ import UIKit
 
 class ServiceListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private var services = ["Cardiology", "Neurology", "Oncology", "Pediatrics", "Dermatology"]
+    private var services = ["Doctor", "Therapy", "Lawyer", "Salon", "Spa", "Beauty Parlour", "Tutoring", "Car Mechanics", "Electrician", "Designer"]
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         services.count
