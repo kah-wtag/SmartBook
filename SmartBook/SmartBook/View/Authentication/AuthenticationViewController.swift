@@ -41,7 +41,7 @@ class AuthenticationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        setupContainerView()
+        setupContainerView()
         containerViewWillUpdate(.login)
     }
     
