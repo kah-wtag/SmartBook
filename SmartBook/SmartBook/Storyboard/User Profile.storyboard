@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="68" translatesAutoresizingMaskIntoConstraints="NO" id="lqh-CU-XbC">
-                                <rect key="frame" x="76" y="117.99999999999997" width="241" height="312.33333333333326"/>
+                                <rect key="frame" x="76" y="118" width="241" height="210"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="QOW-z9-D7I">
                                         <rect key="frame" x="0.0" y="0.0" width="241" height="210"/>
@@ -25,34 +25,10 @@
                                             <constraint firstAttribute="height" constant="210" id="Ryh-y4-hBL"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZY-nR-veV">
-                                        <rect key="frame" x="80.666666666666657" y="278" width="80" height="34.333333333333314"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqx-mB-LqD">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="34.333333333333336"/>
-                                                <color key="backgroundColor" red="0.027820566670000001" green="0.68033649409999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="9UT-89-UmL"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rS-4E-MpM">
-                                                <rect key="frame" x="40" y="0.0" width="40" height="34.333333333333336"/>
-                                                <color key="backgroundColor" red="0.39934599669999998" green="0.84687567890000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="Tby-h1-tpo"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4mo-Bn-ylT">
-                                <rect key="frame" x="20" y="464.99999999999994" width="353" height="201.33333333333331"/>
+                                <rect key="frame" x="20" y="388" width="353" height="201.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FRa-KA-f4P">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="35.333333333333336"/>
@@ -67,15 +43,15 @@
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hry-ky-c83" userLabel="Full Name">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="35.333333333333336"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="COc-2v-ucZ">
-                                        <rect key="frame" x="0.0" y="55.333333333333371" width="353" height="35.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333314" width="353" height="35.333333333333343"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="od3-Fp-caZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="35.333333333333336"/>
@@ -87,15 +63,15 @@
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKr-Ea-JdG" userLabel="Mobile">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="35.333333333333336"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZbA-mP-U1z">
-                                        <rect key="frame" x="0.0" y="110.66666666666661" width="353" height="35.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="110.66666666666667" width="353" height="35.333333333333329"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cs7-N5-vjI">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="35.333333333333336"/>
@@ -107,8 +83,8 @@
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gO8-n5-C23" userLabel="Email">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="35.333333333333336"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -127,8 +103,8 @@
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KeP-bi-SQD" userLabel="Designation">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="35.333333333333336"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -136,23 +112,26 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSK-yx-cb2">
-                                <rect key="frame" x="166" y="743" width="61" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSK-yx-cb2">
+                                <rect key="frame" x="162.33333333333334" y="676.66666666666663" width="68.666666666666657" height="37.333333333333371"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                </buttonConfiguration>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oPX-ff-I7I"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="oPX-ff-I7I" firstAttribute="trailing" secondItem="lqh-CU-XbC" secondAttribute="trailing" constant="76" id="3IX-XS-fCU"/>
-                            <constraint firstItem="4mo-Bn-ylT" firstAttribute="top" secondItem="lqh-CU-XbC" secondAttribute="bottom" constant="34.670000000000002" id="FC0-Tw-MvT"/>
+                            <constraint firstItem="mSK-yx-cb2" firstAttribute="top" secondItem="4mo-Bn-ylT" secondAttribute="bottom" constant="87.329999999999998" id="5Dv-Sk-Igu"/>
+                            <constraint firstItem="4mo-Bn-ylT" firstAttribute="top" secondItem="lqh-CU-XbC" secondAttribute="bottom" constant="60" id="FC0-Tw-MvT"/>
                             <constraint firstItem="4mo-Bn-ylT" firstAttribute="leading" secondItem="oPX-ff-I7I" secondAttribute="leading" constant="20" id="VaQ-ri-TLJ"/>
                             <constraint firstItem="oPX-ff-I7I" firstAttribute="trailing" secondItem="4mo-Bn-ylT" secondAttribute="trailing" constant="20" id="hsI-6C-9DT"/>
                             <constraint firstItem="lqh-CU-XbC" firstAttribute="leading" secondItem="oPX-ff-I7I" secondAttribute="leading" constant="76" id="kNK-xW-1d7"/>
                             <constraint firstItem="lqh-CU-XbC" firstAttribute="top" secondItem="oPX-ff-I7I" secondAttribute="top" id="mWx-Mz-vSa"/>
+                            <constraint firstItem="mSK-yx-cb2" firstAttribute="centerX" secondItem="8Ul-vb-4TN" secondAttribute="centerX" id="sZN-gm-NtW"/>
                             <constraint firstItem="lqh-CU-XbC" firstAttribute="centerX" secondItem="8Ul-vb-4TN" secondAttribute="centerX" id="yYk-Nc-uHK"/>
                         </constraints>
                     </view>
@@ -161,6 +140,7 @@
                         <outlet property="editMailTextField" destination="gO8-n5-C23" id="UIF-c0-xMR"/>
                         <outlet property="editNameTextField" destination="Hry-ky-c83" id="3cp-PX-mmK"/>
                         <outlet property="editNumberTextField" destination="YKr-Ea-JdG" id="B63-4G-UTO"/>
+                        <outlet property="saveUpdatedProfileButton" destination="mSK-yx-cb2" id="w10-ro-k0i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hqe-79-LFK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -171,12 +151,14 @@
     <resources>
         <image name="info" catalog="system" width="93" height="128"/>
         <image name="mail" catalog="system" width="128" height="93"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="phone" catalog="system" width="128" height="115"/>
         <image name="user" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
