@@ -21,9 +21,9 @@ class UserProfileViewController: UIViewController {
     }
     
     private func setupUI() {
-        let textFields = [editNameTextField, editNumberTextField, editMailTextField, editDesignationTextField]
-        let placeholders = ["Md. Kamrul Hasan", "+8801749-140494", "kamrul@gmail.com", "Neurologist"]
-        for (field, placeholder) in zip(textFields, placeholders) {
+        let userProfileTextFields = [editNameTextField, editNumberTextField, editMailTextField, editDesignationTextField]
+        let userProfileplaceholders = ["Md. Kamrul Hasan", "+8801749-140494", "kamrul@gmail.com", "Neurologist"]
+        for (field, placeholder) in zip(userProfileTextFields, userProfileplaceholders) {
             field?.setStyledPlaceholder(placeholder)
             field?.applyUnderline()
             field?.addPadding([.left, .right], width: 8)
