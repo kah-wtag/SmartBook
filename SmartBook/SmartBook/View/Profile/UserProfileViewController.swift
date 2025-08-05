@@ -20,7 +20,7 @@ class UserProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userProfileTextFields = [editNameTextField, editNumberTextField, editMailTextField, editDesignationTextField]
+        
         setupUI()
         setupTextFieldTargets()
     }
@@ -28,17 +28,22 @@ class UserProfileViewController: UIViewController {
     private func setupUI() {
         let userProfileTextFields = [editNameTextField, editNumberTextField, editMailTextField, editDesignationTextField]
         let userProfileplaceholders = ["Md. Kamrul Hasan", "+8801749-140494", "kamrul@gmail.com", "Neurologist"]
+        
         for (field, placeholder) in zip(userProfileTextFields, userProfileplaceholders) {
             field?.setStyledPlaceholder(placeholder, color: .textColor)
             field?.applyUnderline()
             field?.addPadding([.left, .right], width: 8)
+            field?.font = .appFont(ofSize: .medium)
         }
         
         saveUpdatedProfileButton.isEnabled = false
         saveUpdatedProfileButton.alpha = 1
+        saveUpdatedProfileButton.titleLabel?.font = .appFont(ofSize: .large, weight: .semibold)
         saveUpdatedProfileButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
+        
         userProfileImageView.makeCircular(withRadius: 120)
     }
+    
     
     private func setupTextFieldTargets() {
         for textField in userProfileTextFields {
@@ -47,7 +52,6 @@ class UserProfileViewController: UIViewController {
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        // Enable button if any field has non-empty text
         let anyFieldHasText = userProfileTextFields.contains { !($0.text ?? "").trimmingCharacters(in: .whitespaces).isEmpty }
         saveUpdatedProfileButton.isEnabled = anyFieldHasText
         saveUpdatedProfileButton.alpha = anyFieldHasText ? 1.0 : 0.5

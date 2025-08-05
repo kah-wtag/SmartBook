@@ -1,0 +1,29 @@
+//
+//  UIFont+Extension.swift
+//  SmartBook
+//
+//  Created by Md. Kamrul Hasan on 5/8/25.
+//
+
+import UIKit
+
+extension UIFont {
+    
+    enum AppTextSize {
+        case extraLarge, large, medium, small, extraSmall
+    }
+    
+    static func appFont(ofSize size: AppTextSize, weight: UIFont.Weight = .regular) -> UIFont {
+        let pointSize: CGFloat
+        
+        switch size {
+        case .extraLarge: pointSize = 24
+        case .large:      pointSize = 20
+        case .medium:     pointSize = 17
+        case .small:      pointSize = 14
+        case .extraSmall: pointSize = 12
+        }
+        
+        return UIFont.systemFont(ofSize: pointSize, weight: weight)
+    }
+}
