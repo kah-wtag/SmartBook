@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -119,7 +118,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oPX-ff-I7I"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="myBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mSK-yx-cb2" firstAttribute="top" secondItem="4mo-Bn-ylT" secondAttribute="bottom" constant="95" id="TSB-Xt-3JG"/>
                             <constraint firstItem="4mo-Bn-ylT" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="80" id="V7m-kz-ui5"/>
@@ -153,11 +152,11 @@
         <image name="mail" catalog="system" width="128" height="93"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="phone" catalog="system" width="128" height="115"/>
+        <namedColor name="myBackgroundColor">
+            <color red="0.97589761018753052" green="0.92478287220001221" blue="0.96589088439941406" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
