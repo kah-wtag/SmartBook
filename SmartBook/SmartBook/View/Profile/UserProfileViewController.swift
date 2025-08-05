@@ -20,7 +20,6 @@ class UserProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         setupTextFieldTargets()
     }
@@ -46,6 +45,7 @@ class UserProfileViewController: UIViewController {
     
     
     private func setupTextFieldTargets() {
+        userProfileTextFields = [editNameTextField, editNumberTextField, editMailTextField, editDesignationTextField]
         for textField in userProfileTextFields {
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
