@@ -18,6 +18,12 @@ extension UIView {
 
 extension UIColor {
     static var buttonBorderColor: UIColor {
-        return UIColor(named: "buttonBorderColor") ?? .gray // fallback if color not found
+        return UIColor(named: "buttonBorderColor") ?? .gray
+    }
+}
+
+extension UIColor {
+    static var textColor: UIColor {
+        return UIColor(named: "textColor") ?? .gray 
     }
 }
