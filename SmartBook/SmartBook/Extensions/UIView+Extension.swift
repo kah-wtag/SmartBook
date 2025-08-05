@@ -15,3 +15,9 @@ extension UIView {
         layer.addSublayer(border)
     }
 }
+
+extension UIColor {
+    static var buttonBorderColor: UIColor {
+        return UIColor(named: "buttonBorderColor") ?? .gray // fallback if color not found
+    }
+}
