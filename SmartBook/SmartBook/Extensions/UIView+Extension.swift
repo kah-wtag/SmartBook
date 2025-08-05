@@ -24,6 +24,6 @@ extension UIColor {
 
 extension UIColor {
     static var textColor: UIColor {
-        return UIColor(named: "textColor") ?? .gray 
+        return UIColor(named: "primaryTextColor") ?? .gray
     }
 }

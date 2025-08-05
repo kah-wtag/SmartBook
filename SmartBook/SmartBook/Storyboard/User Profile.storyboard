@@ -30,13 +30,13 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="TP1-OO-N4R"/>
                                                 </constraints>
-                                                <color key="tintColor" name="textColor"/>
+                                                <color key="tintColor" name="primaryTextColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="person.crop.circle" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="person.crop.circle" catalog="system" buttonSize="mini"/>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hry-ky-c83" userLabel="Full Name">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="25.666666666666668"/>
-                                                <color key="textColor" name="textColor"/>
+                                                <color key="textColor" name="primaryTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -50,13 +50,13 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="p5f-a2-aRz"/>
                                                 </constraints>
-                                                <color key="tintColor" name="textColor"/>
+                                                <color key="tintColor" name="primaryTextColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="phone" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="phone" catalog="system" buttonSize="mini"/>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKr-Ea-JdG" userLabel="Mobile">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="25.666666666666668"/>
-                                                <color key="textColor" name="textColor"/>
+                                                <color key="textColor" name="primaryTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -70,13 +70,13 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="CE7-5O-k6n"/>
                                                 </constraints>
-                                                <color key="tintColor" name="textColor"/>
+                                                <color key="tintColor" name="primaryTextColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="mail" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="mail" catalog="system" buttonSize="mini"/>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gO8-n5-C23" userLabel="Email">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="25.666666666666668"/>
-                                                <color key="textColor" name="textColor"/>
+                                                <color key="textColor" name="primaryTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -90,13 +90,13 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="19c-0q-VUo"/>
                                                 </constraints>
-                                                <color key="tintColor" name="textColor"/>
+                                                <color key="tintColor" name="primaryTextColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="info" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="info" catalog="system" buttonSize="mini"/>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KeP-bi-SQD" userLabel="Designation">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="25.666666666666668"/>
-                                                <color key="textColor" name="textColor"/>
+                                                <color key="textColor" name="primaryTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -113,12 +113,12 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save">
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                    <color key="baseForegroundColor" name="textColor"/>
+                                    <color key="baseForegroundColor" name="primaryTextColor"/>
                                 </buttonConfiguration>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oPX-ff-I7I"/>
-                        <color key="backgroundColor" name="myBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="mSK-yx-cb2" firstAttribute="top" secondItem="4mo-Bn-ylT" secondAttribute="bottom" constant="95" id="TSB-Xt-3JG"/>
                             <constraint firstItem="4mo-Bn-ylT" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="80" id="V7m-kz-ui5"/>
@@ -152,11 +152,11 @@
         <image name="mail" catalog="system" width="128" height="93"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="phone" catalog="system" width="128" height="115"/>
-        <namedColor name="myBackgroundColor">
+        <namedColor name="backgroundColor">
             <color red="0.97589761018753052" green="0.92478287220001221" blue="0.96589088439941406" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="textColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="primaryTextColor">
+            <color red="0.031213879585266113" green="0.0070907343178987503" blue="0.018900904804468155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

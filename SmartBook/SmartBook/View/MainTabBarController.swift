@@ -23,7 +23,7 @@ class MainTabBarController: UITabBarController {
             createNavController(vc: loadFromStoryboard(.userProfile, "UserProfileViewController"), title: "Profile", image: "person.crop.circle")
         ]
         
-        tabBar.tintColor = UIColor(named: "textColor") ?? .black
+        tabBar.tintColor = UIColor(named: "secondaryTextColor") ?? .black
         tabBar.backgroundColor = .systemBackground
     }
     
