@@ -27,18 +27,20 @@ class LoginViewController: UIViewController {
         passwordLoginTextField.addPadding([.left, .right], width: 8)
         loginButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
     }
-
+    
     @IBAction func loginTapped(_ sender: UIButton) {
-        Router.show(
-            from: self,
-            storyboard: .userProfile,
-            identifier: "UserProfileViewController",
-            title: "User Profile",
-            embedInNavigation: true,
-            presentModally: false
-        )
-
-
+        //        Router.show(
+        //            from: self,
+        //            storyboard: .userProfile,
+        //            identifier: "UserProfileViewController",
+        //            title: "User Profile",
+        //            embedInNavigation: true,
+        //            presentModally: true
+        //        )
+        
+        let tabBar = MainTabBarController()
+        tabBar.modalPresentationStyle = .fullScreen
+        present(tabBar, animated: true)
     }
     
 }

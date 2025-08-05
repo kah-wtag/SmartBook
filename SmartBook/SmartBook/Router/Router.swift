@@ -51,30 +51,32 @@ class Router {
 
     private static func configureNavigation(for vc: UIViewController, title: String?) {
         vc.title = title
-
+        let textColor = UIColor(named: "textColor") ?? .black
+        
         let profileButton = UIBarButtonItem(
-            image: UIImage(systemName: "person.crop.circle"),
+            image: UIImage(systemName: "sign-out"),
             style: .plain,
             target: nil,
             action: nil
         )
-
+        profileButton.tintColor = textColor
+        
         let bellButton = UIBarButtonItem(
             image: UIImage(systemName: "bell"),
             style: .plain,
             target: nil,
             action: nil
         )
-
+        bellButton.tintColor = textColor
         vc.navigationItem.rightBarButtonItems = [profileButton, bellButton]
 
-        // Optional: Add back button on left if needed (shown automatically on push)
         let backButton = UIBarButtonItem(
             image: UIImage(systemName: "chevron.backward"),
             style: .plain,
             target: nil,
             action: nil
         )
+        backButton.tintColor = textColor
         vc.navigationItem.leftBarButtonItem = backButton
     }
 }

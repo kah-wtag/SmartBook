@@ -40,9 +40,7 @@ class SignupViewController: UIViewController {
             identifier: "UserProfileViewController",
             title: "User Profile",
             embedInNavigation: true,
-            presentModally: false
+            presentModally: true
         )
     }
-    
-    
 }

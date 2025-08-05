@@ -13,7 +13,7 @@ extension UIFont {
         case extraLarge, large, medium, small, extraSmall
     }
     
-    static func appFont(ofSize size: AppTextSize, weight: UIFont.Weight = .regular) -> UIFont {
+    static func textSize(ofSize size: AppTextSize, weight: UIFont.Weight = .regular) -> UIFont {
         let pointSize: CGFloat
         
         switch size {

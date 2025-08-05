@@ -79,7 +79,7 @@
         <image name="booking" width="512" height="512"/>
         <image name="calendar" width="512" height="512"/>
         <namedColor name="myBackgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97589761018753052" green="0.92478287220001221" blue="0.96589088439941406" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

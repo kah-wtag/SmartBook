@@ -32,12 +32,12 @@ class UserProfileViewController: UIViewController {
             field?.setStyledPlaceholder(placeholder, color: .textColor)
             field?.applyUnderline()
             field?.addPadding([.left, .right], width: 8)
-            field?.font = .appFont(ofSize: .medium)
+            field?.font = .textSize(ofSize: .medium)
         }
         
         saveUpdatedProfileButton.isEnabled = false
         saveUpdatedProfileButton.alpha = 1
-        saveUpdatedProfileButton.titleLabel?.font = .appFont(ofSize: .large, weight: .semibold)
+        saveUpdatedProfileButton.titleLabel?.font = .textSize(ofSize: .large, weight: .semibold)
         saveUpdatedProfileButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
         
         userProfileImageView.makeCircular(withRadius: 120)
