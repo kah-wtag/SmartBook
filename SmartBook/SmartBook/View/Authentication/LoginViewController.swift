@@ -29,7 +29,15 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginTapped(_ sender: UIButton) {
-        Router.shared.navigate(to: .serviceList, from: self, presentationStyle: .presentInNavigation)
+        Router.show(
+            from: self,
+            storyboard: .userProfile,
+            identifier: "UserProfileViewController",
+            title: "User Profile",
+            embedInNavigation: true,
+            presentModally: false
+        )
+
 
     }
     

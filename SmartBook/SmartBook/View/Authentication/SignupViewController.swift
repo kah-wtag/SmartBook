@@ -30,7 +30,19 @@ class SignupViewController: UIViewController {
         confirmPasswordSignupTextField.addPadding([.left, .right], width: 8)
         confirmPasswordSignupTextField.applyUnderline()
         signupButton.applyButtonRoundBorder(borderColor: .darkGray, borderWidth: 3, cornerRadius: 10)
-
+        
     }
+    
+    @IBAction func signupTapped(_ sender: Any) {
+        Router.show(
+            from: self,
+            storyboard: .userProfile,
+            identifier: "UserProfileViewController",
+            title: "User Profile",
+            embedInNavigation: true,
+            presentModally: false
+        )
+    }
+    
     
 }

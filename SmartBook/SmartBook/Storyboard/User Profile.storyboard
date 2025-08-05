@@ -11,7 +11,7 @@
         <!--User Profile View Controller-->
         <scene sceneID="dsb-Ae-01Z">
             <objects>
-                <viewController id="etF-5f-vWo" customClass="UserProfileViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileViewController" id="etF-5f-vWo" customClass="UserProfileViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ul-vb-4TN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,6 +26,11 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="QOW-z9-D7I" firstAttribute="top" secondItem="lqh-CU-XbC" secondAttribute="top" id="Xn7-lh-ekK"/>
+                                    <constraint firstAttribute="trailing" secondItem="QOW-z9-D7I" secondAttribute="trailing" id="oNl-DJ-hcV"/>
+                                    <constraint firstItem="QOW-z9-D7I" firstAttribute="leading" secondItem="lqh-CU-XbC" secondAttribute="leading" id="tYp-gh-jGD"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4mo-Bn-ylT">
                                 <rect key="frame" x="20" y="388" width="353" height="201.33333333333337"/>
