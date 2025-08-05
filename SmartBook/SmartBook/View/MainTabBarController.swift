@@ -20,7 +20,7 @@ class MainTabBarController: UITabBarController {
             createNavController(vc: CalendarViewController(), title: "Calendar", image: "calendar"),
             createNavController(vc: SearchViewController(), title: "Search", image: "magnifyingglass"),
             createNavController(vc: FavouriteViewController(), title: "Favourite", image: "heart"),
-            createNavController(vc: loadFromStoryboard(.userProfile, "UserProfileViewController"), title: "Profile", image: "person.crop.circle")
+            createNavController(vc: loadFromStoryboard(.userProfile, "UserProfileViewController"), title: "User Profile", image: "person.crop.circle")
         ]
         
         tabBar.tintColor = UIColor(named: "secondaryTextColor") ?? .black

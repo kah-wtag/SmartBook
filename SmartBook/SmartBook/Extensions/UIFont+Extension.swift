@@ -27,3 +27,16 @@ extension UIFont {
         return UIFont.systemFont(ofSize: pointSize, weight: weight)
     }
 }
+
+
+extension UIColor {
+    static var buttonBorderColor: UIColor {
+        return UIColor(named: "buttonBorderColor") ?? .gray
+    }
+}
+
+extension UIColor {
+    static var textColor: UIColor {
+        return UIColor(named: "primaryTextColor") ?? .gray
+    }
+}
