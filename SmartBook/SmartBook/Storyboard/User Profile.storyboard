@@ -137,6 +137,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Edit">
                                     <color key="baseForegroundColor" name="primaryTextColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="editProfileImageTapped:" destination="etF-5f-vWo" eventType="touchUpInside" id="i6W-kd-8B9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oPX-ff-I7I"/>

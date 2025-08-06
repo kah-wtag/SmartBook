@@ -49,6 +49,8 @@ class UserProfileViewController: UIViewController {
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
     }
+    @IBAction func editProfileImageTapped(_ sender: Any) {
+    }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
         let anyFieldHasText = userProfileTextFields.contains {
