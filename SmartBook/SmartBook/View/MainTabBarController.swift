@@ -38,6 +38,7 @@ class MainTabBarController: UITabBarController {
         vc.navigationItem.title = title
         
         let iconColor = UIColor(named: "primaryTextColor") ?? .black
+        
         let notificationButton = UIBarButtonItem(
             image: UIImage(systemName: "bell"),
             style: .plain,
@@ -45,6 +46,7 @@ class MainTabBarController: UITabBarController {
             action: nil
         )
         notificationButton.tintColor = iconColor
+        
         let signOutButton = UIBarButtonItem(
             image: UIImage(systemName: "arrow.right.square"),
             style: .plain,
@@ -52,9 +54,13 @@ class MainTabBarController: UITabBarController {
             action: nil
         )
         signOutButton.tintColor = iconColor
+        
         if vc is UserProfileViewController {
             vc.navigationItem.rightBarButtonItems = [signOutButton, notificationButton]
+        } else {
+            vc.navigationItem.rightBarButtonItems = [notificationButton]
         }
+        
         return nav
     }
 }
