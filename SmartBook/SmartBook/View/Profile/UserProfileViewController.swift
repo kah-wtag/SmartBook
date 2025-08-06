@@ -39,8 +39,9 @@ class UserProfileViewController: UIViewController {
         saveUpdatedProfileButton.alpha = 1
         saveUpdatedProfileButton.titleLabel?.font = .textSize(ofSize: .large, weight: .semibold)
         saveUpdatedProfileButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
+        userProfileImageView.layer.cornerRadius = userProfileImageView.frame.width / 2
+        userProfileImageView.clipsToBounds = true
         
-        userProfileImageView.makeCircular(withRadius: 120)
     }
     
     private func setupTextFieldTargets() {
@@ -73,6 +74,6 @@ class UserProfileViewController: UIViewController {
                               completion: nil)
         }
     }
-
-
+    
+    
 }
