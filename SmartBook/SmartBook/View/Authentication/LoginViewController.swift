@@ -29,9 +29,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        let tabBar = MainTabBarController()
-        tabBar.modalPresentationStyle = .fullScreen
-        present(tabBar, animated: true)
+        Router.showMainTabBar(from: self)
     }
     
 }

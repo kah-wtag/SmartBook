@@ -34,8 +34,6 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func signupTapped(_ sender: Any) {
-        let tabBar = MainTabBarController()
-        tabBar.modalPresentationStyle = .fullScreen
-        present(tabBar, animated: true)
+        Router.showMainTabBar(from: self)
     }
 }

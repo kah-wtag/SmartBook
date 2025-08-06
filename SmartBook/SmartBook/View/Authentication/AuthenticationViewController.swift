@@ -12,28 +12,19 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var containerView: UIView!
     
-    private struct AuthStoryboard {
-        static let mainStoryBoardName = "Main"
-        
-        struct Identifier {
-            static let loginViewController = "LoginViewController"
-            static let signupViewController = "SignupViewController"
-        }
-    }
-    
     private enum SegmentedContainerOption: Int {
         case login = 0
         case signup = 1
     }
     
     private lazy var loginVC: LoginViewController? = {
-        UIStoryboard(name: AuthStoryboard.mainStoryBoardName, bundle: nil)
-            .instantiateViewController(withIdentifier: AuthStoryboard.Identifier.loginViewController) as? LoginViewController
+        UIStoryboard(name: StoryboardInfo.Name.main.rawValue, bundle: nil)
+            .instantiateViewController(withIdentifier: StoryboardInfo.Identifier.loginVC) as? LoginViewController
     }()
 
     private lazy var signupVC: SignupViewController? = {
-        UIStoryboard(name: AuthStoryboard.mainStoryBoardName, bundle: nil)
-            .instantiateViewController(withIdentifier: AuthStoryboard.Identifier.signupViewController) as? SignupViewController
+        UIStoryboard(name: StoryboardInfo.Name.main.rawValue, bundle: nil)
+            .instantiateViewController(withIdentifier: StoryboardInfo.Identifier.signupVC) as? SignupViewController
     }()
     
     private var currentContainerViewIndex: Int?

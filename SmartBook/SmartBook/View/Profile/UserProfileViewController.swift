@@ -25,14 +25,14 @@ class UserProfileViewController: UIViewController {
     }
     
     private func setupUI() {
-        let userProfileTextFields = [editNameTextField, editNumberTextField, editMailTextField, editDesignationTextField]
-        let userProfileplaceholders = ["Md. Kamrul Hasan", "+8801749-140494", "kamrul@gmail.com", "Neurologist"]
+        userProfileTextFields = [editNameTextField, editNumberTextField, editMailTextField, editDesignationTextField]
+        let placeholders = ["Md. Kamrul Hasan", "+8801749-140494", "kamrul@gmail.com", "Neurologist"]
         
-        for (field, placeholder) in zip(userProfileTextFields, userProfileplaceholders) {
-            field?.setStyledPlaceholder(placeholder, color: .textColor)
-            field?.applyUnderline()
-            field?.addPadding([.left, .right], width: 8)
-            field?.font = .textSize(ofSize: .medium)
+        for (field, placeholder) in zip(userProfileTextFields, placeholders) {
+            field.setStyledPlaceholder(placeholder, color: .textColor)
+            field.applyUnderline()
+            field.addPadding([.left, .right], width: 8)
+            field.font = .textSize(ofSize: .medium)
         }
         
         saveUpdatedProfileButton.isEnabled = false
@@ -43,18 +43,36 @@ class UserProfileViewController: UIViewController {
         userProfileImageView.makeCircular(withRadius: 120)
     }
     
-    
     private func setupTextFieldTargets() {
-        userProfileTextFields = [editNameTextField, editNumberTextField, editMailTextField, editDesignationTextField]
         for textField in userProfileTextFields {
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        let anyFieldHasText = userProfileTextFields.contains { !($0.text ?? "").trimmingCharacters(in: .whitespaces).isEmpty }
+        let anyFieldHasText = userProfileTextFields.contains {
+            !($0.text ?? "").trimmingCharacters(in: .whitespaces).isEmpty
+        }
         saveUpdatedProfileButton.isEnabled = anyFieldHasText
         saveUpdatedProfileButton.alpha = anyFieldHasText ? 1.0 : 0.5
     }
     
+    @objc func signOutTapped() {
+        let loginStoryboard = UIStoryboard(name: StoryboardInfo.Name.main.rawValue, bundle: nil)
+        let loginVC = loginStoryboard.instantiateViewController(withIdentifier: StoryboardInfo.Identifier.authenticationVC)
+        
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = loginVC
+            window.makeKeyAndVisible()
+            
+            // Optional: add animation
+            UIView.transition(with: window,
+                              duration: 0.5,
+                              options: .transitionFlipFromLeft,
+                              animations: nil,
+                              completion: nil)
+        }
+    }
+
+
 }

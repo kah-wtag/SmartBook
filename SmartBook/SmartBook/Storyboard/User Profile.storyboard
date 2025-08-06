@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +33,9 @@
                                                 </constraints>
                                                 <color key="tintColor" name="primaryTextColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="person.crop.circle" catalog="system" buttonSize="mini"/>
+                                                <buttonConfiguration key="configuration" style="plain" buttonSize="mini">
+                                                    <imageReference key="image" image="person.crop.circle" catalog="system" symbolScale="medium"/>
+                                                </buttonConfiguration>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hry-ky-c83" userLabel="Full Name">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="25.666666666666668"/>
@@ -52,7 +55,9 @@
                                                 </constraints>
                                                 <color key="tintColor" name="primaryTextColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="phone" catalog="system" buttonSize="mini"/>
+                                                <buttonConfiguration key="configuration" style="plain" buttonSize="mini">
+                                                    <imageReference key="image" image="phone" catalog="system" symbolScale="medium"/>
+                                                </buttonConfiguration>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKr-Ea-JdG" userLabel="Mobile">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="25.666666666666668"/>
@@ -72,7 +77,9 @@
                                                 </constraints>
                                                 <color key="tintColor" name="primaryTextColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="mail" catalog="system" buttonSize="mini"/>
+                                                <buttonConfiguration key="configuration" style="plain" buttonSize="mini">
+                                                    <imageReference key="image" image="mail" catalog="system" symbolScale="medium"/>
+                                                </buttonConfiguration>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gO8-n5-C23" userLabel="Email">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="25.666666666666668"/>
@@ -92,7 +99,9 @@
                                                 </constraints>
                                                 <color key="tintColor" name="primaryTextColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="info" catalog="system" buttonSize="mini"/>
+                                                <buttonConfiguration key="configuration" style="plain" buttonSize="mini">
+                                                    <imageReference key="image" image="info" catalog="system" symbolScale="medium"/>
+                                                </buttonConfiguration>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KeP-bi-SQD" userLabel="Designation">
                                                 <rect key="frame" x="60" y="0.0" width="293" height="25.666666666666668"/>
@@ -153,10 +162,10 @@
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="phone" catalog="system" width="128" height="115"/>
         <namedColor name="backgroundColor">
-            <color red="0.97589761018753052" green="0.92478287220001221" blue="0.96589088439941406" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97254902124404907" green="0.92156863212585449" blue="0.96470588445663452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryTextColor">
-            <color red="0.031213879585266113" green="0.0070907343178987503" blue="0.018900904804468155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.027450982481241226" green="0.0039215688593685627" blue="0.015686275437474251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
