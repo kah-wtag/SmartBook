@@ -22,7 +22,6 @@ class MainTabBarController: UITabBarController {
             createNavController(vc: FavouriteViewController(), title: "Favourite", image: "heart"),
             createNavController(vc: loadFromStoryboard(.userProfile, "UserProfileViewController"), title: "User Profile", image: "person.crop.circle")
         ]
-        
         tabBar.tintColor = UIColor(named: "secondaryTextColor") ?? .black
         tabBar.backgroundColor = .systemBackground
     }
@@ -31,13 +30,31 @@ class MainTabBarController: UITabBarController {
         let sb = UIStoryboard(name: storyboard.rawValue, bundle: nil)
         return sb.instantiateViewController(withIdentifier: identifier)
     }
-
     
     private func createNavController(vc: UIViewController, title: String, image: String) -> UINavigationController {
         let nav = UINavigationController(rootViewController: vc)
         nav.tabBarItem.title = title
         nav.tabBarItem.image = UIImage(systemName: image)
         vc.navigationItem.title = title
+        
+        let iconColor = UIColor(named: "primaryTextColor") ?? .black
+        let notificationButton = UIBarButtonItem(
+            image: UIImage(systemName: "bell"),
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+        notificationButton.tintColor = iconColor
+        let signOutButton = UIBarButtonItem(
+            image: UIImage(systemName: "arrow.right.square"),
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+        signOutButton.tintColor = iconColor
+        if vc is UserProfileViewController {
+            vc.navigationItem.rightBarButtonItems = [signOutButton, notificationButton]
+        }
         return nav
     }
 }

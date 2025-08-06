@@ -34,13 +34,8 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func signupTapped(_ sender: Any) {
-        Router.show(
-            from: self,
-            storyboard: .userProfile,
-            identifier: "UserProfileViewController",
-            title: "User Profile",
-            embedInNavigation: true,
-            presentModally: true
-        )
+        let tabBar = MainTabBarController()
+        tabBar.modalPresentationStyle = .fullScreen
+        present(tabBar, animated: true)
     }
 }
