@@ -65,7 +65,7 @@ class UserProfileViewController: UIViewController {
             from: .main,
             identifier: StoryboardInfo.Identifier.authenticationVC
         )
-
+        
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = scene.windows.first {
             window.rootViewController = loginVC
@@ -78,7 +78,7 @@ class UserProfileViewController: UIViewController {
                               completion: nil)
         }
     }
-
+    
     
     
 }
