@@ -15,18 +15,17 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setupTabBar() {
+        let userProfileVC = StoryboardInfo.viewController(
+            from: .userProfile,
+            identifier: StoryboardInfo.Identifier.userProfileVC
+        )
+
         viewControllers = [
             createNavController(vc: HomeViewController(), title: "Home", image: "house"),
             createNavController(vc: CalendarViewController(), title: "Calendar", image: "calendar"),
             createNavController(vc: SearchViewController(), title: "Search", image: "magnifyingglass"),
             createNavController(vc: FavouriteViewController(), title: "Favourite", image: "heart"),
-            Router.viewController(
-                storyboard: .userProfile,
-                identifier: StoryboardInfo.Identifier.userProfileVC,
-                title: "User Profile",
-                tabImage: "person.crop.circle",
-                showSignOut: true
-            )
+            createNavController(vc: userProfileVC, title: "User Profile", image: "person.crop.circle"),
         ]
         
         tabBar.tintColor = UIColor(named: "secondaryTextColor") ?? .black
@@ -58,10 +57,10 @@ class MainTabBarController: UITabBarController {
         let signOutButton = UIBarButtonItem(
             image: UIImage(systemName: "arrow.right.square"),
             style: .plain,
-            target: vc, // or self if in controller
+            target: vc,
             action: #selector(UserProfileViewController.signOutTapped)
         )
-
+        
         signOutButton.tintColor = iconColor
         
         if vc is UserProfileViewController {

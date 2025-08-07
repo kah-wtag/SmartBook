@@ -61,14 +61,16 @@ class UserProfileViewController: UIViewController {
     }
     
     @objc func signOutTapped() {
-        let loginStoryboard = UIStoryboard(name: StoryboardInfo.Name.main.rawValue, bundle: nil)
-        let loginVC = loginStoryboard.instantiateViewController(withIdentifier: StoryboardInfo.Identifier.authenticationVC)
-        
-        if let window = UIApplication.shared.windows.first {
+        let loginVC = StoryboardInfo.viewController(
+            from: .main,
+            identifier: StoryboardInfo.Identifier.authenticationVC
+        )
+
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = scene.windows.first {
             window.rootViewController = loginVC
             window.makeKeyAndVisible()
             
-            // Optional: add animation
             UIView.transition(with: window,
                               duration: 0.5,
                               options: .transitionFlipFromLeft,
@@ -76,6 +78,7 @@ class UserProfileViewController: UIViewController {
                               completion: nil)
         }
     }
+
     
     
 }
