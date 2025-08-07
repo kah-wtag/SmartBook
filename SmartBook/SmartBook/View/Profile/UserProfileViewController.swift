@@ -17,6 +17,7 @@ class UserProfileViewController: UIViewController,
     @IBOutlet var editDesignationTextField: UITextField!
     @IBOutlet var saveUpdatedProfileButton: UIButton!
     @IBOutlet var userProfileImageView: UIImageView!
+    @IBOutlet var editProfileImageButton: UIButton!
     
     private var userProfileTextFields: [UITextField] = []
     
@@ -43,6 +44,7 @@ class UserProfileViewController: UIViewController,
         saveUpdatedProfileButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
         userProfileImageView.layer.cornerRadius = userProfileImageView.frame.width / 2
         userProfileImageView.clipsToBounds = true
+        editProfileImageButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
         
     }
     

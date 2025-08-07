@@ -129,7 +129,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qog-A7-fwj">
-                                <rect key="frame" x="170" y="281" width="53.333333333333343" height="41"/>
+                                <rect key="frame" x="170" y="291" width="53.333333333333343" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="r1y-fJ-T7C"/>
                                 </constraints>
@@ -145,7 +145,7 @@
                         <viewLayoutGuide key="safeArea" id="oPX-ff-I7I"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qog-A7-fwj" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" id="1eS-UD-0hk"/>
+                            <constraint firstItem="qog-A7-fwj" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="10" id="1eS-UD-0hk"/>
                             <constraint firstItem="oPX-ff-I7I" firstAttribute="trailing" secondItem="mSK-yx-cb2" secondAttribute="trailing" constant="155" id="KDf-n9-XJd"/>
                             <constraint firstItem="4mo-Bn-ylT" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="100" id="V7m-kz-ui5"/>
                             <constraint firstItem="4mo-Bn-ylT" firstAttribute="leading" secondItem="oPX-ff-I7I" secondAttribute="leading" constant="20" id="VaQ-ri-TLJ"/>
@@ -164,6 +164,7 @@
                         <outlet property="editMailTextField" destination="gO8-n5-C23" id="UIF-c0-xMR"/>
                         <outlet property="editNameTextField" destination="Hry-ky-c83" id="3cp-PX-mmK"/>
                         <outlet property="editNumberTextField" destination="YKr-Ea-JdG" id="B63-4G-UTO"/>
+                        <outlet property="editProfileImageButton" destination="qog-A7-fwj" id="hh2-qS-aaV"/>
                         <outlet property="saveUpdatedProfileButton" destination="mSK-yx-cb2" id="w10-ro-k0i"/>
                         <outlet property="userProfileImageView" destination="fBV-KH-yiu" id="zTh-Ne-gFc"/>
                     </connections>
