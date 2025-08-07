@@ -24,7 +24,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4mo-Bn-ylT">
-                                <rect key="frame" x="20" y="381" width="353" height="172"/>
+                                <rect key="frame" x="20" y="411" width="353" height="172"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FRa-KA-f4P">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="28"/>
@@ -129,7 +129,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qog-A7-fwj">
-                                <rect key="frame" x="170" y="301" width="53.333333333333343" height="41"/>
+                                <rect key="frame" x="170" y="321" width="53.333333333333343" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="r1y-fJ-T7C"/>
                                 </constraints>
@@ -145,9 +145,9 @@
                         <viewLayoutGuide key="safeArea" id="oPX-ff-I7I"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qog-A7-fwj" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="20" id="1eS-UD-0hk"/>
+                            <constraint firstItem="qog-A7-fwj" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="40" id="1eS-UD-0hk"/>
                             <constraint firstItem="oPX-ff-I7I" firstAttribute="trailing" secondItem="mSK-yx-cb2" secondAttribute="trailing" constant="155" id="KDf-n9-XJd"/>
-                            <constraint firstItem="4mo-Bn-ylT" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="100" id="V7m-kz-ui5"/>
+                            <constraint firstItem="4mo-Bn-ylT" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="130" id="V7m-kz-ui5"/>
                             <constraint firstItem="4mo-Bn-ylT" firstAttribute="leading" secondItem="oPX-ff-I7I" secondAttribute="leading" constant="20" id="VaQ-ri-TLJ"/>
                             <constraint firstItem="mSK-yx-cb2" firstAttribute="leading" secondItem="oPX-ff-I7I" secondAttribute="leading" constant="155" id="VlN-3v-oeb"/>
                             <constraint firstItem="oPX-ff-I7I" firstAttribute="bottom" secondItem="mSK-yx-cb2" secondAttribute="bottom" constant="50" id="cnw-wr-DkX"/>
