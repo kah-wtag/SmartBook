@@ -7,7 +7,9 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController {
+class UserProfileViewController: UIViewController,
+                                 UIImagePickerControllerDelegate,
+                                 UINavigationControllerDelegate {
     
     @IBOutlet var editNameTextField: UITextField!
     @IBOutlet var editNumberTextField: UITextField!
@@ -49,7 +51,33 @@ class UserProfileViewController: UIViewController {
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
     }
-    @IBAction func editProfileImageTapped(_ sender: Any) {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        var selectedImage: UIImage?
+        
+        if let editedImage = info[.editedImage] as? UIImage {
+            selectedImage = editedImage
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            selectedImage = originalImage
+        }
+        
+        if let image = selectedImage {
+            userProfileImageView.image = image
+        }
+        
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    @IBAction func editProfileImageButtonTapped(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true)
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {

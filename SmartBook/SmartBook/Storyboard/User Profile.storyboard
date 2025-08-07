@@ -138,7 +138,7 @@
                                     <color key="baseForegroundColor" name="primaryTextColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="editProfileImageTapped:" destination="etF-5f-vWo" eventType="touchUpInside" id="i6W-kd-8B9"/>
+                                    <action selector="editProfileImageButtonTapped:" destination="etF-5f-vWo" eventType="touchUpInside" id="i6W-kd-8B9"/>
                                 </connections>
                             </button>
                         </subviews>
