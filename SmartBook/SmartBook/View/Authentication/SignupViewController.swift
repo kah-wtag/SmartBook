@@ -34,6 +34,6 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func signupTapped(_ sender: Any) {
-        Router.showMainTabBar(from: self)
+        Router.showLoginScreenWithTransition()
     }
 }

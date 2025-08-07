@@ -91,24 +91,6 @@ class UserProfileViewController: UIViewController,
     }
     
     @objc func signOutTapped() {
-        let loginVC = StoryboardInfo.viewController(
-            from: .main,
-            identifier: StoryboardInfo.Identifier.authenticationVC
-        )
-        
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = scene.windows.first {
-            window.rootViewController = loginVC
-            window.makeKeyAndVisible()
-            
-            UIView.transition(with: window,
-                              duration: 0.5,
-                              options: .transitionFlipFromLeft,
-                              animations: nil,
-                              completion: nil)
-        }
+        Router.showLoginScreenWithTransition()
     }
-    
-    
-    
 }
