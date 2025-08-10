@@ -9,13 +9,12 @@ import UIKit
 
 final class RootViewController: UIViewController, UITabBarDelegate {
 
-    private let navBar = UINavigationBar()
     private let contentView = UIView()
     private let tabBar = UITabBar()
 
     private let blankRootView: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor.systemGroupedBackground
+        v.backgroundColor = UIColor.yellow
         return v
     }()
 
@@ -41,18 +40,12 @@ final class RootViewController: UIViewController, UITabBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Root VC"
         setupLayout()
         configureTabBar()
-        showBlankRootScreen()
     }
 
     private func setupLayout() {
-        navBar.prefersLargeTitles = false
-        view.backgroundColor = .systemBackground
-
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(navBar)
-
         contentView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(contentView)
 
@@ -63,11 +56,7 @@ final class RootViewController: UIViewController, UITabBarDelegate {
         view.addSubview(tabBar)
 
         NSLayoutConstraint.activate([
-            navBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-
-            contentView.topAnchor.constraint(equalTo: navBar.bottomAnchor),
+            contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: tabBar.topAnchor),
@@ -90,24 +79,6 @@ final class RootViewController: UIViewController, UITabBarDelegate {
         tabBar.tintColor = UIColor(named: "secondaryTextColor") ?? .systemBlue
 
         tabBar.selectedItem = nil
-
-        updateNavBar(title: "ROOT VC")
-    }
-
-    private func updateNavBar(title: String, rightItems: [UIBarButtonItem]? = nil) {
-        let navItem = UINavigationItem(title: title)
-        navItem.rightBarButtonItems = rightItems
-        navItem.largeTitleDisplayMode = .never
-        navBar.prefersLargeTitles = false
-        navBar.setItems([navItem], animated: false)
-    }
-
-    private func showBlankRootScreen() {
-        removeCurrentChild()
-        blankRootView.isHidden = false
-        blankRootView.backgroundColor = .yellow
-        updateNavBar(title: "ROOT View Controller")
-        tabBar.selectedItem = nil
     }
 
     private func removeCurrentChild() {
@@ -129,17 +100,17 @@ final class RootViewController: UIViewController, UITabBarDelegate {
         removeCurrentChild()
 
         addChild(selectedNav)
-        selectedNav.view.frame = contentView.bounds
-        selectedNav.view.translatesAutoresizingMaskIntoConstraints = true
         contentView.addSubview(selectedNav.view)
+        selectedNav.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            selectedNav.view.topAnchor.constraint(equalTo: contentView.topAnchor),
+            selectedNav.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            selectedNav.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            selectedNav.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+
         selectedNav.didMove(toParent: self)
         currentChildNav = selectedNav
-
-        if let top = selectedNav.topViewController {
-            let title = top.title ?? tabItems[index].title ?? ""
-            let rightItems = top.navigationItem.rightBarButtonItems
-            updateNavBar(title: title, rightItems: rightItems)
-        }
 
     }
 }
@@ -148,5 +119,6 @@ extension RootViewController {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         guard let index = tabBar.items?.firstIndex(of: item) else { return }
         displayChildNavController(at: index)
+        self.title = tabItems[index].title
     }
 }

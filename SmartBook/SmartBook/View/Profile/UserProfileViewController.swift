@@ -23,12 +23,14 @@ class UserProfileViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navItem()
         setupUI()
         setupTextFieldTargets()
-        navItem()
+        
     }
     
     private func navItem() {
+        self.title = "User Profile"
         let signOut = UIBarButtonItem(image: UIImage(systemName: "arrow.right.square"),
                                       style: .plain,
                                       target: self,
