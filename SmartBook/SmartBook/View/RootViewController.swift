@@ -40,7 +40,6 @@ final class RootViewController: UIViewController, UITabBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Root VC"
         setupLayout()
         configureTabBar()
     }
