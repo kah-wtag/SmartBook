@@ -25,6 +25,19 @@ class UserProfileViewController: UIViewController,
         super.viewDidLoad()
         setupUI()
         setupTextFieldTargets()
+        navItem()
+    }
+    
+    private func navItem() {
+        let signOut = UIBarButtonItem(image: UIImage(systemName: "arrow.right.square"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(signOutTapped))
+        let notification = UIBarButtonItem(image: UIImage(systemName: "bell"),
+                                           style: .plain,
+                                           target: nil,
+                                           action: nil)
+        navigationItem.rightBarButtonItems = [signOut, notification]
     }
     
     private func setupUI() {

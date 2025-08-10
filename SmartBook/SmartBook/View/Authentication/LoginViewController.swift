@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        Router.showMainTabBar(from: self)
+        Router.showMainAppFlow(from: self)
     }
     
 }
