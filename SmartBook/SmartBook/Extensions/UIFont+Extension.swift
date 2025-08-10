@@ -40,3 +40,9 @@ extension UIColor {
         return UIColor(named: "primaryTextColor") ?? .gray
     }
 }
+
+extension UIColor {
+    static var secondaryTextColor: UIColor {
+        return UIColor(named: "secondaryTextColor") ?? .gray
+    }
+}

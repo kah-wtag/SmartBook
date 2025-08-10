@@ -23,23 +23,8 @@ class UserProfileViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navItem()
         setupUI()
         setupTextFieldTargets()
-        
-    }
-    
-    private func navItem() {
-        self.title = "User Profile"
-        let signOut = UIBarButtonItem(image: UIImage(systemName: "arrow.right.square"),
-                                      style: .plain,
-                                      target: self,
-                                      action: #selector(signOutTapped))
-        let notification = UIBarButtonItem(image: UIImage(systemName: "bell"),
-                                           style: .plain,
-                                           target: nil,
-                                           action: nil)
-        navigationItem.rightBarButtonItems = [signOut, notification]
     }
     
     private func setupUI() {
@@ -60,7 +45,6 @@ class UserProfileViewController: UIViewController,
         userProfileImageView.layer.cornerRadius = userProfileImageView.frame.width / 2
         userProfileImageView.clipsToBounds = true
         editProfileImageButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
-        
     }
     
     private func setupTextFieldTargets() {
@@ -103,9 +87,5 @@ class UserProfileViewController: UIViewController,
         }
         saveUpdatedProfileButton.isEnabled = anyFieldHasText
         saveUpdatedProfileButton.alpha = anyFieldHasText ? 1.0 : 0.5
-    }
-    
-    @objc func signOutTapped() {
-        Router.showLoginScreenWithTransition()
     }
 }

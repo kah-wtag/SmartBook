@@ -11,7 +11,6 @@ class FavouriteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Favourite"
         view.backgroundColor = .blue
     }
 

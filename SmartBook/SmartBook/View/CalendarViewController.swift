@@ -11,7 +11,6 @@ class CalendarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Calendar"
         view.backgroundColor = .cyan
     }
 }

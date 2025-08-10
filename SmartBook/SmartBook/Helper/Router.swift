@@ -8,7 +8,7 @@
 import UIKit
 
 struct Router {
-    static func showMainAppFlow(from presenter: UIViewController) {
+    static func presentMainAppFlow(from presenter: UIViewController) {
         let root = RootViewController()
         root.modalPresentationStyle = .fullScreen
         presenter.present(root, animated: true)

@@ -7,117 +7,152 @@
 
 import UIKit
 
-final class RootViewController: UIViewController, UITabBarDelegate {
+final class RootViewController: UIViewController {
 
-    private let contentView = UIView()
+    private let navigationBar = UINavigationBar()
     private let tabBar = UITabBar()
-
-    private let blankRootView: UIView = {
-        let v = UIView()
-        v.backgroundColor = UIColor.yellow
-        return v
-    }()
-
-    private lazy var tabItems: [UITabBarItem] = [
-        UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0),
-        UITabBarItem(title: "Calendar", image: UIImage(systemName: "calendar"), tag: 1),
-        UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 2),
-        UITabBarItem(title: "Favourite", image: UIImage(systemName: "heart"), tag: 3),
-        UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 4)
+    private let containerView = UIView()
+    
+    private enum Layout {
+        static let navBarHeight: CGFloat = 44
+        static let tabBarHeight: CGFloat = 49
+    }
+    
+    private let tabs = [
+        ("Home", UIImage(systemName: "house")),
+        ("Calendar", UIImage(systemName: "calendar")),
+        ("Search", UIImage(systemName: "magnifyingglass")),
+        ("Favourite", UIImage(systemName: "heart")),
+        ("Profile", UIImage(systemName: "person.crop.circle"))
     ]
-
-    private lazy var childNavControllers: [UINavigationController] = {
-        let home = UINavigationController(rootViewController: HomeViewController())
-        let calendar = UINavigationController(rootViewController: CalendarViewController())
-        let search = UINavigationController(rootViewController: SearchViewController())
-        let favourite = UINavigationController(rootViewController: FavouriteViewController())
-        let profileVC = StoryboardInfo.viewController(from: .userProfile, identifier: StoryboardInfo.Identifier.userProfileVC)
-        let profileNav = UINavigationController(rootViewController: profileVC)
-        return [home, calendar, search, favourite, profileNav]
+    
+    private lazy var customChildViewControllers: [UIViewController] = {
+        let profileVC = StoryboardInfo.viewController(
+            from: .userProfile,
+            identifier: StoryboardInfo.Identifier.userProfileVC
+        )
+        return [
+            HomeViewController(),
+            CalendarViewController(),
+            SearchViewController(),
+            FavouriteViewController(),
+            profileVC
+        ]
     }()
-
-    private var currentChildNav: UINavigationController?
+    
+    private var currentChildVC: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayout()
-        configureTabBar()
+        view.backgroundColor = .systemBackground
+        setupNavigationBar()
+        setupTabBar()
+        setupContainerView()
+        tabBar.selectedItem = tabBar.items?.first
+        selectTab(at: 0)
     }
-
-    private func setupLayout() {
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(contentView)
-
-        blankRootView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(blankRootView)
-
-        tabBar.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tabBar)
-
+    
+    private func setupNavigationBar() {
+        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(navigationBar)
+        
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: tabBar.topAnchor),
-
-            blankRootView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            blankRootView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            blankRootView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            blankRootView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-
+            navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navigationBar.heightAnchor.constraint(equalToConstant: Layout.navBarHeight)
+        ])
+        navigationBar.tintColor = .secondaryTextColor
+        updateNavigationBar(title: "Home", showSignOut: false)
+    }
+    
+    private func setupTabBar() {
+        tabBar.translatesAutoresizingMaskIntoConstraints = false
+        tabBar.delegate = self
+        
+        tabBar.items = tabs.enumerated().map { index, tab in
+            UITabBarItem(title: tab.0, image: tab.1, tag: index)
+        }
+        
+        view.addSubview(tabBar)
+        
+        NSLayoutConstraint.activate([
             tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tabBar.heightAnchor.constraint(equalToConstant: 49)
+            tabBar.heightAnchor.constraint(equalToConstant: Layout.tabBarHeight)
+        ])
+        tabBar.tintColor = UIColor(named: "secondaryTextColor") ?? .systemBlue
+    }
+    
+    private func setupContainerView() {
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerView)
+        
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor)
         ])
     }
-
-    private func configureTabBar() {
-        tabBar.items = tabItems
-        tabBar.delegate = self
-        tabBar.tintColor = UIColor(named: "secondaryTextColor") ?? .systemBlue
-
-        tabBar.selectedItem = nil
-    }
-
-    private func removeCurrentChild() {
-        if let current = currentChildNav {
+    
+    private func selectTab(at index: Int) {
+        if let current = currentChildVC {
             current.willMove(toParent: nil)
             current.view.removeFromSuperview()
             current.removeFromParent()
-            currentChildNav = nil
         }
+        
+        let vc = customChildViewControllers[index]
+        addChild(vc)
+        vc.view.frame = containerView.bounds
+        vc.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        containerView.addSubview(vc.view)
+        vc.didMove(toParent: self)
+        currentChildVC = vc
+        
+        let tabTitle = tabs[index].0
+        let showSignOut = (tabTitle == "Profile")
+        updateNavigationBar(title: tabTitle, showSignOut: showSignOut)
     }
+    
+    private func updateNavigationBar(title: String, showSignOut: Bool) {
+        let navItem = UINavigationItem(title: title)
+        let notificationButton = UIBarButtonItem(
+            image: UIImage(systemName: "bell"),
+            style: .plain,
+            target: self,
+            action: #selector(notificationTapped)
+        )
+        
+        if showSignOut {
+            let signOutButton = UIBarButtonItem(
+                image: UIImage(systemName: "arrow.right.square"),
+                style: .plain,
+                target: self,
+                action: #selector(signOutTapped)
+            )
+            navItem.rightBarButtonItems = [notificationButton, signOutButton]
+        } else {
+            navItem.rightBarButtonItem = notificationButton
+        }
 
-    private func displayChildNavController(at index: Int) {
-        guard index >= 0 && index < childNavControllers.count else { return }
-
-        let selectedNav = childNavControllers[index]
-        if selectedNav == currentChildNav { return }
-
-        blankRootView.isHidden = true
-        removeCurrentChild()
-
-        addChild(selectedNav)
-        contentView.addSubview(selectedNav.view)
-        selectedNav.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            selectedNav.view.topAnchor.constraint(equalTo: contentView.topAnchor),
-            selectedNav.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            selectedNav.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            selectedNav.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
-
-        selectedNav.didMove(toParent: self)
-        currentChildNav = selectedNav
-
+        navItem.leftBarButtonItem = nil
+        navigationBar.setItems([navItem], animated: false)
+    }
+    
+    @objc private func notificationTapped() {
+        print("Notification tapped")
+    }
+    
+    @objc private func signOutTapped() {
+        Router.showLoginScreenWithTransition()
     }
 }
 
-extension RootViewController {
+extension RootViewController: UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        guard let index = tabBar.items?.firstIndex(of: item) else { return }
-        displayChildNavController(at: index)
-        self.title = tabItems[index].title
+        selectTab(at: item.tag)
     }
 }
