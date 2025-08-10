@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="fBV-KH-yiu">
-                                <rect key="frame" x="120" y="128" width="153" height="153"/>
+                                <rect key="frame" x="120" y="148" width="153" height="153"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fBV-KH-yiu" secondAttribute="height" multiplier="1:1" id="ohr-f7-PPS"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4mo-Bn-ylT">
-                                <rect key="frame" x="20" y="411" width="353" height="172"/>
+                                <rect key="frame" x="20" y="431" width="353" height="172"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FRa-KA-f4P">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="28"/>
@@ -129,7 +129,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qog-A7-fwj">
-                                <rect key="frame" x="170" y="321" width="53.333333333333343" height="41"/>
+                                <rect key="frame" x="170" y="341" width="53.333333333333343" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="r1y-fJ-T7C"/>
                                 </constraints>
@@ -156,7 +156,7 @@
                             <constraint firstItem="fBV-KH-yiu" firstAttribute="leading" secondItem="oPX-ff-I7I" secondAttribute="leading" constant="120" id="iPU-Hc-QU6"/>
                             <constraint firstItem="qog-A7-fwj" firstAttribute="centerX" secondItem="fBV-KH-yiu" secondAttribute="centerX" id="idW-7w-Ek4"/>
                             <constraint firstItem="mSK-yx-cb2" firstAttribute="centerX" secondItem="8Ul-vb-4TN" secondAttribute="centerX" id="sZN-gm-NtW"/>
-                            <constraint firstItem="fBV-KH-yiu" firstAttribute="top" secondItem="oPX-ff-I7I" secondAttribute="top" constant="10" id="vb0-jA-BXY"/>
+                            <constraint firstItem="fBV-KH-yiu" firstAttribute="top" secondItem="oPX-ff-I7I" secondAttribute="top" constant="30" id="vb0-jA-BXY"/>
                         </constraints>
                     </view>
                     <connections>
