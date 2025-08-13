@@ -13,11 +13,6 @@ final class RootViewController: UIViewController {
     private let tabBar = UITabBar()
     private let contentContainerView = UIView()
     
-    private enum LayoutConstants {
-        static let navigationBarHeight: CGFloat = 44
-        static let tabBarHeight: CGFloat = 49
-    }
-    
     private enum TabInfo {
         static let items: [(title: String, icon: UIImage?)] = [
             ("Home", UIImage(systemName: "house")),
@@ -57,15 +52,23 @@ final class RootViewController: UIViewController {
     private func setupNavigationBar() {
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         navigationBar.tintColor = UIColor(named: "secondaryTextColor")
+
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemBackground
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.label]
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+
         view.addSubview(navigationBar)
-        
+
         NSLayoutConstraint.activate([
             navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            navigationBar.heightAnchor.constraint(equalToConstant: LayoutConstants.navigationBarHeight)
+            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
+
     
     private func setupTabBar() {
         tabBar.translatesAutoresizingMaskIntoConstraints = false
@@ -73,21 +76,28 @@ final class RootViewController: UIViewController {
         tabBar.items = TabInfo.items.enumerated().map { index, tab in
             UITabBarItem(title: tab.title, image: tab.icon, tag: index)
         }
-        tabBar.tintColor = UIColor(named: "secondaryTextColor") ?? .systemBlue
+        tabBar.tintColor = UIColor(named: "secondaryTextColor")
+
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemBackground
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
+
         view.addSubview(tabBar)
-        
+
         NSLayoutConstraint.activate([
             tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tabBar.heightAnchor.constraint(equalToConstant: LayoutConstants.tabBarHeight)
+            tabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+
     
     private func setupContentContainer() {
         contentContainerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(contentContainerView)
-        
+
         NSLayoutConstraint.activate([
             contentContainerView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
             contentContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -95,6 +105,7 @@ final class RootViewController: UIViewController {
             contentContainerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor)
         ])
     }
+
     
     private func selectTab(at index: Int) {
         if let activeVC = activeChildViewController {
