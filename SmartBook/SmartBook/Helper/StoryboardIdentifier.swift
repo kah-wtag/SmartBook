@@ -29,7 +29,7 @@ struct StoryboardInfo {
 }
 
 extension StoryboardInfo {
-    static func viewController(from storyboard: Name, identifier: String) -> UIViewController {
+    static func instantiateVC(from storyboard: Name, identifier: String) -> UIViewController {
         let sb = UIStoryboard(name: storyboard.rawValue, bundle: nil)
         return sb.instantiateViewController(withIdentifier: identifier)
     }

@@ -15,7 +15,7 @@ struct Router {
     }
 
     static func showLoginScreenWithTransition() {
-        let loginVC = StoryboardInfo.viewController(from: .main, identifier: StoryboardInfo.Identifier.authenticationVC)
+        let loginVC = StoryboardInfo.instantiateVC(from: .main, identifier: StoryboardInfo.Identifier.authenticationVC)
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = scene.windows.first {
             window.rootViewController = loginVC

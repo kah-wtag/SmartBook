@@ -24,7 +24,7 @@ final class RootViewController: UIViewController {
     }
     
     private lazy var customChildViewControllers: [UIViewController] = {
-        let profileVC = StoryboardInfo.viewController(
+        let profileVC = StoryboardInfo.instantiateVC(
             from: .userProfile,
             identifier: StoryboardInfo.Identifier.userProfileVC
         )
