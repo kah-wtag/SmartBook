@@ -28,3 +28,14 @@ struct Router {
         }
     }
 }
+
+extension Router {
+    static func showHealthcareFields(from presenter: UIViewController) {
+        let healthcareVC = StoryboardInfo.instantiateVC(
+            from: .healthcareField,
+            identifier: StoryboardInfo.Identifier.healthcareFieldVC
+        )
+        presenter.navigationController?.pushViewController(healthcareVC, animated: true)
+    }
+}
+

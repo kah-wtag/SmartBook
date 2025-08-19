@@ -5,7 +5,6 @@
 //  Created by Md. Kamrul Hasan on 6/8/25.
 //
 
-import Foundation
 import UIKit
 
 struct StoryboardInfo {
@@ -14,6 +13,8 @@ struct StoryboardInfo {
         case main = "Main"
         case authentication = "Authentication"
         case userProfile = "User Profile"
+        case serviceList = "Service List"
+        case healthcareField = "Healthcare Field"
     }
     
     struct Identifier {
@@ -25,12 +26,16 @@ struct StoryboardInfo {
         static let calendarVC = "CalendarViewController"
         static let favoriteVC = "FavoriteViewController"
         static let searchVC = "SearchViewController"
+        
+        static let serviceListVC = "ServiceListViewController"
+        static let serviceListCell = "ServiceListTableViewCell"
+        
+        static let healthcareFieldVC = "HealthcareFieldViewController"
+        static let healthcareFieldCell = "HealthcareFieldCell"
     }
-}
-
-extension StoryboardInfo {
+    
     static func instantiateVC(from storyboard: Name, identifier: String) -> UIViewController {
-        let sb = UIStoryboard(name: storyboard.rawValue, bundle: nil)
-        return sb.instantiateViewController(withIdentifier: identifier)
+        let storyBoard = UIStoryboard(name: storyboard.rawValue, bundle: nil)
+        return storyBoard.instantiateViewController(withIdentifier: identifier)
     }
 }

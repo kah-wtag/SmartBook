@@ -15,7 +15,7 @@ final class RootViewController: UIViewController {
     
     private enum TabInfo {
         static let items: [(title: String, icon: UIImage?)] = [
-            ("Home", UIImage(systemName: "house")),
+            ("Service List", UIImage(systemName: "house")),
             ("Calendar", UIImage(systemName: "calendar")),
             ("Search", UIImage(systemName: "magnifyingglass")),
             ("Favorites", UIImage(systemName: "heart")),
@@ -24,12 +24,17 @@ final class RootViewController: UIViewController {
     }
     
     private lazy var customChildViewControllers: [UIViewController] = {
+        let serviceListVC = StoryboardInfo.instantiateVC(
+            from: .serviceList,
+            identifier: StoryboardInfo.Identifier.serviceListVC
+        )
+        
         let profileVC = StoryboardInfo.instantiateVC(
             from: .userProfile,
             identifier: StoryboardInfo.Identifier.userProfileVC
         )
         return [
-            HomeViewController(),
+            serviceListVC,
             CalendarViewController(),
             SearchViewController(),
             FavouriteViewController(),
@@ -68,7 +73,6 @@ final class RootViewController: UIViewController {
             navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-
     
     private func setupTabBar() {
         tabBar.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +96,6 @@ final class RootViewController: UIViewController {
             tabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-
     
     private func setupContentContainer() {
         contentContainerView.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +108,6 @@ final class RootViewController: UIViewController {
             contentContainerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor)
         ])
     }
-
     
     private func selectTab(at index: Int) {
         if let activeVC = activeChildViewController {
@@ -124,17 +126,39 @@ final class RootViewController: UIViewController {
         
         let tabTitle = TabInfo.items[index].title
         let showSignOut = (tabTitle == "Profile")
-        updateNavigationBar(title: tabTitle, showSignOut: showSignOut)
+        let showBack = !(vc.children.isEmpty)
+        
+        updateNavigationBar(
+            title: tabTitle,
+            showSignOut: showSignOut,
+            showBack: showBack
+        )
     }
+
+
     
-    private func updateNavigationBar(title: String, showSignOut: Bool) {
+    private func updateNavigationBar(title: String, showSignOut: Bool, showBack: Bool = false) {
         let navItem = UINavigationItem(title: title)
+        
+        if showBack {
+            let backButton = UIBarButtonItem(
+                image: UIImage(systemName: "chevron.left"),
+                style: .plain,
+                target: self,
+                action: #selector(backButtonTapped)
+            )
+            navItem.leftBarButtonItem = backButton
+        } else {
+            navItem.leftBarButtonItem = nil
+        }
+
         let notificationButton = UIBarButtonItem(
             image: UIImage(systemName: "bell"),
             style: .plain,
             target: self,
             action: #selector(notificationTapped)
         )
+
         if showSignOut {
             let signOutButton = UIBarButtonItem(
                 image: UIImage(systemName: "arrow.right.square"),
@@ -146,8 +170,19 @@ final class RootViewController: UIViewController {
         } else {
             navItem.rightBarButtonItem = notificationButton
         }
-        navItem.leftBarButtonItem = nil
+
         navigationBar.setItems([navItem], animated: false)
+    }
+
+    @objc private func backButtonTapped() {
+        if let activeVC = activeChildViewController, activeVC.children.count > 0 {
+            let lastChild = activeVC.children.last!
+            lastChild.willMove(toParent: nil)
+            lastChild.view.removeFromSuperview()
+            lastChild.removeFromParent()
+            
+            updateNavigationBar(title: "Service List", showSignOut: false)
+        }
     }
     
     @objc private func notificationTapped() {
@@ -164,3 +199,17 @@ extension RootViewController: UITabBarDelegate {
         selectTab(at: item.tag)
     }
 }
+
+extension RootViewController {
+    func pushChildViewController(_ vc: UIViewController, title: String) {
+        guard let container = activeChildViewController else { return }
+        container.addChild(vc)
+        vc.view.frame = contentContainerView.bounds
+        vc.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        container.view.addSubview(vc.view)
+        vc.didMove(toParent: container)
+        
+        updateNavigationBar(title: title, showSignOut: false, showBack: true)
+    }
+}
+
