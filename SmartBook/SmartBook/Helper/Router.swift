@@ -9,13 +9,18 @@ import UIKit
 
 struct Router {
     static func presentMainAppFlow(from presenter: UIViewController) {
-        let root = RootViewController()
-        root.modalPresentationStyle = .fullScreen
-        presenter.present(root, animated: true)
+        let rootVC = RootViewController()
+        let navController = UINavigationController(rootViewController: rootVC)
+        navController.modalPresentationStyle = .fullScreen
+        presenter.present(navController, animated: true)
     }
 
     static func showLoginScreenWithTransition() {
-        let loginVC = StoryboardInfo.instantiateVC(from: .main, identifier: StoryboardInfo.Identifier.authenticationVC)
+        let loginVC = StoryboardInfo.instantiateVC(
+            from: .main,
+            identifier: StoryboardInfo.Identifier.authenticationVC
+        )
+        
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = scene.windows.first {
             window.rootViewController = loginVC

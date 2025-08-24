@@ -29,13 +29,13 @@ class UserProfileViewController: UIViewController,
     
     private func setupUI() {
         userProfileTextFields = [editNameTextField, editNumberTextField, editMailTextField, editDesignationTextField]
-        let placeholders = ["Md. Kamrul Hasan", "+8801749-140494", "kamrul@gmail.com", "Neurologist"]
+        let placeholders = ["Md Kamrul Hasan", "+880 17 4914 0494", "kamrul@gmail.com", "Neurologist"]
         
         for (field, placeholder) in zip(userProfileTextFields, placeholders) {
             field.setStyledPlaceholder(placeholder, color: .textColor)
             field.applyUnderline()
             field.addPadding([.left, .right], width: 8)
-            field.font = .textSize(ofSize: .medium)
+            field.font = .textSize(ofSize: .large)
         }
         
         saveUpdatedProfileButton.isEnabled = false
@@ -45,6 +45,13 @@ class UserProfileViewController: UIViewController,
         userProfileImageView.layer.cornerRadius = userProfileImageView.frame.width / 2
         userProfileImageView.clipsToBounds = true
         editProfileImageButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
+    }
+    
+    @objc private func notificationTapped() {
+        print("Notification tapped")
+    }
+    @objc private func signOutTapped() {
+        Router.showLoginScreenWithTransition()
     }
     
     private func setupTextFieldTargets() {

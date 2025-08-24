@@ -12,7 +12,7 @@
         <!--User Profile View Controller-->
         <scene sceneID="dsb-Ae-01Z">
             <objects>
-                <viewController storyboardIdentifier="UserProfileViewController" id="etF-5f-vWo" customClass="UserProfileViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileViewController" id="etF-5f-vWo" customClass="UserProfileViewController" customModule="WelldevTraining_SmartBookMainTabbar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ul-vb-4TN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,8 +23,8 @@
                                     <constraint firstAttribute="width" secondItem="fBV-KH-yiu" secondAttribute="height" multiplier="1:1" id="ohr-f7-PPS"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4mo-Bn-ylT">
-                                <rect key="frame" x="20" y="431" width="353" height="172"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="4mo-Bn-ylT">
+                                <rect key="frame" x="20" y="411" width="353" height="190"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FRa-KA-f4P">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="28"/>
@@ -49,7 +49,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="COc-2v-ucZ">
-                                        <rect key="frame" x="0.0" y="48" width="353" height="28"/>
+                                        <rect key="frame" x="0.0" y="54" width="353" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="od3-Fp-caZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="28"/>
@@ -71,7 +71,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZbA-mP-U1z">
-                                        <rect key="frame" x="0.0" y="96" width="353" height="28"/>
+                                        <rect key="frame" x="0.0" y="108" width="353" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cs7-N5-vjI">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="28"/>
@@ -93,7 +93,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hvo-F3-wPn">
-                                        <rect key="frame" x="0.0" y="144" width="353" height="28"/>
+                                        <rect key="frame" x="0.0" y="162" width="353" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snz-XE-VMk">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="28"/>
@@ -125,17 +125,17 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save">
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                    <color key="baseForegroundColor" name="primaryTextColor"/>
+                                    <color key="baseForegroundColor" name="secondaryTextColor"/>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qog-A7-fwj">
-                                <rect key="frame" x="170" y="341" width="53.333333333333343" height="41"/>
+                                <rect key="frame" x="170" y="311" width="53.333333333333343" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="r1y-fJ-T7C"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Edit">
-                                    <color key="baseForegroundColor" name="primaryTextColor"/>
+                                    <color key="baseForegroundColor" name="secondaryTextColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="editProfileImageButtonTapped:" destination="etF-5f-vWo" eventType="touchUpInside" id="i6W-kd-8B9"/>
@@ -145,15 +145,15 @@
                         <viewLayoutGuide key="safeArea" id="oPX-ff-I7I"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qog-A7-fwj" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="40" id="1eS-UD-0hk"/>
+                            <constraint firstItem="qog-A7-fwj" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="10" id="1eS-UD-0hk"/>
+                            <constraint firstItem="fBV-KH-yiu" firstAttribute="centerX" secondItem="8Ul-vb-4TN" secondAttribute="centerX" id="Izz-LX-mSh"/>
                             <constraint firstItem="oPX-ff-I7I" firstAttribute="trailing" secondItem="mSK-yx-cb2" secondAttribute="trailing" constant="155" id="KDf-n9-XJd"/>
-                            <constraint firstItem="4mo-Bn-ylT" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="130" id="V7m-kz-ui5"/>
+                            <constraint firstItem="4mo-Bn-ylT" firstAttribute="top" secondItem="fBV-KH-yiu" secondAttribute="bottom" constant="110" id="V7m-kz-ui5"/>
                             <constraint firstItem="4mo-Bn-ylT" firstAttribute="leading" secondItem="oPX-ff-I7I" secondAttribute="leading" constant="20" id="VaQ-ri-TLJ"/>
                             <constraint firstItem="mSK-yx-cb2" firstAttribute="leading" secondItem="oPX-ff-I7I" secondAttribute="leading" constant="155" id="VlN-3v-oeb"/>
                             <constraint firstItem="oPX-ff-I7I" firstAttribute="bottom" secondItem="mSK-yx-cb2" secondAttribute="bottom" constant="50" id="cnw-wr-DkX"/>
                             <constraint firstItem="oPX-ff-I7I" firstAttribute="trailing" secondItem="fBV-KH-yiu" secondAttribute="trailing" constant="120" id="f6x-25-Rj9"/>
                             <constraint firstItem="oPX-ff-I7I" firstAttribute="trailing" secondItem="4mo-Bn-ylT" secondAttribute="trailing" constant="20" id="hsI-6C-9DT"/>
-                            <constraint firstItem="fBV-KH-yiu" firstAttribute="leading" secondItem="oPX-ff-I7I" secondAttribute="leading" constant="120" id="iPU-Hc-QU6"/>
                             <constraint firstItem="qog-A7-fwj" firstAttribute="centerX" secondItem="fBV-KH-yiu" secondAttribute="centerX" id="idW-7w-Ek4"/>
                             <constraint firstItem="mSK-yx-cb2" firstAttribute="centerX" secondItem="8Ul-vb-4TN" secondAttribute="centerX" id="sZN-gm-NtW"/>
                             <constraint firstItem="fBV-KH-yiu" firstAttribute="top" secondItem="oPX-ff-I7I" secondAttribute="top" constant="30" id="vb0-jA-BXY"/>
@@ -185,6 +185,9 @@
         </namedColor>
         <namedColor name="primaryTextColor">
             <color red="0.027450982481241226" green="0.0039215688593685627" blue="0.015686275437474251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryTextColor">
+            <color red="0.85098039215686272" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
