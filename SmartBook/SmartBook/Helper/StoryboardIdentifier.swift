@@ -5,7 +5,6 @@
 //  Created by Md. Kamrul Hasan on 6/8/25.
 //
 
-import Foundation
 import UIKit
 
 struct StoryboardInfo {
@@ -26,11 +25,9 @@ struct StoryboardInfo {
         static let favoriteVC = "FavoriteViewController"
         static let searchVC = "SearchViewController"
     }
-}
-
-extension StoryboardInfo {
+    
     static func instantiateVC(from storyboard: Name, identifier: String) -> UIViewController {
-        let sb = UIStoryboard(name: storyboard.rawValue, bundle: nil)
-        return sb.instantiateViewController(withIdentifier: identifier)
+        let storyBoard = UIStoryboard(name: storyboard.rawValue, bundle: nil)
+        return storyBoard.instantiateViewController(withIdentifier: identifier)
     }
 }

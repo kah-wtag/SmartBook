@@ -8,11 +8,19 @@
 import UIKit
 
 struct Router {
+
     static func presentMainAppFlow(from presenter: UIViewController) {
-        let rootVC = RootViewController()
-        let navController = UINavigationController(rootViewController: rootVC)
-        navController.modalPresentationStyle = .fullScreen
-        presenter.present(navController, animated: true)
+        let rootVC = RootViewController()  // UITabBarController
+
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = scene.windows.first {
+            window.rootViewController = rootVC
+            window.makeKeyAndVisible()
+            UIView.transition(with: window,
+                              duration: 0.5,
+                              options: .transitionFlipFromRight,
+                              animations: nil)
+        }
     }
 
     static func showLoginScreenWithTransition() {
@@ -20,7 +28,6 @@ struct Router {
             from: .main,
             identifier: StoryboardInfo.Identifier.authenticationVC
         )
-        
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = scene.windows.first {
             window.rootViewController = loginVC
@@ -28,8 +35,7 @@ struct Router {
             UIView.transition(with: window,
                               duration: 0.5,
                               options: .transitionFlipFromLeft,
-                              animations: nil,
-                              completion: nil)
+                              animations: nil)
         }
     }
 }

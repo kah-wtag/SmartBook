@@ -1,70 +1,79 @@
 //
 //  RootViewController.swift
-//  WelldevTraining SmartBookMainTabbar
-//
-//  Created by Md. Kamrul Hasan on 21/8/25.
-//
-
-//
-//  RootViewController.swift
 //  SmartBook
 //
-//  Created by Md. Kamrul Hasan on 21/8/25.
+//  Created by Md. Kamrul Hasan on 5/8/25.
 //
 
 import UIKit
 
-final class RootViewController: UIViewController {
-    
-    private let mainTabBarController = MainTabBarController()
-    
+final class RootViewController: UITabBarController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        embedTabBar()
-        mainTabBarController.delegate = self
-        updateNavigation(for: mainTabBarController.selectedIndex)
+        setupViewControllers()
+        delegate = self
+        updateNavigation(for: selectedIndex)
     }
-    
-    private func embedTabBar() {
-        addChild(mainTabBarController)
-        view.addSubview(mainTabBarController.view)
-        mainTabBarController.view.frame = view.bounds
-        mainTabBarController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mainTabBarController.didMove(toParent: self)
+
+    private func setupViewControllers() {
+        tabBar.tintColor = .secondaryTextColor
+        let homeVC = HomeViewController()
+        homeVC.title = "Home"
+        let homeNav = UINavigationController(rootViewController: homeVC)
+        homeNav.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
+
+        let calendarVC = CalendarViewController()
+        calendarVC.title = "Calendar"
+        let calendarNav = UINavigationController(rootViewController: calendarVC)
+        calendarNav.tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(systemName: "calendar"), tag: 1)
+
+        let searchVC = SearchViewController()
+        searchVC.title = "Search"
+        let searchNav = UINavigationController(rootViewController: searchVC)
+        searchNav.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 2)
+
+        let favouritesVC = FavouriteViewController()
+        favouritesVC.title = "Favourites"
+        let favouritesNav = UINavigationController(rootViewController: favouritesVC)
+        favouritesNav.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(systemName: "heart"), tag: 3)
+
+        let profileVC = StoryboardInfo.instantiateVC(
+            from: .userProfile,
+            identifier: StoryboardInfo.Identifier.userProfileVC
+        )
+        profileVC.title = "Profile"
+        let profileNav = UINavigationController(rootViewController: profileVC)
+        profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 4)
+
+        viewControllers = [homeNav, calendarNav, searchNav, favouritesNav, profileNav]
     }
-    
+
     private func updateNavigation(for index: Int) {
-        if let currentVC = mainTabBarController.selectedViewController {
-            navigationItem.title = currentVC.title
-        }
-        navigationItem.rightBarButtonItems = nil
-        
+        guard let navController = viewControllers?[index] as? UINavigationController,
+              let currentVC = navController.topViewController else { return }
+
         if index == 4 {
-            let signOutButton = UIBarButtonItem(
-                image: UIImage(systemName: "arrow.right.square"),
+            currentVC.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                image: UIImage(systemName: "arrow.right.square")?.withTintColor(.secondaryTextColor, renderingMode: .alwaysOriginal),
                 style: .plain,
                 target: self,
                 action: #selector(signOutTapped)
             )
-            signOutButton.tintColor = UIColor(named: "secondaryTextColor")
-            navigationItem.rightBarButtonItem = signOutButton
         } else {
-            let notificationButton = UIBarButtonItem(
-                image: UIImage(systemName: "bell"),
+            currentVC.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                image: UIImage(systemName: "bell")?.withTintColor(.secondaryTextColor, renderingMode: .alwaysOriginal),
                 style: .plain,
                 target: self,
                 action: #selector(notificationTapped)
             )
-            notificationButton.tintColor = UIColor(named: "secondaryTextColor")
-            navigationItem.rightBarButtonItem = notificationButton
         }
     }
-    
+
     @objc private func notificationTapped() {
         print("Notification tapped")
     }
-    
+
     @objc private func signOutTapped() {
         Router.showLoginScreenWithTransition()
     }
