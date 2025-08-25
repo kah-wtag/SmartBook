@@ -31,18 +31,18 @@ extension UIFont {
 
 extension UIColor {
     static var buttonBorderColor: UIColor {
-        return UIColor(named: "buttonBorderColor") ?? .gray
+        UIColor(named: "buttonBorderColor") ?? .gray
     }
 }
 
 extension UIColor {
     static var textColor: UIColor {
-        return UIColor(named: "primaryTextColor") ?? .gray
+        UIColor(named: "primaryTextColor") ?? .gray
     }
 }
 
 extension UIColor {
     static var secondaryTextColor: UIColor {
-        return UIColor(named: "secondaryTextColor") ?? .gray
+        UIColor(named: "secondaryTextColor") ?? .gray
     }
 }
