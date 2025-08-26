@@ -35,8 +35,19 @@ extension UITextField {
         )
     }
     
-    func applyUnderline(color: UIColor = .lightGray, thickness: CGFloat = 0.5) {
-        addBottomBorderWithColor(color, width: thickness)
+    func applyUnderline(color: UIColor = .lightGray, thickness: CGFloat = 0.5, padding: CGFloat = 3) {
+        layer.sublayers?.removeAll(where: { $0.name == "underlineLayer" })
+        
+        let border = CALayer()
+        border.name = "underlineLayer"
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(
+            x: 0,
+            y: self.frame.size.height + padding,
+            width: self.frame.size.width,
+            height: thickness
+        )
+        layer.addSublayer(border)
     }
     
 }

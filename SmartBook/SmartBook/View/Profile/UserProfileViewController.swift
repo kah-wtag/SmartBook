@@ -42,9 +42,9 @@ class UserProfileViewController: UIViewController,
         saveUpdatedProfileButton.alpha = 1
         saveUpdatedProfileButton.titleLabel?.font = .textSize(ofSize: .large, weight: .semibold)
         saveUpdatedProfileButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
-        userProfileImageView.layer.cornerRadius = userProfileImageView.frame.width / 2
+        userProfileImageView.makeCircular()
         userProfileImageView.clipsToBounds = true
-        editProfileImageButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
+        editProfileImageButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 0, cornerRadius: editProfileImageButton.frame.height / 2)
     }
     
     @objc private func notificationTapped() {
