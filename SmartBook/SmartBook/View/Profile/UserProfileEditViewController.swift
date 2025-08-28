@@ -37,7 +37,7 @@ class UserProfileEditViewController: UIViewController {
     @IBAction func userProfileEditSaveButtonAction(_ sender: Any) {
         userProfileEditTextField.resignFirstResponder()
             if let text = userProfileEditTextField.text {
-                onSave?(text) // this updates the correct label in UserProfileViewController
+                onSave?(text) 
             }
             navigationController?.popViewController(animated: true)
     }
