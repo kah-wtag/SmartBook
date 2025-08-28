@@ -27,16 +27,16 @@ final class RootViewController: UITabBarController {
         calendarVC.title = "Calendar"
         let calendarNav = UINavigationController(rootViewController: calendarVC)
         calendarNav.tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(systemName: "calendar"), tag: 1)
+        
+        let activityVC = ActivityViewController()
+        activityVC.title = "Activity"
+        let activityNav = UINavigationController(rootViewController: activityVC)
+        activityNav.tabBarItem = UITabBarItem(title: "Activity", image: UIImage(systemName: "calendar.circle.fill"), tag: 2)
 
         let searchVC = SearchViewController()
         searchVC.title = "Search"
         let searchNav = UINavigationController(rootViewController: searchVC)
-        searchNav.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 2)
-
-        let favouritesVC = FavouriteViewController()
-        favouritesVC.title = "Favourites"
-        let favouritesNav = UINavigationController(rootViewController: favouritesVC)
-        favouritesNav.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(systemName: "heart"), tag: 3)
+        searchNav.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 3)
 
         let profileVC = StoryboardInfo.instantiateVC(
             from: .userProfile,
@@ -46,7 +46,7 @@ final class RootViewController: UITabBarController {
         let profileNav = UINavigationController(rootViewController: profileVC)
         profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 4)
 
-        viewControllers = [homeNav, calendarNav, searchNav, favouritesNav, profileNav]
+        viewControllers = [homeNav, calendarNav, activityNav, searchNav, profileNav]
     }
 
     private func updateNavigation(for index: Int) {
