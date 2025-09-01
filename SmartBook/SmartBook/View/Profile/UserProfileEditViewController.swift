@@ -17,7 +17,7 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     var initialText: String?
     var fieldTitle: String?
     var onSave: ((String) -> Void)?
-    private let characterLimit = 20
+    private let characterLimit = 25
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,23 +34,27 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     @IBAction func userProfileEditSaveButtonAction(_ sender: Any) {
         userProfileEditTextField.resignFirstResponder()
         
-        let currentCount = userProfileEditTextField.text?.count ?? 0
-        let remaining = characterLimit - currentCount
-        
-        guard remaining >= 0 else {
-            let alert = UIAlertController(
-                title: "Limit Exceeded",
-                message: "Please reduce your text within \(characterLimit) characters.",
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
+        guard let text = userProfileEditTextField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {
+            showAlert(title: "Empty Field", message: "This field cannot be empty.")
             return
         }
         
-        if let text = userProfileEditTextField.text {
-            onSave?(text)
+        let currentCount = text.count
+        let remaining = characterLimit - currentCount
+        
+        guard remaining >= 0 else {
+            showAlert(title: "Limit Exceeded", message: "Please reduce your text within \(characterLimit) characters.")
+            return
         }
+        
+        if fieldTitle?.lowercased().contains("mail") == true {
+            if !isValidEmail(text) {
+                showAlert(title: "Invalid Email", message: "Please enter a valid email address.")
+                return
+            }
+        }
+        
+        onSave?(text)
         dismiss(animated: true)
     }
     
@@ -85,5 +89,16 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
             textFieldCharacterLimitWarning.tintColor = .systemRed
             textFieldCharacterCount.textColor = .systemRed
         }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
 }

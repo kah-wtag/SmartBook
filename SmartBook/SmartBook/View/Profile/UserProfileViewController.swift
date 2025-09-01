@@ -42,7 +42,7 @@ class UserProfileViewController: UIViewController,
         stackViews.forEach { stackView in
             stackView?.layer.cornerRadius = cornerRadius
             stackView?.layer.masksToBounds = true
-            stackView?.backgroundColor = UIColor.systemGray6
+            stackView?.backgroundColor = .textfield
         }
         
         userProfileImageView.makeCircular()

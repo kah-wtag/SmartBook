@@ -47,6 +47,7 @@
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Md Kamrul Hasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwb-nb-sh2">
                                                                         <rect key="frame" x="0.0" y="0.0" width="298" height="50"/>
+                                                                        <color key="backgroundColor" name="textfieldColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="Lti-mQ-VMs"/>
                                                                         </constraints>
@@ -65,9 +66,10 @@
                                                                         </buttonConfiguration>
                                                                     </button>
                                                                 </subviews>
+                                                                <color key="backgroundColor" name="textfieldColor"/>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.950610555392571" green="0.85869667894419444" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="textfieldColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="Kpo-hk-oqq" secondAttribute="trailing" constant="20" id="LoO-N1-fLV"/>
                                                             <constraint firstItem="Kpo-hk-oqq" firstAttribute="top" secondItem="tUr-Qw-1jD" secondAttribute="top" id="MTH-67-Q5N"/>
@@ -76,8 +78,10 @@
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
+                                                <color key="backgroundColor" name="backgroundColor"/>
                                             </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" name="backgroundColor"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kFG-6e-tau">
                                         <rect key="frame" x="0.0" y="110" width="353" height="80"/>
@@ -118,9 +122,10 @@
                                                                         </buttonConfiguration>
                                                                     </button>
                                                                 </subviews>
+                                                                <color key="backgroundColor" name="textfieldColor"/>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.950610555392571" green="0.85869667894419444" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="textfieldColor"/>
                                                         <constraints>
                                                             <constraint firstItem="tM8-8x-nIr" firstAttribute="top" secondItem="Zyv-q1-ORG" secondAttribute="top" id="AvY-Lk-a1J"/>
                                                             <constraint firstAttribute="trailing" secondItem="tM8-8x-nIr" secondAttribute="trailing" constant="20" id="Iur-aP-WHE"/>
@@ -171,9 +176,10 @@
                                                                         </buttonConfiguration>
                                                                     </button>
                                                                 </subviews>
+                                                                <color key="backgroundColor" name="textfieldColor"/>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.950610555392571" green="0.85869667894419444" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="textfieldColor"/>
                                                         <constraints>
                                                             <constraint firstItem="U35-q9-KJh" firstAttribute="leading" secondItem="fT8-Sa-ytg" secondAttribute="leading" constant="20" id="1FX-u2-s0X"/>
                                                             <constraint firstItem="U35-q9-KJh" firstAttribute="top" secondItem="fT8-Sa-ytg" secondAttribute="top" id="PW1-yd-Ws7"/>
@@ -186,6 +192,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" name="backgroundColor"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6JC-fN-D0t">
                                 <rect key="frame" x="86.666666666666686" y="302" width="220" height="100"/>
@@ -254,13 +261,16 @@
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="kamrul" width="500" height="500"/>
         <namedColor name="backgroundColor">
-            <color red="0.97254902124404907" green="0.92156863212585449" blue="0.96470588445663452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97254901960784312" green="0.92156862745098034" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryTextColor">
             <color red="0.027450982481241226" green="0.0039215688593685627" blue="0.015686275437474251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondaryTextColor">
             <color red="0.85098039215686272" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textfieldColor">
+            <color red="0.8901960784313725" green="0.80784313725490198" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

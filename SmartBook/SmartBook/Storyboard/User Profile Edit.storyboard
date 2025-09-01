@@ -16,12 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People will see this change if you interact with them!" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK1-MQ-BoS">
-                                <rect key="frame" x="20" y="266.66666666666669" width="353" height="200"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People will see this change if you interact with them and they don't have you saved as a contact" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK1-MQ-BoS">
+                                <rect key="frame" x="20" y="266.66666666666669" width="353" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="FnL-Bn-s3f"/>
+                                    <constraint firstAttribute="height" constant="40" id="FnL-Bn-s3f"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="primaryTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -62,17 +62,17 @@
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Md Kamrul Hasan" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GFr-qB-TKI">
                                 <rect key="frame" x="20" y="196.66666666666666" width="353" height="50"/>
-                                <color key="backgroundColor" red="0.95061055539999995" green="0.85869667890000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="textfieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wOB-Co-J4N"/>
                                 </constraints>
                                 <color key="textColor" name="primaryTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpz-30-8c5">
                                 <rect key="frame" x="293" y="196.66666666666666" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.95061055539999995" green="0.85869667890000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="textfieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Iow-qE-Kdg"/>
                                 </constraints>
@@ -82,7 +82,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cbL-Kz-gjw">
                                 <rect key="frame" x="343" y="208" width="25" height="25"/>
-                                <color key="backgroundColor" red="0.95061055539999995" green="0.85869667890000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="textfieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="2ft-wp-Ct9"/>
                                     <constraint firstAttribute="width" constant="25" id="fZZ-al-PbT"/>
@@ -130,6 +130,9 @@
         </namedColor>
         <namedColor name="secondaryTextColor">
             <color red="0.85098039215686272" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textfieldColor">
+            <color red="0.89072364267676774" green="0.80834060307981326" blue="0.88797014993945755" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
