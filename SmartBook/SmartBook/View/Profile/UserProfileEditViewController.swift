@@ -11,75 +11,52 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var userProfileEditTextField: UITextField!
     @IBOutlet var userProfileEditSaveButton: UIButton!
     @IBOutlet var userProfileEditTextFieldTitle: UILabel!
+    @IBOutlet var textFieldCharacterCount: UILabel!
     
     var initialText: String?
-        var fieldTitle: String?
-        var onSave: ((String) -> Void)?
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            setupUI()
-            
-            userProfileEditTextField.delegate = self
-            textFieldDidBeginEditing(userProfileEditTextField)
+    var fieldTitle: String?
+    var onSave: ((String) -> Void)?
+    private let characterLimit = 25
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        userProfileEditTextField.delegate = self
+        updateCharacterCount()
+    }
+    
+    private func setupUI() {
+        userProfileEditTextField.text = initialText
+        userProfileEditTextFieldTitle.text = fieldTitle
+    }
+    
+    @IBAction func userProfileEditSaveButtonAction(_ sender: Any) {
+        userProfileEditTextField.resignFirstResponder()
+        if let text = userProfileEditTextField.text {
+            onSave?(text)
         }
+        dismiss(animated: true)
+    }
+    
+    @IBAction func userProfileEditCancelButtonAction(_ sender: Any) {
+        userProfileEditTextField.resignFirstResponder()
+        dismiss(animated: true)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText = textField.text as NSString? else { return true }
+        let newText = currentText.replacingCharacters(in: range, with: string)
         
-        private func setupUI() {
-            userProfileEditTextField.layer.borderWidth = 2
-            userProfileEditTextField.layer.borderColor = UIColor.systemMint.cgColor
-            userProfileEditTextField.layer.cornerRadius = 5
-            
-            userProfileEditSaveButton.layer.borderWidth = 3
-            userProfileEditSaveButton.layer.borderColor = UIColor.systemBlue.cgColor
-            userProfileEditSaveButton.layer.cornerRadius = 10
-            
-            userProfileEditTextField.text = initialText
-            userProfileEditTextFieldTitle.text = fieldTitle
-        }
-        
-        @IBAction func userProfileEditSaveButtonAction(_ sender: Any) {
-            userProfileEditTextField.resignFirstResponder()
-            if let text = userProfileEditTextField.text {
-                onSave?(text)
-            }
-            navigationController?.popViewController(animated: true)
-        }
-        
-        func textFieldDidBeginEditing(_ textField: UITextField) {
-            NotificationCenter.default.addObserver(
-                self,
-                selector: #selector(keyboardWillHide(_:)),
-                name: UIResponder.keyboardWillHideNotification,
-                object: nil
-            )
-            
-            let toolbar = UIToolbar()
-            toolbar.sizeToFit()
-            
-            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPressed))
-            let resetButton = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(resetPressed))
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(donePressed))
-            
-            toolbar.items = [cancelButton, resetButton, flexibleSpace, doneButton]
-            
-            textField.inputAccessoryView = toolbar
-            textField.reloadInputViews()
-        }
-        
-        @objc private func keyboardWillHide(_ notification: Notification) {
-            cancelPressed()
-        }
-        
-        @objc private func cancelPressed() {
-            userProfileEditTextField.endEditing(true)
-        }
-        
-        @objc private func resetPressed() {
-            userProfileEditTextField.text = ""
-        }
-        
-        @objc private func donePressed() {
-            userProfileEditTextField.resignFirstResponder()
+        if newText.count <= characterLimit {
+            updateCharacterCount(for: newText.count)
+            return true
+        } else {
+            return false
         }
     }
+    
+    private func updateCharacterCount(for count: Int? = nil) {
+        let currentCount = count ?? userProfileEditTextField.text?.count ?? 0
+        textFieldCharacterCount.text = "\(currentCount)/\(characterLimit)"
+    }
+}

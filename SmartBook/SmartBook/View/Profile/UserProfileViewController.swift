@@ -22,11 +22,14 @@ class UserProfileViewController: UIViewController,
     @IBOutlet var editProfileNameLabel: UILabel!
     @IBOutlet var userProfileNumberLabel: UILabel!
     @IBOutlet var userProfileMailLabel: UILabel!
+    @IBOutlet var editProfileNameStackView: UIStackView!
+    @IBOutlet var editProfileNumberStackView: UIStackView!
+    @IBOutlet var editProfileMailStackView: UIStackView!
+    @IBOutlet var editbackView: UIView!
     
     enum FieldType {
         case name, number, email
     }
-    private var userProfileTextFields: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,14 @@ class UserProfileViewController: UIViewController,
     }
     
     private func setupUI() {
+        let cornerRadius: CGFloat = 10
+        let stackViews = [editProfileNameStackView, editProfileNumberStackView, editProfileMailStackView]
+        stackViews.forEach { stackView in
+            stackView?.layer.cornerRadius = cornerRadius
+            stackView?.layer.masksToBounds = true
+            stackView?.backgroundColor = UIColor.systemGray6
+        }
+        
         userProfileImageView.makeCircular()
         editProfileImageButton.applyButtonRoundBorder(
             borderColor: .buttonBorderColor,
@@ -41,39 +52,39 @@ class UserProfileViewController: UIViewController,
             cornerRadius: editProfileImageButton.frame.height / 2
         )
         editProfileImageButton.alpha = 0.7
-
+        editbackView.alpha = 0.7
         let nameTap = UITapGestureRecognizer(target: self, action: #selector(editNameTapped))
         editNameStackView.addGestureRecognizer(nameTap)
-
+        
         let numberTap = UITapGestureRecognizer(target: self, action: #selector(editNumberTapped))
         editNumberStackView.addGestureRecognizer(numberTap)
-
+        
         let mailTap = UITapGestureRecognizer(target: self, action: #selector(editMailTapped))
         editMailStackView.addGestureRecognizer(mailTap)
     }
-
+    
     @objc private func editNameTapped() {
         openEditProfileVC(with: userProfileNameEditTextField.text, fieldType: .name)
     }
-
+    
     @objc private func editNumberTapped() {
         openEditProfileVC(with: userProfileEditNumberTextField.text, fieldType: .number)
     }
-
+    
     @objc private func editMailTapped() {
         openEditProfileVC(with: userProfileEditMailTextField.text, fieldType: .email)
     }
-
+    
     @objc private func notificationTapped() {
         print("Notification tapped")
     }
+    
     @objc private func signOutTapped() {
         Router.showLoginScreenWithTransition()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         var selectedImage: UIImage?
-        
         if let editedImage = info[.editedImage] as? UIImage {
             selectedImage = editedImage
         } else if let originalImage = info[.originalImage] as? UIImage {
@@ -83,7 +94,6 @@ class UserProfileViewController: UIViewController,
         if let image = selectedImage {
             userProfileImageView.image = image
         }
-        
         dismiss(animated: true)
     }
     
@@ -104,22 +114,16 @@ class UserProfileViewController: UIViewController,
             from: .userProfileEdit,
             identifier: StoryboardInfo.Identifier.userProfileEditVC
         ) as? UserProfileEditViewController else { return }
-
+        
         editVC.initialText = text
         
         switch fieldType {
         case .name:
-            if let labelText = editProfileNameLabel.text {
-                editVC.fieldTitle = "Your \(labelText)"
-            }
+            editVC.fieldTitle = editProfileNameLabel.text
         case .number:
-            if let labelText = userProfileNumberLabel.text {
-                editVC.fieldTitle = "Your \(labelText)"
-            }
+            editVC.fieldTitle = userProfileNumberLabel.text
         case .email:
-            if let labelText = userProfileMailLabel.text {
-                editVC.fieldTitle = "Your \(labelText)"
-            }
+            editVC.fieldTitle = userProfileMailLabel.text
         }
         
         editVC.onSave = { [weak self] updatedText in
@@ -134,7 +138,8 @@ class UserProfileViewController: UIViewController,
             }
         }
         
-        navigationController?.pushViewController(editVC, animated: true)
+        editVC.modalPresentationStyle = .pageSheet
+        editVC.modalTransitionStyle = .coverVertical
+        present(editVC, animated: true)
     }
-
 }

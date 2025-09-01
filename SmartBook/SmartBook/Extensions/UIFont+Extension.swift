@@ -18,9 +18,9 @@ extension UIFont {
         
         switch size {
         case .extraLarge: pointSize = 24
-        case .large:      pointSize = 20
-        case .medium:     pointSize = 17
-        case .small:      pointSize = 14
+        case .large:      pointSize = 21
+        case .medium:     pointSize = 18
+        case .small:      pointSize = 15
         case .extraSmall: pointSize = 12
         }
         
