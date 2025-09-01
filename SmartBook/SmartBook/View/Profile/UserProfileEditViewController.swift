@@ -12,11 +12,12 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var userProfileEditSaveButton: UIButton!
     @IBOutlet var userProfileEditTextFieldTitle: UILabel!
     @IBOutlet var textFieldCharacterCount: UILabel!
+    @IBOutlet var textFieldCharacterLimitWarning: UIImageView!
     
     var initialText: String?
     var fieldTitle: String?
     var onSave: ((String) -> Void)?
-    private let characterLimit = 25
+    private let characterLimit = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,21 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func userProfileEditSaveButtonAction(_ sender: Any) {
         userProfileEditTextField.resignFirstResponder()
+        
+        let currentCount = userProfileEditTextField.text?.count ?? 0
+        let remaining = characterLimit - currentCount
+        
+        guard remaining >= 0 else {
+            let alert = UIAlertController(
+                title: "Limit Exceeded",
+                message: "Please reduce your text within \(characterLimit) characters.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+            return
+        }
+        
         if let text = userProfileEditTextField.text {
             onSave?(text)
         }
@@ -47,16 +63,27 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
         guard let currentText = textField.text as NSString? else { return true }
         let newText = currentText.replacingCharacters(in: range, with: string)
         
-        if newText.count <= characterLimit {
-            updateCharacterCount(for: newText.count)
-            return true
-        } else {
-            return false
-        }
+        updateCharacterCount(for: newText.count)
+        
+        return true
     }
     
     private func updateCharacterCount(for count: Int? = nil) {
         let currentCount = count ?? userProfileEditTextField.text?.count ?? 0
-        textFieldCharacterCount.text = "\(currentCount)/\(characterLimit)"
+        let remaining = characterLimit - currentCount
+        
+        textFieldCharacterCount.text = "\(remaining)"
+        
+        if remaining >= 0 {
+            textFieldCharacterLimitWarning.isHidden = false
+            textFieldCharacterLimitWarning.image = UIImage(systemName: "checkmark.circle.fill")
+            textFieldCharacterLimitWarning.tintColor = .systemMint
+            textFieldCharacterCount.textColor = .systemMint
+        } else {
+            textFieldCharacterLimitWarning.isHidden = false
+            textFieldCharacterLimitWarning.image = UIImage(systemName: "exclamationmark.triangle.fill")
+            textFieldCharacterLimitWarning.tintColor = .systemRed
+            textFieldCharacterCount.textColor = .systemRed
+        }
     }
 }

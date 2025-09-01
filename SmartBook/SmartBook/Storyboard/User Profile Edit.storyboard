@@ -70,12 +70,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpz-30-8c5">
-                                <rect key="frame" x="288" y="254.66666666666666" width="52" height="21.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpz-30-8c5">
+                                <rect key="frame" x="293" y="196.66666666666666" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.95061055539999995" green="0.85869667890000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Iow-qE-Kdg"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cbL-Kz-gjw">
+                                <rect key="frame" x="343" y="208" width="25" height="25"/>
+                                <color key="backgroundColor" red="0.95061055539999995" green="0.85869667890000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="2ft-wp-Ct9"/>
+                                    <constraint firstAttribute="width" constant="25" id="fZZ-al-PbT"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="backgroundColor"/>
@@ -83,11 +95,13 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GFr-qB-TKI" secondAttribute="trailing" constant="20" id="0nB-oO-zmB"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bWM-pr-8RD" secondAttribute="trailing" id="9Hp-Ko-Vv8"/>
                             <constraint firstAttribute="trailing" secondItem="ZK1-MQ-BoS" secondAttribute="trailing" constant="20" id="AGZ-Q6-0Li"/>
-                            <constraint firstItem="Fpz-30-8c5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="288" id="I3m-HA-2bu"/>
+                            <constraint firstItem="cbL-Kz-gjw" firstAttribute="leading" secondItem="Fpz-30-8c5" secondAttribute="trailing" id="AWO-t5-Phn"/>
+                            <constraint firstItem="Fpz-30-8c5" firstAttribute="height" secondItem="GFr-qB-TKI" secondAttribute="height" id="Mo8-li-K8R"/>
+                            <constraint firstItem="Fpz-30-8c5" firstAttribute="top" secondItem="bWM-pr-8RD" secondAttribute="bottom" constant="20" id="OHy-se-su1"/>
+                            <constraint firstItem="cbL-Kz-gjw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="TWu-js-tsO"/>
                             <constraint firstItem="ZK1-MQ-BoS" firstAttribute="top" secondItem="GFr-qB-TKI" secondAttribute="bottom" constant="20" id="XUv-gE-NRd"/>
                             <constraint firstItem="bWM-pr-8RD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="XrX-zp-9bW"/>
-                            <constraint firstItem="Fpz-30-8c5" firstAttribute="top" secondItem="GFr-qB-TKI" secondAttribute="bottom" constant="8" id="goU-M0-a0U"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Fpz-30-8c5" secondAttribute="trailing" constant="53" id="l8b-k5-g0O"/>
+                            <constraint firstAttribute="trailing" secondItem="cbL-Kz-gjw" secondAttribute="trailing" constant="25" id="fMS-b7-idN"/>
                             <constraint firstItem="ZK1-MQ-BoS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="mfs-7e-u41"/>
                             <constraint firstItem="bWM-pr-8RD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="pcf-WS-kww"/>
                             <constraint firstItem="GFr-qB-TKI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="vOJ-bJ-ozm"/>
@@ -96,6 +110,7 @@
                     </view>
                     <connections>
                         <outlet property="textFieldCharacterCount" destination="Fpz-30-8c5" id="h6a-Sj-Cya"/>
+                        <outlet property="textFieldCharacterLimitWarning" destination="cbL-Kz-gjw" id="c52-z7-ze5"/>
                         <outlet property="userProfileEditSaveButton" destination="Idf-sA-gox" id="Kz7-vF-ryS"/>
                         <outlet property="userProfileEditTextField" destination="GFr-qB-TKI" id="j8t-bo-WsH"/>
                         <outlet property="userProfileEditTextFieldTitle" destination="G3B-KI-S2c" id="fsD-zC-2k1"/>
