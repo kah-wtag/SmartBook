@@ -37,6 +37,15 @@ class UserProfileViewController: UIViewController,
     }
     
     private func setupUI() {
+        userProfileNameEditTextField.font = .textSize(ofSize: .large)
+        userProfileEditNumberTextField.font = .textSize(ofSize: .large)
+        userProfileEditMailTextField.font = .textSize(ofSize: .large)
+        
+        editProfileImageButton.titleLabel?.font = .textSize(ofSize: .medium)
+        editProfileNameLabel.font = .textSize(ofSize: .medium)
+        userProfileNumberLabel.font = .textSize(ofSize: .medium)
+        userProfileMailLabel.font = .textSize(ofSize: .medium)
+        
         let cornerRadius: CGFloat = 10
         let stackViews = [editProfileNameStackView, editProfileNumberStackView, editProfileMailStackView]
         stackViews.forEach { stackView in

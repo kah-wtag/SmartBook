@@ -10,6 +10,7 @@ import UIKit
 class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var userProfileEditTextField: UITextField!
     @IBOutlet var userProfileEditSaveButton: UIButton!
+    @IBOutlet var userProfileEditCancelButton: UIButton!
     @IBOutlet var userProfileEditTextFieldTitle: UILabel!
     @IBOutlet var textFieldCharacterCount: UILabel!
     @IBOutlet var textFieldCharacterLimitWarning: UIImageView!
@@ -36,10 +37,18 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     private func setupUI() {
         userProfileEditTextField.text = initialText
         userProfileEditTextFieldTitle.text = fieldTitle
+        
+        userProfileEditTextField.font = .textSize(ofSize: .medium)
+        userProfileEditSaveButton.titleLabel?.font = .textSize(ofSize: .large)
+        userProfileEditCancelButton.titleLabel?.font = .textSize(ofSize: .large)
+        userProfileEditTextFieldTitle.font = .textSize(ofSize: .large)
+        textFieldCharacterCount.font = .textSize(ofSize: .medium)
+        
         textFieldCharacterLimitWarning.isHidden = true
         userProfileEditSaveButton.isEnabled = false
         textFieldCharacterCount.isHidden = isEmailField
     }
+    
     
     @IBAction func userProfileEditSaveButtonAction(_ sender: Any) {
         userProfileEditTextField.resignFirstResponder()
@@ -75,7 +84,7 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-        
+    
     private func validateInput(_ text: String) {
         let trimmed = text.trimmingCharacters(in: .whitespaces)
         let currentCount = trimmed.count
