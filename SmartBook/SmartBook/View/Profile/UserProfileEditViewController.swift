@@ -14,6 +14,7 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var userProfileEditTextFieldTitle: UILabel!
     @IBOutlet var textFieldCharacterCount: UILabel!
     @IBOutlet var textFieldCharacterLimitWarning: UIImageView!
+    @IBOutlet var userProfileEditDescriptionLable: UILabel!
     
     var initialText: String?
     var fieldTitle: String?
@@ -35,6 +36,7 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupUI() {
+        userProfileEditDescriptionLable.font = .textSize(ofSize: .small, weight: .light)
         userProfileEditTextField.text = initialText
         userProfileEditTextFieldTitle.text = fieldTitle
         

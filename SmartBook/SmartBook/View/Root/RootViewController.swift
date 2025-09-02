@@ -19,7 +19,6 @@ final class RootViewController: UITabBarController {
     private func setupViewControllers() {
         tabBar.tintColor = .secondaryTextColor
         tabBar.backgroundColor = .secondaryTextColorLightReverse
-        tabBar.isTranslucent = false
         let homeVC = HomeViewController()
         homeVC.title = "Home"
         let homeNav = UINavigationController(rootViewController: homeVC)

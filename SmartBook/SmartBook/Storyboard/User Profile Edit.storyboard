@@ -112,6 +112,7 @@
                         <outlet property="textFieldCharacterCount" destination="Fpz-30-8c5" id="h6a-Sj-Cya"/>
                         <outlet property="textFieldCharacterLimitWarning" destination="cbL-Kz-gjw" id="c52-z7-ze5"/>
                         <outlet property="userProfileEditCancelButton" destination="S0M-E1-Rfu" id="pnw-kO-c4i"/>
+                        <outlet property="userProfileEditDescriptionLable" destination="ZK1-MQ-BoS" id="uJG-fi-ncA"/>
                         <outlet property="userProfileEditSaveButton" destination="Idf-sA-gox" id="Kz7-vF-ryS"/>
                         <outlet property="userProfileEditTextField" destination="GFr-qB-TKI" id="j8t-bo-WsH"/>
                         <outlet property="userProfileEditTextFieldTitle" destination="G3B-KI-S2c" id="fsD-zC-2k1"/>
