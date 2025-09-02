@@ -11,13 +11,13 @@
         <!--User Profile Edit View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="UserProfileEditViewController" id="Y6W-OH-hqX" customClass="UserProfileEditViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileEditViewController" id="Y6W-OH-hqX" customClass="UserProfileEditViewController" customModule="WelldevTraining_SmartBookMainTabbar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People will see this change if you interact with them and they don't have you saved as a contact" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK1-MQ-BoS">
-                                <rect key="frame" x="20" y="266.66666666666669" width="353" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Others will see this update when you book or manage an appointment." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK1-MQ-BoS">
+                                <rect key="frame" x="30" y="271.66666666666669" width="333" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FnL-Bn-s3f"/>
                                 </constraints>
@@ -61,7 +61,7 @@
                                 </subviews>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Md Kamrul Hasan" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GFr-qB-TKI">
-                                <rect key="frame" x="20" y="196.66666666666666" width="353" height="50"/>
+                                <rect key="frame" x="20" y="216.66666666666666" width="353" height="49.999999999999972"/>
                                 <color key="backgroundColor" name="textfieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wOB-Co-J4N"/>
@@ -70,8 +70,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cbL-Kz-gjw">
+                                <rect key="frame" x="343" y="229" width="25" height="25"/>
+                                <color key="backgroundColor" name="textfieldColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="2ft-wp-Ct9"/>
+                                    <constraint firstAttribute="width" constant="25" id="fZZ-al-PbT"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpz-30-8c5">
-                                <rect key="frame" x="293" y="196.66666666666666" width="50" height="50"/>
+                                <rect key="frame" x="295" y="216.66666666666666" width="50" height="49.999999999999972"/>
                                 <color key="backgroundColor" name="textfieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Iow-qE-Kdg"/>
@@ -80,32 +88,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cbL-Kz-gjw">
-                                <rect key="frame" x="343" y="208" width="25" height="25"/>
-                                <color key="backgroundColor" name="textfieldColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="2ft-wp-Ct9"/>
-                                    <constraint firstAttribute="width" constant="25" id="fZZ-al-PbT"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GFr-qB-TKI" secondAttribute="trailing" constant="20" id="0nB-oO-zmB"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bWM-pr-8RD" secondAttribute="trailing" id="9Hp-Ko-Vv8"/>
-                            <constraint firstAttribute="trailing" secondItem="ZK1-MQ-BoS" secondAttribute="trailing" constant="20" id="AGZ-Q6-0Li"/>
-                            <constraint firstItem="cbL-Kz-gjw" firstAttribute="leading" secondItem="Fpz-30-8c5" secondAttribute="trailing" id="AWO-t5-Phn"/>
+                            <constraint firstAttribute="trailing" secondItem="ZK1-MQ-BoS" secondAttribute="trailing" constant="30" id="AGZ-Q6-0Li"/>
+                            <constraint firstItem="cbL-Kz-gjw" firstAttribute="leading" secondItem="Fpz-30-8c5" secondAttribute="trailing" constant="-2" id="AWO-t5-Phn"/>
                             <constraint firstItem="Fpz-30-8c5" firstAttribute="height" secondItem="GFr-qB-TKI" secondAttribute="height" id="Mo8-li-K8R"/>
-                            <constraint firstItem="Fpz-30-8c5" firstAttribute="top" secondItem="bWM-pr-8RD" secondAttribute="bottom" constant="20" id="OHy-se-su1"/>
-                            <constraint firstItem="cbL-Kz-gjw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="TWu-js-tsO"/>
-                            <constraint firstItem="ZK1-MQ-BoS" firstAttribute="top" secondItem="GFr-qB-TKI" secondAttribute="bottom" constant="20" id="XUv-gE-NRd"/>
+                            <constraint firstItem="Fpz-30-8c5" firstAttribute="top" secondItem="bWM-pr-8RD" secondAttribute="bottom" constant="40" id="OHy-se-su1"/>
+                            <constraint firstItem="cbL-Kz-gjw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="111" id="TWu-js-tsO"/>
+                            <constraint firstItem="ZK1-MQ-BoS" firstAttribute="top" secondItem="GFr-qB-TKI" secondAttribute="bottom" constant="5" id="XUv-gE-NRd"/>
                             <constraint firstItem="bWM-pr-8RD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="XrX-zp-9bW"/>
                             <constraint firstAttribute="trailing" secondItem="cbL-Kz-gjw" secondAttribute="trailing" constant="25" id="fMS-b7-idN"/>
-                            <constraint firstItem="ZK1-MQ-BoS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="mfs-7e-u41"/>
+                            <constraint firstItem="ZK1-MQ-BoS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="mfs-7e-u41"/>
                             <constraint firstItem="bWM-pr-8RD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="pcf-WS-kww"/>
                             <constraint firstItem="GFr-qB-TKI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="vOJ-bJ-ozm"/>
-                            <constraint firstItem="GFr-qB-TKI" firstAttribute="top" secondItem="bWM-pr-8RD" secondAttribute="bottom" constant="20" id="z6F-gZ-qpv"/>
+                            <constraint firstItem="GFr-qB-TKI" firstAttribute="top" secondItem="bWM-pr-8RD" secondAttribute="bottom" constant="40" id="z6F-gZ-qpv"/>
                         </constraints>
                     </view>
                     <connections>
@@ -123,7 +123,7 @@
     </scenes>
     <resources>
         <namedColor name="backgroundColor">
-            <color red="0.97254902124404907" green="0.92156863212585449" blue="0.96470588445663452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97254901960784312" green="0.92156862745098034" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryTextColor">
             <color red="0.027450982481241226" green="0.0039215688593685627" blue="0.015686275437474251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -132,7 +132,7 @@
             <color red="0.85098039215686272" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textfieldColor">
-            <color red="0.89072364267676774" green="0.80834060307981326" blue="0.88797014993945755" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8901960784313725" green="0.80784313725490198" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

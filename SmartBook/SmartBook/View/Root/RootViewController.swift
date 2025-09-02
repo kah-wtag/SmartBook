@@ -8,21 +8,23 @@
 import UIKit
 
 final class RootViewController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewControllers()
         delegate = self
         updateNavigation(for: selectedIndex)
     }
-
+    
     private func setupViewControllers() {
         tabBar.tintColor = .secondaryTextColor
+        tabBar.backgroundColor = .secondaryTextColorLightReverse
+        tabBar.isTranslucent = false
         let homeVC = HomeViewController()
         homeVC.title = "Home"
         let homeNav = UINavigationController(rootViewController: homeVC)
         homeNav.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
-
+        
         let calendarVC = CalendarViewController()
         calendarVC.title = "Calendar"
         let calendarNav = UINavigationController(rootViewController: calendarVC)
@@ -32,12 +34,12 @@ final class RootViewController: UITabBarController {
         activityVC.title = "Activity"
         let activityNav = UINavigationController(rootViewController: activityVC)
         activityNav.tabBarItem = UITabBarItem(title: "Activity", image: UIImage(systemName: "calendar.circle.fill"), tag: 2)
-
+        
         let searchVC = SearchViewController()
         searchVC.title = "Search"
         let searchNav = UINavigationController(rootViewController: searchVC)
         searchNav.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 3)
-
+        
         let profileVC = StoryboardInfo.instantiateVC(
             from: .userProfile,
             identifier: StoryboardInfo.Identifier.userProfileVC
@@ -45,14 +47,14 @@ final class RootViewController: UITabBarController {
         profileVC.title = "Profile"
         let profileNav = UINavigationController(rootViewController: profileVC)
         profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 4)
-
+        
         viewControllers = [homeNav, calendarNav, activityNav, searchNav, profileNav]
     }
-
+    
     private func updateNavigation(for index: Int) {
         guard let navController = viewControllers?[index] as? UINavigationController,
               let currentVC = navController.topViewController else { return }
-
+        
         if index == 4 {
             currentVC.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "arrow.right.square")?.withTintColor(.secondaryTextColor, renderingMode: .alwaysOriginal),
@@ -69,11 +71,11 @@ final class RootViewController: UITabBarController {
             )
         }
     }
-
+    
     @objc private func notificationTapped() {
         print("Notification tapped")
     }
-
+    
     @objc private func signOutTapped() {
         Router.showLoginScreenWithTransition()
     }

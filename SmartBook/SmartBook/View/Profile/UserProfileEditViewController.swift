@@ -17,7 +17,14 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     var initialText: String?
     var fieldTitle: String?
     var onSave: ((String) -> Void)?
-    private let characterLimit = 25
+    
+    private var characterLimit: Int {
+        return isEmailField ? 50 : 25
+    }
+    
+    private var isEmailField: Bool {
+        return fieldTitle?.lowercased().contains("email") == true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,32 +36,25 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     private func setupUI() {
         userProfileEditTextField.text = initialText
         userProfileEditTextFieldTitle.text = fieldTitle
+        textFieldCharacterLimitWarning.isHidden = true
+        userProfileEditSaveButton.isEnabled = false
+        textFieldCharacterCount.isHidden = isEmailField
     }
     
     @IBAction func userProfileEditSaveButtonAction(_ sender: Any) {
         userProfileEditTextField.resignFirstResponder()
         
-        guard let text = userProfileEditTextField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {
-            showAlert(title: "Empty Field", message: "This field cannot be empty.")
-            return
+        guard let text = userProfileEditTextField.text else { return }
+        let trimmed = text.trimmingCharacters(in: .whitespaces)
+        let remaining = characterLimit - trimmed.count
+        
+        guard !trimmed.isEmpty else { return }
+        guard remaining >= 0 else { return }
+        if fieldTitle?.lowercased().contains("email") == true {
+            guard isValidEmail(trimmed) else { return }
         }
         
-        let currentCount = text.count
-        let remaining = characterLimit - currentCount
-        
-        guard remaining >= 0 else {
-            showAlert(title: "Limit Exceeded", message: "Please reduce your text within \(characterLimit) characters.")
-            return
-        }
-        
-        if fieldTitle?.lowercased().contains("mail") == true {
-            if !isValidEmail(text) {
-                showAlert(title: "Invalid Email", message: "Please enter a valid email address.")
-                return
-            }
-        }
-        
-        onSave?(text)
+        onSave?(trimmed)
         dismiss(animated: true)
     }
     
@@ -63,42 +63,69 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
         dismiss(animated: true)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textFieldCharacterLimitWarning.isHidden = false
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let currentText = textField.text as NSString? else { return true }
         let newText = currentText.replacingCharacters(in: range, with: string)
-        
         updateCharacterCount(for: newText.count)
+        validateInput(newText)
         
         return true
     }
-    
-    private func updateCharacterCount(for count: Int? = nil) {
-        let currentCount = count ?? userProfileEditTextField.text?.count ?? 0
+        
+    private func validateInput(_ text: String) {
+        let trimmed = text.trimmingCharacters(in: .whitespaces)
+        let currentCount = trimmed.count
         let remaining = characterLimit - currentCount
         
-        textFieldCharacterCount.text = "\(remaining)"
+        var isValid = true
         
-        if remaining >= 0 {
-            textFieldCharacterLimitWarning.isHidden = false
-            textFieldCharacterLimitWarning.image = UIImage(systemName: "checkmark.circle.fill")
-            textFieldCharacterLimitWarning.tintColor = .systemMint
-            textFieldCharacterCount.textColor = .systemMint
+        if trimmed.isEmpty {
+            isValid = false
+        }
+        
+        if remaining < 0 {
+            isValid = false
+        }
+        
+        if fieldTitle?.lowercased().contains("email") == true {
+            if !isValidEmail(trimmed) {
+                isValid = false
+            }
+        }
+        
+        if trimmed.isEmpty {
+            userProfileEditSaveButton.isEnabled = false
+            textFieldCharacterLimitWarning.isHidden = true
+            textFieldCharacterCount.textColor = .label
         } else {
+            userProfileEditSaveButton.isEnabled = isValid
             textFieldCharacterLimitWarning.isHidden = false
-            textFieldCharacterLimitWarning.image = UIImage(systemName: "exclamationmark.triangle.fill")
-            textFieldCharacterLimitWarning.tintColor = .systemRed
-            textFieldCharacterCount.textColor = .systemRed
+            if isValid {
+                textFieldCharacterLimitWarning.image = UIImage(systemName: "checkmark.circle.fill")
+                textFieldCharacterLimitWarning.tintColor = .systemMint
+                textFieldCharacterCount.textColor = .systemMint
+            } else {
+                textFieldCharacterLimitWarning.image = UIImage(systemName: "exclamationmark.triangle.fill")
+                textFieldCharacterLimitWarning.tintColor = .systemRed
+                textFieldCharacterCount.textColor = .systemRed
+            }
         }
     }
     
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+    private func updateCharacterCount(for count: Int? = nil) {
+        guard !isEmailField else { return }
+        let currentCount = count ?? userProfileEditTextField.text?.count ?? 0
+        let remaining = characterLimit - currentCount
+        textFieldCharacterCount.text = "\(remaining)"
     }
     
     private func isValidEmail(_ email: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        guard !email.contains(" ") else { return false }
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3,4}"
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
 }
