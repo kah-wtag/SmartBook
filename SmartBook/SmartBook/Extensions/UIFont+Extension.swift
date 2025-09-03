@@ -18,14 +18,4 @@ extension UIFont {
     }
 }
 
-extension UIColor {
-    static var textColor: UIColor {
-        UIColor(named: "primaryTextColor")!
-    }
-}
 
-extension UIColor {
-    static var secondaryTextColor: UIColor {
-        UIColor(named: "secondaryTextColor")!
-    }
-}

@@ -17,7 +17,7 @@ final class RootViewController: UITabBarController {
     }
     
     private func setupViewControllers() {
-        tabBar.tintColor = .secondaryTextColor
+        tabBar.tintColor = .textfield
         tabBar.backgroundColor = .secondaryTextColorLightReverse
         let homeVC = HomeViewController()
         homeVC.title = "Home"
@@ -56,14 +56,14 @@ final class RootViewController: UITabBarController {
         
         if index == 4 {
             currentVC.navigationItem.rightBarButtonItem = UIBarButtonItem(
-                image: UIImage(systemName: "arrow.right.square")?.withTintColor(.secondaryTextColor, renderingMode: .alwaysOriginal),
+                image: UIImage(systemName: "arrow.right.square")?.withTintColor(.secondaryText, renderingMode: .alwaysOriginal),
                 style: .plain,
                 target: self,
                 action: #selector(signOutTapped)
             )
         } else {
             currentVC.navigationItem.rightBarButtonItem = UIBarButtonItem(
-                image: UIImage(systemName: "bell")?.withTintColor(.secondaryTextColor, renderingMode: .alwaysOriginal),
+                image: UIImage(systemName: "bell")?.withTintColor(.secondaryText, renderingMode: .alwaysOriginal),
                 style: .plain,
                 target: self,
                 action: #selector(notificationTapped)
