@@ -42,9 +42,9 @@ class UserProfileViewController: UIViewController,
         userProfileEditMailTextField.font = .textSize(ofSize: .regular)
         
         editProfileImageButton.titleLabel?.font = .textSize(ofSize: .regular)
-        editProfileNameLabel.font = .textSize(ofSize: .regular)
-        userProfileNumberLabel.font = .textSize(ofSize: .regular)
-        userProfileMailLabel.font = .textSize(ofSize: .regular)
+        editProfileNameLabel.font = .textSize(ofSize: .small)
+        userProfileNumberLabel.font = .textSize(ofSize: .small)
+        userProfileMailLabel.font = .textSize(ofSize: .small)
         
         let cornerRadius: CGFloat = 10
         let stackViews = [editProfileNameStackView, editProfileNumberStackView, editProfileMailStackView]

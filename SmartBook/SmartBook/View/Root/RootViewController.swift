@@ -17,7 +17,7 @@ final class RootViewController: UITabBarController {
     }
     
     private func setupViewControllers() {
-        tabBar.tintColor = .textfield
+        tabBar.tintColor = .secondaryText
         tabBar.backgroundColor = .secondaryTextColorLightReverse
         let homeVC = HomeViewController()
         homeVC.title = "Home"
