@@ -10,7 +10,7 @@ import UIKit
 struct Router {
 
     static func presentMainAppFlow(from presenter: UIViewController) {
-        let rootVC = RootViewController()  // UITabBarController
+        let rootVC = RootViewController()  
 
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = scene.windows.first {
