@@ -9,6 +9,8 @@ import UIKit
 
 class AuthenticationViewController: UIViewController {
     
+    @IBOutlet var authenticationTitle: UILabel!
+    @IBOutlet var otherSignInOptionLabel: UILabel!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var containerView: UIView!
     
@@ -34,6 +36,11 @@ class AuthenticationViewController: UIViewController {
         
         setupContainerView()
         containerViewWillUpdate(.login)
+    }
+    
+    private func setupUI() {
+        authenticationTitle.font = .textSize(ofSize: .extraLarge)
+        otherSignInOptionLabel.font = .textSize(ofSize: .regular)
     }
     
     private func setupContainerView() {

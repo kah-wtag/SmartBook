@@ -20,6 +20,7 @@ class SignupViewController: UIViewController {
     }
     
     private func setupUI() {
+        signupButton.titleLabel?.font = .textSize(ofSize: .extraLarge, weight: .medium)
         emailSignupTextField.setStyledPlaceholder("Email")
         emailSignupTextField.addPadding([.left, .right], width: 8)
         emailSignupTextField.applyUnderline()

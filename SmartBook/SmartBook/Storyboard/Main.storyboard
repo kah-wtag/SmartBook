@@ -113,7 +113,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="authenticationTitle" destination="nna-qE-MiY" id="AH9-41-lpU"/>
                         <outlet property="containerView" destination="rF0-8s-t8V" id="LBQ-zY-7eP"/>
+                        <outlet property="otherSignInOptionLabel" destination="NcF-D4-aWz" id="DWA-jC-gbo"/>
                         <outlet property="segmentedControl" destination="3da-HW-j5p" id="VaO-Yh-C2f"/>
                     </connections>
                 </viewController>
@@ -198,6 +200,7 @@
                     </view>
                     <connections>
                         <outlet property="emailLoginTextField" destination="s38-wY-M1p" id="wji-UE-abA"/>
+                        <outlet property="forgetPasswordButton" destination="GIh-2B-hI3" id="ZHS-qY-c4F"/>
                         <outlet property="loginButton" destination="dky-qb-WwZ" id="0e8-mD-Xgs"/>
                         <outlet property="passwordLoginTextField" destination="eyx-pU-mR2" id="MCb-nt-9BT"/>
                     </connections>
@@ -286,7 +289,7 @@
             <color red="0.97254901960784312" green="0.92156862745098034" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryTextColor">
-            <color red="0.027450982481241226" green="0.0039215688593685627" blue="0.015686275437474251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.027450980392156862" green="0.0039215686274509803" blue="0.015686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondaryTextColor">
             <color red="0.85098039215686272" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

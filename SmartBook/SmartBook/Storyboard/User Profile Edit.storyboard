@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Others will see this update when you book or manage an appointment." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK1-MQ-BoS">
-                                <rect key="frame" x="30" y="271.66666666666669" width="333" height="40"/>
+                                <rect key="frame" x="30" y="269.33333333333331" width="333" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FnL-Bn-s3f"/>
                                 </constraints>
@@ -26,14 +26,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="bWM-pr-8RD">
-                                <rect key="frame" x="0.0" y="138" width="393" height="38.666666666666657"/>
+                                <rect key="frame" x="0.0" y="138" width="393" height="36.333333333333343"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0M-E1-Rfu">
-                                        <rect key="frame" x="0.0" y="0.0" width="108.33333333333333" height="38.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="108.33333333333333" height="36.333333333333336"/>
                                         <color key="backgroundColor" name="backgroundColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel">
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                             <color key="baseForegroundColor" name="secondaryTextColor"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -41,17 +41,17 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3B-KI-S2c">
-                                        <rect key="frame" x="142.33333333333334" y="6.6666666666666554" width="108.33333333333334" height="25.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                        <rect key="frame" x="142.33333333333334" y="6.6666666666666572" width="108.33333333333334" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                         <color key="textColor" name="primaryTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idf-sA-gox">
-                                        <rect key="frame" x="284.66666666666669" y="0.0" width="108.33333333333331" height="38.666666666666664"/>
+                                        <rect key="frame" x="284.66666666666669" y="0.0" width="108.33333333333331" height="36.333333333333336"/>
                                         <color key="backgroundColor" name="backgroundColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Save">
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                             <color key="baseForegroundColor" name="secondaryTextColor"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -61,7 +61,7 @@
                                 </subviews>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Md Kamrul Hasan" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GFr-qB-TKI">
-                                <rect key="frame" x="20" y="216.66666666666666" width="353" height="49.999999999999972"/>
+                                <rect key="frame" x="20" y="214.33333333333334" width="353" height="50.000000000000028"/>
                                 <color key="backgroundColor" name="textfieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wOB-Co-J4N"/>
@@ -79,7 +79,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpz-30-8c5">
-                                <rect key="frame" x="295" y="216.66666666666666" width="50" height="49.999999999999972"/>
+                                <rect key="frame" x="295" y="214.33333333333334" width="50" height="50.000000000000028"/>
                                 <color key="backgroundColor" name="textfieldColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Iow-qE-Kdg"/>

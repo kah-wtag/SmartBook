@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var emailLoginTextField: UITextField!
     @IBOutlet var passwordLoginTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
+    @IBOutlet var forgetPasswordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,8 @@ class LoginViewController: UIViewController {
     }
     
     private func setupUI() {
+        loginButton.titleLabel?.font = .textSize(ofSize: .extraLarge, weight: .medium)
+        forgetPasswordButton.titleLabel?.font = .textSize(ofSize: .small)
         emailLoginTextField.setStyledPlaceholder("Email")
         emailLoginTextField.applyUnderline()
         emailLoginTextField.addPadding([.left, .right], width: 8)
