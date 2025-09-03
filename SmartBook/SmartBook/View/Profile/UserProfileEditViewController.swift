@@ -40,11 +40,11 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
         userProfileEditTextField.text = initialText
         userProfileEditTextFieldTitle.text = fieldTitle
         
-        userProfileEditTextField.font = .textSize(ofSize: .medium)
-        userProfileEditSaveButton.titleLabel?.font = .textSize(ofSize: .large)
-        userProfileEditCancelButton.titleLabel?.font = .textSize(ofSize: .large)
-        userProfileEditTextFieldTitle.font = .textSize(ofSize: .large)
-        textFieldCharacterCount.font = .textSize(ofSize: .medium)
+        userProfileEditTextField.font = .textSize(ofSize: .regular)
+        userProfileEditSaveButton.titleLabel?.font = .textSize(ofSize: .regular)
+        userProfileEditCancelButton.titleLabel?.font = .textSize(ofSize: .regular)
+        userProfileEditTextFieldTitle.font = .textSize(ofSize: .regular)
+        textFieldCharacterCount.font = .textSize(ofSize: .regular)
         
         textFieldCharacterLimitWarning.isHidden = true
         userProfileEditSaveButton.isEnabled = false

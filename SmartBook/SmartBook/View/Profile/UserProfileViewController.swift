@@ -37,14 +37,14 @@ class UserProfileViewController: UIViewController,
     }
     
     private func setupUI() {
-        userProfileNameEditTextField.font = .textSize(ofSize: .large)
-        userProfileEditNumberTextField.font = .textSize(ofSize: .large)
-        userProfileEditMailTextField.font = .textSize(ofSize: .large)
+        userProfileNameEditTextField.font = .textSize(ofSize: .regular)
+        userProfileEditNumberTextField.font = .textSize(ofSize: .regular)
+        userProfileEditMailTextField.font = .textSize(ofSize: .regular)
         
-        editProfileImageButton.titleLabel?.font = .textSize(ofSize: .medium)
-        editProfileNameLabel.font = .textSize(ofSize: .medium)
-        userProfileNumberLabel.font = .textSize(ofSize: .medium)
-        userProfileMailLabel.font = .textSize(ofSize: .medium)
+        editProfileImageButton.titleLabel?.font = .textSize(ofSize: .regular)
+        editProfileNameLabel.font = .textSize(ofSize: .regular)
+        userProfileNumberLabel.font = .textSize(ofSize: .regular)
+        userProfileMailLabel.font = .textSize(ofSize: .regular)
         
         let cornerRadius: CGFloat = 10
         let stackViews = [editProfileNameStackView, editProfileNumberStackView, editProfileMailStackView]
@@ -56,7 +56,7 @@ class UserProfileViewController: UIViewController,
         
         userProfileImageView.makeCircular()
         editProfileImageButton.applyButtonRoundBorder(
-            borderColor: .buttonBorderColor,
+            borderColor: .textfield,
             borderWidth: 0,
             cornerRadius: editProfileImageButton.frame.height / 2
         )

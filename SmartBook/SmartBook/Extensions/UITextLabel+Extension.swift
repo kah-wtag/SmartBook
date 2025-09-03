@@ -34,7 +34,6 @@ extension UILabel {
     }
 }
 
-/// UILabel subclass that supports padding
 final class UILabelPadding: UILabel {
     var padding: UIEdgeInsets
     

@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
         passwordLoginTextField.setStyledPlaceholder("Password")
         passwordLoginTextField.applyUnderline()
         passwordLoginTextField.addPadding([.left, .right], width: 8)
-        loginButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
+        loginButton.applyButtonRoundBorder(borderColor: .textfield, borderWidth: 3, cornerRadius: 10)
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {

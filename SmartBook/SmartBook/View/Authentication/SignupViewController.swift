@@ -29,7 +29,7 @@ class SignupViewController: UIViewController {
         confirmPasswordSignupTextField.setStyledPlaceholder("Confirm Password")
         confirmPasswordSignupTextField.addPadding([.left, .right], width: 8)
         confirmPasswordSignupTextField.applyUnderline()
-        signupButton.applyButtonRoundBorder(borderColor: .buttonBorderColor, borderWidth: 3, cornerRadius: 10)
+        signupButton.applyButtonRoundBorder(borderColor: .textfield, borderWidth: 3, cornerRadius: 10)
         
     }
     

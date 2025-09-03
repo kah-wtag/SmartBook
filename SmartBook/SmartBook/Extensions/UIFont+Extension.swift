@@ -9,40 +9,23 @@ import UIKit
 
 extension UIFont {
     
-    enum AppTextSize {
-        case extraLarge, large, medium, small, extraSmall
+    enum TextSize : Int {
+        case extraLarge = 19, regular = 14, small = 12
     }
     
-    static func textSize(ofSize size: AppTextSize, weight: UIFont.Weight = .regular) -> UIFont {
-        let pointSize: CGFloat
-        
-        switch size {
-        case .extraLarge: pointSize = 24
-        case .large:      pointSize = 21
-        case .medium:     pointSize = 18
-        case .small:      pointSize = 15
-        case .extraSmall: pointSize = 12
-        }
-        
-        return UIFont.systemFont(ofSize: pointSize, weight: weight)
-    }
-}
-
-
-extension UIColor {
-    static var buttonBorderColor: UIColor {
-        UIColor(named: "buttonBorderColor") ?? .gray
+    static func textSize(ofSize size: TextSize, weight: UIFont.Weight = .regular) -> UIFont {
+        return UIFont.systemFont(ofSize: CGFloat(size.rawValue), weight: weight)
     }
 }
 
 extension UIColor {
     static var textColor: UIColor {
-        UIColor(named: "primaryTextColor") ?? .gray
+        UIColor(named: "primaryTextColor")!
     }
 }
 
 extension UIColor {
     static var secondaryTextColor: UIColor {
-        UIColor(named: "secondaryTextColor") ?? .gray
+        UIColor(named: "secondaryTextColor")!
     }
 }
