@@ -22,13 +22,13 @@ class SignupViewController: UIViewController {
     private func setupUI() {
         signupButton.titleLabel?.font = .textSize(ofSize: .extraLarge, weight: .medium)
         emailSignupTextField.setStyledPlaceholder("Email")
-        emailSignupTextField.addPadding([.left, .right], width: 8)
+//        emailSignupTextField.addPadding([.left, .right], width: 8)
         emailSignupTextField.applyUnderline()
         passwordSignupTextField.setStyledPlaceholder("Password")
-        passwordSignupTextField.addPadding([.left, .right], width: 8)
+//        passwordSignupTextField.addPadding([.left, .right], width: 8)
         passwordSignupTextField.applyUnderline()
         confirmPasswordSignupTextField.setStyledPlaceholder("Confirm Password")
-        confirmPasswordSignupTextField.addPadding([.left, .right], width: 8)
+//        confirmPasswordSignupTextField.addPadding([.left, .right], width: 8)
         confirmPasswordSignupTextField.applyUnderline()
         signupButton.applyButtonRoundBorder(borderColor: .textfield, borderWidth: 3, cornerRadius: 10)
         
