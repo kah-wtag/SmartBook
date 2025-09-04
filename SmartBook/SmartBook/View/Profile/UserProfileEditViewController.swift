@@ -21,11 +21,11 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     var onSave: ((String) -> Void)?
     
     private var characterLimit: Int {
-        return isEmailField ? 50 : 25
+        isEmailField ? 50 : 25
     }
     
     private var isEmailField: Bool {
-        return fieldTitle?.lowercased().contains("email") == true
+        fieldTitle?.lowercased().contains("email") == true
     }
     
     override func viewDidLoad() {
