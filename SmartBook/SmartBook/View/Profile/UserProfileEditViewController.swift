@@ -53,6 +53,15 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func userProfileEditSaveButtonAction(_ sender: Any) {
+        SaveButtonTapped()
+    }
+    
+    @IBAction func userProfileEditCancelButtonAction(_ sender: Any) {
+        userProfileEditTextField.resignFirstResponder()
+        dismiss(animated: true)
+    }
+    
+    func SaveButtonTapped() {
         userProfileEditTextField.resignFirstResponder()
         
         guard let text = userProfileEditTextField.text else { return }
@@ -66,11 +75,6 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
         }
         
         onSave?(trimmed)
-        dismiss(animated: true)
-    }
-    
-    @IBAction func userProfileEditCancelButtonAction(_ sender: Any) {
-        userProfileEditTextField.resignFirstResponder()
         dismiss(animated: true)
     }
     
