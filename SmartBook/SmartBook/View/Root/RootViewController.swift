@@ -11,12 +11,12 @@ final class RootViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewControllers()
+        tabBarSetupViewControllers()
         delegate = self
         updateNavigation(for: selectedIndex)
     }
     
-    private func setupViewControllers() {
+    private func tabBarSetupViewControllers() {
         tabBar.tintColor = .secondaryText
         tabBar.backgroundColor = .secondaryTextColorLightReverse
         let homeVC = HomeViewController()
