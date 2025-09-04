@@ -89,7 +89,7 @@ class UserProfileViewController: UIViewController,
     }
     
     @objc private func signOutTapped() {
-        Router.showLoginScreenWithTransition()
+        Routes.showLoginScreenWithTransition()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {

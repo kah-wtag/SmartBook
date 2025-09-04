@@ -1,5 +1,5 @@
 //
-//  Route.swift
+//  Routes.swift
 //  SmartBook
 //
 //  Created by Md. Kamrul Hasan on 4/8/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Router {
+struct Routes {
 
     static func presentMainAppFlow(from presenter: UIViewController) {
         let rootVC = RootViewController()  
