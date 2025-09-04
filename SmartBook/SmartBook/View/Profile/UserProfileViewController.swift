@@ -86,7 +86,7 @@ class UserProfileViewController: UIViewController {
     }
     
     @objc private func signOutTapped() {
-        Routes.showLoginScreenWithTransition()
+        Routes.showLoginScreen()
     }
     
     @IBAction func editProfileImageButtonTapped(_ sender: Any) {

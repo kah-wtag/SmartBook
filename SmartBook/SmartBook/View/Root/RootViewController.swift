@@ -11,12 +11,12 @@ final class RootViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarSetupViewControllers()
+        tabBarSetup()
         delegate = self
         updateNavigation(for: selectedIndex)
     }
     
-    private func tabBarSetupViewControllers() {
+    private func tabBarSetup() {
         tabBar.tintColor = .secondaryText
         tabBar.backgroundColor = .secondaryTextColorLightReverse
         let homeVC = HomeViewController()
@@ -76,7 +76,7 @@ final class RootViewController: UITabBarController {
     }
     
     @objc private func signOutTapped() {
-        Routes.showLoginScreenWithTransition()
+        Routes.showLoginScreen()
     }
 }
 

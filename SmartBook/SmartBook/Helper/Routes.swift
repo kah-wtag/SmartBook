@@ -9,33 +9,36 @@ import UIKit
 
 struct Routes {
 
-    static func presentMainAppFlow(from presenter: UIViewController) {
-        let rootVC = RootViewController()  
-
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = scene.windows.first {
-            window.rootViewController = rootVC
-            window.makeKeyAndVisible()
-            UIView.transition(with: window,
-                              duration: 0.5,
-                              options: .transitionFlipFromRight,
-                              animations: nil)
-        }
+    private static func makeRootViewController() -> RootViewController {
+        return RootViewController()
     }
 
-    static func showLoginScreenWithTransition() {
-        let loginVC = StoryboardInfo.instantiateVC(
+    private static func makeLoginViewController() -> UIViewController {
+        return StoryboardInfo.instantiateVC(
             from: .main,
             identifier: StoryboardInfo.Identifier.authenticationVC
         )
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = scene.windows.first {
-            window.rootViewController = loginVC
-            window.makeKeyAndVisible()
-            UIView.transition(with: window,
-                              duration: 0.5,
-                              options: .transitionFlipFromLeft,
-                              animations: nil)
-        }
+    }
+
+    static func presentMainAppFlow() {
+        let rootVC = makeRootViewController()
+        setRootViewController(rootVC, transition: .transitionFlipFromRight)
+    }
+
+    static func showLoginScreen() {
+        let loginVC = makeLoginViewController()
+        setRootViewController(loginVC, transition: .transitionFlipFromLeft)
+    }
+
+    private static func setRootViewController(_ vc: UIViewController, transition: UIView.AnimationOptions) {
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = scene.windows.first else { return }
+
+        window.rootViewController = vc
+        window.makeKeyAndVisible()
+        UIView.transition(with: window,
+                          duration: 0.5,
+                          options: transition,
+                          animations: nil)
     }
 }

@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        Routes.presentMainAppFlow(from: self)
+        Routes.presentMainAppFlow()
     }
     
 }
