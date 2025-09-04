@@ -7,10 +7,7 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController,
-                                 UIImagePickerControllerDelegate,
-                                 UINavigationControllerDelegate {
-    
+class UserProfileViewController: UIViewController {
     @IBOutlet var editMailStackView: UIStackView!
     @IBOutlet var editNumberStackView: UIStackView!
     @IBOutlet var editNameStackView: UIStackView!
@@ -92,25 +89,11 @@ class UserProfileViewController: UIViewController,
         Routes.showLoginScreenWithTransition()
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        var selectedImage: UIImage?
-        if let editedImage = info[.editedImage] as? UIImage {
-            selectedImage = editedImage
-        } else if let originalImage = info[.originalImage] as? UIImage {
-            selectedImage = originalImage
-        }
-        
-        if let image = selectedImage {
-            userProfileImageView.image = image
-        }
-        dismiss(animated: true)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true)
-    }
-    
     @IBAction func editProfileImageButtonTapped(_ sender: Any) {
+        editImageButtonTapped()
+    }
+    
+    private func editImageButtonTapped() {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .photoLibrary
@@ -150,5 +133,26 @@ class UserProfileViewController: UIViewController,
         editVC.modalPresentationStyle = .pageSheet
         editVC.modalTransitionStyle = .coverVertical
         present(editVC, animated: true)
+    }
+}
+
+extension UserProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        var selectedImage: UIImage?
+        if let editedImage = info[.editedImage] as? UIImage {
+            selectedImage = editedImage
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            selectedImage = originalImage
+        }
+        
+        if let image = selectedImage {
+            userProfileImageView.image = image
+        }
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
     }
 }
