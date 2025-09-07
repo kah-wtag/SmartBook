@@ -41,6 +41,8 @@ class AuthenticationViewController: UIViewController {
     private func setupContainerView() {
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.primaryReverseText, .font: UIFont.boldSystemFont(ofSize: 15)]
         segmentedControl.setTitleTextAttributes(attributes, for: .normal)
+        containerView.layer.cornerRadius = 10
+        containerView.layer.masksToBounds = true
     }
     
     @IBAction func segmentSelectionDidChange(_ sender: UISegmentedControl) {

@@ -28,10 +28,10 @@ class LoginViewController: UIViewController {
         loginButton.setFontSize(.extraLarge, weight: .bold)
         forgetPasswordButton.setFontSize(.small)
         emailLoginTextField.setStyledPlaceholder("Email")
-        emailLoginTextField.applyUnderline()
+        emailLoginTextField.applyUnderline(leftPadding: 10)
         emailLoginTextField.addPadding([.left, .right], width: 8)
         passwordLoginTextField.setStyledPlaceholder("Password")
-        passwordLoginTextField.applyUnderline()
+        passwordLoginTextField.applyUnderline(leftPadding: 10)
         passwordLoginTextField.addPadding([.left, .right], width: 8)
         loginButton.applyButtonRoundBorder(borderColor: .textfield, borderWidth: 3, cornerRadius: 10)
     }

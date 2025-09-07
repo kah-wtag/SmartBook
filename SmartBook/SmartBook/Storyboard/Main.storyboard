@@ -45,7 +45,7 @@
                                 <color key="backgroundColor" name="primaryReverseTextColor"/>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FxV-k4-xUc">
-                                <rect key="frame" x="0.0" y="670" width="393" height="54"/>
+                                <rect key="frame" x="0.0" y="650" width="393" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Sign In Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcF-D4-aWz">
                                         <rect key="frame" x="102.66666666666669" y="0.0" width="188" height="24"/>
@@ -96,7 +96,7 @@
                         <constraints>
                             <constraint firstItem="3da-HW-j5p" firstAttribute="leading" secondItem="Bvf-Vb-7Rq" secondAttribute="leadingMargin" constant="50" id="3FN-RL-1rj"/>
                             <constraint firstItem="tFB-Qp-eQf" firstAttribute="trailing" secondItem="FxV-k4-xUc" secondAttribute="trailing" id="8mP-MK-nyF"/>
-                            <constraint firstItem="tFB-Qp-eQf" firstAttribute="bottom" secondItem="FxV-k4-xUc" secondAttribute="bottom" constant="60" id="AM1-yL-scu"/>
+                            <constraint firstItem="tFB-Qp-eQf" firstAttribute="bottom" secondItem="FxV-k4-xUc" secondAttribute="bottom" constant="80" id="AM1-yL-scu"/>
                             <constraint firstItem="FxV-k4-xUc" firstAttribute="leading" secondItem="tFB-Qp-eQf" secondAttribute="leading" id="D7A-pk-Ew3"/>
                             <constraint firstItem="tFB-Qp-eQf" firstAttribute="trailing" secondItem="nna-qE-MiY" secondAttribute="trailing" constant="25" id="DJF-HT-80E"/>
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="trailing" secondItem="Bvf-Vb-7Rq" secondAttribute="trailingMargin" id="UEV-J8-Q6o"/>
@@ -106,7 +106,7 @@
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="top" secondItem="3da-HW-j5p" secondAttribute="bottom" constant="50" id="fdz-IA-9R4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3da-HW-j5p" secondAttribute="trailing" constant="50" id="i7Y-wu-mfU"/>
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="leading" secondItem="Bvf-Vb-7Rq" secondAttribute="leadingMargin" id="pbS-6B-mLo"/>
-                            <constraint firstItem="FxV-k4-xUc" firstAttribute="top" secondItem="rF0-8s-t8V" secondAttribute="bottom" constant="100" id="xfA-Rf-5eq"/>
+                            <constraint firstItem="FxV-k4-xUc" firstAttribute="top" secondItem="rF0-8s-t8V" secondAttribute="bottom" constant="80" id="xfA-Rf-5eq"/>
                         </constraints>
                     </view>
                     <connections>

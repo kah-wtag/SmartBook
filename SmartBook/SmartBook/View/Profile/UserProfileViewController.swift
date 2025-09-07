@@ -22,7 +22,7 @@ class UserProfileViewController: UIViewController {
     @IBOutlet var editProfileNameStackView: UIStackView!
     @IBOutlet var editProfileNumberStackView: UIStackView!
     @IBOutlet var editProfileMailStackView: UIStackView!
-    @IBOutlet var editbackView: UIView!
+    @IBOutlet var editBackgroundView: UIView!
     
     enum FieldType {
         case name, number, email
@@ -60,13 +60,13 @@ class UserProfileViewController: UIViewController {
         }
         
         userProfileImageView.makeCircular()
-        editProfileImageButton.applyButtonRoundBorder(
-            borderColor: .textfield,
-            borderWidth: 0,
-            cornerRadius: editProfileImageButton.frame.height / 2
-        )
-        editProfileImageButton.alpha = 0.7
-        editbackView.alpha = 0.7
+//        editProfileImageButton.applyButtonRoundBorder(
+//            borderColor: .textfield,
+//            borderWidth: 0,
+//            cornerRadius: editProfileImageButton.frame.height / 2
+//        )
+//        editProfileImageButton.alpha = 0.7
+        editBackgroundView.alpha = 0.7
         let nameTap = UITapGestureRecognizer(target: self, action: #selector(editNameTapped))
         editNameStackView.addGestureRecognizer(nameTap)
         

@@ -247,6 +247,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="editBackgroundView" destination="6JC-fN-D0t" id="BUT-fo-uWU"/>
                         <outlet property="editMailStackView" destination="C12-RV-z6A" id="Nhp-6F-PgJ"/>
                         <outlet property="editNameStackView" destination="DU4-al-GMh" id="Prp-cS-rr3"/>
                         <outlet property="editNumberStackView" destination="kFG-6e-tau" id="Uku-qa-GxC"/>
@@ -257,7 +258,6 @@
                         <outlet property="editProfileNameStackView" destination="tUr-Qw-1jD" id="rt1-uZ-Hvk"/>
                         <outlet property="editProfileNumberLabel" destination="P6h-dR-B9e" id="9X1-Ir-nj0"/>
                         <outlet property="editProfileNumberStackView" destination="Zyv-q1-ORG" id="yrU-P8-Fn1"/>
-                        <outlet property="editbackView" destination="6JC-fN-D0t" id="BUT-fo-uWU"/>
                         <outlet property="userProfileEditMailTextField" destination="ce6-lb-MtF" id="IrS-9s-NjO"/>
                         <outlet property="userProfileEditNumberTextField" destination="dWt-yk-sRZ" id="TVO-6h-26n"/>
                         <outlet property="userProfileImageView" destination="ixC-r7-zcK" id="8Cy-mu-XYI"/>

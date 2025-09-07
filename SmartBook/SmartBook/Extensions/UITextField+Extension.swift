@@ -45,21 +45,22 @@ extension UITextField {
         )
     }
     
-    func applyUnderline(color: UIColor = .textfield, thickness: CGFloat = 0.5, padding: CGFloat = 3) {
+    func applyUnderline(leftPadding: CGFloat = 0, rightPadding: CGFloat = 0, color: UIColor = .textfield, thickness: CGFloat = 0.5, verticalPadding: CGFloat = 3) {
         layer.sublayers?.removeAll(where: { $0.name == "underlineLayer" })
         
         let border = CALayer()
         border.name = "underlineLayer"
         border.backgroundColor = color.cgColor
         border.frame = CGRect(
-            x: 0,
-            y: self.frame.size.height + padding,
-            width: self.frame.size.width,
+            x: leftPadding,
+            y: self.frame.size.height + verticalPadding,
+            width: self.frame.size.width - leftPadding - rightPadding,
             height: thickness
         )
+        
         layer.addSublayer(border)
     }
-    
+
 }
 
 
