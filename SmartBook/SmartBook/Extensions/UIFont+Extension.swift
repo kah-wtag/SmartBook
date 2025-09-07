@@ -14,7 +14,7 @@ extension UIFont {
     }
     
     static func textSize(ofSize size: TextSize, weight: UIFont.Weight = .regular) -> UIFont {
-        return UIFont.systemFont(ofSize: CGFloat(size.rawValue), weight: weight)
+        UIFont.systemFont(ofSize: CGFloat(size.rawValue), weight: weight)
     }
 }
 
