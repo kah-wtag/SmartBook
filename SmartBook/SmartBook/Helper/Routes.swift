@@ -7,13 +7,15 @@
 
 import UIKit
 
-struct Routes {
+struct Routes {}
+
+extension Routes {
     
     struct StoryboardName {
-        let main = "Main"
-        let authentication = "Authentication"
-        let userProfile = "User Profile"
-        let userProfileEdit = "User Profile Edit"
+        static let main = "Main"
+        static let authentication = "Authentication"
+        static let userProfile = "User Profile"
+        static let userProfileEdit = "User Profile Edit"
     }
     
     struct Identifier {
@@ -27,38 +29,45 @@ struct Routes {
         static let favoriteVC = "FavoriteViewController"
         static let searchVC = "SearchViewController"
     }
-    
-    static let storyboardName = StoryboardName()
-    
-    static func instantiateVC(from storyboard: String, identifier: String) -> UIViewController {
+}
+
+extension Routes {
+    static func instantiateVC<T: UIViewController>(
+        from storyboard: String,
+        identifier: String
+    ) -> T? {
         UIStoryboard(name: storyboard, bundle: nil)
-            .instantiateViewController(withIdentifier: identifier)
+            .instantiateViewController(withIdentifier: identifier) as? T
     }
-    
+}
+
+extension Routes {
     static var loginVC: LoginViewController? {
-        instantiateVC(from: storyboardName.main, identifier: Identifier.loginVC) as? LoginViewController
+        instantiateVC(from: StoryboardName.main, identifier: Identifier.loginVC)
     }
     
     static var signupVC: SignupViewController? {
-        instantiateVC(from: storyboardName.main, identifier: Identifier.signupVC) as? SignupViewController
+        instantiateVC(from: StoryboardName.main, identifier: Identifier.signupVC)
     }
     
     static var userProfileVC: UserProfileViewController? {
-        instantiateVC(from: storyboardName.userProfile, identifier: Identifier.userProfileVC) as? UserProfileViewController
+        instantiateVC(from: StoryboardName.userProfile, identifier: Identifier.userProfileVC)
     }
     
     static var userProfileEditVC: UserProfileEditViewController? {
-        instantiateVC(from: storyboardName.userProfileEdit, identifier: Identifier.userProfileEditVC) as? UserProfileEditViewController
+        instantiateVC(from: StoryboardName.userProfileEdit, identifier: Identifier.userProfileEditVC)
     }
-    
     
     private static func makeRootViewController() -> RootViewController {
         RootViewController()
     }
     
-    private static func makeAuthenticationVC() -> UIViewController {
-        instantiateVC(from: storyboardName.main, identifier: Identifier.authenticationVC)
+    private static func makeAuthenticationVC() -> UIViewController? {
+        instantiateVC(from: StoryboardName.main, identifier: Identifier.authenticationVC)
     }
+}
+
+extension Routes {
     
     static func rootViewScreen() {
         let rootVC = makeRootViewController()
@@ -66,7 +75,7 @@ struct Routes {
     }
     
     static func showLoginScreen() {
-        let loginVC = makeAuthenticationVC()
+        guard let loginVC = makeAuthenticationVC() else { return }
         setRootViewController(loginVC, transition: .transitionFlipFromLeft)
     }
     
@@ -76,6 +85,7 @@ struct Routes {
         
         window.rootViewController = vc
         window.makeKeyAndVisible()
+        
         UIView.transition(with: window,
                           duration: 0.5,
                           options: transition,
