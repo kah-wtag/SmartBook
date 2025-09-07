@@ -38,7 +38,7 @@ class AuthenticationViewController: UIViewController {
     }
     
     private func setupContainerView() {
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.primaryReverseText, .font: UIFont.boldSystemFont(ofSize: 15)]
         segmentedControl.setTitleTextAttributes(attributes, for: .normal)
     }
     
