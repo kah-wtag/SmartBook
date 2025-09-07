@@ -41,10 +41,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF0-8s-t8V">
-                                <rect key="frame" x="16" y="413" width="361" height="243"/>
+                                <rect key="frame" x="16" y="413" width="361" height="157"/>
+                                <color key="backgroundColor" name="primaryReverseTextColor"/>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FxV-k4-xUc">
-                                <rect key="frame" x="0.0" y="704" width="393" height="54"/>
+                                <rect key="frame" x="0.0" y="670" width="393" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Sign In Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcF-D4-aWz">
                                         <rect key="frame" x="102.66666666666669" y="0.0" width="188" height="24"/>
@@ -95,11 +96,9 @@
                         <constraints>
                             <constraint firstItem="3da-HW-j5p" firstAttribute="leading" secondItem="Bvf-Vb-7Rq" secondAttribute="leadingMargin" constant="50" id="3FN-RL-1rj"/>
                             <constraint firstItem="tFB-Qp-eQf" firstAttribute="trailing" secondItem="FxV-k4-xUc" secondAttribute="trailing" id="8mP-MK-nyF"/>
+                            <constraint firstItem="tFB-Qp-eQf" firstAttribute="bottom" secondItem="FxV-k4-xUc" secondAttribute="bottom" constant="60" id="AM1-yL-scu"/>
                             <constraint firstItem="FxV-k4-xUc" firstAttribute="leading" secondItem="tFB-Qp-eQf" secondAttribute="leading" id="D7A-pk-Ew3"/>
                             <constraint firstItem="tFB-Qp-eQf" firstAttribute="trailing" secondItem="nna-qE-MiY" secondAttribute="trailing" constant="25" id="DJF-HT-80E"/>
-                            <constraint firstItem="tFB-Qp-eQf" firstAttribute="bottom" secondItem="FxV-k4-xUc" secondAttribute="bottom" constant="26" id="Mo4-ah-Aar"/>
-                            <constraint firstItem="FxV-k4-xUc" firstAttribute="centerY" secondItem="Bvf-Vb-7Rq" secondAttribute="centerY" constant="305" id="NbH-4W-7Bs"/>
-                            <constraint firstItem="FxV-k4-xUc" firstAttribute="top" secondItem="rF0-8s-t8V" secondAttribute="bottom" constant="48" id="Ood-nn-tAH"/>
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="trailing" secondItem="Bvf-Vb-7Rq" secondAttribute="trailingMargin" id="UEV-J8-Q6o"/>
                             <constraint firstItem="3da-HW-j5p" firstAttribute="top" secondItem="nna-qE-MiY" secondAttribute="bottom" constant="80" id="V9f-av-XQx"/>
                             <constraint firstItem="nna-qE-MiY" firstAttribute="leading" secondItem="tFB-Qp-eQf" secondAttribute="leading" constant="25" id="XO4-XI-dqI"/>
@@ -107,6 +106,7 @@
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="top" secondItem="3da-HW-j5p" secondAttribute="bottom" constant="50" id="fdz-IA-9R4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3da-HW-j5p" secondAttribute="trailing" constant="50" id="i7Y-wu-mfU"/>
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="leading" secondItem="Bvf-Vb-7Rq" secondAttribute="leadingMargin" id="pbS-6B-mLo"/>
+                            <constraint firstItem="FxV-k4-xUc" firstAttribute="top" secondItem="rF0-8s-t8V" secondAttribute="bottom" constant="100" id="xfA-Rf-5eq"/>
                         </constraints>
                     </view>
                     <connections>
@@ -183,7 +183,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HdG-TS-EcB"/>
-                        <color key="backgroundColor" name="containerBackgroundColor"/>
+                        <color key="backgroundColor" name="primaryReverseTextColor"/>
                         <constraints>
                             <constraint firstItem="FWk-p3-bXA" firstAttribute="top" secondItem="HdG-TS-EcB" secondAttribute="top" constant="20" id="1aI-Oe-Lhr"/>
                             <constraint firstItem="FWk-p3-bXA" firstAttribute="leading" secondItem="wMY-qA-K3y" secondAttribute="leadingMargin" id="5bL-Ou-SrJ"/>
@@ -256,7 +256,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9A6-9i-RXh"/>
-                        <color key="backgroundColor" name="containerBackgroundColor"/>
+                        <color key="backgroundColor" name="primaryReverseTextColor"/>
                         <constraints>
                             <constraint firstItem="Q5c-V0-3kw" firstAttribute="top" secondItem="9A6-9i-RXh" secondAttribute="top" constant="20" id="SnJ-Xv-aL5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Q5c-V0-3kw" secondAttribute="trailing" id="czf-GZ-uGh"/>
@@ -285,8 +285,8 @@
         <namedColor name="backgroundColor">
             <color red="1" green="0.93725490196078431" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="containerBackgroundColor">
-            <color red="0.93333333333333335" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="primaryReverseTextColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryTextColor">
             <color red="0.027450980392156862" green="0.0039215686274509803" blue="0.015686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

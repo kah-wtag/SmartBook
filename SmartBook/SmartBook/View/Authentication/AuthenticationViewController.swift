@@ -26,12 +26,13 @@ class AuthenticationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         setupContainerView()
         containerViewWillUpdate(.login)
     }
     
     private func setupUI() {
-        authenticationTitle.font = .textSize(ofSize: .extraLarge)
+        authenticationTitle.font = .textSize(ofSize: .extraLarge, weight: .bold)
         otherSignInOptionLabel.font = .textSize(ofSize: .regular)
         loginVC?.delegate = self
         signupVC?.delegate = self
