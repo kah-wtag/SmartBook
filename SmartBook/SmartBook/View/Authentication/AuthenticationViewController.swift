@@ -19,15 +19,8 @@ class AuthenticationViewController: UIViewController {
         case signup = 1
     }
     
-    private lazy var loginVC: LoginViewController? = {
-        UIStoryboard(name: StoryboardInfo.Name.main.rawValue, bundle: nil)
-            .instantiateViewController(withIdentifier: StoryboardInfo.Identifier.loginVC) as? LoginViewController
-    }()
-
-    private lazy var signupVC: SignupViewController? = {
-        UIStoryboard(name: StoryboardInfo.Name.main.rawValue, bundle: nil)
-            .instantiateViewController(withIdentifier: StoryboardInfo.Identifier.signupVC) as? SignupViewController
-    }()
+    private lazy var loginVC: LoginViewController? = Routes.loginVC
+    private lazy var signupVC: SignupViewController? = Routes.signupVC
     
     private var currentContainerViewIndex: Int?
     

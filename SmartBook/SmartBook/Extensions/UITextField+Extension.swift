@@ -12,7 +12,7 @@ extension UITextField {
         case left, right
     }
     
-    func addPadding(_ directions: [PaddingDirection], width: CGFloat = 8) {
+    func addPadding(_ directions: [PaddingDirection], width: CGFloat = 20) {
         for direction in directions {
             let paddingView: UIView
             switch direction {
@@ -28,14 +28,24 @@ extension UITextField {
         }
     }
     
-    func setStyledPlaceholder(_ text: String, color: UIColor = .lightGray) {
+    func setHorizontalPadding(_ padding: CGFloat = 10) {
+        let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
+        let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
+        
+        leftView = leftPaddingView
+        leftViewMode = .always
+        rightView = rightPaddingView
+        rightViewMode = .always
+    }
+    
+    func setStyledPlaceholder(_ text: String, color: UIColor = .textfield) {
         attributedPlaceholder = NSAttributedString(
             string: text,
             attributes: [.foregroundColor: color]
         )
     }
     
-    func applyUnderline(color: UIColor = .lightGray, thickness: CGFloat = 0.5, padding: CGFloat = 3) {
+    func applyUnderline(color: UIColor = .textfield, thickness: CGFloat = 0.5, padding: CGFloat = 3) {
         layer.sublayers?.removeAll(where: { $0.name == "underlineLayer" })
         
         let border = CALayer()

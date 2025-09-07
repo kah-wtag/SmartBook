@@ -17,8 +17,8 @@ class UserProfileViewController: UIViewController {
     @IBOutlet var userProfileImageView: UIImageView!
     @IBOutlet var editProfileImageButton: UIButton!
     @IBOutlet var editProfileNameLabel: UILabel!
-    @IBOutlet var userProfileNumberLabel: UILabel!
-    @IBOutlet var userProfileMailLabel: UILabel!
+    @IBOutlet var editProfileNumberLabel: UILabel!
+    @IBOutlet var editProfileMailLabel: UILabel!
     @IBOutlet var editProfileNameStackView: UIStackView!
     @IBOutlet var editProfileNumberStackView: UIStackView!
     @IBOutlet var editProfileMailStackView: UIStackView!
@@ -34,14 +34,22 @@ class UserProfileViewController: UIViewController {
     }
     
     private func setupUI() {
+        userProfileNameEditTextField.setHorizontalPadding()
+        userProfileEditMailTextField.setHorizontalPadding()
+        userProfileEditNumberTextField.setHorizontalPadding()
+        
+        editProfileNameLabel.setHorizontalPadding()
+        editProfileMailLabel.setHorizontalPadding()
+        editProfileNumberLabel.setHorizontalPadding()
+        
         userProfileNameEditTextField.font = .textSize(ofSize: .regular)
         userProfileEditNumberTextField.font = .textSize(ofSize: .regular)
         userProfileEditMailTextField.font = .textSize(ofSize: .regular)
         
         editProfileImageButton.titleLabel?.font = .textSize(ofSize: .regular)
         editProfileNameLabel.font = .textSize(ofSize: .small)
-        userProfileNumberLabel.font = .textSize(ofSize: .small)
-        userProfileMailLabel.font = .textSize(ofSize: .small)
+        editProfileNumberLabel.font = .textSize(ofSize: .small)
+        editProfileMailLabel.font = .textSize(ofSize: .small)
         
         let cornerRadius: CGFloat = 10
         let stackViews = [editProfileNameStackView, editProfileNumberStackView, editProfileMailStackView]
@@ -102,20 +110,16 @@ class UserProfileViewController: UIViewController {
     }
     
     private func openEditProfileVC(with text: String?, fieldType: FieldType) {
-        guard let editVC = StoryboardInfo.instantiateVC(
-            from: .userProfileEdit,
-            identifier: StoryboardInfo.Identifier.userProfileEditVC
-        ) as? UserProfileEditViewController else { return }
-        
+        guard let editVC = Routes.userProfileEditVC else { return }
         editVC.initialText = text
         
         switch fieldType {
         case .name:
             editVC.fieldTitle = editProfileNameLabel.text
         case .number:
-            editVC.fieldTitle = userProfileNumberLabel.text
+            editVC.fieldTitle = editProfileNumberLabel.text
         case .email:
-            editVC.fieldTitle = userProfileMailLabel.text
+            editVC.fieldTitle = editProfileMailLabel.text
         }
         
         editVC.onSave = { [weak self] updatedText in

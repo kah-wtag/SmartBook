@@ -39,10 +39,7 @@ final class RootViewController: UITabBarController {
         let searchNav = UINavigationController(rootViewController: searchVC)
         searchNav.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 3)
         
-        let profileVC = StoryboardInfo.instantiateVC(
-            from: .userProfile,
-            identifier: StoryboardInfo.Identifier.userProfileVC
-        )
+        guard let profileVC = Routes.userProfileVC else { return }
         profileVC.title = "Profile"
         let profileNav = UINavigationController(rootViewController: profileVC)
         profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 4)

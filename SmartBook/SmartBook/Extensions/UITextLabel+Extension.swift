@@ -8,7 +8,7 @@
 import UIKit
 
 final class UILabelPadding: UILabel {
-    var padding: UIEdgeInsets = .zero
+    var padding: UIEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: padding))
@@ -22,3 +22,22 @@ final class UILabelPadding: UILabel {
         )
     }
 }
+
+extension UILabel {
+    func setHorizontalPadding(_ padding: CGFloat = 10) {
+        guard let text = self.text else { return }
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.firstLineHeadIndent = padding
+        paragraphStyle.headIndent = padding
+        paragraphStyle.tailIndent = -padding
+
+        let attributedString = NSAttributedString(
+            string: text,
+            attributes: [.paragraphStyle: paragraphStyle]
+        )
+
+        self.attributedText = attributedString
+    }
+}
+

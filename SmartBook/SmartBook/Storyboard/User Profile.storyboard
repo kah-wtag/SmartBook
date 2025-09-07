@@ -48,9 +48,6 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="esI-0x-Wl0" firstAttribute="leading" secondItem="JVd-CL-mzw" secondAttribute="leading" constant="10" id="pDh-PP-dGL"/>
-                                                                </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tUr-Qw-1jD">
                                                                 <rect key="frame" x="0.0" y="28" width="353" height="50"/>
@@ -80,9 +77,6 @@
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" name="textfieldColor"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="mwb-nb-sh2" firstAttribute="leading" secondItem="Kpo-hk-oqq" secondAttribute="leading" constant="10" id="8HP-VV-okk"/>
-                                                                        </constraints>
                                                                     </stackView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" name="textfieldColor"/>
@@ -109,9 +103,6 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="P6h-dR-B9e" firstAttribute="leading" secondItem="UaE-xs-kLJ" secondAttribute="leading" constant="10" id="EO7-wG-d5s"/>
-                                                                </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zyv-q1-ORG">
                                                                 <rect key="frame" x="0.0" y="28" width="353" height="50"/>
@@ -141,16 +132,9 @@
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" name="textfieldColor"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="dWt-yk-sRZ" firstAttribute="leading" secondItem="tM8-8x-nIr" secondAttribute="leading" constant="10" id="CBe-xr-Cja"/>
-                                                                        </constraints>
                                                                     </stackView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" name="textfieldColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="tM8-8x-nIr" firstAttribute="top" secondItem="Zyv-q1-ORG" secondAttribute="top" id="AvY-Lk-a1J"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="tM8-8x-nIr" secondAttribute="bottom" id="Xmd-Lp-vrp"/>
-                                                                </constraints>
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
@@ -172,9 +156,6 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="OFz-V6-Meu" firstAttribute="leading" secondItem="1MB-4E-fL5" secondAttribute="leading" constant="10" id="6nW-QM-ytb"/>
-                                                                </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fT8-Sa-ytg">
                                                                 <rect key="frame" x="0.0" y="28" width="353" height="50"/>
@@ -204,16 +185,9 @@
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" name="textfieldColor"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="ce6-lb-MtF" firstAttribute="leading" secondItem="U35-q9-KJh" secondAttribute="leading" constant="10" id="f8M-IV-iF1"/>
-                                                                        </constraints>
                                                                     </stackView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" name="textfieldColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="U35-q9-KJh" firstAttribute="top" secondItem="fT8-Sa-ytg" secondAttribute="top" id="PW1-yd-Ws7"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="U35-q9-KJh" secondAttribute="bottom" id="yFM-0E-fsx"/>
-                                                                </constraints>
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
@@ -254,7 +228,6 @@
                                     <constraint firstItem="SdG-Q8-1pM" firstAttribute="centerX" secondItem="3hc-fF-cbR" secondAttribute="centerX" id="FYA-6Q-RPS"/>
                                     <constraint firstItem="6JC-fN-D0t" firstAttribute="centerX" secondItem="3hc-fF-cbR" secondAttribute="centerX" id="ICW-yB-iz9"/>
                                     <constraint firstItem="ixC-r7-zcK" firstAttribute="centerX" secondItem="3hc-fF-cbR" secondAttribute="centerX" id="NXc-f4-lut"/>
-                                    <constraint firstAttribute="bottom" secondItem="SdG-Q8-1pM" secondAttribute="bottom" constant="113" id="ZKL-aw-AwI"/>
                                     <constraint firstAttribute="trailing" secondItem="SdG-Q8-1pM" secondAttribute="trailing" constant="20" id="etn-pX-GLd"/>
                                     <constraint firstItem="SdG-Q8-1pM" firstAttribute="top" secondItem="6JC-fN-D0t" secondAttribute="bottom" constant="8" id="fbS-aD-aGF"/>
                                     <constraint firstItem="SdG-Q8-1pM" firstAttribute="leading" secondItem="3hc-fF-cbR" secondAttribute="leading" constant="20" id="hHQ-JT-LfF"/>
@@ -268,6 +241,7 @@
                         <constraints>
                             <constraint firstItem="3hc-fF-cbR" firstAttribute="bottom" secondItem="Xv9-1u-A4n" secondAttribute="bottom" constant="-30" id="64F-wq-ETP"/>
                             <constraint firstItem="3hc-fF-cbR" firstAttribute="leading" secondItem="Xv9-1u-A4n" secondAttribute="leading" id="BeS-zf-w9y"/>
+                            <constraint firstItem="3hc-fF-cbR" firstAttribute="top" secondItem="Xv9-1u-A4n" secondAttribute="top" id="hnQ-Gq-pJ2"/>
                             <constraint firstItem="3hc-fF-cbR" firstAttribute="trailing" secondItem="Xv9-1u-A4n" secondAttribute="trailing" id="sfH-pL-3i0"/>
                             <constraint firstItem="3hc-fF-cbR" firstAttribute="top" secondItem="Xv9-1u-A4n" secondAttribute="top" id="swz-CU-33C"/>
                         </constraints>
@@ -277,17 +251,17 @@
                         <outlet property="editNameStackView" destination="DU4-al-GMh" id="Prp-cS-rr3"/>
                         <outlet property="editNumberStackView" destination="kFG-6e-tau" id="Uku-qa-GxC"/>
                         <outlet property="editProfileImageButton" destination="agw-HR-5Kw" id="kWc-YM-DiI"/>
+                        <outlet property="editProfileMailLabel" destination="OFz-V6-Meu" id="caL-7Q-vV9"/>
                         <outlet property="editProfileMailStackView" destination="fT8-Sa-ytg" id="ciP-Qn-w1K"/>
                         <outlet property="editProfileNameLabel" destination="esI-0x-Wl0" id="e2j-9l-cPY"/>
                         <outlet property="editProfileNameStackView" destination="tUr-Qw-1jD" id="rt1-uZ-Hvk"/>
+                        <outlet property="editProfileNumberLabel" destination="P6h-dR-B9e" id="9X1-Ir-nj0"/>
                         <outlet property="editProfileNumberStackView" destination="Zyv-q1-ORG" id="yrU-P8-Fn1"/>
                         <outlet property="editbackView" destination="6JC-fN-D0t" id="BUT-fo-uWU"/>
                         <outlet property="userProfileEditMailTextField" destination="ce6-lb-MtF" id="IrS-9s-NjO"/>
                         <outlet property="userProfileEditNumberTextField" destination="dWt-yk-sRZ" id="TVO-6h-26n"/>
                         <outlet property="userProfileImageView" destination="ixC-r7-zcK" id="8Cy-mu-XYI"/>
-                        <outlet property="userProfileMailLabel" destination="OFz-V6-Meu" id="caL-7Q-vV9"/>
                         <outlet property="userProfileNameEditTextField" destination="mwb-nb-sh2" id="6Dq-36-cWQ"/>
-                        <outlet property="userProfileNumberLabel" destination="P6h-dR-B9e" id="9X1-Ir-nj0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHt-bM-67g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
