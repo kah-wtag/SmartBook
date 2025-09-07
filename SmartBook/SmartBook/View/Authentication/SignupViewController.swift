@@ -5,9 +5,14 @@
 //  Created by Md. Kamrul Hasan on 17/7/25.
 //
 
+protocol SignupDelegate: AnyObject {
+    func signupButtonTapped()
+}
+
 import UIKit
 
 class SignupViewController: UIViewController {
+    weak var delegate: SignupDelegate?
     
     @IBOutlet var emailSignupTextField: UITextField!
     @IBOutlet var passwordSignupTextField: UITextField!
@@ -32,6 +37,6 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func signupTapped(_ sender: Any) {
-        Routes.showLoginScreen()
+        delegate?.signupButtonTapped()
     }
 }

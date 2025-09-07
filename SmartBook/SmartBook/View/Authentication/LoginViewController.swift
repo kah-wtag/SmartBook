@@ -5,9 +5,14 @@
 //  Created by Md. Kamrul Hasan on 17/7/25.
 //
 
+protocol LoginDelegate: AnyObject {
+    func loginButtonTapped()
+}
+
 import UIKit
 
 class LoginViewController: UIViewController {
+    weak var delegate: LoginDelegate?
     
     @IBOutlet var emailLoginTextField: UITextField!
     @IBOutlet var passwordLoginTextField: UITextField!
@@ -32,7 +37,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        Routes.rootViewScreen()
+        delegate?.loginButtonTapped()
     }
     
 }

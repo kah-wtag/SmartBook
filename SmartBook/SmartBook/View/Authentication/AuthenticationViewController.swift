@@ -26,7 +26,6 @@ class AuthenticationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupContainerView()
         containerViewWillUpdate(.login)
     }
@@ -34,6 +33,8 @@ class AuthenticationViewController: UIViewController {
     private func setupUI() {
         authenticationTitle.font = .textSize(ofSize: .extraLarge)
         otherSignInOptionLabel.font = .textSize(ofSize: .regular)
+        loginVC?.delegate = self
+        signupVC?.delegate = self
     }
     
     private func setupContainerView() {
@@ -74,4 +75,17 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
+}
+
+extension AuthenticationViewController: LoginDelegate {
+    func loginButtonTapped() {
+        Routes.rootViewScreen()
+    }
+}
+
+extension AuthenticationViewController: SignupDelegate {
+    func signupButtonTapped() {
+        segmentedControl.selectedSegmentIndex = 0
+        containerViewWillUpdate(.login)
+    }
 }
