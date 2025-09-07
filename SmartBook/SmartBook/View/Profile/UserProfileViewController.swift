@@ -46,7 +46,7 @@ class UserProfileViewController: UIViewController {
         userProfileEditNumberTextField.font = .textSize(ofSize: .regular)
         userProfileEditMailTextField.font = .textSize(ofSize: .regular)
         
-        editProfileImageButton.titleLabel?.font = .textSize(ofSize: .regular)
+        editProfileImageButton.setFontSize(.regular, weight: .bold)
         editProfileNameLabel.font = .textSize(ofSize: .small)
         editProfileNumberLabel.font = .textSize(ofSize: .small)
         editProfileMailLabel.font = .textSize(ofSize: .small)
