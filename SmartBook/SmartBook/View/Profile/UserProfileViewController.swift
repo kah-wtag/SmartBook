@@ -60,12 +60,6 @@ class UserProfileViewController: UIViewController {
         }
         
         userProfileImageView.makeCircular()
-//        editProfileImageButton.applyButtonRoundBorder(
-//            borderColor: .textfield,
-//            borderWidth: 0,
-//            cornerRadius: editProfileImageButton.frame.height / 2
-//        )
-//        editProfileImageButton.alpha = 0.7
         editBackgroundView.alpha = 0.7
         let nameTap = UITapGestureRecognizer(target: self, action: #selector(editNameTapped))
         editNameStackView.addGestureRecognizer(nameTap)
