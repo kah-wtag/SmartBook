@@ -71,24 +71,20 @@ extension Routes {
     
     static func rootViewScreen() {
         let rootVC = makeRootViewController()
-        setRootViewController(rootVC, transition: .transitionFlipFromRight)
+        setRootViewController(rootVC)
     }
     
     static func showLoginScreen() {
         guard let loginVC = makeAuthenticationVC() else { return }
-        setRootViewController(loginVC, transition: .transitionFlipFromLeft)
+        setRootViewController(loginVC)
     }
     
-    private static func setRootViewController(_ vc: UIViewController, transition: UIView.AnimationOptions) {
+    private static func setRootViewController(_ vc: UIViewController) {
         guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = scene.windows.first else { return }
         
         window.rootViewController = vc
         window.makeKeyAndVisible()
         
-        UIView.transition(with: window,
-                          duration: 0.5,
-                          options: transition,
-                          animations: nil)
     }
 }
