@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
+class UserProfileEditViewController: UIViewController {
     @IBOutlet var userProfileEditTextField: UITextField!
     @IBOutlet var userProfileEditSaveButton: UIButton!
     @IBOutlet var userProfileEditCancelButton: UIButton!
@@ -17,131 +17,116 @@ class UserProfileEditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var userProfileEditDescriptionLable: UILabel!
     
     var initialText: String?
-    var fieldTitle: String?
-    var onSave: ((String) -> Void)?
-    
-    private var characterLimit: Int {
-        isEmailField ? 50 : 25
-    }
-    
-    private var isEmailField: Bool {
-        fieldTitle?.lowercased().contains("email") == true
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-        userProfileEditTextField.delegate = self
-        updateCharacterCount()
-    }
-    
-    private func setupUI() {
-        userProfileEditTextField.setHorizontalPadding()
-        userProfileEditDescriptionLable.font = .textSize(ofSize: .small, weight: .light)
-        userProfileEditTextField.text = initialText
-        userProfileEditTextFieldTitle.text = fieldTitle
+        var fieldTitle: String?
+        var onSave: ((String) -> Void)?
         
-        userProfileEditTextField.font = .textSize(ofSize: .regular)
-        userProfileEditSaveButton.titleLabel?.font = .textSize(ofSize: .regular)
-        userProfileEditCancelButton.titleLabel?.font = .textSize(ofSize: .regular)
-        userProfileEditTextFieldTitle.font = .textSize(ofSize: .extraLarge)
-        textFieldCharacterCount.font = .textSize(ofSize: .regular)
+        private var characterLimit: Int { isEmailField ? 50 : 25 }
+        private var isEmailField: Bool { fieldTitle?.lowercased().contains("email") == true }
         
-        textFieldCharacterLimitWarning.isHidden = true
-        userProfileEditSaveButton.isEnabled = false
-        textFieldCharacterCount.isHidden = isEmailField
-    }
-    
-    
-    @IBAction func userProfileEditSaveButtonAction(_ sender: Any) {
-        saveButtonTapped()
-    }
-    
-    @IBAction func userProfileEditCancelButtonAction(_ sender: Any) {
-        userProfileEditTextField.resignFirstResponder()
-        dismiss(animated: true)
-    }
-    
-    func saveButtonTapped() {
-        userProfileEditTextField.resignFirstResponder()
+        private var currentText: String { userProfileEditTextField.text?.trimmingCharacters(in: .whitespaces) ?? "" }
         
-        guard let text = userProfileEditTextField.text else { return }
-        let trimmed = text.trimmingCharacters(in: .whitespaces)
-        let remaining = characterLimit - trimmed.count
-        
-        guard !trimmed.isEmpty else { return }
-        guard remaining >= 0 else { return }
-        if fieldTitle?.lowercased().contains("email") == true {
-            guard isValidEmail(trimmed) else { return }
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setupUI()
+            userProfileEditTextField.delegate = self
+            updateCharacterCount()
+        }
+    }
+
+    extension UserProfileEditViewController {
+        private func setupUI() {
+            userProfileEditTextField.setHorizontalPadding()
+            userProfileEditDescriptionLable.font = .textSize(ofSize: .small, weight: .light)
+            userProfileEditTextField.text = initialText
+            userProfileEditTextFieldTitle.text = fieldTitle
+            
+            userProfileEditTextField.font = .textSize(ofSize: .regular)
+            userProfileEditSaveButton.titleLabel?.font = .textSize(ofSize: .regular)
+            userProfileEditCancelButton.titleLabel?.font = .textSize(ofSize: .regular)
+            userProfileEditTextFieldTitle.font = .textSize(ofSize: .extraLarge)
+            textFieldCharacterCount.font = .textSize(ofSize: .regular)
+            
+            textFieldCharacterLimitWarning.isHidden = true
+            userProfileEditSaveButton.isEnabled = false
+            textFieldCharacterCount.isHidden = isEmailField
+        }
+    }
+
+    extension UserProfileEditViewController {
+        @IBAction func userProfileEditSaveButtonAction(_ sender: Any) {
+            saveButtonTapped()
         }
         
-        onSave?(trimmed)
-        dismiss(animated: true)
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textFieldCharacterLimitWarning.isHidden = false
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let currentText = textField.text as NSString? else { return true }
-        let newText = currentText.replacingCharacters(in: range, with: string)
-        updateCharacterCount(for: newText.count)
-        validateInput(newText)
-        
-        return true
-    }
-    
-    private func validateInput(_ text: String) {
-        let trimmed = text.trimmingCharacters(in: .whitespaces)
-        let currentCount = trimmed.count
-        let remaining = characterLimit - currentCount
-        
-        var isValid = true
-        
-        if trimmed.isEmpty {
-            isValid = false
+        @IBAction func userProfileEditCancelButtonAction(_ sender: Any) {
+            userProfileEditTextField.resignFirstResponder()
+            dismiss(animated: true)
         }
         
-        if remaining < 0 {
-            isValid = false
+        func saveButtonTapped() {
+            userProfileEditTextField.resignFirstResponder()
+            guard !currentText.isEmpty, currentText.count <= characterLimit else { return }
+            if isEmailField, !isValidEmail(currentText) { return }
+            
+            onSave?(currentText)
+            dismiss(animated: true)
+        }
+    }
+
+    extension UserProfileEditViewController: UITextFieldDelegate {
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+            textFieldCharacterLimitWarning.isHidden = false
         }
         
-        if fieldTitle?.lowercased().contains("email") == true {
-            if !isValidEmail(trimmed) {
+        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            guard let currentText = textField.text as NSString? else { return true }
+            let newText = currentText.replacingCharacters(in: range, with: string)
+            updateCharacterCount(for: newText.count)
+            validateInput(newText)
+            return true
+        }
+    }
+
+    extension UserProfileEditViewController {
+        private func validateInput(_ text: String) {
+            let trimmed = text.trimmingCharacters(in: .whitespaces)
+            let remaining = characterLimit - trimmed.count
+            var isValid = !trimmed.isEmpty && remaining >= 0
+            
+            if isEmailField, !isValidEmail(trimmed) {
                 isValid = false
             }
-        }
-        
-        if trimmed.isEmpty {
-            userProfileEditSaveButton.isEnabled = false
-            textFieldCharacterLimitWarning.isHidden = true
-            textFieldCharacterCount.textColor = .label
-        } else {
+            
             userProfileEditSaveButton.isEnabled = isValid
-            textFieldCharacterLimitWarning.isHidden = false
-            if isValid {
-                textFieldCharacterLimitWarning.image = UIImage(systemName: "checkmark.circle.fill")
-                textFieldCharacterLimitWarning.tintColor = .systemMint
-                textFieldCharacterCount.textColor = .systemMint
+            
+            if trimmed.isEmpty {
+                textFieldCharacterLimitWarning.isHidden = true
+                textFieldCharacterCount.textColor = .label
             } else {
-                textFieldCharacterLimitWarning.image = UIImage(systemName: "exclamationmark.triangle.fill")
-                textFieldCharacterLimitWarning.tintColor = .systemRed
-                textFieldCharacterCount.textColor = .systemRed
+                textFieldCharacterLimitWarning.isHidden = false
+                if isValid {
+                    textFieldCharacterLimitWarning.image = UIImage(systemName: "checkmark.circle.fill")
+                    textFieldCharacterLimitWarning.tintColor = .systemMint
+                    textFieldCharacterCount.textColor = .systemMint
+                } else {
+                    textFieldCharacterLimitWarning.image = UIImage(systemName: "exclamationmark.triangle.fill")
+                    textFieldCharacterLimitWarning.tintColor = .systemRed
+                    textFieldCharacterCount.textColor = .systemRed
+                }
             }
         }
+        
+        private func isValidEmail(_ email: String) -> Bool {
+            guard !email.contains(" ") else { return false }
+            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3,4}"
+            return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
+        }
     }
-    
-    private func updateCharacterCount(for count: Int? = nil) {
-        guard !isEmailField else { return }
-        let currentCount = count ?? userProfileEditTextField.text?.count ?? 0
-        let remaining = characterLimit - currentCount
-        textFieldCharacterCount.text = "\(remaining)"
+
+    extension UserProfileEditViewController {
+        private func updateCharacterCount(for count: Int? = nil) {
+            guard !isEmailField else { return }
+            let currentCount = count ?? userProfileEditTextField.text?.count ?? 0
+            let remaining = characterLimit - currentCount
+            textFieldCharacterCount.text = "\(remaining)"
+        }
     }
-    
-    private func isValidEmail(_ email: String) -> Bool {
-        guard !email.contains(" ") else { return false }
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3,4}"
-        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
-    }
-}
