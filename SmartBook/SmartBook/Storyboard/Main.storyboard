@@ -42,7 +42,7 @@
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF0-8s-t8V">
                                 <rect key="frame" x="16" y="413" width="361" height="177"/>
-                                <color key="backgroundColor" name="clear"/>
+                                <color key="backgroundColor" name="clearBackgroundColor"/>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FxV-k4-xUc">
                                 <rect key="frame" x="0.0" y="670" width="393" height="54"/>
@@ -183,7 +183,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HdG-TS-EcB"/>
-                        <color key="backgroundColor" name="clear"/>
+                        <color key="backgroundColor" name="clearBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="FWk-p3-bXA" firstAttribute="top" secondItem="HdG-TS-EcB" secondAttribute="top" constant="20" id="1aI-Oe-Lhr"/>
                             <constraint firstItem="FWk-p3-bXA" firstAttribute="leading" secondItem="wMY-qA-K3y" secondAttribute="leadingMargin" id="5bL-Ou-SrJ"/>
@@ -256,7 +256,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9A6-9i-RXh"/>
-                        <color key="backgroundColor" name="clear"/>
+                        <color key="backgroundColor" name="clearBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Q5c-V0-3kw" firstAttribute="top" secondItem="9A6-9i-RXh" secondAttribute="top" constant="20" id="SnJ-Xv-aL5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Q5c-V0-3kw" secondAttribute="trailing" id="czf-GZ-uGh"/>
@@ -285,7 +285,7 @@
         <namedColor name="backgroundColor">
             <color red="1" green="0.93725490196078431" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="clear">
+        <namedColor name="clearBackgroundColor">
             <color red="1" green="0.93725490196078431" blue="0.99215686274509807" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryTextColor">
