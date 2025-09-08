@@ -31,100 +31,67 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupGestures()
     }
-    
+}
+
+extension UserProfileViewController {
     private func setupUI() {
-        userProfileNameEditTextField.setHorizontalPadding()
-        userProfileEditMailTextField.setHorizontalPadding()
-        userProfileEditNumberTextField.setHorizontalPadding()
+        let textFields = [userProfileNameEditTextField, userProfileEditNumberTextField, userProfileEditMailTextField]
+        textFields.forEach { $0?.setHorizontalPadding(); $0?.font = .textSize(ofSize: .regular) }
         
-        editProfileNameLabel.setHorizontalPadding()
-        editProfileMailLabel.setHorizontalPadding()
-        editProfileNumberLabel.setHorizontalPadding()
-        
-        userProfileNameEditTextField.font = .textSize(ofSize: .regular)
-        userProfileEditNumberTextField.font = .textSize(ofSize: .regular)
-        userProfileEditMailTextField.font = .textSize(ofSize: .regular)
+        let labels = [editProfileNameLabel, editProfileNumberLabel, editProfileMailLabel]
+        labels.forEach { $0?.setHorizontalPadding(); $0?.font = .textSize(ofSize: .small) }
         
         editProfileImageButton.setFontSize(.regular, weight: .bold)
-        editProfileNameLabel.font = .textSize(ofSize: .small)
-        editProfileNumberLabel.font = .textSize(ofSize: .small)
-        editProfileMailLabel.font = .textSize(ofSize: .small)
         
-        let cornerRadius: CGFloat = 10
         let stackViews = [editProfileNameStackView, editProfileNumberStackView, editProfileMailStackView]
         stackViews.forEach { stackView in
-            stackView?.layer.cornerRadius = cornerRadius
+            stackView?.layer.cornerRadius = 10
             stackView?.layer.masksToBounds = true
             stackView?.backgroundColor = .textfield
         }
         
         userProfileImageView.makeCircular()
         editBackgroundView.alpha = 0.7
-        let nameTap = UITapGestureRecognizer(target: self, action: #selector(editNameTapped))
-        editNameStackView.addGestureRecognizer(nameTap)
-        
-        let numberTap = UITapGestureRecognizer(target: self, action: #selector(editNumberTapped))
-        editNumberStackView.addGestureRecognizer(numberTap)
-        
-        let mailTap = UITapGestureRecognizer(target: self, action: #selector(editMailTapped))
-        editMailStackView.addGestureRecognizer(mailTap)
     }
     
-    @objc private func editNameTapped() {
-        openEditProfileVC(with: userProfileNameEditTextField.text, fieldType: .name)
+    private func setupGestures() {
+        addTapGesture(to: editNameStackView, action: #selector(editNameTapped))
+        addTapGesture(to: editNumberStackView, action: #selector(editNumberTapped))
+        addTapGesture(to: editMailStackView, action: #selector(editMailTapped))
     }
     
-    @objc private func editNumberTapped() {
-        openEditProfileVC(with: userProfileEditNumberTextField.text, fieldType: .number)
+    private func addTapGesture(to view: UIView, action: Selector) {
+        let tap = UITapGestureRecognizer(target: self, action: action)
+        view.addGestureRecognizer(tap)
     }
-    
-    @objc private func editMailTapped() {
-        openEditProfileVC(with: userProfileEditMailTextField.text, fieldType: .email)
-    }
-    
-    @objc private func notificationTapped() {
-        print("Notification tapped")
-    }
-    
-    @objc private func signOutTapped() {
-        Routes.showLoginScreen()
-    }
-    
+}
+
+extension UserProfileViewController {
+    @objc private func editNameTapped() { openEditProfileVC(with: userProfileNameEditTextField.text, fieldType: .name) }
+    @objc private func editNumberTapped() { openEditProfileVC(with: userProfileEditNumberTextField.text, fieldType: .number) }
+    @objc private func editMailTapped() { openEditProfileVC(with: userProfileEditMailTextField.text, fieldType: .email) }
     @IBAction func editProfileImageButtonTapped(_ sender: Any) {
-        editImageButtonTapped()
+        openImagePicker()
     }
     
-    private func editImageButtonTapped() {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .photoLibrary
-        picker.allowsEditing = true
-        present(picker, animated: true)
-    }
-    
+    @objc private func notificationTapped() { print("Notification tapped") }
+    @objc private func signOutTapped() { Routes.showLoginScreen() }
+}
+
+extension UserProfileViewController {
     private func openEditProfileVC(with text: String?, fieldType: FieldType) {
         guard let editVC = Routes.userProfileEditVC else { return }
         editVC.initialText = text
-        
-        switch fieldType {
-        case .name:
-            editVC.fieldTitle = editProfileNameLabel.text
-        case .number:
-            editVC.fieldTitle = editProfileNumberLabel.text
-        case .email:
-            editVC.fieldTitle = editProfileMailLabel.text
-        }
+        editVC.fieldTitle = fieldTitle(for: fieldType)
         
         editVC.onSave = { [weak self] updatedText in
             guard let self = self else { return }
             switch fieldType {
-            case .name:
-                self.userProfileNameEditTextField.text = updatedText
-            case .number:
-                self.userProfileEditNumberTextField.text = updatedText
-            case .email:
-                self.userProfileEditMailTextField.text = updatedText
+            case .name: self.userProfileNameEditTextField.text = updatedText
+            case .number: self.userProfileEditNumberTextField.text = updatedText
+            case .email: self.userProfileEditMailTextField.text = updatedText
             }
         }
         
@@ -132,25 +99,30 @@ class UserProfileViewController: UIViewController {
         editVC.modalTransitionStyle = .coverVertical
         present(editVC, animated: true)
     }
+    
+    private func fieldTitle(for type: FieldType) -> String? {
+        switch type {
+        case .name: return editProfileNameLabel.text
+        case .number: return editProfileNumberLabel.text
+        case .email: return editProfileMailLabel.text
+        }
+    }
 }
 
 extension UserProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    private func openImagePicker() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        var selectedImage: UIImage?
-        if let editedImage = info[.editedImage] as? UIImage {
-            selectedImage = editedImage
-        } else if let originalImage = info[.originalImage] as? UIImage {
-            selectedImage = originalImage
-        }
-        
-        if let image = selectedImage {
-            userProfileImageView.image = image
-        }
+        let selectedImage = (info[.editedImage] ?? info[.originalImage]) as? UIImage
+        if let image = selectedImage { userProfileImageView.image = image }
         dismiss(animated: true)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true)
-    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) { dismiss(animated: true) }
 }
