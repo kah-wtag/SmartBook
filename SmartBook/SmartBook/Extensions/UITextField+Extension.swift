@@ -28,7 +28,7 @@ extension UITextField {
         }
     }
     
-    func setHorizontalPadding(_ padding: CGFloat = 10) {
+    func setHorizontalPadding(_ padding: CGFloat = 0) {
         let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
         let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
         
@@ -38,13 +38,20 @@ extension UITextField {
         rightViewMode = .always
     }
     
-    func setStyledPlaceholder(_ text: String, color: UIColor = .textfield) {
+    func setStyledPlaceholder(
+        _ text: String,
+        color: UIColor = .textfield,
+        size: UIFont.TextSize = .regular
+    ) {
         attributedPlaceholder = NSAttributedString(
             string: text,
-            attributes: [.foregroundColor: color]
+            attributes: [
+                .foregroundColor: color,
+                .font: UIFont.textSize(ofSize: size)
+            ]
         )
     }
-    
+
     func applyUnderline(leftPadding: CGFloat = 0, rightPadding: CGFloat = 0, color: UIColor = .textfield, thickness: CGFloat = 0.5, verticalPadding: CGFloat = 3) {
         layer.sublayers?.removeAll(where: { $0.name == "underlineLayer" })
         

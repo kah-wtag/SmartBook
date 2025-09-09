@@ -24,10 +24,6 @@ extension Routes {
         static let signupVC = "SignupViewController"
         static let userProfileVC = "UserProfileViewController"
         static let userProfileEditVC = "UserProfileEditViewController"
-        static let homeVC = "HomeViewController"
-        static let calendarVC = "CalendarViewController"
-        static let favoriteVC = "FavoriteViewController"
-        static let searchVC = "SearchViewController"
     }
 }
 
@@ -57,34 +53,21 @@ extension Routes {
     static var userProfileEditVC: UserProfileEditViewController? {
         instantiateVC(from: StoryboardName.userProfileEdit, identifier: Identifier.userProfileEditVC)
     }
-    
-    private static func makeRootViewController() -> RootViewController {
-        RootViewController()
-    }
-    
-    private static func makeAuthenticationVC() -> UIViewController? {
-        instantiateVC(from: StoryboardName.main, identifier: Identifier.authenticationVC)
-    }
 }
 
 extension Routes {
     
-    static func rootViewScreen() {
-        let rootVC = makeRootViewController()
-        setRootViewController(rootVC)
-    }
+    static func rootViewScreen(in nav: UINavigationController) {
+            let rootVC = RootViewController()
+            nav.setViewControllers([rootVC], animated: true)
+        }
     
-    static func showLoginScreen() {
-        guard let loginVC = makeAuthenticationVC() else { return }
-        setRootViewController(loginVC)
-    }
-    
-    private static func setRootViewController(_ vc: UIViewController) {
-        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = scene.windows.first else { return }
-        
-        window.rootViewController = vc
-        window.makeKeyAndVisible()
-        
-    }
+    static func showLoginScreen(in nav: UINavigationController) {
+            guard let loginVC = instantiateVC(
+                from: StoryboardName.main,
+                identifier: Identifier.authenticationVC
+            ) else { return }
+            
+            nav.setViewControllers([loginVC], animated: true)
+        }
 }

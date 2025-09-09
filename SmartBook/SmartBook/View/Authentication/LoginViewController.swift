@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
     }
     
     private func setupUI() {
-        loginButton.setFontSize(.extraLarge, weight: .bold)
+        loginButton.setFontSize(.large, weight: .bold)
         forgetPasswordButton.setFontSize(.small)
         emailLoginTextField.setStyledPlaceholder("Email")
         emailLoginTextField.applyUnderline(leftPadding: 10)

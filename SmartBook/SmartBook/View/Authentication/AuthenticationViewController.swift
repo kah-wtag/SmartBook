@@ -27,22 +27,16 @@ class AuthenticationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupContainerView()
         containerViewWillUpdate(.login)
     }
     
     private func setupUI() {
-        authenticationTitle.font = .textSize(ofSize: .extraLarge, weight: .bold)
+        authenticationTitle.font = .textSize(ofSize: .large, weight: .bold)
         otherSignInOptionLabel.font = .textSize(ofSize: .regular)
-        loginVC?.delegate = self
-        signupVC?.delegate = self
-    }
-    
-    private func setupContainerView() {
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.primaryReverseText, .font: UIFont.boldSystemFont(ofSize: 15)]
         segmentedControl.setTitleTextAttributes(attributes, for: .normal)
-        containerView.layer.cornerRadius = 10
-        containerView.layer.masksToBounds = true
+        loginVC?.delegate = self
+        signupVC?.delegate = self
     }
     
     @IBAction func segmentSelectionDidChange(_ sender: UISegmentedControl) {
@@ -82,9 +76,11 @@ class AuthenticationViewController: UIViewController {
 
 extension AuthenticationViewController: LoginDelegate {
     func loginButtonTapped() {
-        Routes.rootViewScreen()
+        guard let nav = navigationController else { return }
+        Routes.rootViewScreen(in: nav)
     }
 }
+
 
 extension AuthenticationViewController: SignupDelegate {
     func signupButtonTapped() {

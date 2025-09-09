@@ -11,55 +11,56 @@ final class RootViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarSetup()
+        setupAppearance()
+        setupTabs()
         delegate = self
         updateNavigation(for: selectedIndex)
     }
     
-    private func tabBarSetup() {
+    private func setupAppearance() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = .clearBackground
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.secondaryText]
+        
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        UINavigationBar.appearance().tintColor = .secondaryText
+        
         tabBar.tintColor = .secondaryText
-        tabBar.backgroundColor = .secondaryTextColorLightReverse
-        let homeVC = HomeViewController()
-        homeVC.title = "Home"
-        let homeNav = UINavigationController(rootViewController: homeVC)
-        homeNav.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
+        tabBar.backgroundColor = .reverseSecondaryText
+    }
+    
+    private func setupTabs() {
+        let items: [(UIViewController, String, String)] = [
+            (HomeViewController(), "Home", "house"),
+            (CalendarViewController(), "Calendar", "calendar"),
+            (ActivityViewController(), "Activity", "calendar.circle.fill"),
+            (SearchViewController(), "Search", "magnifyingglass"),
+            (Routes.userProfileVC ?? UIViewController(), "Profile", "person.crop.circle")
+        ]
         
-        let calendarVC = CalendarViewController()
-        calendarVC.title = "Calendar"
-        let calendarNav = UINavigationController(rootViewController: calendarVC)
-        calendarNav.tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(systemName: "calendar"), tag: 1)
-        
-        let activityVC = ActivityViewController()
-        activityVC.title = "Activity"
-        let activityNav = UINavigationController(rootViewController: activityVC)
-        activityNav.tabBarItem = UITabBarItem(title: "Activity", image: UIImage(systemName: "calendar.circle.fill"), tag: 2)
-        
-        let searchVC = SearchViewController()
-        searchVC.title = "Search"
-        let searchNav = UINavigationController(rootViewController: searchVC)
-        searchNav.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 3)
-        
-        guard let profileVC = Routes.userProfileVC else { return }
-        profileVC.title = "Profile"
-        let profileNav = UINavigationController(rootViewController: profileVC)
-        profileNav.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 4)
-        
-        viewControllers = [homeNav, calendarNav, activityNav, searchNav, profileNav]
+        viewControllers = items.enumerated().map { _, item in
+            let (vc, title, icon) = item
+            vc.title = title
+            vc.tabBarItem = UITabBarItem(title: title, image: UIImage(systemName: icon), tag: 0)
+            return vc
+        }
     }
     
     private func updateNavigation(for index: Int) {
-        guard let navController = viewControllers?[index] as? UINavigationController,
-              let currentVC = navController.topViewController else { return }
+        guard let currentVC = viewControllers?[index] else { return }
+        self.navigationItem.title = currentVC.tabBarItem.title
         
         if index == 4 {
-            currentVC.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "arrow.right.square")?.withTintColor(.secondaryText, renderingMode: .alwaysOriginal),
                 style: .plain,
                 target: self,
                 action: #selector(signOutTapped)
             )
         } else {
-            currentVC.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "bell")?.withTintColor(.secondaryText, renderingMode: .alwaysOriginal),
                 style: .plain,
                 target: self,
@@ -73,7 +74,8 @@ final class RootViewController: UITabBarController {
     }
     
     @objc private func signOutTapped() {
-        Routes.showLoginScreen()
+        guard let nav = navigationController else { return }
+        Routes.showLoginScreen(in: nav)
     }
 }
 

@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hc-fF-cbR">
-                                <rect key="frame" x="0.0" y="118" width="393" height="636"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hc-fF-cbR">
+                                <rect key="frame" x="0.0" y="138" width="393" height="616"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kamrul" translatesAutoresizingMaskIntoConstraints="NO" id="ixC-r7-zcK">
                                         <rect key="frame" x="86.666666666666686" y="0.0" width="220" height="220"/>
@@ -30,7 +30,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SdG-Q8-1pM">
-                                        <rect key="frame" x="20" y="249" width="353" height="274"/>
+                                        <rect key="frame" x="20" y="241" width="353" height="274"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DU4-al-GMh">
                                                 <rect key="frame" x="0.0" y="0.0" width="353" height="78"/>
@@ -208,6 +208,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Edit">
+                                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="baseForegroundColor" name="secondaryTextColor"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -225,11 +226,12 @@
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="SdG-Q8-1pM" secondAttribute="bottom" constant="113" id="7m1-Vi-r4w"/>
                                     <constraint firstItem="SdG-Q8-1pM" firstAttribute="centerX" secondItem="3hc-fF-cbR" secondAttribute="centerX" id="FYA-6Q-RPS"/>
                                     <constraint firstItem="6JC-fN-D0t" firstAttribute="centerX" secondItem="3hc-fF-cbR" secondAttribute="centerX" id="ICW-yB-iz9"/>
                                     <constraint firstItem="ixC-r7-zcK" firstAttribute="centerX" secondItem="3hc-fF-cbR" secondAttribute="centerX" id="NXc-f4-lut"/>
                                     <constraint firstAttribute="trailing" secondItem="SdG-Q8-1pM" secondAttribute="trailing" constant="20" id="etn-pX-GLd"/>
-                                    <constraint firstItem="SdG-Q8-1pM" firstAttribute="top" secondItem="6JC-fN-D0t" secondAttribute="bottom" constant="8" id="fbS-aD-aGF"/>
+                                    <constraint firstItem="SdG-Q8-1pM" firstAttribute="top" secondItem="6JC-fN-D0t" secondAttribute="bottom" id="fbS-aD-aGF"/>
                                     <constraint firstItem="SdG-Q8-1pM" firstAttribute="leading" secondItem="3hc-fF-cbR" secondAttribute="leading" constant="20" id="hHQ-JT-LfF"/>
                                     <constraint firstItem="ixC-r7-zcK" firstAttribute="top" secondItem="3hc-fF-cbR" secondAttribute="top" id="hhw-NP-007"/>
                                     <constraint firstItem="6JC-fN-D0t" firstAttribute="top" secondItem="ixC-r7-zcK" secondAttribute="bottom" constant="-49" id="uPU-yG-1Vv"/>
@@ -241,9 +243,8 @@
                         <constraints>
                             <constraint firstItem="3hc-fF-cbR" firstAttribute="bottom" secondItem="Xv9-1u-A4n" secondAttribute="bottom" constant="-30" id="64F-wq-ETP"/>
                             <constraint firstItem="3hc-fF-cbR" firstAttribute="leading" secondItem="Xv9-1u-A4n" secondAttribute="leading" id="BeS-zf-w9y"/>
-                            <constraint firstItem="3hc-fF-cbR" firstAttribute="top" secondItem="Xv9-1u-A4n" secondAttribute="top" id="hnQ-Gq-pJ2"/>
+                            <constraint firstItem="3hc-fF-cbR" firstAttribute="top" secondItem="Xv9-1u-A4n" secondAttribute="top" constant="20" id="fs1-np-1BQ"/>
                             <constraint firstItem="3hc-fF-cbR" firstAttribute="trailing" secondItem="Xv9-1u-A4n" secondAttribute="trailing" id="sfH-pL-3i0"/>
-                            <constraint firstItem="3hc-fF-cbR" firstAttribute="top" secondItem="Xv9-1u-A4n" secondAttribute="top" id="swz-CU-33C"/>
                         </constraints>
                     </view>
                     <connections>
@@ -271,7 +272,7 @@
     </scenes>
     <resources>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
-        <image name="kamrul" width="225" height="225"/>
+        <image name="kamrul" width="1194" height="1193"/>
         <namedColor name="backgroundColor">
             <color red="1" green="0.93725490196078431" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

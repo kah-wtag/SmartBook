@@ -9,7 +9,7 @@ import UIKit
 
 extension UIFont {
     enum TextSize: Int {
-        case extraLarge = 19, regular = 15, small = 12
+        case large = 17, regular = 14, small = 12
     }
     
     static func textSize(ofSize size: TextSize, weight: UIFont.Weight = .regular, customFontName: String? = nil) -> UIFont {

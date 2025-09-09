@@ -43,7 +43,7 @@ class UserProfileEditViewController: UIViewController {
             userProfileEditTextField.font = .textSize(ofSize: .regular)
             userProfileEditSaveButton.titleLabel?.font = .textSize(ofSize: .regular)
             userProfileEditCancelButton.titleLabel?.font = .textSize(ofSize: .regular)
-            userProfileEditTextFieldTitle.font = .textSize(ofSize: .extraLarge)
+            userProfileEditTextFieldTitle.font = .textSize(ofSize: .large)
             textFieldCharacterCount.font = .textSize(ofSize: .regular)
             
             textFieldCharacterLimitWarning.isHidden = true
