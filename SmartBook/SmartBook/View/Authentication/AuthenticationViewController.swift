@@ -31,10 +31,13 @@ class AuthenticationViewController: UIViewController {
     }
     
     private func setupUI() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.primaryReverseText,
+            .font: UIFont.textSize(ofSize: .regular, weight: .bold)
+        ]
+        segmentedControl.setTitleTextAttributes(attributes, for: .normal)
         authenticationTitle.font = .textSize(ofSize: .large, weight: .bold)
         otherSignInOptionLabel.font = .textSize(ofSize: .regular)
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.primaryReverseText, .font: UIFont.boldSystemFont(ofSize: 15)]
-        segmentedControl.setTitleTextAttributes(attributes, for: .normal)
         loginVC?.delegate = self
         signupVC?.delegate = self
     }

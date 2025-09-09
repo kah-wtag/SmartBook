@@ -40,7 +40,7 @@ extension UITextField {
     
     func setStyledPlaceholder(
         _ text: String,
-        color: UIColor = .textfield,
+        color: UIColor = .placeholder,
         size: UIFont.TextSize = .regular
     ) {
         attributedPlaceholder = NSAttributedString(
@@ -52,21 +52,26 @@ extension UITextField {
         )
     }
 
-    func applyUnderline(leftPadding: CGFloat = 0, rightPadding: CGFloat = 0, color: UIColor = .textfield, thickness: CGFloat = 0.5, verticalPadding: CGFloat = 3) {
-        layer.sublayers?.removeAll(where: { $0.name == "underlineLayer" })
+    func applyUnderline(
+        leftPadding: CGFloat = 0,
+        rightPadding: CGFloat = 0,
+        color: UIColor = .placeholder,
+        thickness: CGFloat = 1.0
+    ) {
+        let underline = UIView()
+        underline.tag = 999
+        underline.backgroundColor = color 
+        underline.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(underline)
         
-        let border = CALayer()
-        border.name = "underlineLayer"
-        border.backgroundColor = color.cgColor
-        border.frame = CGRect(
-            x: leftPadding,
-            y: self.frame.size.height + verticalPadding,
-            width: self.frame.size.width - leftPadding - rightPadding,
-            height: thickness
-        )
-        
-        layer.addSublayer(border)
+        NSLayoutConstraint.activate([
+            underline.heightAnchor.constraint(equalToConstant: thickness),
+            underline.leftAnchor.constraint(equalTo: leftAnchor, constant: leftPadding),
+            underline.rightAnchor.constraint(equalTo: rightAnchor, constant: -rightPadding),
+            underline.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
+
 
 }
 
