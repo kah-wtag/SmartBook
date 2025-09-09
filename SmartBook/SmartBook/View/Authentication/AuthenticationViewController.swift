@@ -33,7 +33,7 @@ class AuthenticationViewController: UIViewController {
     private func setupUI() {
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.primaryReverseText,
-            .font: UIFont.textSize(ofSize: .regular, weight: .bold)
+            .font: UIFont.textSize(ofSize: .small, weight: .black)
         ]
         segmentedControl.setTitleTextAttributes(attributes, for: .normal)
         authenticationTitle.font = .textSize(ofSize: .large, weight: .bold)

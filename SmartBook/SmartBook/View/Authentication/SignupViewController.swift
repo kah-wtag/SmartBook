@@ -25,7 +25,7 @@ class SignupViewController: UIViewController {
     }
     
     private func setupUI() {
-        signupButton.setFontSize(.large, weight: .bold)
+        signupButton.setFontSize(.regular, weight: .bold)
         emailSignupTextField.setStyledPlaceholder("Email")
         emailSignupTextField.applyUnderline(rightPadding: 10)
         passwordSignupTextField.setStyledPlaceholder("Password")
