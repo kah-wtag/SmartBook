@@ -10,10 +10,9 @@ import UIKit
 struct Routes {
     struct StoryboardName {
         static let main = "Main"
-        static let authentication = "Authentication"
         static let userProfile = "User Profile"
         static let userProfileEdit = "User Profile Edit"
-        static let root = "Root"
+        static let root = "Dashboard"
     }
     
     struct Identifier {

@@ -269,6 +269,120 @@
             </objects>
             <point key="canvasLocation" x="1443.5114503816794" y="-22.535211267605636"/>
         </scene>
+        <!--User Profile Edit View Controller-->
+        <scene sceneID="oC0-hm-et4">
+            <objects>
+                <viewController storyboardIdentifier="UserProfileEditViewController" id="1f8-QV-cLJ" customClass="UserProfileEditViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YWJ-hX-MaP">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Others will see this update when you book or manage an appointment." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ki-AD-r95">
+                                <rect key="frame" x="30" y="269.33333333333331" width="333" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ucJ-D3-aWP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" name="primaryTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="xqR-p6-KqT">
+                                <rect key="frame" x="0.0" y="138" width="393" height="36.333333333333343"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEK-ZH-MYn">
+                                        <rect key="frame" x="0.0" y="0.0" width="108.33333333333333" height="36.333333333333336"/>
+                                        <color key="backgroundColor" name="backgroundColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                            <color key="baseForegroundColor" name="secondaryTextColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="userProfileEditCancelButtonAction:" destination="1f8-QV-cLJ" eventType="touchUpInside" id="k2n-sP-gPK"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOl-3U-bwM">
+                                        <rect key="frame" x="142.33333333333334" y="6.6666666666666572" width="108.33333333333334" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                        <color key="textColor" name="primaryTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXT-4o-8mq">
+                                        <rect key="frame" x="284.66666666666669" y="0.0" width="108.33333333333331" height="36.333333333333336"/>
+                                        <color key="backgroundColor" name="backgroundColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Save">
+                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                            <color key="baseForegroundColor" name="secondaryTextColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="userProfileEditSaveButtonAction:" destination="1f8-QV-cLJ" eventType="touchUpInside" id="GOi-C4-trt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Md Kamrul Hasan" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-LG-9Ed">
+                                <rect key="frame" x="20" y="214.33333333333334" width="353" height="50.000000000000028"/>
+                                <color key="backgroundColor" name="textfieldColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YWV-mi-XCt"/>
+                                </constraints>
+                                <color key="textColor" name="primaryTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FmX-IY-02X">
+                                <rect key="frame" x="343" y="229" width="25" height="25"/>
+                                <color key="backgroundColor" name="textfieldColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Fr0-cp-SR6"/>
+                                    <constraint firstAttribute="width" constant="25" id="SwZ-eP-o2M"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOO-XH-oiO">
+                                <rect key="frame" x="295" y="214.33333333333334" width="50" height="50.000000000000028"/>
+                                <color key="backgroundColor" name="textfieldColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="toH-GO-GeO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lq1-5v-Pbz"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FmX-IY-02X" firstAttribute="leading" secondItem="mOO-XH-oiO" secondAttribute="trailing" constant="-2" id="3d8-D8-hor"/>
+                            <constraint firstItem="FmX-IY-02X" firstAttribute="top" secondItem="lq1-5v-Pbz" secondAttribute="top" constant="111" id="3hB-8J-hUB"/>
+                            <constraint firstItem="mOO-XH-oiO" firstAttribute="top" secondItem="xqR-p6-KqT" secondAttribute="bottom" constant="40" id="72B-Y1-Axf"/>
+                            <constraint firstItem="xqR-p6-KqT" firstAttribute="leading" secondItem="lq1-5v-Pbz" secondAttribute="leading" id="9om-wf-gtU"/>
+                            <constraint firstItem="ugD-LG-9Ed" firstAttribute="leading" secondItem="lq1-5v-Pbz" secondAttribute="leading" constant="20" id="ERM-sy-4D2"/>
+                            <constraint firstItem="mOO-XH-oiO" firstAttribute="height" secondItem="ugD-LG-9Ed" secondAttribute="height" id="HcN-Fe-isd"/>
+                            <constraint firstItem="8ki-AD-r95" firstAttribute="leading" secondItem="lq1-5v-Pbz" secondAttribute="leading" constant="30" id="JCg-tQ-q4i"/>
+                            <constraint firstAttribute="trailing" secondItem="8ki-AD-r95" secondAttribute="trailing" constant="30" id="KFt-jX-yte"/>
+                            <constraint firstAttribute="trailing" secondItem="FmX-IY-02X" secondAttribute="trailing" constant="25" id="Uxp-Ec-v94"/>
+                            <constraint firstItem="xqR-p6-KqT" firstAttribute="top" secondItem="lq1-5v-Pbz" secondAttribute="top" constant="20" id="V4U-4l-g2c"/>
+                            <constraint firstItem="lq1-5v-Pbz" firstAttribute="trailing" secondItem="xqR-p6-KqT" secondAttribute="trailing" id="ZZ0-PL-IuG"/>
+                            <constraint firstItem="lq1-5v-Pbz" firstAttribute="trailing" secondItem="ugD-LG-9Ed" secondAttribute="trailing" constant="20" id="kWf-JN-GMC"/>
+                            <constraint firstItem="8ki-AD-r95" firstAttribute="top" secondItem="ugD-LG-9Ed" secondAttribute="bottom" constant="5" id="qhX-VY-HWZ"/>
+                            <constraint firstItem="ugD-LG-9Ed" firstAttribute="top" secondItem="xqR-p6-KqT" secondAttribute="bottom" constant="40" id="uJK-5U-evn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textFieldCharacterCount" destination="mOO-XH-oiO" id="H7Y-LA-3da"/>
+                        <outlet property="textFieldCharacterLimitWarning" destination="FmX-IY-02X" id="GXp-l2-fT8"/>
+                        <outlet property="userProfileEditCancelButton" destination="rEK-ZH-MYn" id="sFa-mq-iEP"/>
+                        <outlet property="userProfileEditDescriptionLable" destination="8ki-AD-r95" id="8cZ-6w-NE1"/>
+                        <outlet property="userProfileEditSaveButton" destination="FXT-4o-8mq" id="4Yd-xV-BFa"/>
+                        <outlet property="userProfileEditTextField" destination="ugD-LG-9Ed" id="Pt3-Hi-O0C"/>
+                        <outlet property="userProfileEditTextFieldTitle" destination="uOl-3U-bwM" id="LOn-ao-EHe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aXK-IO-uqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2393" y="-23"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chevron.right" catalog="system" width="97" height="128"/>

@@ -49,26 +49,23 @@ final class RootViewController: UITabBarController {
             ]
             
             viewControllers = items.map { vc, title, icon in
-                vc.title = title
-                vc.tabBarItem = UITabBarItem(
-                    title: title,
-                    image: UIImage(systemName: icon),
-                    tag: 0
-                )
-                return vc
+                vc.tabBarItem = UITabBarItem(title: title,
+                                             image: UIImage(systemName: icon),
+                                             tag: 0)
+                return vc 
             }
+
         }
         
         private func updateNavigation(for index: Int) {
-            guard let currentVC = viewControllers?[index] else { return }
-            
-            navigationItem.title = currentVC.tabBarItem.title
-            
-            if index == 4 {
-                addSignOutButton()
-            } else {
-                addNotificationButton()
-            }
+            guard let currentVC = selectedViewController else { return }
+                navigationItem.title = currentVC.tabBarItem.title
+                
+                if selectedIndex == 4 {
+                    addSignOutButton()
+                } else {
+                    addNotificationButton()
+                }
         }
         
         private func addNotificationButton() {
