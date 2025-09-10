@@ -93,7 +93,7 @@ extension UserProfileViewController {
     
     @objc private func signOutTapped() {
         guard let nav = navigationController else { return }
-            Routes.showLoginScreen(in: nav)
+        Routes.showLoginScreen(in: nav)
     }
 }
 
@@ -105,7 +105,6 @@ extension UserProfileViewController {
         
         editVC.onSave = { [weak self] updatedText in
             guard let self = self else { return }
-            
             self.editMappings.forEach { mapping in
                 if mapping.label.text == labelTitle {
                     mapping.textField.text = updatedText
@@ -120,10 +119,34 @@ extension UserProfileViewController {
 }
 
 extension UserProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     private func openImagePicker() {
+        let alert = UIAlertController(title: "Select Image", message: "Choose a source", preferredStyle: .actionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [weak self] _ in
+                self?.presentPicker(sourceType: .camera)
+            }))
+        }
+        
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { [weak self] _ in
+            self?.presentPicker(sourceType: .photoLibrary)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = editProfileImageButton
+            popover.sourceRect = editProfileImageButton.bounds
+        }
+        
+        present(alert, animated: true)
+    }
+    
+    private func presentPicker(sourceType: UIImagePickerController.SourceType) {
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.sourceType = .photoLibrary
+        picker.sourceType = sourceType
         picker.allowsEditing = true
         present(picker, animated: true)
     }

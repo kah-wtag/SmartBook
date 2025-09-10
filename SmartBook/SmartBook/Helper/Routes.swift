@@ -11,7 +11,6 @@ struct Routes {
     struct StoryboardName {
         static let main = "Main"
         static let userProfile = "User Profile"
-        static let userProfileEdit = "User Profile Edit"
         static let root = "Dashboard"
     }
     
@@ -49,7 +48,7 @@ extension Routes {
     }
     
     static var userProfileEditVC: UserProfileEditViewController? {
-        instantiateVC(from: StoryboardName.userProfileEdit, identifier: Identifier.userProfileEditVC)
+        instantiateVC(from: StoryboardName.userProfile, identifier: Identifier.userProfileEditVC)
     }
 }
 
@@ -65,11 +64,11 @@ extension Routes {
     }
     
     static func showLoginScreen(in nav: UINavigationController) {
-            guard let loginVC = instantiateVC(
-                from: StoryboardName.main,
-                identifier: Identifier.authenticationVC
-            ) else { return }
-            
-            nav.setViewControllers([loginVC], animated: true)
-        }
+        guard let loginVC = instantiateVC(
+            from: StoryboardName.main,
+            identifier: Identifier.authenticationVC
+        ) else { return }
+        
+        nav.setViewControllers([loginVC], animated: true)
+    }
 }

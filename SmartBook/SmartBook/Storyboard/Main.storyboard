@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3da-HW-j5p">
-                                <rect key="frame" x="66" y="318" width="261" height="46"/>
+                                <rect key="frame" x="66" y="278" width="261" height="46"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="ztR-UM-NTP"/>
@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF0-8s-t8V">
-                                <rect key="frame" x="16" y="413" width="361" height="177"/>
+                                <rect key="frame" x="16" y="373" width="361" height="217"/>
                                 <color key="backgroundColor" name="clearBackgroundColor"/>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FxV-k4-xUc">
@@ -100,7 +100,7 @@
                             <constraint firstItem="FxV-k4-xUc" firstAttribute="leading" secondItem="tFB-Qp-eQf" secondAttribute="leading" id="D7A-pk-Ew3"/>
                             <constraint firstItem="tFB-Qp-eQf" firstAttribute="trailing" secondItem="nna-qE-MiY" secondAttribute="trailing" constant="25" id="DJF-HT-80E"/>
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="trailing" secondItem="Bvf-Vb-7Rq" secondAttribute="trailingMargin" id="UEV-J8-Q6o"/>
-                            <constraint firstItem="3da-HW-j5p" firstAttribute="top" secondItem="nna-qE-MiY" secondAttribute="bottom" constant="80" id="V9f-av-XQx"/>
+                            <constraint firstItem="3da-HW-j5p" firstAttribute="top" secondItem="nna-qE-MiY" secondAttribute="bottom" constant="40" id="V9f-av-XQx"/>
                             <constraint firstItem="nna-qE-MiY" firstAttribute="leading" secondItem="tFB-Qp-eQf" secondAttribute="leading" constant="25" id="XO4-XI-dqI"/>
                             <constraint firstItem="nna-qE-MiY" firstAttribute="top" secondItem="tFB-Qp-eQf" secondAttribute="top" constant="40" id="bkK-ON-Ove"/>
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="top" secondItem="3da-HW-j5p" secondAttribute="bottom" constant="50" id="fdz-IA-9R4"/>
@@ -183,7 +183,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HdG-TS-EcB"/>
-                        <color key="backgroundColor" name="clearBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="FWk-p3-bXA" firstAttribute="top" secondItem="HdG-TS-EcB" secondAttribute="top" constant="20" id="1aI-Oe-Lhr"/>
                             <constraint firstItem="FWk-p3-bXA" firstAttribute="leading" secondItem="wMY-qA-K3y" secondAttribute="leadingMargin" id="5bL-Ou-SrJ"/>
@@ -256,7 +256,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9A6-9i-RXh"/>
-                        <color key="backgroundColor" name="clearBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="Q5c-V0-3kw" firstAttribute="top" secondItem="9A6-9i-RXh" secondAttribute="top" constant="20" id="SnJ-Xv-aL5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Q5c-V0-3kw" secondAttribute="trailing" id="czf-GZ-uGh"/>
