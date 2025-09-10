@@ -38,12 +38,12 @@ class UserProfileViewController: UIViewController {
 extension UserProfileViewController {
     private func setupUI() {
         [userProfileNameEditTextField, userProfileEditNumberTextField, userProfileEditMailTextField].forEach {
-            $0?.setHorizontalPadding()
+            $0?.horizontalPadding()
             $0?.font = .textSize(ofSize: .regular)
         }
         
         [editProfileNameLabel, editProfileNumberLabel, editProfileMailLabel].forEach {
-            $0?.setHorizontalPadding()
+            $0?.horizontalPadding()
             $0?.font = .textSize(ofSize: .small)
         }
         

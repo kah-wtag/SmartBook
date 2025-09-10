@@ -24,7 +24,7 @@ final class UILabelPadding: UILabel {
 }
 
 extension UILabel {
-    func setHorizontalPadding(_ padding: CGFloat = 10) {
+    func horizontalPadding(_ padding: CGFloat = 10) {
         guard let text = self.text else { return }
 
         let paragraphStyle = NSMutableParagraphStyle()

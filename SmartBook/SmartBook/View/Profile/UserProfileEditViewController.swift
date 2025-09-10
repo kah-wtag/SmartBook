@@ -35,7 +35,7 @@ class UserProfileEditViewController: UIViewController {
 
     extension UserProfileEditViewController {
         private func setupUI() {
-            userProfileEditTextField.setHorizontalPadding()
+            userProfileEditTextField.horizontalPadding()
             userProfileEditDescriptionLable.font = .textSize(ofSize: .small, weight: .light)
             userProfileEditTextField.text = initialText
             userProfileEditTextFieldTitle.text = fieldTitle

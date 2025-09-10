@@ -9,14 +9,14 @@ import UIKit
 
 extension UIFont {
     enum TextSize: Int {
-        case large = 17, regular = 14, small = 12
+        case title = 27
+        case large = 17
+        case regular = 14
+        case small = 12
     }
     
-    static func textSize(ofSize size: TextSize, weight: UIFont.Weight = .regular, customFontName: String? = nil) -> UIFont {
-        if let customFont = UIFont(name: "Helvetica Neue", size: CGFloat(size.rawValue)) {
-            return customFont
-        }
-        return UIFont.systemFont(ofSize: CGFloat(size.rawValue), weight: weight)
+    static func textSize(ofSize size: TextSize, weight: UIFont.Weight = .regular, fontName: String? = "Helvetica Neue") -> UIFont {
+        UIFont.systemFont(ofSize: CGFloat(size.rawValue), weight: weight)
     }
 }
 

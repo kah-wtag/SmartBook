@@ -7,15 +7,13 @@
 
 import UIKit
 
-struct Routes {}
-
-extension Routes {
-    
+struct Routes {
     struct StoryboardName {
         static let main = "Main"
         static let authentication = "Authentication"
         static let userProfile = "User Profile"
         static let userProfileEdit = "User Profile Edit"
+        static let root = "Root"
     }
     
     struct Identifier {
@@ -24,6 +22,7 @@ extension Routes {
         static let signupVC = "SignupViewController"
         static let userProfileVC = "UserProfileViewController"
         static let userProfileEditVC = "UserProfileEditViewController"
+        static let rootVC = "RootViewController"
     }
 }
 
@@ -58,9 +57,13 @@ extension Routes {
 extension Routes {
     
     static func rootViewScreen(in nav: UINavigationController) {
-            let rootVC = RootViewController()
-            nav.setViewControllers([rootVC], animated: true)
-        }
+        guard let rootVC = instantiateVC(
+            from: StoryboardName.root,
+            identifier: Identifier.rootVC
+        ) as? RootViewController else { return }
+        
+        nav.setViewControllers([rootVC], animated: true)
+    }
     
     static func showLoginScreen(in nav: UINavigationController) {
             guard let loginVC = instantiateVC(

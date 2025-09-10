@@ -5,19 +5,20 @@
 //  Created by Md. Kamrul Hasan on 17/7/25.
 //
 
-protocol SignupDelegate: AnyObject {
+import UIKit
+
+protocol SignupViewControllerDelegate: AnyObject {
     func signupButtonTapped()
 }
 
-import UIKit
-
 class SignupViewController: UIViewController {
-    weak var delegate: SignupDelegate?
     
     @IBOutlet var emailSignupTextField: UITextField!
     @IBOutlet var passwordSignupTextField: UITextField!
     @IBOutlet var confirmPasswordSignupTextField: UITextField!
     @IBOutlet var signupButton: UIButton!
+    
+    weak var delegate: SignupViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

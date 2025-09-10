@@ -14,7 +14,7 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var containerView: UIView!
     
-    private enum SegmentedContainerOption: Int {
+    private enum SegmentedControlOption: Int {
         case login = 0
         case signup = 1
     }
@@ -27,44 +27,48 @@ class AuthenticationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        containerViewWillUpdate(.login)
+        segmentedControl.selectedSegmentIndex = SegmentedControlOption.login.rawValue
+        segmentSelectionDidChange(segmentedControl)
     }
     
+    @IBAction func segmentSelectionDidChange(_ sender: UISegmentedControl) {
+        guard let selectedSegment = SegmentedControlOption(rawValue: sender.selectedSegmentIndex) else { return }
+        containerViewWillUpdate(for: selectedSegment)
+    }
+}
+
+extension AuthenticationViewController {
     private func setupUI() {
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.primaryReverseText,
             .font: UIFont.textSize(ofSize: .small, weight: .black)
         ]
         segmentedControl.setTitleTextAttributes(attributes, for: .normal)
-        authenticationTitle.font = .textSize(ofSize: .large, weight: .bold)
+        authenticationTitle.font = .textSize(ofSize: .title, weight: .bold)
         otherSignInOptionLabel.font = .textSize(ofSize: .regular)
+        
         loginVC?.delegate = self
         signupVC?.delegate = self
     }
     
-    @IBAction func segmentSelectionDidChange(_ sender: UISegmentedControl) {
-        guard let selectedSegment = SegmentedContainerOption(rawValue: sender.selectedSegmentIndex) else { return }
-        containerViewWillUpdate(selectedSegment)
-    }
-    
-    private func containerViewWillUpdate(_ segment: SegmentedContainerOption) {
-        guard segment.rawValue != currentContainerViewIndex else { return }
+    private func containerViewWillUpdate(for selectedSegmentControl: SegmentedControlOption) {
+        guard selectedSegmentControl.rawValue != currentContainerViewIndex else { return }
         
         removeCurrentChildViewController()
         
-        let newChildVCForDisplay: UIViewController? = switch segment {
+        let childVCToDisplay: UIViewController? = switch selectedSegmentControl {
         case .login: loginVC
         case .signup: signupVC
         }
         
-        guard let vcToDisplay = newChildVCForDisplay else { return }
+        guard let vc = childVCToDisplay else { return }
         
-        addChild(vcToDisplay)
-        vcToDisplay.view.frame = containerView.bounds
-        containerView.addSubview(vcToDisplay.view)
-        vcToDisplay.didMove(toParent: self)
+        addChild(vc)
+        vc.view.frame = containerView.bounds
+        containerView.addSubview(vc.view)
+        vc.didMove(toParent: self)
         
-        currentContainerViewIndex = segment.rawValue
+        currentContainerViewIndex = selectedSegmentControl.rawValue
     }
     
     private func removeCurrentChildViewController() {
@@ -74,20 +78,18 @@ class AuthenticationViewController: UIViewController {
             child.removeFromParent()
         }
     }
-    
 }
 
-extension AuthenticationViewController: LoginDelegate {
+extension AuthenticationViewController: LoginViewControllerDelegate {
     func loginButtonTapped() {
         guard let nav = navigationController else { return }
         Routes.rootViewScreen(in: nav)
     }
 }
 
-
-extension AuthenticationViewController: SignupDelegate {
+extension AuthenticationViewController: SignupViewControllerDelegate {
     func signupButtonTapped() {
-        segmentedControl.selectedSegmentIndex = 0
-        containerViewWillUpdate(.login)
+        segmentedControl.selectedSegmentIndex = SegmentedControlOption.login.rawValue
+        segmentSelectionDidChange(segmentedControl)
     }
 }

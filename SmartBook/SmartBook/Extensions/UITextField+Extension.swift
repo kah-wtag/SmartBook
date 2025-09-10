@@ -12,7 +12,7 @@ extension UITextField {
         case left, right
     }
     
-    func addPadding(_ directions: [PaddingDirection], width: CGFloat = 20) {
+    func verticalPadding(_ directions: [PaddingDirection], width: CGFloat = 20) {
         for direction in directions {
             let paddingView: UIView
             switch direction {
@@ -28,13 +28,13 @@ extension UITextField {
         }
     }
     
-    func setHorizontalPadding(_ padding: CGFloat = 0) {
-        let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
-        let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
+    func horizontalPadding(_ padding: CGFloat = 0) {
+        let leadingPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
+        let trailingPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
         
-        leftView = leftPaddingView
+        leftView = leadingPaddingView
         leftViewMode = .always
-        rightView = rightPaddingView
+        rightView = trailingPaddingView
         rightViewMode = .always
     }
     
@@ -59,7 +59,6 @@ extension UITextField {
         thickness: CGFloat = 1.0
     ) {
         let underline = UIView()
-        underline.tag = 999
         underline.backgroundColor = color 
         underline.translatesAutoresizingMaskIntoConstraints = false
         addSubview(underline)
