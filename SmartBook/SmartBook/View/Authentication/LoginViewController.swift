@@ -42,8 +42,8 @@ class LoginViewController: UIViewController {
     private func setupTextColor() {
         emailLoginTextField.textColor = .primaryText
         passwordLoginTextField.textColor = .primaryText
-        loginButton.titleLabel?.textColor = .systemRed
-        forgetPasswordButton.titleLabel?.textColor = .systemBlue
+        loginButton.titleLabel?.textColor = .secondaryText
+        forgetPasswordButton.titleLabel?.textColor = .secondaryText
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {

@@ -42,7 +42,7 @@ class SignupViewController: UIViewController {
         emailSignupTextField.textColor = .primaryText
         passwordSignupTextField.textColor = .primaryText
         confirmPasswordSignupTextField.textColor = .primaryText
-        signupButton.titleLabel?.textColor = .systemRed
+        signupButton.titleLabel?.textColor = .secondaryText
     }
     
     @IBAction func signupTapped(_ sender: Any) {
