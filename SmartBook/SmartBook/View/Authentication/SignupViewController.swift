@@ -35,6 +35,14 @@ class SignupViewController: UIViewController {
         confirmPasswordSignupTextField.applyUnderline(rightPadding: 10)
         signupButton.applyButtonRoundBorder(borderColor: .textfield, borderWidth: 3, cornerRadius: 10)
         
+        setupTextColor()
+    }
+    
+    private func setupTextColor() {
+        emailSignupTextField.textColor = .primaryText
+        passwordSignupTextField.textColor = .primaryText
+        confirmPasswordSignupTextField.textColor = .primaryText
+        signupButton.titleLabel?.textColor = .systemRed
     }
     
     @IBAction func signupTapped(_ sender: Any) {

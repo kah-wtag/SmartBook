@@ -49,6 +49,13 @@ extension AuthenticationViewController {
         
         loginVC?.delegate = self
         signupVC?.delegate = self
+        
+        setupTextColor()
+    }
+    
+    private func setupTextColor() {
+        authenticationTitle.textColor = .primaryText
+        otherSignInOptionLabel.textColor = .primaryText
     }
     
     private func containerViewWillUpdate(for selectedSegmentControl: SegmentedControlOption) {

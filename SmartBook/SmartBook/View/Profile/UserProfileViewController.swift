@@ -56,6 +56,19 @@ extension UserProfileViewController {
         editProfileImageButton.setFontSize(.small, weight: .bold)
         userProfileImageView.makeCircular()
         editBackgroundView.alpha = 0.7
+        
+        setupTextColors()
+    }
+    
+    private func setupTextColors() {
+        userProfileNameEditTextField.textColor = .primaryText
+        userProfileEditNumberTextField.textColor = .primaryText
+        userProfileEditMailTextField.textColor = .primaryText
+        editProfileNameLabel.textColor = .primaryText
+        editProfileNumberLabel.textColor = .primaryText
+        editProfileMailLabel.textColor = .primaryText
+        editProfileImageButton.titleLabel?.textColor = .secondaryText
+        editBackgroundView.backgroundColor = .background
     }
     
     private func setupEditMappings() {

@@ -59,13 +59,8 @@ final class RootViewController: UITabBarController {
     private func configureNavBar() {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.backgroundColor = .clearBackground
+        navBarAppearance.backgroundColor = .secondaryBackground
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.secondaryText]
-        let borderColor = UIColor.lightGray
-        let borderImage = UIImage(color: borderColor, size: CGSize(width: 1, height: 1))
-        navBarAppearance.shadowImage = borderImage
-        navBarAppearance.shadowColor = borderColor
-        
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().tintColor = .secondaryText

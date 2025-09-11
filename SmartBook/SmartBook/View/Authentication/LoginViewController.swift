@@ -35,6 +35,15 @@ class LoginViewController: UIViewController {
         passwordLoginTextField.applyUnderline(leftPadding: 10, rightPadding: 10)
         passwordLoginTextField.verticalPadding([.left, .right], width: 8)
         loginButton.applyButtonRoundBorder(borderColor: .textfield, borderWidth: 3, cornerRadius: 10)
+        
+        setupTextColor()
+    }
+    
+    private func setupTextColor() {
+        emailLoginTextField.textColor = .primaryText
+        passwordLoginTextField.textColor = .primaryText
+        loginButton.titleLabel?.textColor = .systemRed
+        forgetPasswordButton.titleLabel?.textColor = .systemBlue
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {

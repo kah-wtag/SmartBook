@@ -55,6 +55,14 @@ extension UserProfileEditViewController {
         userProfileEditSaveButton.isEnabled = false
         textFieldCharacterCount.font = .textSize(ofSize: .regular)
     }
+    
+    private func setupTextColor() {
+        userProfileEditTextField.textColor = .primaryText
+        textFieldCharacterCount.textColor = .secondaryText
+        userProfileEditDescriptionLable.textColor = .primaryText
+        userProfileEditSaveButton.titleLabel?.textColor = .secondaryText
+        userProfileEditCancelButton.titleLabel?.textColor = .secondaryText
+    }
 }
 
 extension UserProfileEditViewController {
@@ -106,18 +114,18 @@ extension UserProfileEditViewController {
         if trimmed.isEmpty {
             textFieldCharacterLimitWarning.isHidden = false
             textFieldCharacterLimitWarning.image = UIImage(systemName: "exclamationmark.triangle.fill")
-            textFieldCharacterLimitWarning.tintColor = .systemRed
-            textFieldCharacterCount.textColor = .systemRed
+            textFieldCharacterLimitWarning.tintColor = .warning
+            textFieldCharacterCount.textColor = .warning
         } else {
             textFieldCharacterLimitWarning.isHidden = false
             if isValid {
                 textFieldCharacterLimitWarning.image = UIImage(systemName: "checkmark.circle.fill")
-                textFieldCharacterLimitWarning.tintColor = .systemMint
-                textFieldCharacterCount.textColor = .systemMint
+                textFieldCharacterLimitWarning.tintColor = .reverseWarning
+                textFieldCharacterCount.textColor = .reverseWarning
             } else {
                 textFieldCharacterLimitWarning.image = UIImage(systemName: "exclamationmark.triangle.fill")
-                textFieldCharacterLimitWarning.tintColor = .systemRed
-                textFieldCharacterCount.textColor = .systemRed
+                textFieldCharacterLimitWarning.tintColor = .warning
+                textFieldCharacterCount.textColor = .warning
             }
         }
     }
