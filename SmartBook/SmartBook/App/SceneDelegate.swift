@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
 
         let authVC = Routes.instantiateVC(
-            from: Routes.StoryboardName.main,
+            from: Routes.StoryboardName.authentication,
             identifier: Routes.Identifier.authenticationVC
         ) ?? UIViewController()
         nav.setViewControllers([authVC], animated: false)

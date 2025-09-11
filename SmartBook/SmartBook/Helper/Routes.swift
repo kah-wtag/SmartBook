@@ -9,7 +9,7 @@ import UIKit
 
 struct Routes {
     struct StoryboardName {
-        static let main = "Main"
+        static let authentication = "Authentication"
         static let userProfile = "User Profile"
         static let root = "Dashboard"
     }
@@ -36,11 +36,11 @@ extension Routes {
 
 extension Routes {
     static var loginVC: LoginViewController? {
-        instantiateVC(from: StoryboardName.main, identifier: Identifier.loginVC)
+        instantiateVC(from: StoryboardName.authentication, identifier: Identifier.loginVC)
     }
     
     static var signupVC: SignupViewController? {
-        instantiateVC(from: StoryboardName.main, identifier: Identifier.signupVC)
+        instantiateVC(from: StoryboardName.authentication, identifier: Identifier.signupVC)
     }
     
     static var userProfileVC: UserProfileViewController? {
@@ -65,7 +65,7 @@ extension Routes {
     
     static func showLoginScreen(in nav: UINavigationController) {
         guard let loginVC = instantiateVC(
-            from: StoryboardName.main,
+            from: StoryboardName.authentication,
             identifier: Identifier.authenticationVC
         ) else { return }
         
