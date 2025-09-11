@@ -10,6 +10,40 @@ final class RootViewController: UITabBarController {
     
     @IBOutlet weak var mainTabBar: UITabBar!
     
+    private enum Tab: Int, CaseIterable {
+        case serviceList, calendar, activity, search, profile
+        
+        var title: String {
+            switch self {
+            case .serviceList: "Service List"
+            case .calendar: "Calendar"
+            case .activity: "Activity"
+            case .search: "Search"
+            case .profile: "Profile"
+            }
+        }
+        
+        var viewController: UIViewController {
+            switch self {
+            case .serviceList: ServiceListViewController()
+            case .calendar: CalendarViewController()
+            case .activity: ActivityViewController()
+            case .search: SearchViewController()
+            case .profile: Routes.userProfileVC ?? UIViewController()
+            }
+        }
+        
+        var iconName: String {
+            switch self {
+            case .serviceList: "house"
+            case .calendar: "calendar"
+            case .activity: "calendar.circle.fill"
+            case .search: "magnifyingglass"
+            case .profile: "person.crop.circle"
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAppearance()
@@ -45,28 +79,26 @@ final class RootViewController: UITabBarController {
     }
     
     private func setupTabs() {
-        let items: [(UIViewController, String, String)] = [
-            (ServiceListViewController(), "Home", "house"),
-            (CalendarViewController(), "Calendar", "calendar"),
-            (ActivityViewController(), "Activity", "calendar.circle.fill"),
-            (SearchViewController(), "Search", "magnifyingglass"),
-            (Routes.userProfileVC ?? UIViewController(), "Profile", "person.crop.circle")
-        ]
-        
-        viewControllers = items.map { vc, title, icon in
-            vc.tabBarItem = UITabBarItem(title: title,
-                                         image: UIImage(systemName: icon),
-                                         tag: 0)
+        let vcs = Tab.allCases.map { tab -> UIViewController in
+            let vc = tab.viewController
+            vc.tabBarItem = UITabBarItem(title: tab.title,
+                                         image: UIImage(systemName: tab.iconName),
+                                         tag: tab.rawValue)
             return vc
         }
+        viewControllers = vcs
     }
     
     private func updateNavigation(for index: Int) {
-        guard let currentVC = selectedViewController else { return }
-        navigationItem.title = currentVC.tabBarItem.title
-        if selectedIndex == 4 {
+        guard let tab = Tab(rawValue: index),
+              let currentVC = viewControllers?[index] else { return }
+        
+        navigationItem.title = tab.title
+        
+        switch tab {
+        case .profile:
             addSignOutButton()
-        } else {
+        default:
             addNotificationButton()
         }
     }
@@ -101,7 +133,7 @@ final class RootViewController: UITabBarController {
 
 extension RootViewController {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        updateNavigation(for: selectedIndex)
+        updateNavigation(for: item.tag)
     }
 }
 extension UIImage {
