@@ -90,6 +90,6 @@ extension AuthenticationViewController: LoginViewControllerDelegate {
 extension AuthenticationViewController: SignupViewControllerDelegate {
     func signupButtonTapped() {
         segmentedControl.selectedSegmentIndex = SegmentedControlOption.login.rawValue
-        segmentSelectionDidChange(segmentedControl)
+        segmentedControl.sendActions(for: .valueChanged)
     }
 }
