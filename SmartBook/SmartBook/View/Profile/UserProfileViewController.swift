@@ -30,8 +30,6 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupEditMappings()
-        setupGestures()
     }
 }
 
@@ -58,6 +56,8 @@ extension UserProfileViewController {
         editBackgroundView.alpha = 0.7
         
         setupTextColors()
+        setupEditMappings()
+        setupGestures()
     }
     
     private func setupTextColors() {
