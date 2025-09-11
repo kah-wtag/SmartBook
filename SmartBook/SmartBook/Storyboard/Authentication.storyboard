@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3da-HW-j5p">
-                                <rect key="frame" x="66" y="288" width="261" height="46"/>
+                                <rect key="frame" x="66" y="278" width="261" height="46"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="ztR-UM-NTP"/>
@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF0-8s-t8V">
-                                <rect key="frame" x="16" y="383" width="361" height="207"/>
+                                <rect key="frame" x="16" y="353" width="361" height="237"/>
                                 <color key="backgroundColor" name="clearBackgroundColor"/>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FxV-k4-xUc">
@@ -100,10 +100,10 @@
                             <constraint firstItem="FxV-k4-xUc" firstAttribute="leading" secondItem="tFB-Qp-eQf" secondAttribute="leading" id="D7A-pk-Ew3"/>
                             <constraint firstItem="tFB-Qp-eQf" firstAttribute="trailing" secondItem="nna-qE-MiY" secondAttribute="trailing" constant="25" id="DJF-HT-80E"/>
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="trailing" secondItem="Bvf-Vb-7Rq" secondAttribute="trailingMargin" id="UEV-J8-Q6o"/>
-                            <constraint firstItem="3da-HW-j5p" firstAttribute="top" secondItem="nna-qE-MiY" secondAttribute="bottom" constant="50" id="V9f-av-XQx"/>
+                            <constraint firstItem="3da-HW-j5p" firstAttribute="top" secondItem="nna-qE-MiY" secondAttribute="bottom" constant="40" id="V9f-av-XQx"/>
                             <constraint firstItem="nna-qE-MiY" firstAttribute="leading" secondItem="tFB-Qp-eQf" secondAttribute="leading" constant="25" id="XO4-XI-dqI"/>
                             <constraint firstItem="nna-qE-MiY" firstAttribute="top" secondItem="tFB-Qp-eQf" secondAttribute="top" constant="40" id="bkK-ON-Ove"/>
-                            <constraint firstItem="rF0-8s-t8V" firstAttribute="top" secondItem="3da-HW-j5p" secondAttribute="bottom" constant="50" id="fdz-IA-9R4"/>
+                            <constraint firstItem="rF0-8s-t8V" firstAttribute="top" secondItem="3da-HW-j5p" secondAttribute="bottom" constant="30" id="fdz-IA-9R4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3da-HW-j5p" secondAttribute="trailing" constant="50" id="i7Y-wu-mfU"/>
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="leading" secondItem="Bvf-Vb-7Rq" secondAttribute="leadingMargin" id="pbS-6B-mLo"/>
                             <constraint firstItem="FxV-k4-xUc" firstAttribute="top" secondItem="rF0-8s-t8V" secondAttribute="bottom" constant="80" id="xfA-Rf-5eq"/>
@@ -160,7 +160,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dky-qb-WwZ">
-                                <rect key="frame" x="100" y="327" width="193" height="50"/>
+                                <rect key="frame" x="100" y="318" width="193" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="tay-2J-Awa"/>
                                 </constraints>
@@ -194,7 +194,7 @@
                             <constraint firstItem="HdG-TS-EcB" firstAttribute="trailing" secondItem="GIh-2B-hI3" secondAttribute="trailing" constant="20" id="VBS-K0-ywp"/>
                             <constraint firstItem="dky-qb-WwZ" firstAttribute="leading" secondItem="HdG-TS-EcB" secondAttribute="leading" constant="100" id="XX3-nF-x1q"/>
                             <constraint firstItem="HdG-TS-EcB" firstAttribute="trailing" secondItem="dky-qb-WwZ" secondAttribute="trailing" constant="100" id="b1N-Ma-7e6"/>
-                            <constraint firstItem="dky-qb-WwZ" firstAttribute="top" secondItem="FWk-p3-bXA" secondAttribute="bottom" constant="69" id="eyd-hO-RIi"/>
+                            <constraint firstItem="dky-qb-WwZ" firstAttribute="top" secondItem="FWk-p3-bXA" secondAttribute="bottom" constant="60" id="eyd-hO-RIi"/>
                             <constraint firstItem="GIh-2B-hI3" firstAttribute="top" secondItem="FWk-p3-bXA" secondAttribute="bottom" constant="8" id="jA0-Ak-cco"/>
                         </constraints>
                     </view>
@@ -250,7 +250,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fes-aZ-qFi">
-                                <rect key="frame" x="100" y="359" width="193" height="50"/>
+                                <rect key="frame" x="100" y="348" width="193" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Pax-xI-SKj"/>
                                 </constraints>
@@ -269,7 +269,7 @@
                         <constraints>
                             <constraint firstItem="Q5c-V0-3kw" firstAttribute="top" secondItem="9A6-9i-RXh" secondAttribute="top" constant="20" id="SnJ-Xv-aL5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Q5c-V0-3kw" secondAttribute="trailing" id="czf-GZ-uGh"/>
-                            <constraint firstItem="fes-aZ-qFi" firstAttribute="top" secondItem="Q5c-V0-3kw" secondAttribute="bottom" constant="31" id="fmQ-30-5sM"/>
+                            <constraint firstItem="fes-aZ-qFi" firstAttribute="top" secondItem="Q5c-V0-3kw" secondAttribute="bottom" constant="20" id="fmQ-30-5sM"/>
                             <constraint firstItem="fes-aZ-qFi" firstAttribute="leading" secondItem="9A6-9i-RXh" secondAttribute="leading" constant="100" id="lkZ-oo-jko"/>
                             <constraint firstItem="Q5c-V0-3kw" firstAttribute="leading" secondItem="v6c-KO-mP3" secondAttribute="leadingMargin" id="mAg-jQ-YYn"/>
                             <constraint firstItem="9A6-9i-RXh" firstAttribute="trailing" secondItem="fes-aZ-qFi" secondAttribute="trailing" constant="100" id="qCb-aB-YwQ"/>
