@@ -331,14 +331,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FmX-IY-02X">
-                                <rect key="frame" x="343" y="229" width="25" height="25"/>
-                                <color key="backgroundColor" name="textfieldColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Fr0-cp-SR6"/>
-                                    <constraint firstAttribute="width" constant="25" id="SwZ-eP-o2M"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOO-XH-oiO">
                                 <rect key="frame" x="295" y="214.33333333333334" width="50" height="50.000000000000028"/>
                                 <color key="backgroundColor" name="textfieldColor"/>
@@ -349,12 +341,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FmX-IY-02X">
+                                <rect key="frame" x="343" y="227" width="25" height="25"/>
+                                <color key="backgroundColor" name="textfieldColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Fr0-cp-SR6"/>
+                                    <constraint firstAttribute="width" constant="25" id="SwZ-eP-o2M"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lq1-5v-Pbz"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="FmX-IY-02X" firstAttribute="leading" secondItem="mOO-XH-oiO" secondAttribute="trailing" constant="-2" id="3d8-D8-hor"/>
-                            <constraint firstItem="FmX-IY-02X" firstAttribute="top" secondItem="lq1-5v-Pbz" secondAttribute="top" constant="111" id="3hB-8J-hUB"/>
+                            <constraint firstItem="FmX-IY-02X" firstAttribute="top" secondItem="lq1-5v-Pbz" secondAttribute="top" constant="109" id="3hB-8J-hUB"/>
                             <constraint firstItem="mOO-XH-oiO" firstAttribute="top" secondItem="xqR-p6-KqT" secondAttribute="bottom" constant="40" id="72B-Y1-Axf"/>
                             <constraint firstItem="xqR-p6-KqT" firstAttribute="leading" secondItem="lq1-5v-Pbz" secondAttribute="leading" id="9om-wf-gtU"/>
                             <constraint firstItem="ugD-LG-9Ed" firstAttribute="leading" secondItem="lq1-5v-Pbz" secondAttribute="leading" constant="20" id="ERM-sy-4D2"/>
