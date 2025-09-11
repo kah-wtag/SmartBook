@@ -69,7 +69,7 @@ final class RootViewController: UITabBarController {
     private func configureTabBar() {
         mainTabBar.tintColor = .secondaryText
         mainTabBar.unselectedItemTintColor = .primaryText
-        mainTabBar.backgroundColor = .reverseSecondaryText
+        mainTabBar.backgroundColor = .tabBarBackground
         setupTabs()
     }
     
@@ -86,7 +86,7 @@ final class RootViewController: UITabBarController {
     
     private func updateNavigation(for index: Int) {
         guard let tab = Tab(rawValue: index),
-              let currentVC = viewControllers?[index] else { return }
+              let _ = viewControllers?[index] else { return }
         
         navigationItem.title = tab.title
         

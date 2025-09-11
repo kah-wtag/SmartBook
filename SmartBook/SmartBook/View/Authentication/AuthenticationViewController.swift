@@ -54,7 +54,7 @@ extension AuthenticationViewController {
     }
     
     private func setupTextColor() {
-        authenticationTitle.textColor = .primaryText
+        authenticationTitle.textColor = .secondaryText
         otherSignInOptionLabel.textColor = .primaryText
     }
     

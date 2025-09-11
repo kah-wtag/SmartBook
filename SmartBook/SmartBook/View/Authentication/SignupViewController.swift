@@ -28,11 +28,11 @@ class SignupViewController: UIViewController {
     private func setupUI() {
         signupButton.setFontSize(.regular, weight: .bold)
         emailSignupTextField.setStyledPlaceholder("Email")
-        emailSignupTextField.applyUnderline(rightPadding: 10)
+        emailSignupTextField.textFieldStyle()
         passwordSignupTextField.setStyledPlaceholder("Password")
-        passwordSignupTextField.applyUnderline(rightPadding: 10)
+        passwordSignupTextField.textFieldStyle()
         confirmPasswordSignupTextField.setStyledPlaceholder("Confirm Password")
-        confirmPasswordSignupTextField.applyUnderline(rightPadding: 10)
+        confirmPasswordSignupTextField.textFieldStyle()
         signupButton.applyButtonRoundBorder(borderColor: .textfield, borderWidth: 3, cornerRadius: 10)
         
         setupTextColor()
@@ -40,8 +40,11 @@ class SignupViewController: UIViewController {
     
     private func setupTextColor() {
         emailSignupTextField.textColor = .primaryText
+        emailSignupTextField.backgroundColor = .textfield
         passwordSignupTextField.textColor = .primaryText
+        passwordSignupTextField.backgroundColor = .textfield
         confirmPasswordSignupTextField.textColor = .primaryText
+        confirmPasswordSignupTextField.backgroundColor = .textfield
         signupButton.titleLabel?.textColor = .secondaryText
     }
     

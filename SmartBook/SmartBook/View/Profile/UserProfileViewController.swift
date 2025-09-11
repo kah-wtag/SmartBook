@@ -62,8 +62,11 @@ extension UserProfileViewController {
     
     private func setupTextColors() {
         userProfileNameEditTextField.textColor = .primaryText
+        userProfileNameEditTextField.backgroundColor = .textfield
         userProfileEditNumberTextField.textColor = .primaryText
+        userProfileEditNumberTextField.backgroundColor = .textfield
         userProfileEditMailTextField.textColor = .primaryText
+        userProfileEditMailTextField.backgroundColor = .textfield
         editProfileNameLabel.textColor = .primaryText
         editProfileNumberLabel.textColor = .primaryText
         editProfileMailLabel.textColor = .primaryText

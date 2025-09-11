@@ -51,26 +51,36 @@ extension UITextField {
             ]
         )
     }
-
-    func applyUnderline(
-        leftPadding: CGFloat = 0,
-        rightPadding: CGFloat = 0,
-        color: UIColor = .placeholder,
-        thickness: CGFloat = 1.0
-    ) {
-        let underline = UIView()
-        underline.backgroundColor = color 
-        underline.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(underline)
+    
+    func applyStyle(fontSize: UIFont.TextSize = .regular,
+                    textColor: UIColor = .primaryText,
+                    backgroundColor: UIColor = .textfield,
+                    cornerRadius: CGFloat = 10,
+                    borderColor: UIColor = .clear,
+                    borderWidth: CGFloat = 0,
+                    horizontalPadding: CGFloat = 10) {
         
-        NSLayoutConstraint.activate([
-            underline.heightAnchor.constraint(equalToConstant: thickness),
-            underline.leftAnchor.constraint(equalTo: leftAnchor, constant: leftPadding),
-            underline.rightAnchor.constraint(equalTo: rightAnchor, constant: -rightPadding),
-            underline.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        font = .textSize(ofSize: fontSize)
+        self.textColor = textColor
+        self.backgroundColor = backgroundColor
+        layer.cornerRadius = cornerRadius
+        layer.borderColor = borderColor.cgColor
+        layer.borderWidth = borderWidth
+        layer.masksToBounds = true
+        self.horizontalPadding(horizontalPadding)
     }
-
+    
+    func textFieldStyle() {
+        applyStyle(
+            fontSize: .regular,
+            textColor: .primaryText,
+            backgroundColor: .secondaryBackground,
+            cornerRadius: 10,
+            borderColor: .textfield,
+            borderWidth: 1,
+            horizontalPadding: 12
+        )
+    }
 }
 
 

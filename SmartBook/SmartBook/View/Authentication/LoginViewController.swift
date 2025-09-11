@@ -29,10 +29,10 @@ class LoginViewController: UIViewController {
         loginButton.setFontSize(.regular, weight: .bold)
         forgetPasswordButton.setFontSize(.small)
         emailLoginTextField.setStyledPlaceholder("Email")
-        emailLoginTextField.applyUnderline(leftPadding: 10, rightPadding: 10)
+        emailLoginTextField.textFieldStyle()
         emailLoginTextField.verticalPadding([.left, .right], width: 8)
         passwordLoginTextField.setStyledPlaceholder("Password")
-        passwordLoginTextField.applyUnderline(leftPadding: 10, rightPadding: 10)
+        passwordLoginTextField.textFieldStyle()
         passwordLoginTextField.verticalPadding([.left, .right], width: 8)
         loginButton.applyButtonRoundBorder(borderColor: .textfield, borderWidth: 3, cornerRadius: 10)
         
@@ -41,7 +41,9 @@ class LoginViewController: UIViewController {
     
     private func setupTextColor() {
         emailLoginTextField.textColor = .primaryText
+        emailLoginTextField.backgroundColor = .textfield
         passwordLoginTextField.textColor = .primaryText
+        passwordLoginTextField.backgroundColor = .textfield
         loginButton.titleLabel?.textColor = .secondaryText
         forgetPasswordButton.titleLabel?.textColor = .secondaryText
     }

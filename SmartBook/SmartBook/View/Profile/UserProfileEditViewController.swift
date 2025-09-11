@@ -44,21 +44,23 @@ extension UserProfileEditViewController {
         userProfileEditDescriptionLable.font = .textSize(ofSize: .small, weight: .light)
         userProfileEditTextField.text = initialText
         userProfileEditTextFieldTitle.text = fieldTitle
-        
         userProfileEditTextField.font = .textSize(ofSize: .regular)
         userProfileEditSaveButton.titleLabel?.font = .textSize(ofSize: .regular)
         userProfileEditCancelButton.titleLabel?.font = .textSize(ofSize: .regular)
         userProfileEditTextFieldTitle.font = .textSize(ofSize: .large)
         textFieldCharacterCount.font = .textSize(ofSize: .regular)
-        
         textFieldCharacterLimitWarning.isHidden = true
         userProfileEditSaveButton.isEnabled = false
         textFieldCharacterCount.font = .textSize(ofSize: .regular)
+        
+        setupTextColor()
     }
     
     private func setupTextColor() {
         userProfileEditTextField.textColor = .primaryText
+        userProfileEditTextField.backgroundColor = .textfield
         textFieldCharacterCount.textColor = .secondaryText
+        textFieldCharacterCount.backgroundColor = .textfield
         userProfileEditDescriptionLable.textColor = .primaryText
         userProfileEditSaveButton.titleLabel?.textColor = .secondaryText
         userProfileEditCancelButton.titleLabel?.textColor = .secondaryText
