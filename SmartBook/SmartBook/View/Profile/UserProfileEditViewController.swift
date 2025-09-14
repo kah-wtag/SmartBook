@@ -90,7 +90,13 @@ extension UserProfileEditViewController {
 extension UserProfileEditViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textFieldCharacterLimitWarning.isHidden = false
+        
+        if let stackView = textFieldCharacterCount.superview as? UIStackView {
+            stackView.removeArrangedSubview(textFieldCharacterCount)
+            stackView.insertArrangedSubview(textFieldCharacterCount, at: 0)
+        }
     }
+
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let currentText = textField.text as NSString? else { return true }
@@ -135,7 +141,7 @@ extension UserProfileEditViewController {
     
     private func isValidEmail(_ email: String) -> Bool {
         guard !email.contains(" ") else { return false }
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3,4}"
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,5}"
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
 }
