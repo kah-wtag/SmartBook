@@ -50,12 +50,9 @@ extension UserProfileViewController {
             $0?.layer.masksToBounds = true
             $0?.backgroundColor = .textfield
         }
-        
         editProfileImageButton.setFontSize(.small, weight: .bold, dynamic: true)
-        
         userProfileImageView.makeCircular()
         editBackgroundView.alpha = 0.7
-        
         setupTextColors()
         setupEditMappings()
         setupGestures()
@@ -110,8 +107,7 @@ extension UserProfileViewController {
     }
     
     @objc private func signOutTapped() {
-        guard let nav = navigationController else { return }
-        Routes.showLoginScreen(in: nav)
+        Routes.showLoginScreen()
     }
 }
 

@@ -83,8 +83,7 @@ extension AuthenticationViewController {
 
 extension AuthenticationViewController: LoginViewControllerDelegate {
     func loginButtonTapped() {
-        guard let nav = navigationController else { return }
-        Routes.rootViewScreen(in: nav)
+        Routes.rootViewScreen()
     }
 }
 

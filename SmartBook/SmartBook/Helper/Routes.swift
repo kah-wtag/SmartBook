@@ -53,22 +53,49 @@ extension Routes {
 }
 
 extension Routes {
-    
-    static func rootViewScreen(in nav: UINavigationController) {
-        guard let rootVC = instantiateVC(
+
+    static func rootViewScreen() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else { return }
+
+        let rootVC = instantiateVC(
             from: StoryboardName.root,
             identifier: Identifier.rootVC
-        ) as? RootViewController else { return }
-        
-        nav.setViewControllers([rootVC], animated: true)
+        ) as? RootViewController ?? RootViewController()
+
+        let nav = UINavigationController(rootViewController: rootVC)
+        setupNavBar(for: nav)
+        window.rootViewController = nav
+        window.makeKeyAndVisible()
     }
-    
-    static func showLoginScreen(in nav: UINavigationController) {
+
+    static func setupNavBar(for nav: UINavigationController) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .secondaryBackground
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.secondaryText]
+        appearance.shadowColor = UIColor.primaryText
+
+        nav.navigationBar.standardAppearance = appearance
+        nav.navigationBar.scrollEdgeAppearance = appearance
+        nav.navigationBar.compactAppearance = appearance
+        nav.navigationBar.tintColor = .secondaryText
+        nav.setNavigationBarHidden(false, animated: false)
+    }
+
+    static func showLoginScreen() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else { return }
+        
         guard let loginVC = instantiateVC(
             from: StoryboardName.authentication,
             identifier: Identifier.authenticationVC
         ) else { return }
-        
-        nav.setViewControllers([loginVC], animated: true)
+
+        let nav = UINavigationController(rootViewController: loginVC)
+        nav.setNavigationBarHidden(true, animated: false) 
+        window.rootViewController = nav
+        window.makeKeyAndVisible()
     }
+
 }

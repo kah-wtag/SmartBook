@@ -46,24 +46,9 @@ final class RootViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAppearance()
+        configureTabBar()
         mainTabBar.delegate = self
         updateNavigation(for: selectedIndex)
-    }
-    
-    private func setupAppearance() {
-        configureNavBar()
-        configureTabBar()
-    }
-    
-    private func configureNavBar() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.backgroundColor = .secondaryBackground
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.secondaryText]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().tintColor = .secondaryText
     }
     
     private func configureTabBar() {
@@ -121,8 +106,7 @@ final class RootViewController: UITabBarController {
     }
     
     @objc private func signOutTapped() {
-        guard let nav = navigationController else { return }
-        Routes.showLoginScreen(in: nav)
+        Routes.showLoginScreen()
     }
 }
 

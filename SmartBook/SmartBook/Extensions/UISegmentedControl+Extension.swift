@@ -9,9 +9,9 @@ import UIKit
 
 extension UISegmentedControl {
     func setFontSize(_ size: UIFont.TextSize,
-                     weight: UIFont.Weight = .regular,
+                     weight: UIFont.Weight = .bold,
                      dynamic: Bool = true,
-                     color: UIColor = .label) {
+                     color: UIColor = .primaryReverseText) {
         
         let font = UIFont.of(size: size, weight: weight, dynamic: dynamic)
         let attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
