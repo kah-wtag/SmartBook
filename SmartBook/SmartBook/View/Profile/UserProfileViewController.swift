@@ -83,7 +83,7 @@ extension UserProfileViewController {
     
     private func setupGestures() {
         editMappings.forEach { mapping in
-            let tap = UITapGestureRecognizer(target: self, action: #selector(handleEditTap(_:)))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(avatarEditDidTap(_:)))
             mapping.stack.addGestureRecognizer(tap)
             mapping.stack.isUserInteractionEnabled = true
         }
@@ -91,7 +91,7 @@ extension UserProfileViewController {
 }
 
 extension UserProfileViewController {
-    @objc private func handleEditTap(_ sender: UITapGestureRecognizer) {
+    @objc private func avatarEditDidTap(_ sender: UITapGestureRecognizer) {
         guard let stack = sender.view as? UIStackView,
               let mapping = editMappings.first(where: { $0.stack == stack }) else { return }
         
