@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rF0-8s-t8V">
-                                <rect key="frame" x="16" y="353" width="361" height="237"/>
+                                <rect key="frame" x="16" y="353" width="361" height="257"/>
                                 <color key="backgroundColor" name="clearBackgroundColor"/>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FxV-k4-xUc">
@@ -106,7 +106,7 @@
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="top" secondItem="3da-HW-j5p" secondAttribute="bottom" constant="30" id="fdz-IA-9R4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3da-HW-j5p" secondAttribute="trailing" constant="50" id="i7Y-wu-mfU"/>
                             <constraint firstItem="rF0-8s-t8V" firstAttribute="leading" secondItem="Bvf-Vb-7Rq" secondAttribute="leadingMargin" id="pbS-6B-mLo"/>
-                            <constraint firstItem="FxV-k4-xUc" firstAttribute="top" secondItem="rF0-8s-t8V" secondAttribute="bottom" constant="80" id="xfA-Rf-5eq"/>
+                            <constraint firstItem="FxV-k4-xUc" firstAttribute="top" secondItem="rF0-8s-t8V" secondAttribute="bottom" constant="60" id="xfA-Rf-5eq"/>
                         </constraints>
                     </view>
                     <connections>
