@@ -83,7 +83,7 @@ extension AuthenticationViewController {
 
 extension AuthenticationViewController: LoginViewControllerDelegate {
     func loginButtonTapped() {
-        Routes.rootViewScreen()
+        Routes.displayRootScreen()
     }
 }
 

@@ -107,7 +107,7 @@ extension UserProfileViewController {
     }
     
     @objc private func signOutTapped() {
-        Routes.showLoginScreen()
+        Routes.displayRootScreen()
     }
 }
 

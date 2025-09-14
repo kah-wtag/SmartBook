@@ -25,16 +25,17 @@ struct Routes {
 }
 
 extension Routes {
-    static func instantiateVC<T: UIViewController>(
-        from storyboard: String,
-        identifier: String
-    ) -> T? {
+    static func instantiateVC<T: UIViewController>(from storyboard: String, identifier: String) -> T? {
         UIStoryboard(name: storyboard, bundle: nil)
             .instantiateViewController(withIdentifier: identifier) as? T
     }
 }
 
 extension Routes {
+    static var rootVC: RootViewController? {
+        instantiateVC(from: StoryboardName.root, identifier: Identifier.rootVC)
+    }
+    
     static var loginVC: LoginViewController? {
         instantiateVC(from: StoryboardName.authentication, identifier: Identifier.loginVC)
     }
@@ -42,6 +43,11 @@ extension Routes {
     static var signupVC: SignupViewController? {
         instantiateVC(from: StoryboardName.authentication, identifier: Identifier.signupVC)
     }
+    
+    static var authenticationVC: AuthenticationViewController? {
+        instantiateVC(from: StoryboardName.authentication, identifier: Identifier.authenticationVC)
+    }
+    
     
     static var userProfileVC: UserProfileViewController? {
         instantiateVC(from: StoryboardName.userProfile, identifier: Identifier.userProfileVC)
@@ -53,49 +59,42 @@ extension Routes {
 }
 
 extension Routes {
-
-    static func rootViewScreen() {
+    static func displayRootScreen() {
+        guard let rootVC = rootVC else { return }
+        displayScreen(rootVC)
+    }
+    
+    static func displayLoginScreen() {
+        guard let loginVC = authenticationVC else { return }
+        displayScreen(loginVC, hideNavigationBar: true)
+    }
+    
+    static func displayScreen(_ viewController: UIViewController, hideNavigationBar: Bool = false) {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first else { return }
-
-        let rootVC = instantiateVC(
-            from: StoryboardName.root,
-            identifier: Identifier.rootVC
-        ) as? RootViewController ?? RootViewController()
-
-        let nav = UINavigationController(rootViewController: rootVC)
-        setupNavBar(for: nav)
-        window.rootViewController = nav
+        
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.setNavigationBarHidden(hideNavigationBar, animated: false)
+        
+        if !hideNavigationBar {
+            setupNavBar(for: navController)
+        }
+        
+        window.rootViewController = navController
         window.makeKeyAndVisible()
     }
-
+    
     static func setupNavBar(for nav: UINavigationController) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .secondaryBackground
         appearance.titleTextAttributes = [.foregroundColor: UIColor.secondaryText]
         appearance.shadowColor = UIColor.primaryText
-
+        
         nav.navigationBar.standardAppearance = appearance
         nav.navigationBar.scrollEdgeAppearance = appearance
         nav.navigationBar.compactAppearance = appearance
         nav.navigationBar.tintColor = .secondaryText
-        nav.setNavigationBarHidden(false, animated: false)
     }
-
-    static func showLoginScreen() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first else { return }
-        
-        guard let loginVC = instantiateVC(
-            from: StoryboardName.authentication,
-            identifier: Identifier.authenticationVC
-        ) else { return }
-
-        let nav = UINavigationController(rootViewController: loginVC)
-        nav.setNavigationBarHidden(true, animated: false) 
-        window.rootViewController = nav
-        window.makeKeyAndVisible()
-    }
-
+    
 }

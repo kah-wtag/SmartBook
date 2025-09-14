@@ -106,7 +106,7 @@ final class RootViewController: UITabBarController {
     }
     
     @objc private func signOutTapped() {
-        Routes.showLoginScreen()
+        Routes.displayLoginScreen()
     }
 }
 
