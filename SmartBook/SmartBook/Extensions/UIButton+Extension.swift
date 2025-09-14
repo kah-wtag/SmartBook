@@ -8,14 +8,15 @@
 import UIKit
 
 extension UIButton {
-    func setFontSize(_ size: UIFont.TextSize, weight: UIFont.Weight = .regular) {
-        self.titleLabel?.font = UIFont.textSize(ofSize: size, weight: weight)
+    func setFontSize(_ size: UIFont.TextSize, weight: UIFont.Weight = .regular, dynamic: Bool = true) {
+        titleLabel?.font = UIFont.of(size: size, weight: weight, dynamic: dynamic)
+        titleLabel?.adjustsFontForContentSizeCategory = dynamic
     }
-    
-    func applyButtonRoundBorder(borderColor: UIColor = .border, borderWidth: CGFloat = 4, cornerRadius: CGFloat = 8) {
-        layer.borderColor = borderColor.cgColor
-        layer.borderWidth = borderWidth
-        layer.cornerRadius = cornerRadius
+
+    func applyRoundBorder(color: UIColor = .border, width: CGFloat = 4, radius: CGFloat = 8) {
+        layer.borderColor = color.cgColor
+        layer.borderWidth = width
+        layer.cornerRadius = radius
         layer.masksToBounds = true
     }
 }

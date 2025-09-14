@@ -278,10 +278,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This information will be shared with the concerned people when you book an appointment." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ki-AD-r95">
-                                <rect key="frame" x="20" y="269.33333333333331" width="343" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="ucJ-D3-aWP"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="269.33333333333331" width="343" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="primaryTextColor"/>
                                 <nil key="highlightedColor"/>

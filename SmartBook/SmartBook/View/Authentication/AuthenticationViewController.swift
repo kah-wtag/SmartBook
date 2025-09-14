@@ -39,17 +39,11 @@ class AuthenticationViewController: UIViewController {
 
 extension AuthenticationViewController {
     private func setupUI() {
-        let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.primaryReverseText,
-            .font: UIFont.textSize(ofSize: .small, weight: .black)
-        ]
-        segmentedControl.setTitleTextAttributes(attributes, for: .normal)
-        authenticationTitle.font = .textSize(ofSize: .title, weight: .bold)
-        otherSignInOptionLabel.font = .textSize(ofSize: .regular)
-        
+        segmentedControl.setFontSize(.regular, weight: .regular, dynamic: true)
+        authenticationTitle.setFontSize(.title, weight: .bold, dynamic: true)
+        otherSignInOptionLabel.setFontSize(.regular, dynamic: true)
         loginVC?.delegate = self
         signupVC?.delegate = self
-        
         setupTextColor()
     }
     

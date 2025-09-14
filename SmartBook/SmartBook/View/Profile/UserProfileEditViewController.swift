@@ -40,22 +40,20 @@ class UserProfileEditViewController: UIViewController {
 extension UserProfileEditViewController {
     private func setupUI() {
         textFieldCharacterCount.isHidden = !isTextCountVisible
+        textFieldCharacterCount.setFontSize(.regular, dynamic: false)
         userProfileEditTextField.horizontalPadding()
-        userProfileEditDescriptionLable.font = .textSize(ofSize: .small, weight: .light)
         userProfileEditTextField.text = initialText
+        userProfileEditTextField.setFontSize(.regular, dynamic: true)
         userProfileEditTextFieldTitle.text = fieldTitle
-        userProfileEditTextField.font = .textSize(ofSize: .regular)
-        userProfileEditSaveButton.titleLabel?.font = .textSize(ofSize: .regular)
-        userProfileEditCancelButton.titleLabel?.font = .textSize(ofSize: .regular)
-        userProfileEditTextFieldTitle.font = .textSize(ofSize: .large)
-        textFieldCharacterCount.font = .textSize(ofSize: .regular)
+        userProfileEditTextFieldTitle.setFontSize(.large, dynamic: false)
+        userProfileEditDescriptionLable.setFontSize(.small, weight: .light, dynamic: true)
         textFieldCharacterLimitWarning.isHidden = true
+        userProfileEditSaveButton.setFontSize(.regular, dynamic: true)
         userProfileEditSaveButton.isEnabled = false
-        textFieldCharacterCount.font = .textSize(ofSize: .regular)
-        
+        userProfileEditCancelButton.setFontSize(.regular, dynamic: true)
         setupTextColor()
     }
-    
+
     private func setupTextColor() {
         userProfileEditTextField.textColor = .primaryText
         userProfileEditTextField.backgroundColor = .textfield

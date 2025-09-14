@@ -8,78 +8,52 @@
 import UIKit
 
 extension UITextField {
+    func setFontSize(_ size: UIFont.TextSize, weight: UIFont.Weight = .regular, dynamic: Bool = true) {
+        font = UIFont.of(size: size, weight: weight, dynamic: dynamic)
+        adjustsFontForContentSizeCategory = dynamic
+    }
+    
+    func setStyledPlaceholder(_ text: String, color: UIColor = .placeholder) {
+        attributedPlaceholder = NSAttributedString(
+            string: text,
+            attributes: [.foregroundColor: color, .font: font ?? UIFont.of(size: .regular)]
+        )
+    }
+    
+    func horizontalPadding(_ padding: CGFloat = 10) {
+        let left = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
+        let right = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
+        leftView = left; leftViewMode = .always
+        rightView = right; rightViewMode = .always
+    }
+    
     enum PaddingDirection {
         case left, right
     }
     
-    func verticalPadding(_ directions: [PaddingDirection], width: CGFloat = 20) {
+    func verticalPadding(_ directions: [PaddingDirection], width: CGFloat = 10) {
         for direction in directions {
-            let paddingView: UIView
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
             switch direction {
             case .left:
-                paddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
                 leftView = paddingView
                 leftViewMode = .always
             case .right:
-                paddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
                 rightView = paddingView
                 rightViewMode = .always
             }
         }
     }
     
-    func horizontalPadding(_ padding: CGFloat = 0) {
-        let leadingPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
-        let trailingPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
-        
-        leftView = leadingPaddingView
-        leftViewMode = .always
-        rightView = trailingPaddingView
-        rightViewMode = .always
-    }
-    
-    func setStyledPlaceholder(
-        _ text: String,
-        color: UIColor = .placeholder,
-        size: UIFont.TextSize = .regular
-    ) {
-        attributedPlaceholder = NSAttributedString(
-            string: text,
-            attributes: [
-                .foregroundColor: color,
-                .font: UIFont.textSize(ofSize: size)
-            ]
-        )
-    }
-    
-    func applyStyle(fontSize: UIFont.TextSize = .regular,
-                    textColor: UIColor = .primaryText,
-                    backgroundColor: UIColor = .textfield,
-                    cornerRadius: CGFloat = 10,
-                    borderColor: UIColor = .clear,
-                    borderWidth: CGFloat = 0,
-                    horizontalPadding: CGFloat = 10) {
-        
-        font = .textSize(ofSize: fontSize)
-        self.textColor = textColor
-        self.backgroundColor = backgroundColor
-        layer.cornerRadius = cornerRadius
-        layer.borderColor = borderColor.cgColor
-        layer.borderWidth = borderWidth
+    func textFieldStyle(dynamic: Bool = true) {
+        setFontSize(.regular, dynamic: dynamic)
+        textColor = .primaryText
+        backgroundColor = .secondaryBackground
+        layer.cornerRadius = 10
+        layer.borderColor = UIColor.textfield.cgColor
+        layer.borderWidth = 1
         layer.masksToBounds = true
-        self.horizontalPadding(horizontalPadding)
-    }
-    
-    func textFieldStyle() {
-        applyStyle(
-            fontSize: .regular,
-            textColor: .primaryText,
-            backgroundColor: .secondaryBackground,
-            cornerRadius: 10,
-            borderColor: .textfield,
-            borderWidth: 1,
-            horizontalPadding: 12
-        )
+        horizontalPadding(12)
     }
 }
 

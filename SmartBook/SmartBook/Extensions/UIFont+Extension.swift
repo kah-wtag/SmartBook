@@ -8,15 +8,12 @@
 import UIKit
 
 extension UIFont {
-    enum TextSize: Int {
-        case title = 27
-        case large = 17
-        case regular = 14
-        case small = 12
+    enum TextSize: CGFloat {
+        case title = 27, large = 17, regular = 14, small = 12
     }
-    
-    static func textSize(ofSize size: TextSize, weight: UIFont.Weight = .regular, fontName: String? = "Helvetica Neue") -> UIFont {
-        UIFont.systemFont(ofSize: CGFloat(size.rawValue), weight: weight)
+
+    static func of(size: TextSize, weight: UIFont.Weight = .regular, dynamic: Bool = true) -> UIFont {
+        let font = UIFont.systemFont(ofSize: size.rawValue, weight: weight)
+        return dynamic ? UIFontMetrics(forTextStyle: .body).scaledFont(for: font) : font
     }
 }
-

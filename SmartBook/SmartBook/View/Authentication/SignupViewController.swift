@@ -26,17 +26,17 @@ class SignupViewController: UIViewController {
     }
     
     private func setupUI() {
-        signupButton.setFontSize(.regular, weight: .bold)
+        signupButton.setFontSize(.regular, weight: .bold, dynamic: true)
+        signupButton.applyRoundBorder(color: .textfield, width: 3, radius: 10)
         emailSignupTextField.setStyledPlaceholder("Email")
-        emailSignupTextField.textFieldStyle()
+        emailSignupTextField.textFieldStyle(dynamic: true)
         passwordSignupTextField.setStyledPlaceholder("Password")
-        passwordSignupTextField.textFieldStyle()
+        passwordSignupTextField.textFieldStyle(dynamic: true)
         confirmPasswordSignupTextField.setStyledPlaceholder("Confirm Password")
-        confirmPasswordSignupTextField.textFieldStyle()
-        signupButton.applyButtonRoundBorder(borderColor: .textfield, borderWidth: 3, cornerRadius: 10)
-        
+        confirmPasswordSignupTextField.textFieldStyle(dynamic: true)
         setupTextColor()
     }
+
     
     private func setupTextColor() {
         emailSignupTextField.textColor = .primaryText

@@ -26,16 +26,15 @@ class LoginViewController: UIViewController {
     }
     
     private func setupUI() {
-        loginButton.setFontSize(.regular, weight: .bold)
-        forgetPasswordButton.setFontSize(.small)
+        loginButton.setFontSize(.regular, weight: .bold, dynamic: true)
+        loginButton.applyRoundBorder(color: .textfield, width: 3, radius: 10)
+        forgetPasswordButton.setFontSize(.small, dynamic: true)
         emailLoginTextField.setStyledPlaceholder("Email")
-        emailLoginTextField.textFieldStyle()
+        emailLoginTextField.textFieldStyle(dynamic: true)
         emailLoginTextField.verticalPadding([.left, .right], width: 8)
         passwordLoginTextField.setStyledPlaceholder("Password")
-        passwordLoginTextField.textFieldStyle()
+        passwordLoginTextField.textFieldStyle(dynamic: true)
         passwordLoginTextField.verticalPadding([.left, .right], width: 8)
-        loginButton.applyButtonRoundBorder(borderColor: .textfield, borderWidth: 3, cornerRadius: 10)
-        
         setupTextColor()
     }
     

@@ -37,12 +37,12 @@ extension UserProfileViewController {
     private func setupUI() {
         [userProfileNameEditTextField, userProfileEditNumberTextField, userProfileEditMailTextField].forEach {
             $0?.horizontalPadding()
-            $0?.font = .textSize(ofSize: .regular)
+            $0?.setFontSize(.regular, dynamic: true)
         }
         
         [editProfileNameLabel, editProfileNumberLabel, editProfileMailLabel].forEach {
             $0?.horizontalPadding()
-            $0?.font = .textSize(ofSize: .small)
+            $0?.setFontSize(.small, dynamic: true)
         }
         
         [editProfileNameStackView, editProfileNumberStackView, editProfileMailStackView].forEach {
@@ -51,7 +51,8 @@ extension UserProfileViewController {
             $0?.backgroundColor = .textfield
         }
         
-        editProfileImageButton.setFontSize(.small, weight: .bold)
+        editProfileImageButton.setFontSize(.small, weight: .bold, dynamic: true)
+        
         userProfileImageView.makeCircular()
         editBackgroundView.alpha = 0.7
         
@@ -59,6 +60,7 @@ extension UserProfileViewController {
         setupEditMappings()
         setupGestures()
     }
+
     
     private func setupTextColors() {
         userProfileNameEditTextField.textColor = .primaryText

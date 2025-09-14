@@ -7,37 +7,20 @@
 
 import UIKit
 
-final class UILabelPadding: UILabel {
-    var padding: UIEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-    
-    override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.inset(by: padding))
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize
-        return CGSize(
-            width: size.width + padding.left + padding.right,
-            height: size.height + padding.top + padding.bottom
-        )
-    }
-}
-
 extension UILabel {
+    func setFontSize(_ size: UIFont.TextSize, weight: UIFont.Weight = .regular, dynamic: Bool = true) {
+        font = UIFont.of(size: size, weight: weight, dynamic: dynamic)
+        adjustsFontForContentSizeCategory = dynamic
+    }
+
     func horizontalPadding(_ padding: CGFloat = 10) {
-        guard let text = self.text else { return }
-
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.firstLineHeadIndent = padding
-        paragraphStyle.headIndent = padding
-        paragraphStyle.tailIndent = -padding
-
-        let attributedString = NSAttributedString(
-            string: text,
-            attributes: [.paragraphStyle: paragraphStyle]
-        )
-
-        self.attributedText = attributedString
+        guard let text else { return }
+        let style = NSMutableParagraphStyle()
+        style.firstLineHeadIndent = padding
+        style.headIndent = padding
+        style.tailIndent = -padding
+        attributedText = NSAttributedString(string: text, attributes: [.paragraphStyle: style])
     }
 }
+
 
