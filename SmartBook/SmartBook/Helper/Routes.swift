@@ -60,18 +60,27 @@ extension Routes {
 
 extension Routes {
     static func displayRootScreen() {
-        guard let rootVC = rootVC else { return }
+        guard let rootVC = rootVC
+        else {
+            return
+        }
         displayScreen(rootVC)
     }
     
     static func displayLoginScreen() {
-        guard let loginVC = authenticationVC else { return }
+        guard let loginVC = authenticationVC
+        else {
+            return
+        }
         displayScreen(loginVC, hideNavigationBar: true)
     }
     
     static func displayScreen(_ viewController: UIViewController, hideNavigationBar: Bool = false) {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first else { return }
+              let window = windowScene.windows.first
+        else {
+            return
+        }
         
         let navController = UINavigationController(rootViewController: viewController)
         navController.setNavigationBarHidden(hideNavigationBar, animated: false)
