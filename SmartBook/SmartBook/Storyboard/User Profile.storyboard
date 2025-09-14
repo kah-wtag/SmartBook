@@ -346,6 +346,7 @@
                                         <color key="backgroundColor" name="textfieldColor"/>
                                     </imageView>
                                 </subviews>
+                                <color key="backgroundColor" name="textfieldColor"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lq1-5v-Pbz"/>
