@@ -25,7 +25,7 @@ final class RootViewController: UITabBarController {
         
         var viewController: UIViewController {
             switch self {
-            case .serviceList: ServiceListViewController()
+            case .serviceList: Routes.serviceListVC ?? UIViewController()
             case .calendar: CalendarViewController()
             case .activity: ActivityViewController()
             case .search: SearchViewController()
