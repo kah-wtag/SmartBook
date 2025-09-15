@@ -47,7 +47,7 @@ final class RootViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
-        mainTabBar.delegate = self
+        delegate = self
         updateNavigation(for: selectedIndex)
     }
     
@@ -110,9 +110,9 @@ final class RootViewController: UITabBarController {
     }
 }
 
-extension RootViewController {
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        updateNavigation(for: item.tag)
+extension RootViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        updateNavigation(for: tabBarController.selectedIndex)
     }
 }
 

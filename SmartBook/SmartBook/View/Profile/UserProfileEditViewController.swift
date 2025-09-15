@@ -20,7 +20,10 @@ class UserProfileEditViewController: UIViewController {
     var fieldTitle: String?
     var onSave: ((String) -> Void)?
     
-    private var characterLimit: Int { isEmailField ? 50 : 25 }
+    private var characterLimit: Int {
+        return isNameField ? 25 : Int.max
+    }
+    private var isNameField: Bool { fieldTitle?.lowercased().contains("name") == true }
     private var isEmailField: Bool { fieldTitle?.lowercased().contains("email") == true }
     
     private var currentText: String { userProfileEditTextField.text?.trimmingCharacters(in: .whitespaces) ?? "" }
@@ -53,7 +56,7 @@ extension UserProfileEditViewController {
         userProfileEditCancelButton.setFontSize(.regular, dynamic: true)
         setupTextColor()
     }
-
+    
     private func setupTextColor() {
         userProfileEditTextField.textColor = .primaryText
         userProfileEditTextField.backgroundColor = .textfield
@@ -79,7 +82,6 @@ extension UserProfileEditViewController {
         userProfileEditTextField.resignFirstResponder()
         guard !currentText.isEmpty, currentText.count <= characterLimit else { return }
         if isEmailField, !isValidEmail(currentText) { return }
-        
         onSave?(currentText)
         dismiss(animated: true)
     }
@@ -87,14 +89,11 @@ extension UserProfileEditViewController {
 
 extension UserProfileEditViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textFieldCharacterLimitWarning.isHidden = false
-        
         if let stackView = textFieldCharacterCount.superview as? UIStackView {
             stackView.removeArrangedSubview(textFieldCharacterCount)
             stackView.insertArrangedSubview(textFieldCharacterCount, at: 0)
         }
     }
-
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let currentText = textField.text as NSString? else { return true }
@@ -108,13 +107,12 @@ extension UserProfileEditViewController: UITextFieldDelegate {
 extension UserProfileEditViewController {
     private func validateInput(_ text: String) {
         let trimmed = text.trimmingCharacters(in: .whitespaces)
-        let remaining = characterLimit - trimmed.count
+        let remaining = isNameField ? (characterLimit - trimmed.count) : Int.max
         var isValid = !trimmed.isEmpty && remaining >= 0
         
         if isEmailField, !isValidEmail(trimmed) {
             isValid = false
         }
-        
         userProfileEditSaveButton.isEnabled = isValid
         
         if trimmed.isEmpty {
@@ -136,7 +134,6 @@ extension UserProfileEditViewController {
         }
     }
     
-    
     private func isValidEmail(_ email: String) -> Bool {
         guard !email.contains(" ") else { return false }
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,5}"
@@ -151,5 +148,4 @@ extension UserProfileEditViewController {
         let remaining = characterLimit - currentCount
         textFieldCharacterCount.text = "\(remaining)"
     }
-    
 }

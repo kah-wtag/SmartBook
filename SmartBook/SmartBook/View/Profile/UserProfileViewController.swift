@@ -57,7 +57,6 @@ extension UserProfileViewController {
         setupEditMappings()
         setupGestures()
     }
-
     
     private func setupTextColors() {
         userProfileNameEditTextField.textColor = .primaryText
@@ -146,14 +145,12 @@ extension UserProfileViewController: UIImagePickerControllerDelegate, UINavigati
         alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { [weak self] _ in
             self?.presentPicker(sourceType: .photoLibrary)
         }))
-        
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         if let popover = alert.popoverPresentationController {
             popover.sourceView = editProfileImageButton
             popover.sourceRect = editProfileImageButton.bounds
         }
-        
         present(alert, animated: true)
     }
     

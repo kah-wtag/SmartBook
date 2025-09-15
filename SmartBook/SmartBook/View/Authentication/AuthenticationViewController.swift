@@ -93,3 +93,5 @@ extension AuthenticationViewController: SignupViewControllerDelegate {
         segmentedControl.sendActions(for: .valueChanged)
     }
 }
+
+
