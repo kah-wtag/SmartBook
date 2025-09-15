@@ -45,7 +45,7 @@ extension ServiceListViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 0 {
-            Routes.showHealthcareField(from: navigationController)
+            Routes.displayHealthcareField(from: navigationController)
         } else {
             let serviceName = viewModel.serviceName(at: indexPath.row)
             print("Service clicked: \(serviceName)")

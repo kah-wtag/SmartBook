@@ -73,13 +73,14 @@ extension Routes {
 }
 
 extension Routes {
-    static func showServiceList(from navigationController: UINavigationController?) {
+    static func displayServiceList(from navigationController: UINavigationController?) {
         guard let serviceListVC = serviceListVC else { return }
         navigationController?.pushViewController(serviceListVC, animated: true)
     }
     
-    static func showHealthcareField(from navigationController: UINavigationController?) {
+    static func displayHealthcareField(from navigationController: UINavigationController?) {
         guard let healthcareVC = healthcareFieldVC else { return }
+        healthcareVC.title = "Healthcare Fields"
         healthcareVC.hidesBottomBarWhenPushed = false
         navigationController?.pushViewController(healthcareVC, animated: true)
     }

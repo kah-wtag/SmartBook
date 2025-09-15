@@ -15,6 +15,7 @@ final class HealthcareFieldViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        title = "Healthcare Fields"
     }
     
     private func configureCollectionView() {
