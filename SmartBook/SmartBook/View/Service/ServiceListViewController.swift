@@ -37,7 +37,12 @@ extension ServiceListViewController: UITableViewDataSource, UITableViewDelegate 
             withIdentifier: Routes.Identifier.serviceListCell,
             for: indexPath
         )
-        cell.textLabel?.text = viewModel.serviceName(at: indexPath.row)
+        if let label = cell.textLabel {
+            label.text = viewModel.serviceName(at: indexPath.row)
+            label.setFontSize(.large, weight: .medium, dynamic: true)
+            label.textColor = .primaryText
+        }
+        cell.backgroundColor = .background
         cell.separatorInset = UIEdgeInsets.zero
         return cell
     }
