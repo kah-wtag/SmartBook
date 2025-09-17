@@ -34,32 +34,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="149" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2AG-Im-dWx">
-                                                    <rect key="frame" x="8" y="8" width="152.66666666666666" height="108.33333333333333"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="oWY-mQ-ZfJ">
+                                                    <rect key="frame" x="8" y="0.0" width="133" height="125"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="oWY-mQ-ZfJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="152.66666666666666" height="108.33333333333333"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7RJ-86-H5n">
+                                                            <rect key="frame" x="0.0" y="-0.3333333333333357" width="133" height="47.333333333333336"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="47" id="eAU-kd-sBJ"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8Uj-LR-FlA">
+                                                            <rect key="frame" x="0.0" y="77" width="133" height="48"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7RJ-86-H5n">
-                                                                    <rect key="frame" x="0.0" y="-0.3333333333333357" width="152.66666666666666" height="20.666666666666668"/>
-                                                                </imageView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8Uj-LR-FlA">
-                                                                    <rect key="frame" x="0.0" y="50.333333333333343" width="152.66666666666666" height="58"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cardiology" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paC-v7-K05">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="152.66666666666666" height="33.666666666666664"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                                            <color key="textColor" name="primaryTextColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Doctors available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="St4-a0-fQG">
-                                                                            <rect key="frame" x="0.0" y="37.666666666666664" width="152.66666666666666" height="20.333333333333336"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <color key="textColor" name="primaryTextColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cardiology" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paC-v7-K05">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="133" height="23.666666666666668"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                                    <color key="textColor" name="primaryTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Doctors available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="St4-a0-fQG">
+                                                                    <rect key="frame" x="0.0" y="27.666666666666671" width="133" height="20.333333333333329"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20.333333333333329" id="BYR-Pr-0qF"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" name="primaryTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
@@ -67,8 +68,10 @@
                                             </subviews>
                                             <color key="backgroundColor" name="textfieldColor"/>
                                             <constraints>
-                                                <constraint firstItem="2AG-Im-dWx" firstAttribute="leading" secondItem="wEk-CM-Flc" secondAttribute="leading" constant="8" id="UFG-ka-AlM"/>
-                                                <constraint firstItem="2AG-Im-dWx" firstAttribute="top" secondItem="wEk-CM-Flc" secondAttribute="topMargin" id="rmn-Y2-4cd"/>
+                                                <constraint firstItem="oWY-mQ-ZfJ" firstAttribute="leading" secondItem="wEk-CM-Flc" secondAttribute="leading" constant="8" id="HKQ-ot-JCy"/>
+                                                <constraint firstAttribute="trailing" secondItem="oWY-mQ-ZfJ" secondAttribute="trailing" constant="8" id="OOv-D0-CPM"/>
+                                                <constraint firstAttribute="bottom" secondItem="oWY-mQ-ZfJ" secondAttribute="bottom" constant="10" id="mYL-My-rKl"/>
+                                                <constraint firstItem="oWY-mQ-ZfJ" firstAttribute="top" secondItem="wEk-CM-Flc" secondAttribute="top" id="x3k-g8-6mN"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="149" height="135"/>

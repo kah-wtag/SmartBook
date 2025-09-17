@@ -21,8 +21,8 @@ class HealthcareFieldCell: UICollectionViewCell {
         layer.cornerRadius = 15
         layer.masksToBounds = true
         layer.borderWidth = 1
-        healthcareFieldName.setFontSize(.large, weight: .semibold)
-        healthcareFieldDoctorsCount.setFontSize(.regular, weight: .regular)
+        healthcareFieldName.setFontSize(.large, weight: .semibold, dynamic: true)
+        healthcareFieldDoctorsCount.setFontSize(.regular, weight: .regular, dynamic: false)
         setupTextColor()
     }
     

@@ -22,7 +22,6 @@ final class HealthcareFieldViewController: UIViewController {
         healthcareFieldCollectionView.delegate = self
         healthcareFieldCollectionView.dataSource = self
     }
-
 }
 
 extension HealthcareFieldViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
