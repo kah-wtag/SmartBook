@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SignupViewControllerDelegate: AnyObject {
+    func signupButtonTapped()
+}
+
 class SignupViewController: UIViewController {
     
     @IBOutlet var emailSignupTextField: UITextField!
@@ -14,23 +18,37 @@ class SignupViewController: UIViewController {
     @IBOutlet var confirmPasswordSignupTextField: UITextField!
     @IBOutlet var signupButton: UIButton!
     
+    weak var delegate: SignupViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
     private func setupUI() {
+        signupButton.setFontSize(.regular, weight: .bold, dynamic: true)
+        signupButton.applyRoundBorder(color: .textfield, width: 3, radius: 10)
         emailSignupTextField.setStyledPlaceholder("Email")
-        emailSignupTextField.addPadding([.left, .right], width: 8)
-        emailSignupTextField.applyUnderline()
+        emailSignupTextField.textFieldStyle(dynamic: true)
         passwordSignupTextField.setStyledPlaceholder("Password")
-        passwordSignupTextField.addPadding([.left, .right], width: 8)
-        passwordSignupTextField.applyUnderline()
+        passwordSignupTextField.textFieldStyle(dynamic: true)
         confirmPasswordSignupTextField.setStyledPlaceholder("Confirm Password")
-        confirmPasswordSignupTextField.addPadding([.left, .right], width: 8)
-        confirmPasswordSignupTextField.applyUnderline()
-        signupButton.applyButtonRoundBorder(borderColor: .blue, borderWidth: 3, cornerRadius: 10)
+        confirmPasswordSignupTextField.textFieldStyle(dynamic: true)
+        setupTextColor()
+    }
 
+    
+    private func setupTextColor() {
+        emailSignupTextField.textColor = .primaryText
+        emailSignupTextField.backgroundColor = .textfield
+        passwordSignupTextField.textColor = .primaryText
+        passwordSignupTextField.backgroundColor = .textfield
+        confirmPasswordSignupTextField.textColor = .primaryText
+        confirmPasswordSignupTextField.backgroundColor = .textfield
+        signupButton.titleLabel?.textColor = .secondaryText
     }
     
+    @IBAction func signupTapped(_ sender: Any) {
+        delegate?.signupButtonTapped()
+    }
 }

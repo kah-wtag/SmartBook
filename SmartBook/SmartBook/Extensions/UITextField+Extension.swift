@@ -8,44 +8,53 @@
 import UIKit
 
 extension UITextField {
+    func setFontSize(_ size: UIFont.TextSize, weight: UIFont.Weight = .regular, dynamic: Bool = true) {
+        font = UIFont.of(size: size, weight: weight, dynamic: dynamic)
+        adjustsFontForContentSizeCategory = dynamic
+    }
+    
+    func setStyledPlaceholder(_ text: String, color: UIColor = .placeholder) {
+        attributedPlaceholder = NSAttributedString(
+            string: text,
+            attributes: [.foregroundColor: color, .font: font ?? UIFont.of(size: .regular)]
+        )
+    }
+    
+    func horizontalPadding(_ padding: CGFloat = 10) {
+        let left = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
+        let right = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 0))
+        leftView = left; leftViewMode = .always
+        rightView = right; rightViewMode = .always
+    }
+    
     enum PaddingDirection {
         case left, right
     }
     
-    func addPadding(_ directions: [PaddingDirection], width: CGFloat = 8) {
+    func verticalPadding(_ directions: [PaddingDirection], width: CGFloat = 10) {
         for direction in directions {
-            let paddingView: UIView
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
             switch direction {
             case .left:
-                paddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
                 leftView = paddingView
                 leftViewMode = .always
             case .right:
-                paddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
                 rightView = paddingView
                 rightViewMode = .always
             }
         }
     }
     
-    func setStyledPlaceholder(_ text: String, color: UIColor = .lightGray) {
-        attributedPlaceholder = NSAttributedString(
-            string: text,
-            attributes: [.foregroundColor: color]
-        )
-    }
-    
-    func applyUnderline(color: UIColor = .lightGray, thickness: CGFloat = 0.5) {
-        addBottomBorderWithColor(color, width: thickness)
-    }
-    
-    func buttonBorderStyle(borderColor: UIColor = .orange, borderWidth: CGFloat = 4, cornerRadius: CGFloat = 8) {
-        layer.borderWidth = borderWidth
-        layer.borderColor = borderColor.cgColor
-        layer.cornerRadius = cornerRadius
+    func textFieldStyle(dynamic: Bool = true) {
+        setFontSize(.regular, dynamic: dynamic)
+        textColor = .primaryText
+        backgroundColor = .secondaryBackground
+        layer.cornerRadius = 10
+        layer.borderColor = UIColor.textfield.cgColor
+        layer.borderWidth = 1
         layer.masksToBounds = true
+        horizontalPadding(12)
     }
-    
 }
 
 
