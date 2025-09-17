@@ -43,10 +43,6 @@ extension HealthcareFieldViewController: UICollectionViewDataSource, UICollectio
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 170, height: 140)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("clicked on item")
     }
