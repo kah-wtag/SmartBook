@@ -1,5 +1,5 @@
 //
-//  SmartServiceList.swift
+//  SmartServices.swift
 //  SmartBook
 //
 //  Created by Md. Kamrul Hasan on 28/9/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SmartServiceList: Codable {   
+struct SmartServices: Codable {   
     let services: [SmartService]?  
     
     enum CodingKeys: String, CodingKey {

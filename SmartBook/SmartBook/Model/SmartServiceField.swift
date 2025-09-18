@@ -11,15 +11,17 @@ struct SmartServiceField: Codable {
     let fieldTypeID: Int?
     let fieldName: String?
     let iconName: String?
-    let professionalsCount: Int?
-    let professionals: [ServiceProvider]?
+    let serviceProvider: [ServiceProvider]?
+    
+    var serviceProviderCount: Int {
+        serviceProvider?.count ?? 0
+    }
     
     enum CodingKeys: String, CodingKey {
         case fieldTypeID
         case fieldName
         case iconName
-        case professionalsCount
-        case professionals
+        case serviceProvider
     }
     
     init(from decoder: Decoder) throws {
@@ -27,7 +29,6 @@ struct SmartServiceField: Codable {
         fieldTypeID = try container.decodeIfPresent(Int.self, forKey: .fieldTypeID)
         fieldName = try container.decodeIfPresent(String.self, forKey: .fieldName)
         iconName = try container.decodeIfPresent(String.self, forKey: .iconName)
-        professionalsCount = try container.decodeIfPresent(Int.self, forKey: .professionalsCount)
-        professionals = try container.decodeIfPresent([ServiceProvider].self, forKey: .professionals)
+        serviceProvider = try container.decodeIfPresent([ServiceProvider].self, forKey: .serviceProvider)
     }
 }
