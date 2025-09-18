@@ -46,4 +46,9 @@ final class ServiceProviderViewModel {
             }
         }
     }
+    
+    func serviceProviderProfileViewModel(for index: Int) -> ServiceProviderProfileViewModel? {
+        guard index < serviceProviders.count else { return nil }
+        return ServiceProviderProfileViewModel(serviceProvider: serviceProviders[index])
+    }
 }

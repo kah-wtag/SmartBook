@@ -91,6 +91,11 @@ extension ServiceProviderViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard let profileVM = viewModel.serviceProviderProfileViewModel(for: indexPath.row) else { return }
+        let profileVC = Routes.serviceProviderProfileVC
+        profileVC.viewModel = profileVM
+        navigationItem.backButtonTitle = ""
+        navigationController?.pushViewController(profileVC, animated: true)
     }
 }
 
