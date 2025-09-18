@@ -50,5 +50,4 @@ final class LoginViewController: UIViewController {
     @IBAction func loginTapped(_ sender: UIButton) {
         delegate?.loginButtonTapped(username: emailLoginTextField.text, password: passwordLoginTextField.text)
     }
-    
 }
