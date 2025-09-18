@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserProfileEditViewController: UIViewController {
+final class UserProfileEditViewController: UIViewController {
     @IBOutlet var userProfileEditTextField: UITextField!
     @IBOutlet var userProfileEditSaveButton: UIButton!
     @IBOutlet var userProfileEditCancelButton: UIButton!

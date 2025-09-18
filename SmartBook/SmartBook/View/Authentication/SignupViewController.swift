@@ -11,7 +11,7 @@ protocol SignupViewControllerDelegate: AnyObject {
     func signupButtonTapped()
 }
 
-class SignupViewController: UIViewController {
+final class SignupViewController: UIViewController {
     
     @IBOutlet var emailSignupTextField: UITextField!
     @IBOutlet var passwordSignupTextField: UITextField!
