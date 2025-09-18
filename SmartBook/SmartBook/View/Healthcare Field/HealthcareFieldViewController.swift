@@ -42,7 +42,6 @@ extension HealthcareFieldViewController: UICollectionViewDataSource, UICollectio
             withReuseIdentifier: Routes.Identifier.healthcareFieldCell,
             for: indexPath
         ) as! HealthcareFieldCell
-        
         cell.layer.borderColor = UIColor.secondaryText.cgColor
         cell.layer.borderWidth = 3
         let field = viewModel.field(at: indexPath.item)
