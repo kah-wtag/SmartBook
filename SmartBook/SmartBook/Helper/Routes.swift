@@ -12,6 +12,8 @@ struct Routes {
         static let authentication = "Authentication"
         static let userProfile = "User Profile"
         static let root = "Dashboard"
+        static let serviceList = "Service List"
+        static let healthcareField = "Healthcare Field"
     }
     
     struct Identifier {
@@ -21,6 +23,10 @@ struct Routes {
         static let userProfileVC = "UserProfileViewController"
         static let userProfileEditVC = "UserProfileEditViewController"
         static let rootVC = "RootViewController"
+        static let serviceListVC = "ServiceListViewController"
+        static let serviceListCell = "ServiceListTableViewCell"
+        static let healthcareFieldVC = "HealthcareFieldViewController"
+        static let healthcareFieldCell = "HealthcareFieldCell"
     }
 }
 
@@ -56,31 +62,42 @@ extension Routes {
     static var userProfileEditVC: UserProfileEditViewController? {
         instantiateVC(from: StoryboardName.userProfile, identifier: Identifier.userProfileEditVC)
     }
+    
+    static var serviceListVC: ServiceListViewController? {
+        instantiateVC(from: StoryboardName.serviceList, identifier: Identifier.serviceListVC)
+    }
+    
+    static var healthcareFieldVC: HealthcareFieldViewController? {
+        instantiateVC(from: StoryboardName.healthcareField, identifier: Identifier.healthcareFieldVC)
+    }
 }
 
 extension Routes {
+    static func displayServiceList(from navigationController: UINavigationController?) {
+        guard let serviceListVC = serviceListVC else { return }
+        navigationController?.pushViewController(serviceListVC, animated: true)
+    }
+    
+    static func displayHealthcareField(from navigationController: UINavigationController?) {
+        guard let healthcareVC = healthcareFieldVC else { return }
+        healthcareVC.title = "Healthcare Fields"
+        healthcareVC.hidesBottomBarWhenPushed = false
+        navigationController?.pushViewController(healthcareVC, animated: true)
+    }
+    
     static func displayRootScreen() {
-        guard let rootVC = rootVC
-        else {
-            return
-        }
+        guard let rootVC = rootVC else { return }
         displayScreen(rootVC)
     }
     
     static func displayLoginScreen() {
-        guard let loginVC = authenticationVC
-        else {
-            return
-        }
+        guard let loginVC = authenticationVC else { return }
         displayScreen(loginVC, hideNavigationBar: true)
     }
     
     static func displayScreen(_ viewController: UIViewController, hideNavigationBar: Bool = false) {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first
-        else {
-            return
-        }
+              let window = windowScene.windows.first else { return }
         
         let navController = UINavigationController(rootViewController: viewController)
         navController.setNavigationBarHidden(hideNavigationBar, animated: false)

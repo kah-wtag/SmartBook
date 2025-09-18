@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Healthcare Field View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="HealthcareFieldViewController" id="Y6W-OH-hqX" customClass="HealthcareFieldViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eY1-Np-Dhh">
+                                <rect key="frame" x="20" y="138" width="353" height="646"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iGw-h9-yqB">
+                                    <size key="itemSize" width="149" height="135"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="healthcareFieldCell" reuseIdentifier="HealthcareFieldCell" id="wZ7-B2-gdq" customClass="HealthcareFieldCell" customModule="SmartBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="149" height="135"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wEk-CM-Flc">
+                                            <rect key="frame" x="0.0" y="0.0" width="149" height="135"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="oWY-mQ-ZfJ">
+                                                    <rect key="frame" x="8" y="0.0" width="133" height="125"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7RJ-86-H5n">
+                                                            <rect key="frame" x="0.0" y="-0.3333333333333357" width="133" height="47.333333333333336"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="47" id="eAU-kd-sBJ"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8Uj-LR-FlA">
+                                                            <rect key="frame" x="0.0" y="77" width="133" height="48"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cardiology" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paC-v7-K05">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="133" height="23.666666666666668"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                                    <color key="textColor" name="primaryTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Doctors available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="St4-a0-fQG">
+                                                                    <rect key="frame" x="0.0" y="27.666666666666671" width="133" height="20.333333333333329"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20.333333333333329" id="BYR-Pr-0qF"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" name="primaryTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" name="textfieldColor"/>
+                                            <constraints>
+                                                <constraint firstItem="oWY-mQ-ZfJ" firstAttribute="leading" secondItem="wEk-CM-Flc" secondAttribute="leading" constant="8" id="HKQ-ot-JCy"/>
+                                                <constraint firstAttribute="trailing" secondItem="oWY-mQ-ZfJ" secondAttribute="trailing" constant="8" id="OOv-D0-CPM"/>
+                                                <constraint firstAttribute="bottom" secondItem="oWY-mQ-ZfJ" secondAttribute="bottom" constant="10" id="mYL-My-rKl"/>
+                                                <constraint firstItem="oWY-mQ-ZfJ" firstAttribute="top" secondItem="wEk-CM-Flc" secondAttribute="top" id="x3k-g8-6mN"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="149" height="135"/>
+                                        <connections>
+                                            <outlet property="healthcareFieldDoctorsCount" destination="St4-a0-fQG" id="vw3-Vt-w0G"/>
+                                            <outlet property="healthcareFieldIcon" destination="7RJ-86-H5n" id="lvJ-qu-jwI"/>
+                                            <outlet property="healthcareFieldName" destination="paC-v7-K05" id="c00-Z9-ZCD"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eY1-Np-Dhh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="OIl-oU-mas"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="eY1-Np-Dhh" secondAttribute="trailing" constant="20" id="fWv-fT-Vl0"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="eY1-Np-Dhh" secondAttribute="bottom" id="jjX-O1-e6E"/>
+                            <constraint firstItem="eY1-Np-Dhh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="jtN-cD-Fo7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="healthcareFieldCollectionView" destination="eY1-Np-Dhh" id="ju8-tZ-xDz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-292" y="-27"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="square.and.arrow.up.fill" catalog="system" width="117" height="128"/>
+        <namedColor name="backgroundColor">
+            <color red="1" green="0.93725490196078431" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryTextColor">
+            <color red="0.027450980392156862" green="0.0039215686274509803" blue="0.015686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textfieldColor">
+            <color red="0.8901960784313725" green="0.80784313725490198" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
