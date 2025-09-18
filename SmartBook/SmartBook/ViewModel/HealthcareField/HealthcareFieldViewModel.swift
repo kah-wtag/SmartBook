@@ -18,6 +18,11 @@ final class HealthcareFieldViewModel {
         HealthcareField(name: "Cardiology", iconName: "heart.fill", doctorsCount: 8),
         HealthcareField(name: "Dermatology", iconName: "bandage.fill", doctorsCount: 6),
         HealthcareField(name: "Neurology", iconName: "brain.head.profile", doctorsCount: 4),
+        HealthcareField(name: "Pediatrics", iconName: "stethoscope", doctorsCount: 10),
+        HealthcareField(name: "Dentist", iconName: "heart.fill", doctorsCount: 12),
+        HealthcareField(name: "Cardiology", iconName: "heart.fill", doctorsCount: 8),
+        HealthcareField(name: "Dermatology", iconName: "bandage.fill", doctorsCount: 6),
+        HealthcareField(name: "Neurology", iconName: "brain.head.profile", doctorsCount: 4),
         HealthcareField(name: "Pediatrics", iconName: "stethoscope", doctorsCount: 10)
     ]
     

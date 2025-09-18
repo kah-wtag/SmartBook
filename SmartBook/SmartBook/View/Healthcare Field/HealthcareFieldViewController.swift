@@ -21,10 +21,17 @@ final class HealthcareFieldViewController: UIViewController {
     private func configureCollectionView() {
         healthcareFieldCollectionView.delegate = self
         healthcareFieldCollectionView.dataSource = self
+        configureCollectionViewLayout()
+    }
+    
+    private func configureCollectionViewLayout() {
+        let layout = LeftAlignedCollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        healthcareFieldCollectionView.collectionViewLayout = layout
     }
 }
 
-extension HealthcareFieldViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HealthcareFieldViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.numberOfFields()
@@ -46,6 +53,5 @@ extension HealthcareFieldViewController: UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("clicked on item")
     }
-
 }
 
