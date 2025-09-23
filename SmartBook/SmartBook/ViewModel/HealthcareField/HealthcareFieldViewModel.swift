@@ -5,26 +5,23 @@
 //  Created by Md. Kamrul Hasan on 13/8/25.
 //
 
+import Foundation
+
 final class HealthcareFieldViewModel {
     
-    struct HealthcareField {
-        let name: String
-        let iconName: String
-        let doctorsCount: Int
-    }
+    private let service = HealthcareFieldService()
+    private(set) var fields: [HealthcareField] = []
     
-    private let fields = [
-        HealthcareField(name: "Dentist", iconName: "heart.fill", doctorsCount: 12),
-        HealthcareField(name: "Cardiology", iconName: "heart.fill", doctorsCount: 8),
-        HealthcareField(name: "Dermatology", iconName: "bandage.fill", doctorsCount: 6),
-        HealthcareField(name: "Neurology", iconName: "brain.head.profile", doctorsCount: 4),
-        HealthcareField(name: "Pediatrics", iconName: "stethoscope", doctorsCount: 10),
-        HealthcareField(name: "Dentist", iconName: "heart.fill", doctorsCount: 12),
-        HealthcareField(name: "Cardiology", iconName: "heart.fill", doctorsCount: 8),
-        HealthcareField(name: "Dermatology", iconName: "bandage.fill", doctorsCount: 6),
-        HealthcareField(name: "Neurology", iconName: "brain.head.profile", doctorsCount: 4),
-        HealthcareField(name: "Pediatrics", iconName: "stethoscope", doctorsCount: 10)
-    ]
+    var onDataUpdated: (() -> Void)?
+    
+    func fetchFields() {
+        service.fetchHealthcareFields { [weak self] data in
+            DispatchQueue.main.async {
+                self?.fields = data
+                self?.onDataUpdated?()
+            }
+        }
+    }
     
     func numberOfFields() -> Int {
         fields.count

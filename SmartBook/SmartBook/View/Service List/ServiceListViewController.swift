@@ -16,13 +16,21 @@ class ServiceListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        serviceListTableView.tableFooterView = UIView()
+        bindViewModel()
     }
     
     private func configureTableView() {
-        view.backgroundColor = .background
         serviceListTableView.delegate = self
         serviceListTableView.dataSource = self
+        //            serviceListTableView.tableFooterView = UIView()
+        view.backgroundColor = .background
+    }
+    
+    private func bindViewModel() {
+        viewModel.onDataUpdated = { [weak self] in
+            self?.serviceListTableView.reloadData()
+        }
+        viewModel.fetchServices()
     }
 }
 
@@ -43,17 +51,12 @@ extension ServiceListViewController: UITableViewDataSource, UITableViewDelegate 
             label.textColor = .primaryText
         }
         cell.backgroundColor = .background
-        cell.separatorInset = UIEdgeInsets.zero
+        cell.separatorInset = .zero
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row == 0 {
-            Routes.displayHealthcareField(from: navigationController)
-        } else {
-            let serviceName = viewModel.serviceName(at: indexPath.row)
-            print("Service clicked: \(serviceName)")
-        }
+        viewModel.didSelectService(at: indexPath.row, navigationController: navigationController)
     }
 }

@@ -9,13 +9,19 @@ import UIKit
 
 final class ServiceListViewModel {
     
-    private let services = [
-        "Healthcare",
-        "Education & Tutoring",
-        "Home Services",
-        "Business & Admin",
-        "Personal Care"
-    ]
+    private let service = ServiceListService()
+    private(set) var services: [String] = []
+    
+    var onDataUpdated: (() -> Void)?
+    
+    func fetchServices() {
+        service.fetchServices { [weak self] data in
+            DispatchQueue.main.async {
+                self?.services = data
+                self?.onDataUpdated?()
+            }
+        }
+    }
     
     func numberOfServices() -> Int {
         services.count
@@ -24,4 +30,15 @@ final class ServiceListViewModel {
     func serviceName(at index: Int) -> String {
         services[index]
     }
+    
+    func didSelectService(at index: Int, navigationController: UINavigationController?) {
+            guard index < services.count else { return }
+
+            if index == 0 {
+                Routes.displayHealthcareField(from: navigationController)
+            } else {
+                let serviceName = services[index]
+                print("Service clicked: \(serviceName)")
+            }
+        }
 }
