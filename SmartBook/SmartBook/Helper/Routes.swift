@@ -41,7 +41,9 @@ extension Routes {
     static var rootVC: RootViewController? {
         instantiateVC(from: StoryboardName.root, identifier: Identifier.rootVC)
     }
-    
+}
+
+extension Routes {
     static var loginVC: LoginViewController? {
         instantiateVC(from: StoryboardName.authentication, identifier: Identifier.loginVC)
     }
@@ -53,8 +55,9 @@ extension Routes {
     static var authenticationVC: AuthenticationViewController? {
         instantiateVC(from: StoryboardName.authentication, identifier: Identifier.authenticationVC)
     }
-    
-    
+}
+
+extension Routes {
     static var userProfileVC: UserProfileViewController? {
         instantiateVC(from: StoryboardName.userProfile, identifier: Identifier.userProfileVC)
     }
@@ -62,7 +65,9 @@ extension Routes {
     static var userProfileEditVC: UserProfileEditViewController? {
         instantiateVC(from: StoryboardName.userProfile, identifier: Identifier.userProfileEditVC)
     }
-    
+}
+
+extension Routes {
     static var serviceListVC: ServiceListViewController? {
         instantiateVC(from: StoryboardName.serviceList, identifier: Identifier.serviceListVC)
     }
