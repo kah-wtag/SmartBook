@@ -32,13 +32,13 @@ final class ServiceListViewModel {
     }
     
     func didSelectService(at index: Int, navigationController: UINavigationController?) {
-            guard index < services.count else { return }
-
-            if index == 0 {
-                Routes.displayHealthcareField(from: navigationController)
-            } else {
-                let serviceName = services[index]
-                print("Service clicked: \(serviceName)")
-            }
+        guard index < services.count else { return }
+        
+        if index == 0 {
+            Routes.displayHealthcareField(from: navigationController)
+        } else {
+            let serviceName = services[index]
+            print("Service clicked: \(serviceName)")
         }
+    }
 }
