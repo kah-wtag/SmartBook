@@ -11,11 +11,11 @@ final class RootViewController: UITabBarController {
     @IBOutlet weak var mainTabBar: UITabBar!
     
     private enum Tab: Int, CaseIterable {
-        case serviceList, calendar, activity, search, profile
+        case smartServiceList, calendar, activity, search, profile
         
         var title: String {
             switch self {
-            case .serviceList: "Service List"
+            case .smartServiceList: "Service List"
             case .calendar: "Calendar"
             case .activity: "Activity"
             case .search: "Search"
@@ -25,17 +25,17 @@ final class RootViewController: UITabBarController {
         
         var viewController: UIViewController {
             switch self {
-            case .serviceList: ServiceListViewController()
+            case .smartServiceList: Routes.smartServiceListVC
             case .calendar: CalendarViewController()
             case .activity: ActivityViewController()
             case .search: SearchViewController()
-            case .profile: Routes.userProfileVC ?? UIViewController()
+            case .profile: Routes.userProfileVC
             }
         }
         
         var iconName: String {
             switch self {
-            case .serviceList: "house"
+            case .smartServiceList: "house"
             case .calendar: "calendar"
             case .activity: "calendar.circle.fill"
             case .search: "magnifyingglass"
@@ -115,4 +115,3 @@ extension RootViewController: UITabBarControllerDelegate {
         updateNavigation(for: tabBarController.selectedIndex)
     }
 }
-

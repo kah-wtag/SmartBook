@@ -12,6 +12,8 @@ struct Routes {
         static let authentication = "Authentication"
         static let userProfile = "User Profile"
         static let root = "Dashboard"
+        static let smartServiceList = "Smart Service List"
+        static let smartServiceFieldList = "Smart Service Field List"
     }
     
     struct Identifier {
@@ -21,66 +23,75 @@ struct Routes {
         static let userProfileVC = "UserProfileViewController"
         static let userProfileEditVC = "UserProfileEditViewController"
         static let rootVC = "RootViewController"
+        static let smartServiceListVC = "SmartServiceListViewController"
+        static let smartServiceListCell = "SmartServiceListTableViewCell"
+        static let smartServiceFieldVC = "SmartServiceFieldListViewController"
+        static let smartServiceFieldListCell = "SmartServiceFieldListCell"
     }
 }
 
 extension Routes {
-    static func instantiateVC<T: UIViewController>(from storyboard: String, identifier: String) -> T? {
-        UIStoryboard(name: storyboard, bundle: nil)
-            .instantiateViewController(withIdentifier: identifier) as? T
+    static func instantiateVC<T: UIViewController>(from storyboard: String, identifier: String) -> T {
+        guard let vc = UIStoryboard(name: storyboard, bundle: nil)
+            .instantiateViewController(withIdentifier: identifier) as? T else {
+            fatalError("Could not instantiate \(identifier) from storyboard: \(storyboard)")
+        }
+        return vc
     }
 }
 
 extension Routes {
-    static var rootVC: RootViewController? {
+    static var rootVC: RootViewController {
         instantiateVC(from: StoryboardName.root, identifier: Identifier.rootVC)
     }
-    
-    static var loginVC: LoginViewController? {
+}
+
+extension Routes {
+    static var loginVC: LoginViewController {
         instantiateVC(from: StoryboardName.authentication, identifier: Identifier.loginVC)
     }
     
-    static var signupVC: SignupViewController? {
+    static var signupVC: SignupViewController {
         instantiateVC(from: StoryboardName.authentication, identifier: Identifier.signupVC)
     }
     
-    static var authenticationVC: AuthenticationViewController? {
+    static var authenticationVC: AuthenticationViewController {
         instantiateVC(from: StoryboardName.authentication, identifier: Identifier.authenticationVC)
     }
-    
-    
-    static var userProfileVC: UserProfileViewController? {
+}
+
+extension Routes {
+    static var userProfileVC: UserProfileViewController {
         instantiateVC(from: StoryboardName.userProfile, identifier: Identifier.userProfileVC)
     }
     
-    static var userProfileEditVC: UserProfileEditViewController? {
+    static var userProfileEditVC: UserProfileEditViewController {
         instantiateVC(from: StoryboardName.userProfile, identifier: Identifier.userProfileEditVC)
     }
 }
 
 extension Routes {
+    static var smartServiceListVC: SmartServiceListViewController {
+        instantiateVC(from: StoryboardName.smartServiceList, identifier: Identifier.smartServiceListVC)
+    }
+    
+    static var smartServiceFieldVC: SmartServiceFieldListViewController {
+        instantiateVC(from: StoryboardName.smartServiceFieldList, identifier: Identifier.smartServiceFieldVC)
+    }
+}
+
+extension Routes {
     static func displayRootScreen() {
-        guard let rootVC = rootVC
-        else {
-            return
-        }
         displayScreen(rootVC)
     }
     
     static func displayLoginScreen() {
-        guard let loginVC = authenticationVC
-        else {
-            return
-        }
-        displayScreen(loginVC, hideNavigationBar: true)
+        displayScreen(authenticationVC, hideNavigationBar: true)
     }
     
     static func displayScreen(_ viewController: UIViewController, hideNavigationBar: Bool = false) {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first
-        else {
-            return
-        }
+              let window = windowScene.windows.first else { return }
         
         let navController = UINavigationController(rootViewController: viewController)
         navController.setNavigationBarHidden(hideNavigationBar, animated: false)
@@ -105,5 +116,4 @@ extension Routes {
         nav.navigationBar.compactAppearance = appearance
         nav.navigationBar.tintColor = .secondaryText
     }
-    
 }

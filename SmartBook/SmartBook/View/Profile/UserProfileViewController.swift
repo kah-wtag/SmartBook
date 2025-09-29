@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController {
+final class UserProfileViewController: UIViewController {
     
     @IBOutlet var editMailStackView: UIStackView!
     @IBOutlet var editNumberStackView: UIStackView!
@@ -112,7 +112,7 @@ extension UserProfileViewController {
 
 extension UserProfileViewController {
     private func openEditProfileVC(text: String?, labelTitle: String?) {
-        guard let editVC = Routes.userProfileEditVC else { return }
+        let editVC = Routes.userProfileEditVC
         editVC.initialText = text
         editVC.fieldTitle = labelTitle
         

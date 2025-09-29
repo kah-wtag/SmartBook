@@ -8,10 +8,10 @@
 import UIKit
 
 protocol LoginViewControllerDelegate: AnyObject {
-    func loginButtonTapped()
+    func loginButtonTapped(username: String?, password: String?)
 }
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     @IBOutlet var emailLoginTextField: UITextField!
     @IBOutlet var passwordLoginTextField: UITextField!
@@ -48,8 +48,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        delegate?.loginButtonTapped()
+        delegate?.loginButtonTapped(username: emailLoginTextField.text, password: passwordLoginTextField.text)
     }
     
 }
-

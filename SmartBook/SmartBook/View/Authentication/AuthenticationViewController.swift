@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthenticationViewController: UIViewController {
+final class AuthenticationViewController: UIViewController {
     
     @IBOutlet var authenticationTitle: UILabel!
     @IBOutlet var otherSignInOptionLabel: UILabel!
@@ -19,10 +19,24 @@ class AuthenticationViewController: UIViewController {
         case signup = 1
     }
     
-    private lazy var loginVC: LoginViewController? = Routes.loginVC
-    private lazy var signupVC: SignupViewController? = Routes.signupVC
+    private lazy var loader: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+        activityIndicator.tag = 1
+        activityIndicator.color = .secondaryText
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        return activityIndicator
+    }()
     
+    private lazy var loginVC = Routes.loginVC
+    private lazy var signupVC = Routes.signupVC
     private var currentContainerViewIndex: Int?
+    private let viewModel = AuthenticationViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +56,9 @@ extension AuthenticationViewController {
         segmentedControl.setFontSize(.regular, weight: .regular, dynamic: true)
         authenticationTitle.setFontSize(.title, weight: .bold, dynamic: true)
         otherSignInOptionLabel.setFontSize(.regular, dynamic: true)
-        loginVC?.delegate = self
-        signupVC?.delegate = self
+        loginVC.delegate = self
+        signupVC.delegate = self
+        viewModel.delegate = self
         setupTextColor()
     }
     
@@ -54,21 +69,18 @@ extension AuthenticationViewController {
     
     private func containerViewWillUpdate(for selectedSegmentControl: SegmentedControlOption) {
         guard selectedSegmentControl.rawValue != currentContainerViewIndex else { return }
-        
         removeCurrentChildViewController()
         
-        let childVCToDisplay: UIViewController? = switch selectedSegmentControl {
-        case .login: loginVC
-        case .signup: signupVC
+        let vc: UIViewController
+        switch selectedSegmentControl {
+        case .login: vc = loginVC
+        case .signup: vc = signupVC
         }
-        
-        guard let vc = childVCToDisplay else { return }
         
         addChild(vc)
         vc.view.frame = containerView.bounds
         containerView.addSubview(vc.view)
         vc.didMove(toParent: self)
-        
         currentContainerViewIndex = selectedSegmentControl.rawValue
     }
     
@@ -81,9 +93,23 @@ extension AuthenticationViewController {
     }
 }
 
+extension AuthenticationViewController {
+    private func showLoaderUI() {
+        loader.startAnimating()
+        loader.isHidden = false
+        view.isUserInteractionEnabled = false
+    }
+    
+    private func hideLoaderUI() {
+        loader.stopAnimating()
+        loader.isHidden = true
+        view.isUserInteractionEnabled = true
+    }
+}
+
 extension AuthenticationViewController: LoginViewControllerDelegate {
-    func loginButtonTapped() {
-        Routes.displayRootScreen()
+    func loginButtonTapped(username: String?, password: String?) {
+        viewModel.loginButtonDidTap()
     }
 }
 
@@ -94,4 +120,16 @@ extension AuthenticationViewController: SignupViewControllerDelegate {
     }
 }
 
-
+extension AuthenticationViewController: AuthenticationViewModelDelegate {
+    func showLoader() {
+        showLoaderUI()
+    }
+    
+    func hideLoader() {
+        hideLoaderUI()
+    }
+    
+    func didFetchServices(_ services: [SmartService]) {
+        Routes.displayRootScreen()
+    }
+}
