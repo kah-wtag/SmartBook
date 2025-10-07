@@ -16,7 +16,8 @@ protocol BookingFormViewModelDelegate: AnyObject {
 final class BookingFormViewModel {
     
     weak var delegate: BookingFormViewModelDelegate?
-    private(set) var doctorName: String = ""
+    
+    private(set) var screenTitle: String = ""
     private(set) var name: String = "" {
         didSet { validateForm() }
     }
@@ -44,7 +45,7 @@ final class BookingFormViewModel {
     }
     
     func setDoctorName(_ name: String) {
-        doctorName = "Book \(name)"
+        screenTitle = "Book \(name)"
     }
     
     func updateName(_ text: String?) {

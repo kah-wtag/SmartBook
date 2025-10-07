@@ -26,6 +26,7 @@ final class SmartServicesViewController: UIViewController {
     private func configureTableView() {
         smartServicesTableView.delegate = self
         smartServicesTableView.dataSource = self
+        smartServicesTableView.tableHeaderView = UIView()
         noServiceLabel.setFontSize(.regular, dynamic: true)
         view.backgroundColor = .background
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)

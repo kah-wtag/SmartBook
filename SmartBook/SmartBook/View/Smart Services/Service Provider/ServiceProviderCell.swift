@@ -41,6 +41,10 @@ final class ServiceProviderCell: UITableViewCell {
         mapButton.titleLabel?.textColor = .secondaryText
     }
     
+    @IBAction func bookButtonTapped(_ sender: Any) {
+        
+    }
+    
     func updateUI() {
         guard let viewModel else { return }
         nameLabel.text = viewModel.name
