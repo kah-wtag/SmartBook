@@ -33,28 +33,44 @@ class BookingFormViewController: UIViewController {
     }
     
     private func configureViewModel() {
-            viewModel.delegate = self
-        }
+        viewModel.delegate = self
+    }
     
     private func setupUI() {
+        setupTextFields()
+        setupDatePickers()
+        setupGenderLabel()
+        setupSubmitButton()
+        setupFontSize()
+        setupTextColor()
+    }
+    
+    private func setupTextFields() {
         bookingFormTextFields = [userBookingFormNameTextField,
                                  userBookingFormPhoneNumberTextField,
                                  userBookingFormMailTextField]
         let placeholders = ["Full Name", "Phone Number", "Email Address"]
+        
         for (field, placeholder) in zip(bookingFormTextFields, placeholders) {
             field.setStyledPlaceholder(placeholder)
             field.textFieldStyle()
         }
-        
+    }
+    
+    private func setupDatePickers() {
         userBookingFormBirthDatePicker.datePickerMode = .date
         userBookingFormBirthDatePicker.maximumDate = Date()
         userAppointmentDateTimePicker.datePickerMode = .dateAndTime
         userAppointmentDateTimePicker.minimumDate = Date()
+    }
+    
+    private func setupGenderLabel() {
         userBookingFormChoicedGenderLabel.text = "Not Selected"
+    }
+    
+    private func setupSubmitButton() {
         appointmentSubmitButton.isEnabled = false
         appointmentSubmitButton.alpha = 0.5
-        setupFontSize()
-        setupTextColor()
     }
     
     private func setupFontSize() {
@@ -81,13 +97,17 @@ class BookingFormViewController: UIViewController {
     }
     
     private func setupTargets() {
-        userBookingFormNameTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
-        userBookingFormPhoneNumberTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
-        userBookingFormMailTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
+        let textFields: [UITextField] = [
+            userBookingFormNameTextField,
+            userBookingFormPhoneNumberTextField,
+            userBookingFormMailTextField
+        ]
+        textFields.forEach { $0.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged) }
         
         userBookingFormBirthDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         userAppointmentDateTimePicker.addTarget(self, action: #selector(appointmentDateChanged(_:)), for: .valueChanged)
     }
+    
     
     @objc private func textChanged(_ textField: UITextField) {
         switch textField {
