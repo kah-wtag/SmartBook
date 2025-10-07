@@ -21,11 +21,12 @@ class BookingFormViewController: UIViewController {
     @IBOutlet var gendarField: UITextField!
     @IBOutlet var dateTimeField: UITextField!
     
-    private let viewModel = BookingFormViewModel()
+    let viewModel = BookingFormViewModel()
     private var bookingFormTextFields: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = viewModel.doctorName
         viewModel.delegate = self
         setupUI()
         setupTargets()

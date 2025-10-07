@@ -73,6 +73,7 @@ final class ServiceProviderProfileViewController: UIViewController {
     
     @IBAction func bookAppointmentButtonTapped(_ sender: UIButton) {
         let bookingFormVC = Routes.bookingFormVC
+        bookingFormVC.viewModel.setDoctorName(viewModel.nameText)
         navigationItem.backButtonTitle = ""
         navigationController?.pushViewController(bookingFormVC, animated: true)
     }
