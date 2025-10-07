@@ -71,6 +71,12 @@ final class ServiceProviderProfileViewController: UIViewController {
         professionalsPersonalBioDetials.textColor = .primaryText
     }
     
+    @IBAction func bookAppointmentButtonTapped(_ sender: UIButton) {
+        let bookingFormVC = Routes.bookingFormVC
+        navigationItem.backButtonTitle = ""
+        navigationController?.pushViewController(bookingFormVC, animated: true)
+    }
+    
     private func updateUI() {
         professionalsProfileName.text = viewModel.nameText
         professionalsProfileExperience.text = viewModel.experienceText

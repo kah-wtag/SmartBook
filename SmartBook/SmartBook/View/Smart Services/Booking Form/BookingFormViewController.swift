@@ -21,13 +21,14 @@ class BookingFormViewController: UIViewController {
     @IBOutlet var gendarField: UITextField!
     @IBOutlet var dateTimeField: UITextField!
     
-    private var selectedGender: String?
+    private let viewModel = BookingFormViewModel()
     private var bookingFormTextFields: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
         setupUI()
-        setupTextFieldTargets()
+        setupTargets()
     }
     
     private func setupUI() {
@@ -41,7 +42,6 @@ class BookingFormViewController: UIViewController {
         for (field, placeholder) in zip(bookingFormTextFields, placeholders) {
             field.setStyledPlaceholder(placeholder)
             field.textFieldStyle()
-            field.verticalPadding()
         }
         
         userBookingFormBirthDatePicker.datePickerMode = .date
@@ -76,64 +76,66 @@ class BookingFormViewController: UIViewController {
         dateTimeField.textColor = .primaryText
     }
     
-    private func setupTextFieldTargets() {
-        for textField in bookingFormTextFields {
-            textField.addTarget(self, action: #selector(submitButtonActive(_:)), for: .editingChanged)
+    private func setupTargets() {
+        userBookingFormNameTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
+        userBookingFormPhoneNumberTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
+        userBookingFormMailTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
+        
+        userBookingFormBirthDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+        userAppointmentDateTimePicker.addTarget(self, action: #selector(appointmentDateChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc private func textChanged(_ textField: UITextField) {
+        switch textField {
+        case userBookingFormNameTextField:
+            viewModel.updateName(textField.text)
+        case userBookingFormPhoneNumberTextField:
+            viewModel.updatePhone(textField.text)
+        case userBookingFormMailTextField:
+            viewModel.updateEmail(textField.text)
+        default:
+            break
         }
+    }
+    
+    @objc private func dateChanged(_ picker: UIDatePicker) {
+        viewModel.updateDateOfBirth(picker.date)
+    }
+    
+    @objc private func appointmentDateChanged(_ picker: UIDatePicker) {
+        viewModel.updateAppointmentDate(picker.date)
     }
     
     @IBAction func userBookingFormGenderChoiceAction(_ sender: Any) {
         let alert = UIAlertController(title: "Select Gender", message: nil, preferredStyle: .actionSheet)
-        
         ["Male", "Female"].forEach { gender in
             alert.addAction(UIAlertAction(title: gender, style: .default) { _ in
-                self.selectedGender = gender
-                self.userBookingFormChoicedGenderLabel.text = gender
-                self.submitButtonActive(self.userBookingFormNameTextField)
+                self.viewModel.updateGender(gender)
             })
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
     }
     
-    private func isFormValid() -> Bool {
-        let allTextFilled = bookingFormTextFields.allSatisfy {
-            !($0.text ?? "").trimmingCharacters(in: .whitespaces).isEmpty
-        }
-        let genderSelected = (selectedGender != nil)
-        return allTextFilled && genderSelected
-    }
-    
-    @objc private func submitButtonActive(_ textField: UITextField) {
-        let formValid = isFormValid()
-        appointmentSubmitButton.isEnabled = formValid
-        appointmentSubmitButton.alpha = formValid ? 1.0 : 0.5
-    }
-    
     @IBAction func userBookingFormSubmitAction(_ sender: Any) {
-        guard let name = userBookingFormNameTextField.text,
-              let phone = userBookingFormPhoneNumberTextField.text,
-              let email = userBookingFormMailTextField.text,
-              let gender = selectedGender else { return }
-        
-        let dob = userBookingFormBirthDatePicker.date
-        let appointmentDate = userAppointmentDateTimePicker.date
-        
-        print("Appointment Submitted")
-        print("Name: \(name)")
-        print("Phone: \(phone)")
-        print("Email: \(email)")
-        print("Gender: \(gender)")
-        print("DOB: \(dob)")
-        print("Appointment: \(appointmentDate)")
-        
-        Routes.displayBookedForm(from: navigationController)
+        viewModel.submitAppointment()
     }
     
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
 }
 
+extension BookingFormViewController: BookingFormViewModelDelegate {
+    func didUpdateFormValidity(isValid: Bool) {
+        appointmentSubmitButton.isEnabled = isValid
+        appointmentSubmitButton.alpha = isValid ? 1.0 : 0.5
+    }
+    
+    func didSelectGender(_ gender: String) {
+        userBookingFormChoicedGenderLabel.text = gender
+    }
+    
+    func didSubmitAppointment() {
+        let bookedFormVC = Routes.bookedFormVC
+        navigationItem.backButtonTitle = ""
+        navigationController?.pushViewController(bookedFormVC, animated: true)
+    }
+}

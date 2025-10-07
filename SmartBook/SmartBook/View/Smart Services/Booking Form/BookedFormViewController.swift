@@ -12,10 +12,17 @@ class BookedFormViewController: UIViewController {
     @IBOutlet var bookedSuccessfulMessageLabel: UILabel!
     @IBOutlet var goToHomescreenButton: UIButton!
     
+    private let viewModel = BookedFormViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        guard bookingSuccessfulLabel != nil,
+              bookedSuccessfulMessageLabel != nil,
+              goToHomescreenButton != nil else {
+            fatalError("IBOutlets not connected in BookedFormViewController")
+        }
         setupUI()
+        updateUI()
     }
     
     private func setupUI() {
@@ -26,6 +33,12 @@ class BookedFormViewController: UIViewController {
     }
     
     @IBAction func goToHomescreenButtonAction(_ sender: Any) {
-        Routes.displayRootScreen()
+        viewModel.goToHome()
+    }
+    
+    private func updateUI() {
+        bookingSuccessfulLabel.text = viewModel.bookingSuccessTitle
+        bookedSuccessfulMessageLabel.text = viewModel.bookingSuccessMessage
+        goToHomescreenButton.setTitle(viewModel.goHomeButtonTitle, for: .normal)
     }
 }
