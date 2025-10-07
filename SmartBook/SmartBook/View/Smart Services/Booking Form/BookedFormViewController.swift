@@ -16,11 +16,6 @@ class BookedFormViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard bookingSuccessfulLabel != nil,
-              bookedSuccessfulMessageLabel != nil,
-              goToHomescreenButton != nil else {
-            fatalError("IBOutlets not connected in BookedFormViewController")
-        }
         setupUI()
         updateUI()
     }
