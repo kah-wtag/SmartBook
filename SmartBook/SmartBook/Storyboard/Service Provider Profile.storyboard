@@ -122,6 +122,9 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="27"/>
                                             <color key="baseForegroundColor" name="secondaryTextColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="bookAppointmentButtonTapped:" destination="IAB-fA-wFm" eventType="touchUpInside" id="Lz4-Od-Ymu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
