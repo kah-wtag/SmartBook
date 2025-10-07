@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BookedFormViewController: UIViewController {
+final class BookedFormViewController: UIViewController {
     @IBOutlet var bookingSuccessfulLabel: UILabel!
     @IBOutlet var bookedSuccessfulMessageLabel: UILabel!
     @IBOutlet var goToHomescreenButton: UIButton!
