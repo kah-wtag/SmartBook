@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BookingFormViewController: UIViewController {
+final class BookingFormViewController: UIViewController {
     
     @IBOutlet var userBookingFormNameTextField: UITextField!
     @IBOutlet var userBookingFormPhoneNumberTextField: UITextField!
