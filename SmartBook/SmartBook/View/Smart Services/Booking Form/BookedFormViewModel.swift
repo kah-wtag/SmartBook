@@ -17,4 +17,3 @@ final class BookedFormViewModel {
         Routes.displayRootScreen()
     }
 }
-

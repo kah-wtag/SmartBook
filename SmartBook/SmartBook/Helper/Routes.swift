@@ -35,7 +35,6 @@ struct Routes {
         static let sericeProviderProfileVC = "ServiceProviderProfileViewController"
         static let bookingFormVC = "BookingFormViewController"
         static let bookedFormVC = "BookedFormViewController"
-        
     }
 }
 
