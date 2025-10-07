@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KiP-lF-Exy">
-                                <rect key="frame" x="0.0" y="93" width="393" height="666"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KiP-lF-Exy">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
                                 <color key="backgroundColor" name="backgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SmartServiceTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SmartServiceTableViewCell" rowHeight="53" id="mSF-GZ-dKt">
@@ -49,6 +48,10 @@
                             <constraint firstItem="DC7-Ij-9Bk" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="GdH-tq-7oQ"/>
                             <constraint firstItem="DC7-Ij-9Bk" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="W12-dI-fXd"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="DC7-Ij-9Bk" secondAttribute="trailing" id="ena-uc-Q3Z"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="KiP-lF-Exy" secondAttribute="bottom" id="v3T-FU-Xgt"/>
+                            <constraint firstItem="KiP-lF-Exy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="v4W-dE-bc4"/>
+                            <constraint firstItem="KiP-lF-Exy" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="xBg-qP-KmB"/>
+                            <constraint firstItem="KiP-lF-Exy" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="yKz-Cf-as8"/>
                         </constraints>
                     </view>
                     <connections>

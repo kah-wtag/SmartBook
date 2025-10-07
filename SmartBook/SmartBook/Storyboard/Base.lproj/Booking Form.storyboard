@@ -17,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-Of-k7x">
-                                <rect key="frame" x="20" y="148" width="353" height="560"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-Of-k7x">
+                                <rect key="frame" x="20" y="148" width="353" height="450"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="df5-hf-2P6">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="51.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FuT-O0-5CN">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="51.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="6o0-DT-bFJ"/>
                                                 </constraints>
@@ -35,7 +35,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zPw-dg-Tag" userLabel="Full Name">
-                                                <rect key="frame" x="55" y="0.0" width="298" height="51.666666666666664"/>
+                                                <rect key="frame" x="55" y="0.0" width="298" height="50"/>
                                                 <color key="textColor" name="primaryTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -43,10 +43,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WkF-ku-s5Y">
-                                        <rect key="frame" x="0.0" y="101.66666666666666" width="353" height="51.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="80" width="353" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZ8-kj-CyD">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="51.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="zBu-ge-prP"/>
                                                 </constraints>
@@ -57,7 +57,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ijj-gE-aia" userLabel="Mobile">
-                                                <rect key="frame" x="55" y="0.0" width="298" height="51.666666666666664"/>
+                                                <rect key="frame" x="55" y="0.0" width="298" height="50"/>
                                                 <color key="textColor" name="primaryTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -65,10 +65,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Jr5-Oo-Bw1">
-                                        <rect key="frame" x="0.0" y="203.33333333333331" width="353" height="51.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="160" width="353" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeB-Ez-5jZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="51.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="SYx-bg-BT5"/>
                                                 </constraints>
@@ -79,7 +79,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cqM-uU-8Ss" userLabel="Email">
-                                                <rect key="frame" x="55" y="0.0" width="298" height="51.666666666666664"/>
+                                                <rect key="frame" x="55" y="0.0" width="298" height="50"/>
                                                 <color key="textColor" name="primaryTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -87,16 +87,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-Ey-qxR">
-                                        <rect key="frame" x="0.0" y="305" width="353" height="51.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="240" width="353" height="50"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date of Birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GE-0n-30y" userLabel="DOB">
-                                                <rect key="frame" x="0.0" y="0.0" width="168" height="51.666666666666664"/>
-                                                <color key="textColor" name="primaryTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCB-ED-F0o">
+                                                <rect key="frame" x="0.0" y="0.0" width="168" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="LUh-gr-Z3n">
-                                                <rect key="frame" x="173" y="0.0" width="180" height="51.666666666666664"/>
+                                                <rect key="frame" x="173" y="0.0" width="180" height="50"/>
                                                 <color key="tintColor" name="secondaryTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="180" id="6Jx-jv-IyJ"/>
@@ -105,16 +105,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6YV-2z-2ym">
-                                        <rect key="frame" x="0.0" y="406.66666666666663" width="353" height="51.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="320" width="353" height="50"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhQ-Fi-jNw">
-                                                <rect key="frame" x="0.0" y="0.0" width="143" height="51.666666666666664"/>
-                                                <color key="textColor" name="primaryTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wr7-WN-jiS">
+                                                <rect key="frame" x="0.0" y="0.0" width="143" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Male" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c80-Oy-XWR">
-                                                <rect key="frame" x="148" y="0.0" width="160" height="51.666666666666664"/>
+                                                <rect key="frame" x="148" y="0.0" width="160" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="JZX-gY-Xuq"/>
                                                 </constraints>
@@ -123,7 +123,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghJ-jP-5kV">
-                                                <rect key="frame" x="313" y="0.0" width="40" height="51.666666666666664"/>
+                                                <rect key="frame" x="313" y="0.0" width="40" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Abm-vf-bFe"/>
                                                 </constraints>
@@ -140,16 +140,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Euv-7B-0ri">
-                                        <rect key="frame" x="0.0" y="508.33333333333343" width="353" height="51.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="400" width="353" height="50"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date  Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QRe-qo-DQv" userLabel="Date Time">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="51.666666666666664"/>
-                                                <color key="textColor" name="primaryTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0j-0U-TMr">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2oC-Qm-zNf">
-                                                <rect key="frame" x="133" y="0.0" width="220" height="51.666666666666664"/>
+                                                <rect key="frame" x="133" y="0.0" width="220" height="50"/>
                                                 <color key="tintColor" name="secondaryTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="220" id="4jN-hY-OGr"/>
@@ -160,7 +160,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91l-72-WGk">
-                                <rect key="frame" x="120" y="734" width="153" height="50"/>
+                                <rect key="frame" x="120" y="628" width="153" height="50"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Submit">
@@ -176,8 +176,7 @@
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="VwK-HN-rfa" firstAttribute="trailing" secondItem="91l-72-WGk" secondAttribute="trailing" constant="120" id="8GT-OR-rZH"/>
-                            <constraint firstItem="91l-72-WGk" firstAttribute="top" secondItem="aMc-Of-k7x" secondAttribute="bottom" constant="26" id="CR4-eK-Lna"/>
-                            <constraint firstItem="VwK-HN-rfa" firstAttribute="bottom" secondItem="91l-72-WGk" secondAttribute="bottom" id="KJh-07-XRP"/>
+                            <constraint firstItem="91l-72-WGk" firstAttribute="top" secondItem="aMc-Of-k7x" secondAttribute="bottom" constant="30" id="CR4-eK-Lna"/>
                             <constraint firstItem="aMc-Of-k7x" firstAttribute="top" secondItem="VwK-HN-rfa" secondAttribute="top" constant="30" id="Kyz-CA-XJi"/>
                             <constraint firstItem="aMc-Of-k7x" firstAttribute="leading" secondItem="VwK-HN-rfa" secondAttribute="leading" constant="20" id="My4-L6-oix"/>
                             <constraint firstItem="VwK-HN-rfa" firstAttribute="trailing" secondItem="aMc-Of-k7x" secondAttribute="trailing" constant="20" id="Pnt-j8-b2i"/>
@@ -186,11 +185,11 @@
                     </view>
                     <connections>
                         <outlet property="appointmentSubmitButton" destination="91l-72-WGk" id="v3j-qY-1yh"/>
-                        <outlet property="dateOfBirthField" destination="7GE-0n-30y" id="uY6-VW-KdS"/>
-                        <outlet property="dateTimeField" destination="QRe-qo-DQv" id="Zkg-o6-Wlr"/>
-                        <outlet property="gendarField" destination="rhQ-Fi-jNw" id="5vQ-KL-b8w"/>
+                        <outlet property="dateOfBirthLabel" destination="pCB-ED-F0o" id="8ek-MZ-PUf"/>
+                        <outlet property="dateTimeLabel" destination="R0j-0U-TMr" id="7Uu-E4-Pqv"/>
+                        <outlet property="gendarLabel" destination="wr7-WN-jiS" id="3UY-uL-fyW"/>
                         <outlet property="userAppointmentDateTimePicker" destination="2oC-Qm-zNf" id="YhO-Cp-N96"/>
-                        <outlet property="userBookingFormBirthDatePicker" destination="LUh-gr-Z3n" id="iyX-ei-EIe"/>
+                        <outlet property="userBookingFormBirthDatePicker" destination="LUh-gr-Z3n" id="asW-MM-Nvr"/>
                         <outlet property="userBookingFormChoicedGenderLabel" destination="c80-Oy-XWR" id="you-49-69Q"/>
                         <outlet property="userBookingFormGenderChoiceButton" destination="ghJ-jP-5kV" id="tc7-6Q-JCf"/>
                         <outlet property="userBookingFormMailTextField" destination="cqM-uU-8Ss" id="Xdd-9r-vNc"/>

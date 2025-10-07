@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BookingFormViewController: UIViewController {
+final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var userBookingFormNameTextField: UITextField!
     @IBOutlet var userBookingFormPhoneNumberTextField: UITextField!
@@ -17,19 +17,26 @@ final class BookingFormViewController: UIViewController {
     @IBOutlet var userAppointmentDateTimePicker: UIDatePicker!
     @IBOutlet var appointmentSubmitButton: UIButton!
     @IBOutlet var userBookingFormGenderChoiceButton: UIButton!
-    @IBOutlet var dateOfBirthField: UITextField!
-    @IBOutlet var gendarField: UITextField!
-    @IBOutlet var dateTimeField: UITextField!
+    @IBOutlet var dateOfBirthLabel: UILabel!
+    @IBOutlet var gendarLabel: UILabel!
+    @IBOutlet var dateTimeLabel: UILabel!
     
     let viewModel = BookingFormViewModel()
     private var bookingFormTextFields: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = viewModel.doctorName
+        title = viewModel.screenTitle
         configureViewModel()
         setupUI()
         setupTargets()
+        configureTextFields()
+    }
+    
+    private func configureTextFields() {
+        userBookingFormNameTextField.delegate = self
+        userBookingFormPhoneNumberTextField.delegate = self
+        userBookingFormMailTextField.delegate = self
     }
     
     private func configureViewModel() {
@@ -79,9 +86,9 @@ final class BookingFormViewController: UIViewController {
         userBookingFormMailTextField.setFontSize(.regular, weight: .regular, dynamic: true)
         userBookingFormPhoneNumberTextField.setFontSize(.regular, weight: .regular, dynamic: true)
         userBookingFormChoicedGenderLabel.setFontSize(.regular, weight: .regular, dynamic: true)
-        dateOfBirthField.setFontSize(.regular, weight: .regular, dynamic: true)
-        gendarField.setFontSize(.regular, weight: .regular, dynamic: true)
-        dateTimeField.setFontSize(.regular, weight: .regular, dynamic: true)
+        dateOfBirthLabel.setFontSize(.regular, weight: .regular, dynamic: true)
+        gendarLabel.setFontSize(.regular, weight: .regular, dynamic: true)
+        dateTimeLabel.setFontSize(.regular, weight: .regular, dynamic: true)
     }
     
     private func setupTextColor() {
@@ -91,9 +98,9 @@ final class BookingFormViewController: UIViewController {
         userBookingFormChoicedGenderLabel.textColor = .primaryText
         appointmentSubmitButton.titleLabel?.textColor = .secondaryText
         userBookingFormGenderChoiceButton.titleLabel?.textColor = .secondaryText
-        dateOfBirthField.textColor = .primaryText
-        gendarField.textColor = .primaryText
-        dateTimeField.textColor = .primaryText
+        dateOfBirthLabel.textColor = .primaryText
+        gendarLabel.textColor = .primaryText
+        dateTimeLabel.textColor = .primaryText
     }
     
     private func setupTargets() {
@@ -128,6 +135,11 @@ final class BookingFormViewController: UIViewController {
     
     @objc private func appointmentDateChanged(_ picker: UIDatePicker) {
         viewModel.updateAppointmentDate(picker.date)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() 
+        return true
     }
     
     @IBAction func userBookingFormGenderChoiceAction(_ sender: Any) {
