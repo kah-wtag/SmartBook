@@ -82,20 +82,20 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="ulo-PJ-5mX">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ulo-PJ-5mX">
                                         <rect key="frame" x="20" y="590.66666666666663" width="335" height="59.333333333333371"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="75T-kl-f1n">
-                                                <rect key="frame" x="0.0" y="0.0" width="217.33333333333334" height="59.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="230" height="59.333333333333336"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicine Specialist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYJ-7i-34B">
-                                                        <rect key="frame" x="0.3333333333333286" y="0.0" width="217" height="31.333333333333332"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicine Specialist" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYJ-7i-34B">
+                                                        <rect key="frame" x="6.6666666666666714" y="0.0" width="217" height="31.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                         <color key="textColor" name="primaryTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MBBS, PHD, MSC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Uf-sk-nj5">
-                                                        <rect key="frame" x="48.333333333333329" y="41.333333333333371" width="120.99999999999999" height="18"/>
+                                                        <rect key="frame" x="54.666666666666671" y="41.333333333333371" width="121.00000000000001" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" name="primaryTextColor"/>
                                                         <nil key="highlightedColor"/>
@@ -103,7 +103,10 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOI-CU-2wn">
-                                                <rect key="frame" x="250.33333333333329" y="12.666666666666742" width="84.666666666666657" height="34.333333333333336"/>
+                                                <rect key="frame" x="235" y="12.666666666666742" width="100" height="34.333333333333336"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="nhQ-iW-Yvu"/>
+                                                </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="map.fill" catalog="system" title="Map">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
