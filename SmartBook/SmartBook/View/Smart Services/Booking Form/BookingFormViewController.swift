@@ -27,19 +27,20 @@ class BookingFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = viewModel.doctorName
-        viewModel.delegate = self
+        configureViewModel()
         setupUI()
         setupTargets()
     }
     
+    private func configureViewModel() {
+            viewModel.delegate = self
+        }
+    
     private func setupUI() {
-        appointmentSubmitButton.setFontSize(.regular, weight: .bold, dynamic: true)
         bookingFormTextFields = [userBookingFormNameTextField,
                                  userBookingFormPhoneNumberTextField,
                                  userBookingFormMailTextField]
-        
         let placeholders = ["Full Name", "Phone Number", "Email Address"]
-        
         for (field, placeholder) in zip(bookingFormTextFields, placeholders) {
             field.setStyledPlaceholder(placeholder)
             field.textFieldStyle()
@@ -47,14 +48,17 @@ class BookingFormViewController: UIViewController {
         
         userBookingFormBirthDatePicker.datePickerMode = .date
         userBookingFormBirthDatePicker.maximumDate = Date()
-        
         userAppointmentDateTimePicker.datePickerMode = .dateAndTime
         userAppointmentDateTimePicker.minimumDate = Date()
-        
         userBookingFormChoicedGenderLabel.text = "Not Selected"
-        
         appointmentSubmitButton.isEnabled = false
         appointmentSubmitButton.alpha = 0.5
+        setupFontSize()
+        setupTextColor()
+    }
+    
+    private func setupFontSize() {
+        appointmentSubmitButton.setFontSize(.regular, weight: .bold, dynamic: true)
         userBookingFormNameTextField.setFontSize(.regular, weight: .regular, dynamic: true)
         userBookingFormMailTextField.setFontSize(.regular, weight: .regular, dynamic: true)
         userBookingFormPhoneNumberTextField.setFontSize(.regular, weight: .regular, dynamic: true)
@@ -62,7 +66,6 @@ class BookingFormViewController: UIViewController {
         dateOfBirthField.setFontSize(.regular, weight: .regular, dynamic: true)
         gendarField.setFontSize(.regular, weight: .regular, dynamic: true)
         dateTimeField.setFontSize(.regular, weight: .regular, dynamic: true)
-        setupTextColor()
     }
     
     private func setupTextColor() {

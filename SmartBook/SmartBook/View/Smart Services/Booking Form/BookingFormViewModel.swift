@@ -18,10 +18,6 @@ final class BookingFormViewModel {
     
     weak var delegate: BookingFormViewModelDelegate?
     private(set) var doctorName: String = ""
-    
-    func setDoctorName(_ name: String) {
-        doctorName = "Book \(name)"
-    }
     private(set) var name: String = "" {
         didSet { validateForm() }
     }
@@ -46,6 +42,10 @@ final class BookingFormViewModel {
         didSet {
             delegate?.didUpdateFormValidity(isValid: isFormValid)
         }
+    }
+    
+    func setDoctorName(_ name: String) {
+        doctorName = "Book \(name)"
     }
     
     func updateName(_ text: String?) {
