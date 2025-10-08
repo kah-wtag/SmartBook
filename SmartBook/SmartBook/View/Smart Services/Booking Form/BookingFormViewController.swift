@@ -69,7 +69,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     private func setupDatePickers() {
         userBookingFormBirthDatePicker.datePickerMode = .date
         userBookingFormBirthDatePicker.maximumDate = Date()
