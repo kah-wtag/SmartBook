@@ -22,5 +22,3 @@ extension UILabel {
         attributedText = NSAttributedString(string: text, attributes: [.paragraphStyle: style])
     }
 }
-
-

@@ -59,10 +59,16 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         let placeholders = ["Full Name", "Phone Number", "Email Address"]
         
         for (field, placeholder) in zip(bookingFormTextFields, placeholders) {
-            field.setStyledPlaceholder(placeholder)
+            field.setStyledPlaceholder(
+                placeholder,
+                size: .regular,
+                weight: .regular,
+                dynamic: true
+            )
             field.textFieldStyle()
         }
     }
+    
     
     private func setupDatePickers() {
         userBookingFormBirthDatePicker.datePickerMode = .date
@@ -76,12 +82,13 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupSubmitButton() {
+        appointmentSubmitButton.applyRoundBorder(color: .placeholder)
         appointmentSubmitButton.isEnabled = false
         appointmentSubmitButton.alpha = 0.5
     }
     
     private func setupFontSize() {
-        appointmentSubmitButton.setFontSize(.regular, weight: .bold, dynamic: true)
+        appointmentSubmitButton.setFontSize(.large, weight: .medium, dynamic: true)
         userBookingFormNameTextField.setFontSize(.regular, weight: .regular, dynamic: true)
         userBookingFormMailTextField.setFontSize(.regular, weight: .regular, dynamic: true)
         userBookingFormPhoneNumberTextField.setFontSize(.regular, weight: .regular, dynamic: true)
@@ -115,7 +122,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         userAppointmentDateTimePicker.addTarget(self, action: #selector(appointmentDateChanged(_:)), for: .valueChanged)
     }
     
-    
     @objc private func textChanged(_ textField: UITextField) {
         switch textField {
         case userBookingFormNameTextField:
@@ -138,7 +144,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder() 
+        textField.resignFirstResponder()
         return true
     }
     
@@ -156,13 +162,13 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @IBAction func userBookingFormSubmitAction(_ sender: Any) {
         viewModel.submitAppointment()
     }
-    
 }
 
 extension BookingFormViewController: BookingFormViewModelDelegate {
     func didUpdateFormValidity(isValid: Bool) {
         appointmentSubmitButton.isEnabled = isValid
         appointmentSubmitButton.alpha = isValid ? 1.0 : 0.5
+        appointmentSubmitButton.layer.borderColor = (isValid ? UIColor.border : UIColor.placeholder).cgColor
     }
     
     func didSelectGender(_ gender: String) {

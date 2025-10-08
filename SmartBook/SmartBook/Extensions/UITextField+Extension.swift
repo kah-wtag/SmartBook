@@ -13,10 +13,15 @@ extension UITextField {
         adjustsFontForContentSizeCategory = dynamic
     }
     
-    func setStyledPlaceholder(_ text: String, color: UIColor = .placeholder) {
+    func setStyledPlaceholder(_ text: String,
+                              color: UIColor = .placeholder,
+                              size: UIFont.TextSize? = nil,
+                              weight: UIFont.Weight = .regular,
+                              dynamic: Bool = true) {
+        let placeholderFont = size.map { UIFont.of(size: $0, weight: weight, dynamic: dynamic) } ?? font ?? UIFont.of(size: .regular)
         attributedPlaceholder = NSAttributedString(
             string: text,
-            attributes: [.foregroundColor: color, .font: font ?? UIFont.of(size: .regular)]
+            attributes: [.foregroundColor: color, .font: placeholderFont]
         )
     }
     
@@ -56,5 +61,3 @@ extension UITextField {
         horizontalPadding(12)
     }
 }
-
-
