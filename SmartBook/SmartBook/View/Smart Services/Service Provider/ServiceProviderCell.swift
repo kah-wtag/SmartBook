@@ -15,6 +15,9 @@ final class ServiceProviderCell: UITableViewCell {
     @IBOutlet var experienceLabel: UILabel!
     @IBOutlet var bookButton: UIButton!
     @IBOutlet var mapButton: UIButton!
+    @IBOutlet var nameButton: UIButton!
+    @IBOutlet var institutionButton: UIButton!
+    @IBOutlet var experienceButton: UIButton!
     
     var viewModel: ServiceProviderCellViewModel!
     
@@ -25,8 +28,8 @@ final class ServiceProviderCell: UITableViewCell {
     
     func setupUI() {
         nameLabel.setFontSize(.regular, weight: .regular, dynamic: true)
-        institutionLabel.setFontSize(.small, weight: .regular, dynamic: true)
-        experienceLabel.setFontSize(.small, weight: .regular, dynamic: true)
+        institutionLabel.setFontSize(.regular, weight: .regular, dynamic: true)
+        experienceLabel.setFontSize(.regular, weight: .regular, dynamic: true)
         bookButton.setFontSize(.regular, weight: .medium, dynamic: true)
         mapButton.setFontSize(.regular, weight: .medium, dynamic: true)
         serviceProviderImageView.makeCircular()
