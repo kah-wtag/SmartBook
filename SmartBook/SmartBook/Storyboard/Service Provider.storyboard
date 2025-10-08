@@ -37,8 +37,8 @@
                                                                 <constraint firstAttribute="width" constant="75" id="Y6h-TQ-hnr"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bc1-kP-NXg">
-                                                            <rect key="frame" x="84.666666666666671" y="26.333333333333336" width="173.66666666666663" height="67.666666666666657"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bc1-kP-NXg">
+                                                            <rect key="frame" x="84.666666666666671" y="25.666666666666664" width="173.66666666666663" height="69.333333333333343"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Md. Kamrul Hasan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTI-OW-aaz">
                                                                     <rect key="frame" x="0.0" y="0.0" width="173.66666666666666" height="20.333333333333332"/>
@@ -47,13 +47,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dhaka Medical College" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhU-uN-nSW">
-                                                                    <rect key="frame" x="0.0" y="25.333333333333329" width="173.66666666666666" height="20.333333333333329"/>
+                                                                    <rect key="frame" x="0.0" y="25.333333333333336" width="173.66666666666666" height="20.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 yrs exp" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gr-vA-t0z">
-                                                                    <rect key="frame" x="0.0" y="50.666666666666664" width="173.66666666666666" height="16.999999999999993"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 yrs exp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gr-vA-t0z">
+                                                                    <rect key="frame" x="0.0" y="52.333333333333336" width="173.66666666666666" height="17.000000000000007"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" name="primaryTextColor"/>
                                                                     <nil key="highlightedColor"/>
