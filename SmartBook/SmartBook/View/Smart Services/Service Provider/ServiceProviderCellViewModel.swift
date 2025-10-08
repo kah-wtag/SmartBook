@@ -19,9 +19,13 @@ final class ServiceProviderCellViewModel {
         serviceProvider.name ?? "Unknown"
     }
 
+    var institution: String {
+        serviceProvider.institution ?? "Unknown"
+    }
+    
     var experience: String {
         let years = serviceProvider.experience ?? 0
-        return "\(years) yrs experience"
+        return "\(years) years experience"
     }
 
     var image: UIImage? {
