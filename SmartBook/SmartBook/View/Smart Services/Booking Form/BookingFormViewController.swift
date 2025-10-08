@@ -111,29 +111,27 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupTargets() {
-        let textFields: [UITextField] = [
-            userBookingFormNameTextField,
-            userBookingFormPhoneNumberTextField,
-            userBookingFormMailTextField
-        ]
-        textFields.forEach { $0.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged) }
-        
         userBookingFormBirthDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         userAppointmentDateTimePicker.addTarget(self, action: #selector(appointmentDateChanged(_:)), for: .valueChanged)
     }
     
-    @objc private func textChanged(_ textField: UITextField) {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return true }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
         switch textField {
         case userBookingFormNameTextField:
-            viewModel.updateName(textField.text)
+            viewModel.updateName(updatedText)
         case userBookingFormPhoneNumberTextField:
-            viewModel.updatePhone(textField.text)
+            viewModel.updatePhone(updatedText)
         case userBookingFormMailTextField:
-            viewModel.updateEmail(textField.text)
+            viewModel.updateEmail(updatedText)
         default:
             break
         }
         viewModel.validateForm()
+        return true
     }
     
     @objc private func dateChanged(_ picker: UIDatePicker) {
