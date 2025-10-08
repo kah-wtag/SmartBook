@@ -123,6 +123,10 @@
                                             <color key="baseForegroundColor" name="secondaryTextColor"/>
                                         </buttonConfiguration>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Op-Zr-C2L">
+                                        <rect key="frame" x="0.0" y="316" width="375" height="1"/>
+                                        <color key="backgroundColor" name="primaryTextColor"/>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ulo-PJ-5mX" firstAttribute="leading" secondItem="1Ci-3A-S1S" secondAttribute="leading" constant="20" id="2jf-Wi-BLq"/>
@@ -131,13 +135,17 @@
                                     <constraint firstItem="bj1-kQ-dlq" firstAttribute="top" secondItem="z58-9d-YIw" secondAttribute="bottom" constant="50" id="8za-gl-pSG"/>
                                     <constraint firstItem="0oP-G6-35e" firstAttribute="top" secondItem="bj1-kQ-dlq" secondAttribute="bottom" constant="50" id="9NB-Uu-TI8"/>
                                     <constraint firstItem="ihQ-dw-Mg5" firstAttribute="centerX" secondItem="ulo-PJ-5mX" secondAttribute="centerX" id="ACA-TX-aqt"/>
+                                    <constraint firstItem="1Op-Zr-C2L" firstAttribute="leading" secondItem="1Ci-3A-S1S" secondAttribute="leading" id="AXR-58-s9o"/>
                                     <constraint firstItem="1Ci-3A-S1S" firstAttribute="trailing" secondItem="bj1-kQ-dlq" secondAttribute="trailing" constant="20" id="JPF-pX-zSs"/>
                                     <constraint firstAttribute="bottom" secondItem="ihQ-dw-Mg5" secondAttribute="bottom" constant="20" id="K3w-GE-zif"/>
                                     <constraint firstItem="1Ci-3A-S1S" firstAttribute="trailing" secondItem="ulo-PJ-5mX" secondAttribute="trailing" constant="20" id="Lmg-ip-kN9"/>
                                     <constraint firstItem="ihQ-dw-Mg5" firstAttribute="top" secondItem="ulo-PJ-5mX" secondAttribute="bottom" constant="50" id="Pvd-7q-2PB"/>
+                                    <constraint firstItem="1Ci-3A-S1S" firstAttribute="trailing" secondItem="1Op-Zr-C2L" secondAttribute="trailing" id="SLo-QK-r3D"/>
                                     <constraint firstItem="ulo-PJ-5mX" firstAttribute="top" secondItem="0oP-G6-35e" secondAttribute="bottom" constant="50" id="Ttu-eF-b62"/>
                                     <constraint firstItem="bj1-kQ-dlq" firstAttribute="leading" secondItem="1Ci-3A-S1S" secondAttribute="leading" constant="20" id="Z2n-1N-xDJ"/>
+                                    <constraint firstItem="bj1-kQ-dlq" firstAttribute="top" secondItem="1Op-Zr-C2L" secondAttribute="bottom" constant="25" id="bEa-aE-QBf"/>
                                     <constraint firstItem="z58-9d-YIw" firstAttribute="top" secondItem="ghX-TV-DQt" secondAttribute="top" constant="20" id="i7b-JU-0TE"/>
+                                    <constraint firstItem="1Op-Zr-C2L" firstAttribute="top" secondItem="z58-9d-YIw" secondAttribute="bottom" constant="24" id="oHX-iK-hVa"/>
                                     <constraint firstItem="1Ci-3A-S1S" firstAttribute="trailing" secondItem="z58-9d-YIw" secondAttribute="trailing" constant="71" id="s0J-bK-2rv"/>
                                     <constraint firstItem="1Ci-3A-S1S" firstAttribute="trailing" secondItem="0oP-G6-35e" secondAttribute="trailing" constant="20" id="wrB-cf-iQR"/>
                                     <constraint firstItem="ulo-PJ-5mX" firstAttribute="width" secondItem="ghX-TV-DQt" secondAttribute="width" id="y4F-8E-nZ3"/>
@@ -171,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRy-NT-fff" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="707.46268656716416" y="-28.146453089244851"/>
+            <point key="canvasLocation" x="706.39999999999998" y="-28.817733990147783"/>
         </scene>
     </scenes>
     <resources>
