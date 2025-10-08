@@ -46,7 +46,7 @@ final class ServiceProviderProfileViewController: UIViewController {
         professionalsProfilePatientNumber.setFontSize(.regular, weight: .medium, dynamic: true)
         professionalsProfileExperience.setFontSize(.regular, weight: .medium, dynamic: true)
         medicalCollege.setFontSize(.small, weight: .thin, dynamic: true)
-        professionalsPersonalBio.setFontSize(.large, weight: .bold, dynamic: true)
+        professionalsPersonalBio.setFontSize(.large, weight: .medium, dynamic: true)
         professionalsPersonalBioDetials.setFontSize(.small, weight: .thin, dynamic: true)
         professionalsFieldName.setFontSize(.regular, weight: .medium, dynamic: true)
         professionalsDegree.setFontSize(.small, weight: .thin, dynamic: true)
