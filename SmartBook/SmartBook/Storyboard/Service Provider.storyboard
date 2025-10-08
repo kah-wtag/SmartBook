@@ -58,30 +58,27 @@
                                                                     <color key="textColor" name="primaryTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Yl-C6-rGn">
-                                                                    <rect key="frame" x="0.0" y="60.666666666666657" width="273" height="42"/>
-                                                                    <subviews>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GI-eR-C6E">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="136.66666666666666" height="42"/>
-                                                                            <state key="normal" title="Button"/>
-                                                                            <buttonConfiguration key="configuration" style="plain" title="Book">
-                                                                                <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                                                                <color key="baseForegroundColor" name="secondaryTextColor"/>
-                                                                            </buttonConfiguration>
-                                                                            <connections>
-                                                                                <action selector="bookButtonTapped:" destination="F5A-Rv-xhQ" eventType="touchUpInside" id="aZE-uI-FEj"/>
-                                                                            </connections>
-                                                                        </button>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msa-yX-7iR">
-                                                                            <rect key="frame" x="136.66666666666669" y="0.0" width="136.33333333333331" height="42"/>
-                                                                            <state key="normal" title="Button"/>
-                                                                            <buttonConfiguration key="configuration" style="plain" title="Map">
-                                                                                <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                                                                <color key="baseForegroundColor" name="secondaryTextColor"/>
-                                                                            </buttonConfiguration>
-                                                                        </button>
-                                                                    </subviews>
-                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" id="6Yl-C6-rGn">
+                                                            <rect key="frame" x="267.66666666666669" y="43" width="115.33333333333331" height="34.333333333333343"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GI-eR-C6E">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="64" height="34.333333333333336"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="plain" title="Book">
+                                                                        <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                                        <color key="baseForegroundColor" name="secondaryTextColor"/>
+                                                                    </buttonConfiguration>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msa-yX-7iR">
+                                                                    <rect key="frame" x="64" y="0.0" width="51.333333333333343" height="34.333333333333336"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="plain" image="map.fill" catalog="system">
+                                                                        <color key="baseForegroundColor" name="secondaryTextColor"/>
+                                                                    </buttonConfiguration>
+                                                                </button>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
