@@ -133,6 +133,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         default:
             break
         }
+        viewModel.validateForm()
     }
     
     @objc private func dateChanged(_ picker: UIDatePicker) {
@@ -153,6 +154,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         ["Male", "Female"].forEach { gender in
             alert.addAction(UIAlertAction(title: gender, style: .default) { _ in
                 self.viewModel.updateGender(gender)
+                self.viewModel.validateForm()  
             })
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))

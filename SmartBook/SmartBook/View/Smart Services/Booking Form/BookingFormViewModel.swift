@@ -18,23 +18,10 @@ final class BookingFormViewModel {
     weak var delegate: BookingFormViewModelDelegate?
     
     private(set) var screenTitle: String = ""
-    private(set) var name: String = "" {
-        didSet { validateForm() }
-    }
-    private(set) var phone: String = "" {
-        didSet { validateForm() }
-    }
-    private(set) var email: String = "" {
-        didSet { validateForm() }
-    }
-    private(set) var selectedGender: String? {
-        didSet {
-            validateForm()
-            if let gender = selectedGender {
-                delegate?.didSelectGender(gender)
-            }
-        }
-    }
+    private(set) var name: String = ""
+    private(set) var phone: String = ""
+    private(set) var email: String = ""
+    private var selectedGender: String? = nil
     private(set) var dateOfBirth: Date = Date()
     private(set) var appointmentDate: Date = Date()
     
@@ -62,6 +49,7 @@ final class BookingFormViewModel {
     
     func updateGender(_ gender: String) {
         selectedGender = gender
+        delegate?.didSelectGender(gender)
     }
     
     func updateDateOfBirth(_ date: Date) {
@@ -72,7 +60,7 @@ final class BookingFormViewModel {
         appointmentDate = date
     }
     
-    private func validateForm() {
+    func validateForm() {
         let allFieldsFilled = !name.isEmpty && !phone.isEmpty && !email.isEmpty
         let genderChosen = (selectedGender != nil)
         isFormValid = allFieldsFilled && genderChosen
