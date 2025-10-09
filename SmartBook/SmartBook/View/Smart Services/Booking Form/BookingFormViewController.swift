@@ -13,7 +13,8 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var userBookingFormPhoneNumberTextField: UITextField!
     @IBOutlet var userBookingFormMailTextField: UITextField!
     @IBOutlet var userBookingFormBirthDatePicker: UIDatePicker!
-    @IBOutlet var userAppointmentDateTimePicker: UIDatePicker!
+    @IBOutlet var userAppointmentTimePicker: UIDatePicker!
+    @IBOutlet var userAppointmentDatePicker: UIDatePicker!
     @IBOutlet var appointmentSubmitButton: UIButton!
     @IBOutlet var dateOfBirthLabel: UILabel!
     @IBOutlet var gendarLabel: UILabel!
@@ -64,7 +65,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     
     private func setupUI() {
         userBookingFormBirthDatePicker.maximumDate = Date()
-        userAppointmentDateTimePicker.minimumDate = Date()
+        userAppointmentDatePicker.minimumDate = Date()
         setupTextFields()
         setupSubmitButton()
         setupFontSize()
@@ -124,7 +125,8 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     
     private func setupTargets() {
         userBookingFormBirthDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
-        userAppointmentDateTimePicker.addTarget(self, action: #selector(appointmentDateChanged(_:)), for: .valueChanged)
+        userAppointmentDatePicker.addTarget(self, action: #selector(appointmentDateChanged(_:)), for: .valueChanged)
+        userAppointmentTimePicker.addTarget(self, action: #selector(appointmentTimeChanged(_:)), for: .valueChanged)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -152,6 +154,10 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func appointmentDateChanged(_ picker: UIDatePicker) {
         viewModel.updateAppointmentDate(picker.date)
+    }
+    
+    @objc private func appointmentTimeChanged(_ picker: UIDatePicker) {
+        viewModel.updateAppointmentTime(picker.date)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

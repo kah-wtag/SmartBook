@@ -144,22 +144,35 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Euv-7B-0ri">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Euv-7B-0ri">
                                         <rect key="frame" x="0.0" y="300" width="362" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0j-0U-TMr">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0j-0U-TMr">
                                                 <rect key="frame" x="0.0" y="0.0" width="110.66666666666667" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="2oC-Qm-zNf">
-                                                <rect key="frame" x="115.66666666666664" y="0.0" width="246.33333333333337" height="30"/>
-                                                <color key="tintColor" name="secondaryTextColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="UNq-WL-aoF"/>
-                                                </constraints>
-                                            </datePicker>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4de-yG-tT6">
+                                                <rect key="frame" x="140.66666666666663" y="0.0" width="221.33333333333337" height="30"/>
+                                                <subviews>
+                                                    <datePicker contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="2oC-Qm-zNf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="131" height="30"/>
+                                                        <color key="tintColor" name="secondaryTextColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="iy3-p2-L6Y"/>
+                                                        </constraints>
+                                                    </datePicker>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hfo-wD-6F5">
+                                                        <rect key="frame" x="135.00000000000003" y="0.0" width="86.333333333333343" height="30"/>
+                                                        <color key="tintColor" name="secondaryTextColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="86.333333333333343" id="Bif-Pp-UxZ"/>
+                                                            <constraint firstAttribute="height" constant="30" id="aDj-v0-fgH"/>
+                                                        </constraints>
+                                                    </datePicker>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -205,7 +218,8 @@
                         <outlet property="femaleRadioButton" destination="Kdf-c9-5zY" id="3Al-8R-d2G"/>
                         <outlet property="gendarLabel" destination="wr7-WN-jiS" id="3UY-uL-fyW"/>
                         <outlet property="maleRadioButton" destination="f7v-ca-KsX" id="VHP-y6-Ky3"/>
-                        <outlet property="userAppointmentDateTimePicker" destination="2oC-Qm-zNf" id="YhO-Cp-N96"/>
+                        <outlet property="userAppointmentDatePicker" destination="2oC-Qm-zNf" id="YhO-Cp-N96"/>
+                        <outlet property="userAppointmentTimePicker" destination="Hfo-wD-6F5" id="Jzb-sh-Xlt"/>
                         <outlet property="userBookingFormBirthDatePicker" destination="LUh-gr-Z3n" id="asW-MM-Nvr"/>
                         <outlet property="userBookingFormMailTextField" destination="cqM-uU-8Ss" id="Xdd-9r-vNc"/>
                         <outlet property="userBookingFormNameTextField" destination="zPw-dg-Tag" id="pum-R0-ogo"/>

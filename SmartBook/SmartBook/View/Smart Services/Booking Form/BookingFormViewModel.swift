@@ -23,6 +23,7 @@ final class BookingFormViewModel {
     private var selectedGender: String? = nil
     private(set) var dateOfBirth: Date = Date()
     private(set) var appointmentDate: Date = Date()
+    private(set) var appointmentTime: Date = Date()
     
     private var isFormValid: Bool = false {
         didSet {
@@ -56,6 +57,24 @@ final class BookingFormViewModel {
     
     func updateAppointmentDate(_ date: Date) {
         appointmentDate = date
+    }
+    
+    func updateAppointmentTime(_ time: Date) {
+        appointmentTime = time
+    }
+    
+    private var combinedAppointmentDateTime: Date {
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: appointmentDate)
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: appointmentTime)
+        var merged = DateComponents()
+        merged.year = dateComponents.year
+        merged.month = dateComponents.month
+        merged.day = dateComponents.day
+        merged.hour = timeComponents.hour
+        merged.minute = timeComponents.minute
+        
+        return calendar.date(from: merged) ?? appointmentDate
     }
     
     func validateForm() {
