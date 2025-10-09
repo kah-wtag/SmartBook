@@ -95,16 +95,16 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupFontSize() {
-        maleRadioButton.setFontSize(.regular, weight: .regular, dynamic: true)
-        femaleRadioButton.setFontSize(.regular, weight: .regular, dynamic: true)
-        bookingServiceProviderLabel.setFontSize(.regular, weight: .regular, dynamic: true)
+        maleRadioButton.setFontSize(.large, weight: .regular, dynamic: true)
+        femaleRadioButton.setFontSize(.large, weight: .regular, dynamic: true)
+        bookingServiceProviderLabel.setFontSize(.large, weight: .regular, dynamic: true)
         appointmentSubmitButton.setFontSize(.large, weight: .medium, dynamic: true)
-        userBookingFormNameTextField.setFontSize(.regular, weight: .regular, dynamic: true)
-        userBookingFormMailTextField.setFontSize(.regular, weight: .regular, dynamic: true)
-        userBookingFormPhoneNumberTextField.setFontSize(.regular, weight: .regular, dynamic: true)
-        dateOfBirthLabel.setFontSize(.regular, weight: .regular, dynamic: true)
-        gendarLabel.setFontSize(.regular, weight: .regular, dynamic: true)
-        dateTimeLabel.setFontSize(.regular, weight: .regular, dynamic: true)
+        userBookingFormNameTextField.setFontSize(.large, weight: .regular, dynamic: true)
+        userBookingFormMailTextField.setFontSize(.large, weight: .regular, dynamic: true)
+        userBookingFormPhoneNumberTextField.setFontSize(.large, weight: .regular, dynamic: true)
+        dateOfBirthLabel.setFontSize(.large, weight: .regular, dynamic: true)
+        gendarLabel.setFontSize(.large, weight: .regular, dynamic: true)
+        dateTimeLabel.setFontSize(.large, weight: .regular, dynamic: true)
     }
     
     private func setupTextColor() {
