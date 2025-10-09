@@ -48,7 +48,7 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cardiology" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paC-v7-K05">
                                                                     <rect key="frame" x="0.0" y="0.0" width="133" height="23.666666666666668"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" name="primaryTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -57,7 +57,7 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20.333333333333329" id="BYR-Pr-0qF"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" name="primaryTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>

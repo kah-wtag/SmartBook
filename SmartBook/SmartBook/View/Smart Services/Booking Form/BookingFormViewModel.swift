@@ -9,7 +9,6 @@ import UIKit
 
 protocol BookingFormViewModelDelegate: AnyObject {
     func didUpdateFormValidity(isValid: Bool)
-    func didSelectGender(_ gender: String)
     func didSubmitAppointment()
 }
 
@@ -49,7 +48,6 @@ final class BookingFormViewModel {
     
     func updateGender(_ gender: String) {
         selectedGender = gender
-        delegate?.didSelectGender(gender)
     }
     
     func updateDateOfBirth(_ date: Date) {

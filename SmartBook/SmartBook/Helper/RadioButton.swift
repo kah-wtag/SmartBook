@@ -10,7 +10,6 @@ import UIKit
 class RadioButton: UIButton {
 
     private let dotView = UIView()
-    private var dotConstraintsSet = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,26 +17,21 @@ class RadioButton: UIButton {
     }
 
     private func setupAppearance() {
-        // Outer circle
         self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderColor = UIColor.primaryReverseText.cgColor
         self.clipsToBounds = true
 
-        // Inner dot
         dotView.backgroundColor = UIColor.systemTeal
         dotView.translatesAutoresizingMaskIntoConstraints = false
         dotView.isHidden = true
         self.addSubview(dotView)
 
-        if !dotConstraintsSet {
-            NSLayoutConstraint.activate([
-                dotView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-                dotView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-                dotView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
-                dotView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5)
-            ])
-            dotConstraintsSet = true
-        }
+        NSLayoutConstraint.activate([
+            dotView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            dotView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            dotView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
+            dotView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5)
+        ])
     }
 
     override func layoutSubviews() {

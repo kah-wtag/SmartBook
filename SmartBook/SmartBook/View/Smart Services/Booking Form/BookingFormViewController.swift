@@ -13,15 +13,12 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var userBookingFormPhoneNumberTextField: UITextField!
     @IBOutlet var userBookingFormMailTextField: UITextField!
     @IBOutlet var userBookingFormBirthDatePicker: UIDatePicker!
-    @IBOutlet var userBookingFormChoicedGenderLabel: UILabel!
     @IBOutlet var userAppointmentDateTimePicker: UIDatePicker!
     @IBOutlet var appointmentSubmitButton: UIButton!
-    @IBOutlet var userBookingFormGenderChoiceButton: UIButton!
     @IBOutlet var dateOfBirthLabel: UILabel!
     @IBOutlet var gendarLabel: UILabel!
     @IBOutlet var dateTimeLabel: UILabel!
     @IBOutlet var bookingServiceProviderLabel: UILabel!
-    @IBOutlet var genderRadioButtonsStackView: UIStackView!
     @IBOutlet var maleRadioButton: RadioButton!
     @IBOutlet var femaleRadioButton: RadioButton!
     
@@ -37,33 +34,24 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         setupTargets()
         configureTextFields()
         setupServiceProviderName()
-        
         setupGenderRadioButtons()
     }
-
+    
     private func setupGenderRadioButtons() {
-            let buttons = [maleRadioButton, femaleRadioButton]
-            buttons.forEach { button in
-                button?.addTarget(self, action: #selector(genderButtonTapped(_:)), for: .touchUpInside)
-            }
+        [maleRadioButton, femaleRadioButton].forEach { button in
+            button.addTarget(self, action: #selector(genderButtonTapped(_:)), for: .touchUpInside)
         }
+    }
+    
+    @objc private func genderButtonTapped(_ sender: RadioButton) {
+        [maleRadioButton, femaleRadioButton].forEach { $0.isSelected = false }
+        sender.isSelected = true
         
-        // Toggle selection
-        @objc private func genderButtonTapped(_ sender: RadioButton) {
-            let buttons = [maleRadioButton, femaleRadioButton]
-            buttons.forEach { $0?.isSelected = false } // Deselect all
-            sender.isSelected = true                  // Select tapped button
-            
-            // Update label & ViewModel
-            let selectedGender = sender == maleRadioButton ? "Male" : "Female"
-            userBookingFormChoicedGenderLabel.text = selectedGender
-            viewModel.updateGender(selectedGender)
-            viewModel.validateForm()
-            
-            // Hide after selection (optional)
-            genderRadioButtonsStackView.isHidden = true
-        }
-
+        let selectedGender = sender == maleRadioButton ? "Male" : "Female"
+        viewModel.updateGender(selectedGender)
+        viewModel.validateForm()
+    }
+    
     private func configureTextFields() {
         userBookingFormNameTextField.delegate = self
         userBookingFormPhoneNumberTextField.delegate = self
@@ -75,10 +63,9 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupUI() {
-        userBookingFormChoicedGenderLabel.applyRoundBorder()
-        genderRadioButtonsStackView.isHidden = true
+        userBookingFormBirthDatePicker.maximumDate = Date()
+        userAppointmentDateTimePicker.minimumDate = Date()
         setupTextFields()
-        setupGenderLabel()
         setupSubmitButton()
         setupFontSize()
         setupTextColor()
@@ -101,10 +88,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func setupGenderLabel() {
-        userBookingFormChoicedGenderLabel.text = "Not Selected"
-    }
-    
     private func setupSubmitButton() {
         appointmentSubmitButton.applyRoundBorder(color: .placeholder)
         appointmentSubmitButton.isEnabled = false
@@ -112,12 +95,13 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupFontSize() {
+        maleRadioButton.setFontSize(.regular, weight: .regular, dynamic: true)
+        femaleRadioButton.setFontSize(.regular, weight: .regular, dynamic: true)
         bookingServiceProviderLabel.setFontSize(.regular, weight: .regular, dynamic: true)
         appointmentSubmitButton.setFontSize(.large, weight: .medium, dynamic: true)
         userBookingFormNameTextField.setFontSize(.regular, weight: .regular, dynamic: true)
         userBookingFormMailTextField.setFontSize(.regular, weight: .regular, dynamic: true)
         userBookingFormPhoneNumberTextField.setFontSize(.regular, weight: .regular, dynamic: true)
-        userBookingFormChoicedGenderLabel.setFontSize(.regular, weight: .regular, dynamic: true)
         dateOfBirthLabel.setFontSize(.regular, weight: .regular, dynamic: true)
         gendarLabel.setFontSize(.regular, weight: .regular, dynamic: true)
         dateTimeLabel.setFontSize(.regular, weight: .regular, dynamic: true)
@@ -128,9 +112,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         userBookingFormNameTextField.textColor = .primaryText
         userBookingFormPhoneNumberTextField.textColor = .primaryText
         userBookingFormMailTextField.textColor = .primaryText
-        userBookingFormChoicedGenderLabel.textColor = .primaryText
         appointmentSubmitButton.titleLabel?.textColor = .secondaryText
-        userBookingFormGenderChoiceButton.titleLabel?.textColor = .secondaryText
         dateOfBirthLabel.textColor = .primaryText
         gendarLabel.textColor = .primaryText
         dateTimeLabel.textColor = .primaryText
@@ -177,10 +159,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func userBookingFormGenderChoiceAction(_ sender: Any) {
-        genderRadioButtonsStackView.isHidden = !genderRadioButtonsStackView.isHidden
-    }
-    
     @IBAction func userBookingFormSubmitAction(_ sender: Any) {
         viewModel.submitAppointment()
     }
@@ -191,10 +169,6 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
         appointmentSubmitButton.isEnabled = isValid
         appointmentSubmitButton.alpha = isValid ? 1.0 : 0.5
         appointmentSubmitButton.layer.borderColor = (isValid ? UIColor.border : UIColor.placeholder).cgColor
-    }
-    
-    func didSelectGender(_ gender: String) {
-        userBookingFormChoicedGenderLabel.text = gender
     }
     
     func didSubmitAppointment() {
