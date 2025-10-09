@@ -43,8 +43,8 @@ final class ServiceProviderProfileViewController: UIViewController {
     
     private func setupLabelFontSize() {
         professionalsProfileName.setFontSize(.large, weight: .bold, dynamic: true)
-        professionalsProfilePatientNumber.setFontSize(.regular, weight: .medium, dynamic: true)
-        professionalsProfileExperience.setFontSize(.regular, weight: .medium, dynamic: true)
+        professionalsProfilePatientNumber.setFontSize(.regular, weight: .regular, dynamic: true)
+        professionalsProfileExperience.setFontSize(.regular, weight: .regular, dynamic: true)
         medicalCollege.setFontSize(.small, weight: .thin, dynamic: true)
         professionalsPersonalBio.setFontSize(.large, weight: .medium, dynamic: true)
         professionalsPersonalBioDetials.setFontSize(.small, weight: .thin, dynamic: true)

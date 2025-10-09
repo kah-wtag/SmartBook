@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-Of-k7x">
-                                <rect key="frame" x="20" y="148" width="353" height="330"/>
+                                <rect key="frame" x="20" y="188.33333333333337" width="353" height="330"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="df5-hf-2P6">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="30"/>
@@ -67,7 +67,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Jr5-Oo-Bw1">
-                                        <rect key="frame" x="0.0" y="120" width="353" height="30"/>
+                                        <rect key="frame" x="0.0" y="119.99999999999997" width="353" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeB-Ez-5jZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -90,25 +90,22 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-Ey-qxR">
-                                        <rect key="frame" x="0.0" y="180" width="353" height="30"/>
+                                        <rect key="frame" x="0.0" y="179.99999999999997" width="353" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCB-ED-F0o">
-                                                <rect key="frame" x="0.0" y="0.0" width="168" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="96" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="LUh-gr-Z3n">
-                                                <rect key="frame" x="173" y="0.0" width="180" height="30"/>
+                                                <rect key="frame" x="101" y="0.0" width="252" height="30"/>
                                                 <color key="tintColor" name="secondaryTextColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="180" id="6Jx-jv-IyJ"/>
-                                                </constraints>
                                             </datePicker>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6YV-2z-2ym">
-                                        <rect key="frame" x="0.0" y="240" width="353" height="30"/>
+                                        <rect key="frame" x="0.0" y="239.99999999999997" width="353" height="30.000000000000028"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wr7-WN-jiS">
                                                 <rect key="frame" x="0.0" y="0.0" width="143" height="30"/>
@@ -146,24 +143,21 @@
                                         <rect key="frame" x="0.0" y="300" width="353" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0j-0U-TMr">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="94" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2oC-Qm-zNf">
-                                                <rect key="frame" x="133" y="0.0" width="220" height="30"/>
+                                                <rect key="frame" x="99" y="0.0" width="254" height="30"/>
                                                 <color key="tintColor" name="secondaryTextColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="220" id="4jN-hY-OGr"/>
-                                                </constraints>
                                             </datePicker>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91l-72-WGk">
-                                <rect key="frame" x="120" y="538" width="153" height="34.333333333333371"/>
+                                <rect key="frame" x="120" y="578.33333333333337" width="153" height="34.333333333333371"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Submit">
@@ -174,20 +168,30 @@
                                     <action selector="userBookingFormSubmitAction:" destination="kWd-wY-lMm" eventType="touchUpInside" id="7Il-W3-AtR"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Appointment Booking with " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5N-4Y-FDH">
+                                <rect key="frame" x="20" y="138" width="353" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VwK-HN-rfa"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
+                            <constraint firstItem="VwK-HN-rfa" firstAttribute="trailing" secondItem="M5N-4Y-FDH" secondAttribute="trailing" constant="20" id="009-uo-0yS"/>
                             <constraint firstItem="VwK-HN-rfa" firstAttribute="trailing" secondItem="91l-72-WGk" secondAttribute="trailing" constant="120" id="8GT-OR-rZH"/>
                             <constraint firstItem="91l-72-WGk" firstAttribute="top" secondItem="aMc-Of-k7x" secondAttribute="bottom" constant="60" id="CR4-eK-Lna"/>
-                            <constraint firstItem="aMc-Of-k7x" firstAttribute="top" secondItem="VwK-HN-rfa" secondAttribute="top" constant="30" id="Kyz-CA-XJi"/>
                             <constraint firstItem="aMc-Of-k7x" firstAttribute="leading" secondItem="VwK-HN-rfa" secondAttribute="leading" constant="20" id="My4-L6-oix"/>
+                            <constraint firstItem="M5N-4Y-FDH" firstAttribute="leading" secondItem="VwK-HN-rfa" secondAttribute="leading" constant="20" id="Nxq-Ev-hsr"/>
                             <constraint firstItem="VwK-HN-rfa" firstAttribute="trailing" secondItem="aMc-Of-k7x" secondAttribute="trailing" constant="20" id="Pnt-j8-b2i"/>
+                            <constraint firstItem="aMc-Of-k7x" firstAttribute="top" secondItem="M5N-4Y-FDH" secondAttribute="bottom" constant="30" id="Vr0-cL-ed3"/>
                             <constraint firstItem="91l-72-WGk" firstAttribute="leading" secondItem="VwK-HN-rfa" secondAttribute="leading" constant="120" id="vQp-T9-OAq"/>
+                            <constraint firstItem="M5N-4Y-FDH" firstAttribute="top" secondItem="VwK-HN-rfa" secondAttribute="top" constant="20" id="ztF-3Y-z4I"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="appointmentSubmitButton" destination="91l-72-WGk" id="v3j-qY-1yh"/>
+                        <outlet property="bookingServiceProviderLabel" destination="M5N-4Y-FDH" id="x1N-j7-x1f"/>
                         <outlet property="dateOfBirthLabel" destination="pCB-ED-F0o" id="8ek-MZ-PUf"/>
                         <outlet property="dateTimeLabel" destination="R0j-0U-TMr" id="7Uu-E4-Pqv"/>
                         <outlet property="gendarLabel" destination="wr7-WN-jiS" id="3UY-uL-fyW"/>

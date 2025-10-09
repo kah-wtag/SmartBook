@@ -19,7 +19,7 @@ final class ServiceProviderProfileViewModel {
         serviceProvider.name ?? "Unknown"
     }
     var experienceText: String {
-        "\(serviceProvider.experience ?? 0) yrs experience"
+        "\(serviceProvider.experience ?? 0) Years+"
     }
     var fieldText: String {
         serviceProvider.bio ?? "-"
