@@ -20,19 +20,50 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var dateOfBirthLabel: UILabel!
     @IBOutlet var gendarLabel: UILabel!
     @IBOutlet var dateTimeLabel: UILabel!
+    @IBOutlet var bookingServiceProviderLabel: UILabel!
+    @IBOutlet var genderRadioButtonsStackView: UIStackView!
+    @IBOutlet var maleRadioButton: RadioButton!
+    @IBOutlet var femaleRadioButton: RadioButton!
     
     let viewModel = BookingFormViewModel()
     private var bookingFormTextFields: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = viewModel.screenTitle
+        title = "Book Appointment"
+        
         configureViewModel()
         setupUI()
         setupTargets()
         configureTextFields()
+        setupServiceProviderName()
+        
+        setupGenderRadioButtons()
     }
-    
+
+    private func setupGenderRadioButtons() {
+            let buttons = [maleRadioButton, femaleRadioButton]
+            buttons.forEach { button in
+                button?.addTarget(self, action: #selector(genderButtonTapped(_:)), for: .touchUpInside)
+            }
+        }
+        
+        // Toggle selection
+        @objc private func genderButtonTapped(_ sender: RadioButton) {
+            let buttons = [maleRadioButton, femaleRadioButton]
+            buttons.forEach { $0?.isSelected = false } // Deselect all
+            sender.isSelected = true                  // Select tapped button
+            
+            // Update label & ViewModel
+            let selectedGender = sender == maleRadioButton ? "Male" : "Female"
+            userBookingFormChoicedGenderLabel.text = selectedGender
+            viewModel.updateGender(selectedGender)
+            viewModel.validateForm()
+            
+            // Hide after selection (optional)
+            genderRadioButtonsStackView.isHidden = true
+        }
+
     private func configureTextFields() {
         userBookingFormNameTextField.delegate = self
         userBookingFormPhoneNumberTextField.delegate = self
@@ -44,8 +75,9 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupUI() {
+        userBookingFormChoicedGenderLabel.applyRoundBorder()
+        genderRadioButtonsStackView.isHidden = true
         setupTextFields()
-        setupDatePickers()
         setupGenderLabel()
         setupSubmitButton()
         setupFontSize()
@@ -69,13 +101,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func setupDatePickers() {
-        userBookingFormBirthDatePicker.datePickerMode = .date
-        userBookingFormBirthDatePicker.maximumDate = Date()
-        userAppointmentDateTimePicker.datePickerMode = .dateAndTime
-        userAppointmentDateTimePicker.minimumDate = Date()
-    }
-    
     private func setupGenderLabel() {
         userBookingFormChoicedGenderLabel.text = "Not Selected"
     }
@@ -87,6 +112,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupFontSize() {
+        bookingServiceProviderLabel.setFontSize(.regular, weight: .regular, dynamic: true)
         appointmentSubmitButton.setFontSize(.large, weight: .medium, dynamic: true)
         userBookingFormNameTextField.setFontSize(.regular, weight: .regular, dynamic: true)
         userBookingFormMailTextField.setFontSize(.regular, weight: .regular, dynamic: true)
@@ -98,6 +124,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupTextColor() {
+        bookingServiceProviderLabel.textColor = .primaryText
         userBookingFormNameTextField.textColor = .primaryText
         userBookingFormPhoneNumberTextField.textColor = .primaryText
         userBookingFormMailTextField.textColor = .primaryText
@@ -107,6 +134,10 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         dateOfBirthLabel.textColor = .primaryText
         gendarLabel.textColor = .primaryText
         dateTimeLabel.textColor = .primaryText
+    }
+    
+    private func setupServiceProviderName() {
+        bookingServiceProviderLabel.text = viewModel.screenTitle
     }
     
     private func setupTargets() {
@@ -147,15 +178,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func userBookingFormGenderChoiceAction(_ sender: Any) {
-        let alert = UIAlertController(title: "Select Gender", message: nil, preferredStyle: .actionSheet)
-        ["Male", "Female"].forEach { gender in
-            alert.addAction(UIAlertAction(title: gender, style: .default) { _ in
-                self.viewModel.updateGender(gender)
-                self.viewModel.validateForm()  
-            })
-        }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(alert, animated: true)
+        genderRadioButtonsStackView.isHidden = !genderRadioButtonsStackView.isHidden
     }
     
     @IBAction func userBookingFormSubmitAction(_ sender: Any) {

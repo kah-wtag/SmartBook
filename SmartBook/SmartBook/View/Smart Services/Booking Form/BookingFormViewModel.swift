@@ -31,8 +31,8 @@ final class BookingFormViewModel {
         }
     }
     
-    func setDoctorName(_ name: String) {
-        screenTitle = "Book \(name)"
+    func setDoctorName(_ name: String?) {
+        screenTitle = "Book Appointment with \(name ?? "unknown")"
     }
     
     func updateName(_ text: String?) {

@@ -21,4 +21,11 @@ extension UILabel {
         style.tailIndent = -padding
         attributedText = NSAttributedString(string: text, attributes: [.paragraphStyle: style])
     }
+    
+    func applyRoundBorder(color: UIColor = .border, width: CGFloat = 2, radius: CGFloat = 8) {
+            layer.borderColor = color.cgColor
+            layer.borderWidth = width
+            layer.cornerRadius = radius
+            layer.masksToBounds = true
+        }
 }

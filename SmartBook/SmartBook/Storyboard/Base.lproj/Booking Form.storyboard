@@ -27,7 +27,6 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="6o0-DT-bFJ"/>
-                                                    <constraint firstAttribute="height" constant="30" id="LGN-F0-9TS"/>
                                                 </constraints>
                                                 <color key="tintColor" name="primaryTextColor"/>
                                                 <state key="normal" title="Button"/>
@@ -49,7 +48,6 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZ8-kj-CyD">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Gcf-AW-Ys3"/>
                                                     <constraint firstAttribute="width" constant="30" id="zBu-ge-prP"/>
                                                 </constraints>
                                                 <color key="tintColor" name="primaryTextColor"/>
@@ -73,7 +71,6 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="SYx-bg-BT5"/>
-                                                    <constraint firstAttribute="height" constant="30" id="kZX-Ww-n6V"/>
                                                 </constraints>
                                                 <color key="tintColor" name="primaryTextColor"/>
                                                 <state key="normal" title="Button"/>
@@ -98,9 +95,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="LUh-gr-Z3n">
+                                            <datePicker contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="LUh-gr-Z3n">
                                                 <rect key="frame" x="101" y="0.0" width="252" height="30"/>
                                                 <color key="tintColor" name="secondaryTextColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="MOQ-Up-wNb"/>
+                                                </constraints>
                                             </datePicker>
                                         </subviews>
                                     </stackView>
@@ -108,17 +108,17 @@
                                         <rect key="frame" x="0.0" y="239.99999999999997" width="353" height="30.000000000000028"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wr7-WN-jiS">
-                                                <rect key="frame" x="0.0" y="0.0" width="143" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="163" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Male" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c80-Oy-XWR">
-                                                <rect key="frame" x="148" y="0.0" width="160" height="30"/>
+                                                <rect key="frame" x="168" y="0.0" width="140" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="160" id="JZX-gY-Xuq"/>
+                                                    <constraint firstAttribute="width" constant="140" id="JZX-gY-Xuq"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -142,15 +142,18 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Euv-7B-0ri">
                                         <rect key="frame" x="0.0" y="300" width="353" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0j-0U-TMr">
-                                                <rect key="frame" x="0.0" y="0.0" width="94" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0j-0U-TMr">
+                                                <rect key="frame" x="0.0" y="0.0" width="110.66666666666667" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2oC-Qm-zNf">
-                                                <rect key="frame" x="99" y="0.0" width="254" height="30"/>
+                                            <datePicker contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="2oC-Qm-zNf">
+                                                <rect key="frame" x="115.66666666666664" y="0.0" width="237.33333333333337" height="30"/>
                                                 <color key="tintColor" name="secondaryTextColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="UNq-WL-aoF"/>
+                                                </constraints>
                                             </datePicker>
                                         </subviews>
                                     </stackView>
@@ -174,6 +177,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ge1-uw-FSJ">
+                                <rect key="frame" x="293.66666666666669" y="457.66666666666669" width="79.333333333333314" height="80.666666666666686"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7v-ca-KsX">
+                                        <rect key="frame" x="0.0" y="0.0" width="79.333333333333329" height="40.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Male">
+                                            <color key="baseForegroundColor" name="secondaryTextColor"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-c9-5zY">
+                                        <rect key="frame" x="0.0" y="40.333333333333314" width="79.333333333333329" height="40.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Female">
+                                            <color key="baseForegroundColor" name="secondaryTextColor"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="backgroundColorLight"/>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VwK-HN-rfa"/>
                         <color key="backgroundColor" name="backgroundColor"/>
@@ -186,6 +209,8 @@
                             <constraint firstItem="VwK-HN-rfa" firstAttribute="trailing" secondItem="aMc-Of-k7x" secondAttribute="trailing" constant="20" id="Pnt-j8-b2i"/>
                             <constraint firstItem="aMc-Of-k7x" firstAttribute="top" secondItem="M5N-4Y-FDH" secondAttribute="bottom" constant="30" id="Vr0-cL-ed3"/>
                             <constraint firstItem="91l-72-WGk" firstAttribute="leading" secondItem="VwK-HN-rfa" secondAttribute="leading" constant="120" id="vQp-T9-OAq"/>
+                            <constraint firstItem="VwK-HN-rfa" firstAttribute="trailing" secondItem="Ge1-uw-FSJ" secondAttribute="trailing" constant="20" id="xOc-pB-YIV"/>
+                            <constraint firstItem="91l-72-WGk" firstAttribute="top" secondItem="Ge1-uw-FSJ" secondAttribute="bottom" constant="40" id="y16-vZ-Dh2"/>
                             <constraint firstItem="M5N-4Y-FDH" firstAttribute="top" secondItem="VwK-HN-rfa" secondAttribute="top" constant="20" id="ztF-3Y-z4I"/>
                         </constraints>
                     </view>
@@ -194,7 +219,10 @@
                         <outlet property="bookingServiceProviderLabel" destination="M5N-4Y-FDH" id="x1N-j7-x1f"/>
                         <outlet property="dateOfBirthLabel" destination="pCB-ED-F0o" id="8ek-MZ-PUf"/>
                         <outlet property="dateTimeLabel" destination="R0j-0U-TMr" id="7Uu-E4-Pqv"/>
+                        <outlet property="femaleRadioButton" destination="Kdf-c9-5zY" id="3Al-8R-d2G"/>
                         <outlet property="gendarLabel" destination="wr7-WN-jiS" id="3UY-uL-fyW"/>
+                        <outlet property="genderRadioButtonsStackView" destination="Ge1-uw-FSJ" id="oKu-K8-3b8"/>
+                        <outlet property="maleRadioButton" destination="f7v-ca-KsX" id="VHP-y6-Ky3"/>
                         <outlet property="userAppointmentDateTimePicker" destination="2oC-Qm-zNf" id="YhO-Cp-N96"/>
                         <outlet property="userBookingFormBirthDatePicker" destination="LUh-gr-Z3n" id="asW-MM-Nvr"/>
                         <outlet property="userBookingFormChoicedGenderLabel" destination="c80-Oy-XWR" id="you-49-69Q"/>
