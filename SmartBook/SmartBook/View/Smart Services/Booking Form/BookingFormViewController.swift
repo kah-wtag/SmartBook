@@ -31,7 +31,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Book Appointment"
-        
         configureViewModel()
         setupUI()
         setupTargets()
