@@ -108,8 +108,8 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupFontSize() {
-        maleButton.setFontSize(.large, weight: .regular, dynamic: true)
-        femaleButton.setFontSize(.large, weight: .regular, dynamic: true)
+        maleButton.setFontSize(.large, weight: .medium, dynamic: true)
+        femaleButton.setFontSize(.large, weight: .medium, dynamic: true)
         bookingServiceProviderLabel.setFontSize(.large, weight: .regular, dynamic: true)
         appointmentSubmitButton.setFontSize(.large, weight: .medium, dynamic: true)
         userBookingFormNameTextField.setFontSize(.large, weight: .regular, dynamic: true)
@@ -129,6 +129,8 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         dateOfBirthLabel.textColor = .primaryText
         gendarLabel.textColor = .primaryText
         dateTimeLabel.textColor = .primaryText
+        maleButton.tintColor = .secondaryLabel
+        femaleButton.tintColor = .secondaryLabel
     }
     
     private func setupServiceProviderName() {

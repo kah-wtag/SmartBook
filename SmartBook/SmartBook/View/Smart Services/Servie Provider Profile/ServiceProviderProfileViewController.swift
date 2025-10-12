@@ -59,8 +59,6 @@ final class ServiceProviderProfileViewController: UIViewController {
     }
     
     private func setupTextColor() {
-        bookAppointmentButton.titleLabel?.textColor = .secondaryText
-        mapViewButton.titleLabel?.textColor = .secondaryLabel
         professionalsProfileName.textColor = .primaryText
         professionalsProfilePatientNumber.textColor = .primaryText
         medicalCollege.textColor = .primaryText
@@ -69,6 +67,10 @@ final class ServiceProviderProfileViewController: UIViewController {
         professionalsDegree.textColor = .primaryText
         professionalsPersonalBio.textColor = .primaryText
         professionalsPersonalBioDetials.textColor = .primaryText
+        bookAppointmentButton.titleLabel?.textColor = .secondaryText
+        mapViewButton.titleLabel?.textColor = .secondaryText
+        bookAppointmentButton.tintColor = .secondaryLabel
+        mapViewButton.tintColor = .secondaryLabel
     }
     
     @IBAction func bookAppointmentButtonTapped(_ sender: UIButton) {
