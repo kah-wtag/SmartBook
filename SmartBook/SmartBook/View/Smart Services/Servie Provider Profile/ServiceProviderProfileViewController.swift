@@ -67,10 +67,6 @@ final class ServiceProviderProfileViewController: UIViewController {
         professionalsDegree.textColor = .primaryText
         professionalsPersonalBio.textColor = .primaryText
         professionalsPersonalBioDetials.textColor = .primaryText
-        bookAppointmentButton.titleLabel?.textColor = .secondaryText
-        mapViewButton.titleLabel?.textColor = .secondaryText
-        bookAppointmentButton.tintColor = .secondaryLabel
-        mapViewButton.tintColor = .secondaryLabel
     }
     
     @IBAction func bookAppointmentButtonTapped(_ sender: UIButton) {

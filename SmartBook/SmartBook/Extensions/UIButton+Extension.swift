@@ -12,11 +12,17 @@ extension UIButton {
         titleLabel?.font = UIFont.of(size: size, weight: weight, dynamic: dynamic)
         titleLabel?.adjustsFontForContentSizeCategory = dynamic
     }
-
-    func applyRoundBorder(color: UIColor = .border, width: CGFloat = 2, radius: CGFloat = 8) {
+    
+    func applyRoundBorder(
+        color: UIColor = .border,
+        width: CGFloat = 2,
+        radius: CGFloat = 8,
+        padding: CGFloat = 8
+    ) {
         layer.borderColor = color.cgColor
         layer.borderWidth = width
         layer.cornerRadius = radius
         layer.masksToBounds = true
+        contentEdgeInsets = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
     }
 }

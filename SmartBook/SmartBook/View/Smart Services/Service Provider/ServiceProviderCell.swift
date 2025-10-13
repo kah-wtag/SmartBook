@@ -13,8 +13,6 @@ final class ServiceProviderCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var institutionLabel: UILabel!
     @IBOutlet var experienceLabel: UILabel!
-    @IBOutlet var bookButton: UIButton!
-    @IBOutlet var mapButton: UIButton!
     @IBOutlet var nameButton: UIButton!
     @IBOutlet var institutionButton: UIButton!
     @IBOutlet var experienceButton: UIButton!
@@ -30,8 +28,6 @@ final class ServiceProviderCell: UITableViewCell {
         nameLabel.setFontSize(.regular, weight: .regular, dynamic: true)
         institutionLabel.setFontSize(.regular, weight: .regular, dynamic: true)
         experienceLabel.setFontSize(.regular, weight: .regular, dynamic: true)
-        bookButton.setFontSize(.regular, weight: .medium, dynamic: true)
-        mapButton.setFontSize(.regular, weight: .medium, dynamic: true)
         serviceProviderImageView.makeCircular()
         setupTextColor()
     }
@@ -40,12 +36,6 @@ final class ServiceProviderCell: UITableViewCell {
         nameLabel.textColor = .primaryText
         institutionLabel.textColor = .primaryText
         experienceLabel.textColor = .primaryText
-        bookButton.titleLabel?.textColor = .secondaryText
-        mapButton.titleLabel?.textColor = .secondaryText
-    }
-    
-    @IBAction func bookButtonTapped(_ sender: Any) {
-        
     }
     
     func updateUI() {

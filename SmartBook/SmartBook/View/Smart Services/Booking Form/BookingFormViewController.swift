@@ -75,29 +75,32 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupUI() {
-        userBookingFormBirthDatePicker.maximumDate = Date()
-        userAppointmentDatePicker.minimumDate = Date()
         setupTextFields()
         setupSubmitButton()
         setupFontSize()
         setupTextColor()
+        setupDatePicker()
+    }
+    
+    private func setupDatePicker() {
+        userBookingFormBirthDatePicker.contentHorizontalAlignment = .center
+        userBookingFormBirthDatePicker.maximumDate = Date()
+        userAppointmentDatePicker.contentHorizontalAlignment = .center
+        userAppointmentDatePicker.minimumDate = Date()
+        userAppointmentTimePicker.contentHorizontalAlignment = .center
+        userAppointmentTimePicker.minimumDate = Date()
     }
     
     private func setupTextFields() {
-        bookingFormTextFields = [userBookingFormNameTextField,
-                                 userBookingFormPhoneNumberTextField,
-                                 userBookingFormMailTextField]
-        let placeholders = ["Full Name", "Phone Number", "Email Address"]
-        
-        for (field, placeholder) in zip(bookingFormTextFields, placeholders) {
-            field.setStyledPlaceholder(
-                placeholder,
-                size: .regular,
-                weight: .regular,
-                dynamic: true
-            )
-            field.textFieldStyle()
-        }
+        userBookingFormNameTextField.setStyledPlaceholder("Full Name")
+        userBookingFormNameTextField.textFieldStyle(dynamic: true)
+        userBookingFormNameTextField .verticalPadding([.left, .right], width: 8)
+        userBookingFormMailTextField.setStyledPlaceholder("Email Address")
+        userBookingFormMailTextField.textFieldStyle(dynamic: true)
+        userBookingFormMailTextField .verticalPadding([.left, .right], width: 8)
+        userBookingFormPhoneNumberTextField.setStyledPlaceholder("Phone Number")
+        userBookingFormPhoneNumberTextField.textFieldStyle(dynamic: true)
+        userBookingFormPhoneNumberTextField .verticalPadding([.left, .right], width: 8)
     }
     
     private func setupSubmitButton() {
@@ -124,7 +127,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         userBookingFormNameTextField.textColor = .primaryText
         userBookingFormPhoneNumberTextField.textColor = .primaryText
         userBookingFormMailTextField.textColor = .primaryText
-        appointmentSubmitButton.titleLabel?.textColor = .secondaryText
         dateOfBirthLabel.textColor = .primaryText
         gendarLabel.textColor = .primaryText
         dateTimeLabel.textColor = .primaryText
