@@ -48,6 +48,10 @@ final class RadioButtonGroupView: UIView {
                 circle.widthAnchor.constraint(equalToConstant: 20),
                 circle.heightAnchor.constraint(equalToConstant: 20)
             ])
+            circle.isUserInteractionEnabled = true
+            let circleTap = UITapGestureRecognizer(target: self, action: #selector(circleTapped(_:)))
+            circle.addGestureRecognizer(circleTap)
+            circle.tag = index
             
             let button = UIButton(type: .system)
             button.setTitle(title, for: .normal)
@@ -75,6 +79,19 @@ final class RadioButtonGroupView: UIView {
             circle.isSelected = (index == sender.tag)
         }
         let selectedOption = buttons[sender.tag].title(for: .normal) ?? ""
+        delegate?.radioButtonGroup(self, didSelect: selectedOption)
+    }
+    
+    @objc private func circleTapped(_ sender: UITapGestureRecognizer) {
+        guard let circle = sender.view else { return }
+        selectIndex(circle.tag)
+    }
+    
+    private func selectIndex(_ index: Int) {
+        for (i, circle) in circles.enumerated() {
+            circle.isSelected = (i == index)
+        }
+        let selectedOption = buttons[index].title(for: .normal) ?? ""
         delegate?.radioButtonGroup(self, didSelect: selectedOption)
     }
 }
