@@ -20,10 +20,8 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var gendarLabel: UILabel!
     @IBOutlet var dateTimeLabel: UILabel!
     @IBOutlet var bookingServiceProviderLabel: UILabel!
-    @IBOutlet var maleCircle: RadioCircleView!
-    @IBOutlet var maleButton: UIButton!
-    @IBOutlet var femaleCircle: RadioCircleView!
-    @IBOutlet var femaleButton: UIButton!
+    @IBOutlet var genderRadioGroup: RadioButtonGroupView!
+    
     
     let viewModel = BookingFormViewModel()
     private var bookingFormTextFields: [UITextField] = []
@@ -36,32 +34,15 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         setupTargets()
         configureTextFields()
         setupServiceProviderName()
-        setupGenderCircleGestures()
+        configureRadioButton()
     }
     
-    private func setupGenderCircleGestures() {
-        let maleTap = UITapGestureRecognizer(target: self, action: #selector(maleCircleTapped))
-        maleCircle.addGestureRecognizer(maleTap)
-        maleCircle.isUserInteractionEnabled = true
-
-        let femaleTap = UITapGestureRecognizer(target: self, action: #selector(femaleCircleTapped))
-        femaleCircle.addGestureRecognizer(femaleTap)
-        femaleCircle.isUserInteractionEnabled = true
-    }
-    
-    @objc private func maleCircleTapped() {
-        selectGender("Male")
-    }
-
-    @objc private func femaleCircleTapped() {
-        selectGender("Female")
-    }
-
-    private func selectGender(_ gender: String) {
-        maleCircle.isSelected = (gender == "Male")
-        femaleCircle.isSelected = (gender == "Female")
-        viewModel.updateGender(gender)
-        viewModel.validateForm()
+    private func configureRadioButton() {
+        genderRadioGroup.configure(options: ["Male", "Female"])
+        genderRadioGroup.onSelectionChanged = { [weak self] selected in
+            self?.viewModel.updateGender(selected)
+            self?.viewModel.validateForm()
+        }
     }
     
     private func configureTextFields() {
@@ -107,8 +88,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupFontSize() {
-        maleButton.setFontSize(.large, weight: .medium, dynamic: true)
-        femaleButton.setFontSize(.large, weight: .medium, dynamic: true)
         bookingServiceProviderLabel.setFontSize(.large, weight: .regular, dynamic: true)
         appointmentSubmitButton.setFontSize(.large, weight: .medium, dynamic: true)
         userBookingFormNameTextField.setFontSize(.large, weight: .regular, dynamic: true)
@@ -127,8 +106,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         dateOfBirthLabel.textColor = .primaryText
         gendarLabel.textColor = .primaryText
         dateTimeLabel.textColor = .primaryText
-        maleButton.tintColor = .secondaryLabel
-        femaleButton.tintColor = .secondaryLabel
     }
     
     private func setupServiceProviderName() {
@@ -175,16 +152,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    
-    @IBAction func maleButtonTapped(_ sender: UIButton) {
-        maleCircle.isSelected = true
-        femaleCircle.isSelected = false
-    }
-
-    @IBAction func femaleButtonTapped(_ sender: UIButton) {
-        maleCircle.isSelected = false
-        femaleCircle.isSelected = true
     }
     
     @IBAction func userBookingFormSubmitAction(_ sender: Any) {
