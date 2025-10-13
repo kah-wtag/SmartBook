@@ -9,7 +9,7 @@ import UIKit
 
 final class BookedFormViewModel {
     
-    let bookingSuccessTitle = "Booking Successful"
+    let bookingSuccessTitle = "Congratulations!!"
     let bookingSuccessMessage = "Your appointment has been successfully booked."
     let goHomeButtonTitle = "Go to Services"
     
