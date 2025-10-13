@@ -172,9 +172,13 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
         appointmentSubmitButton.layer.borderColor = (isValid ? UIColor.border : UIColor.placeholder).cgColor
     }
     
-    func didSubmitAppointment() {
-        let bookedFormVC = Routes.bookedFormVC
-        navigationItem.backButtonTitle = ""
-        navigationController?.pushViewController(bookedFormVC, animated: true)
+    func didSubmitAppointment(with message: String) {
+        let alert = UIAlertController(title: "Appointment Scheduled", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            let bookedFormVC = Routes.bookedFormVC
+            self.navigationItem.backButtonTitle = ""
+            self.navigationController?.pushViewController(bookedFormVC, animated: true)
+        })
+        present(alert, animated: true)
     }
 }
