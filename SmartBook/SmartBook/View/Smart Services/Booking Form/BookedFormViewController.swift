@@ -11,11 +11,13 @@ final class BookedFormViewController: UIViewController {
     @IBOutlet var bookingSuccessfulLabel: UILabel!
     @IBOutlet var bookedSuccessfulMessageLabel: UILabel!
     @IBOutlet var goToHomescreenButton: UIButton!
+    @IBOutlet var bookedSuccessfulBackgroundView: UIView!
     
     private let viewModel = BookedFormViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Booked Successfully"
         setupUI()
         updateUI()
     }
@@ -25,6 +27,7 @@ final class BookedFormViewController: UIViewController {
         bookingSuccessfulLabel.setFontSize(.large, weight: .bold, dynamic: true)
         bookedSuccessfulMessageLabel.setFontSize(.regular, weight: .regular, dynamic: true)
         goToHomescreenButton.setFontSize(.large, weight: .bold, dynamic: true)
+        bookedSuccessfulBackgroundView.applyBorderRound()
     }
     
     @IBAction func goToHomescreenButtonAction(_ sender: Any) {

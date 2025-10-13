@@ -292,6 +292,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="pDl-iT-mNk"/>
                     <connections>
+                        <outlet property="bookedSuccessfulBackgroundView" destination="NVo-AB-xGd" id="zhm-lU-VIV"/>
                         <outlet property="bookedSuccessfulMessageLabel" destination="jS7-oJ-EPl" id="6lI-3q-yvd"/>
                         <outlet property="bookingSuccessfulLabel" destination="fS6-KJ-dTC" id="RT2-MX-wF0"/>
                         <outlet property="goToHomescreenButton" destination="bzJ-aK-amD" id="qp5-YN-Co2"/>
