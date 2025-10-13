@@ -21,6 +21,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var dateTimeLabel: UILabel!
     @IBOutlet var bookingServiceProviderLabel: UILabel!
     @IBOutlet var genderRadioGroup: RadioButtonGroupView!
+    @IBOutlet var basicInformationLabel: UILabel!
     
     
     let viewModel = BookingFormViewModel()
@@ -85,6 +86,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupFontSize() {
+        basicInformationLabel.setFontSize(.large, weight: .regular, dynamic: true)
         bookingServiceProviderLabel.setFontSize(.large, weight: .regular, dynamic: true)
         appointmentSubmitButton.setFontSize(.large, weight: .medium, dynamic: true)
         userBookingFormNameTextField.setFontSize(.large, weight: .regular, dynamic: true)
