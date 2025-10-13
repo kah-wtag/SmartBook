@@ -11,11 +11,11 @@ final class RootViewController: UITabBarController {
     @IBOutlet weak var mainTabBar: UITabBar!
     
     private enum Tab: Int, CaseIterable {
-        case smartServiceList, calendar, activity, search, profile
+        case smartServices, calendar, activity, search, profile
         
         var title: String {
             switch self {
-            case .smartServiceList: "Service List"
+            case .smartServices: "Services"
             case .calendar: "Calendar"
             case .activity: "Activity"
             case .search: "Search"
@@ -25,7 +25,7 @@ final class RootViewController: UITabBarController {
         
         var viewController: UIViewController {
             switch self {
-            case .smartServiceList: Routes.smartServiceListVC
+            case .smartServices: Routes.smartServicesVC
             case .calendar: CalendarViewController()
             case .activity: ActivityViewController()
             case .search: SearchViewController()
@@ -35,7 +35,7 @@ final class RootViewController: UITabBarController {
         
         var iconName: String {
             switch self {
-            case .smartServiceList: "house"
+            case .smartServices: "house"
             case .calendar: "calendar"
             case .activity: "calendar.circle.fill"
             case .search: "magnifyingglass"

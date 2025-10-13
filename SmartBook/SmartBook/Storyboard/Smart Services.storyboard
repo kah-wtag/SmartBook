@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Smart Service List View Controller-->
+        <!--Smart Services View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="SmartServiceListViewController" id="Y6W-OH-hqX" customClass="SmartServiceListViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SmartServicesViewController" id="Y6W-OH-hqX" customClass="SmartServicesViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="backgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SmartServiceListTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SmartServiceListTableViewCell" rowHeight="53" id="mSF-GZ-dKt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SmartServiceTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SmartServiceTableViewCell" rowHeight="53" id="mSF-GZ-dKt">
                                         <rect key="frame" x="0.0" y="50" width="393" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mSF-GZ-dKt" id="arQ-bk-GPm">
@@ -53,7 +53,7 @@
                     </view>
                     <connections>
                         <outlet property="noServiceLabel" destination="DC7-Ij-9Bk" id="gRC-qd-2Dm"/>
-                        <outlet property="smartServiceListTableView" destination="KiP-lF-Exy" id="NcX-LG-CjF"/>
+                        <outlet property="smartServicesTableView" destination="KiP-lF-Exy" id="NcX-LG-CjF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

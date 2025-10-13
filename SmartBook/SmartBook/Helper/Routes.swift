@@ -12,8 +12,9 @@ struct Routes {
         static let authentication = "Authentication"
         static let userProfile = "User Profile"
         static let root = "Dashboard"
-        static let smartServiceList = "Smart Service List"
-        static let smartServiceFieldList = "Smart Service Field List"
+        static let smartServices = "Smart Services"
+        static let smartServiceFields = "Smart Service Fields"
+        static let serviceProvider = "Service Provider"
     }
     
     struct Identifier {
@@ -23,10 +24,12 @@ struct Routes {
         static let userProfileVC = "UserProfileViewController"
         static let userProfileEditVC = "UserProfileEditViewController"
         static let rootVC = "RootViewController"
-        static let smartServiceListVC = "SmartServiceListViewController"
-        static let smartServiceListCell = "SmartServiceListTableViewCell"
-        static let smartServiceFieldVC = "SmartServiceFieldListViewController"
-        static let smartServiceFieldListCell = "SmartServiceFieldListCell"
+        static let smartServicesVC = "SmartServicesViewController"
+        static let smartServiceCell = "SmartServiceTableViewCell"
+        static let smartServiceFieldsVC = "SmartServiceFieldsViewController"
+        static let smartServiceFieldCell = "SmartServiceFieldCell"
+        static let serviceProviderVC = "ServiceProviderViewController"
+        static let serviceProviderCell = "ServiceProviderCell"
     }
 }
 
@@ -71,12 +74,18 @@ extension Routes {
 }
 
 extension Routes {
-    static var smartServiceListVC: SmartServiceListViewController {
-        instantiateVC(from: StoryboardName.smartServiceList, identifier: Identifier.smartServiceListVC)
+    static var smartServicesVC: SmartServicesViewController {
+        instantiateVC(from: StoryboardName.smartServices, identifier: Identifier.smartServicesVC)
     }
     
-    static var smartServiceFieldVC: SmartServiceFieldListViewController {
-        instantiateVC(from: StoryboardName.smartServiceFieldList, identifier: Identifier.smartServiceFieldVC)
+    static var smartServiceFieldsVC: SmartServiceFieldsViewController {
+        instantiateVC(from: StoryboardName.smartServiceFields, identifier: Identifier.smartServiceFieldsVC)
+    }
+}
+
+extension Routes {
+    static var serviceProviderVC: ServiceProviderViewController {
+        instantiateVC(from: StoryboardName.serviceProvider, identifier: Identifier.serviceProviderVC)
     }
 }
 

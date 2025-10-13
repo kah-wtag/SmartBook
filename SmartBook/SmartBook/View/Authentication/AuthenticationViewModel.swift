@@ -15,25 +15,33 @@ protocol AuthenticationViewModelDelegate: AnyObject {
 
 final class AuthenticationViewModel {
     
-    private let service = AuthenticationService.shared
+    private let authService = AuthenticationService.shared
+    private let bookingService = SmartBookingService.shared
     weak var delegate: AuthenticationViewModelDelegate?
     
-    func loginButtonDidTap() {
+    func loginButtonDidTap(username: String? = nil, password: String? = nil) {
         delegate?.showLoader()
-        performLogin()
-    }
-    
-    private func performLogin() {
-        service.login(username: "", password: "") { _ in
-            self.fetchServices()
+        
+        authService.login(username: username, password: password) { [weak self] success in
+            guard let self else { return }
+            
+            DispatchQueue.main.async {
+                self.handleLoginResult(success)
+            }
         }
     }
     
-    private func fetchServices() {
-        service.fetchSmartServices { services in
+    private func handleLoginResult(_ success: Bool) {
+        success ? fetchServicesDirectly() : delegate?.hideLoader()
+    }
+    
+    private func fetchServicesDirectly() {
+        bookingService.fetchServices { [weak self] services, error in
+            guard let self else { return }
+            
             DispatchQueue.main.async {
                 self.delegate?.hideLoader()
-                self.delegate?.didFetchServices(services)
+                self.delegate?.didFetchServices(services ?? [])
             }
         }
     }
