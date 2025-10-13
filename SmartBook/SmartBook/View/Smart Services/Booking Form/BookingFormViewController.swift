@@ -84,11 +84,8 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     
     private func setupDatePicker() {
         userBookingFormBirthDatePicker.contentHorizontalAlignment = .center
-        userBookingFormBirthDatePicker.maximumDate = Date()
         userAppointmentDatePicker.contentHorizontalAlignment = .center
-        userAppointmentDatePicker.minimumDate = Date()
         userAppointmentTimePicker.contentHorizontalAlignment = .center
-        userAppointmentTimePicker.minimumDate = Date()
     }
     
     private func setupTextFields() {
