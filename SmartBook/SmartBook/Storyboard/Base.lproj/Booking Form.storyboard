@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Appointment Booking with " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5N-4Y-FDH">
-                                <rect key="frame" x="14.999999999999972" y="144" width="485.33333333333326" height="20.333333333333343"/>
+                                <rect key="frame" x="19.999999999999972" y="144" width="480.33333333333326" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
                                             <constraint firstAttribute="width" constant="130" id="IOh-13-n1M"/>
                                         </constraints>
                                     </datePicker>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hfo-wD-6F5">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hfo-wD-6F5">
                                         <rect key="frame" x="250.33333333333331" y="0.0" width="110" height="30"/>
                                         <color key="tintColor" name="secondaryTextColor"/>
                                         <constraints>
@@ -188,7 +188,6 @@
                         <constraints>
                             <constraint firstItem="R0j-0U-TMr" firstAttribute="leading" secondItem="VwK-HN-rfa" secondAttribute="leading" constant="20" id="8Sw-Mf-EyZ"/>
                             <constraint firstItem="aMc-Of-k7x" firstAttribute="top" secondItem="R0j-0U-TMr" secondAttribute="bottom" constant="20" id="D40-QB-nSP"/>
-                            <constraint firstItem="M5N-4Y-FDH" firstAttribute="leading" secondItem="aMc-Of-k7x" secondAttribute="leading" id="LfN-R3-ow8"/>
                             <constraint firstItem="aMc-Of-k7x" firstAttribute="leading" secondItem="VwK-HN-rfa" secondAttribute="leading" constant="15" id="My4-L6-oix"/>
                             <constraint firstItem="Euv-7B-0ri" firstAttribute="leading" secondItem="R0j-0U-TMr" secondAttribute="trailing" id="OEi-Lf-8Ne"/>
                             <constraint firstItem="VwK-HN-rfa" firstAttribute="trailing" secondItem="M5N-4Y-FDH" secondAttribute="trailing" constant="20" id="PDO-VV-plr"/>
@@ -199,6 +198,7 @@
                             <constraint firstItem="91l-72-WGk" firstAttribute="top" secondItem="IUp-uG-gNe" secondAttribute="bottom" constant="30" id="hcF-rh-tkd"/>
                             <constraint firstItem="Euv-7B-0ri" firstAttribute="top" secondItem="M5N-4Y-FDH" secondAttribute="bottom" constant="40" id="oC4-BV-Yzc"/>
                             <constraint firstItem="VwK-HN-rfa" firstAttribute="trailing" secondItem="IUp-uG-gNe" secondAttribute="trailing" constant="20" id="q70-Gg-QGh"/>
+                            <constraint firstItem="M5N-4Y-FDH" firstAttribute="leading" secondItem="VwK-HN-rfa" secondAttribute="leading" constant="20" id="sZo-y8-Pky"/>
                             <constraint firstItem="IUp-uG-gNe" firstAttribute="top" secondItem="aMc-Of-k7x" secondAttribute="bottom" constant="20" id="uUN-Hd-eRa"/>
                             <constraint firstAttribute="trailing" secondItem="Euv-7B-0ri" secondAttribute="trailing" constant="20" id="x5W-Xp-5Tt"/>
                             <constraint firstItem="M5N-4Y-FDH" firstAttribute="top" secondItem="VwK-HN-rfa" secondAttribute="top" constant="20" id="ztF-3Y-z4I"/>
