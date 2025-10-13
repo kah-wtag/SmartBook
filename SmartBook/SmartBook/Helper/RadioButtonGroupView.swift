@@ -46,7 +46,7 @@ final class RadioButtonGroupView: UIView {
             
             let button = UIButton(type: .system)
             button.setTitle(title, for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+            button.titleLabel?.setFontSize(.regular, weight: .medium)
             button.tintColor = .label
             button.tag = index
             button.contentHorizontalAlignment = .leading
