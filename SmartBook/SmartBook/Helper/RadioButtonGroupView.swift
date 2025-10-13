@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol RadioButtonGroupViewDelegate: AnyObject {
+    func radioButtonGroup(_ group: RadioButtonGroupView, didSelect option: String)
+}
+
 final class RadioButtonGroupView: UIView {
     
+    weak var delegate: RadioButtonGroupViewDelegate?
     private var buttons: [UIButton] = []
     private var circles: [RadioCircleView] = []
     
@@ -69,7 +74,7 @@ final class RadioButtonGroupView: UIView {
         for (index, circle) in circles.enumerated() {
             circle.isSelected = (index == sender.tag)
         }
-        selectedIndex = sender.tag
-        onSelectionChanged?(buttons[sender.tag].title(for: .normal) ?? "")
+        let selectedOption = buttons[sender.tag].title(for: .normal) ?? ""
+        delegate?.radioButtonGroup(self, didSelect: selectedOption)
     }
 }

@@ -39,10 +39,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     
     private func configureRadioButton() {
         genderRadioGroup.configure(options: ["Male", "Female"])
-        genderRadioGroup.onSelectionChanged = { [weak self] selected in
-            self?.viewModel.updateGender(selected)
-            self?.viewModel.validateForm()
-        }
+        genderRadioGroup.delegate = self
     }
     
     private func configureTextFields() {
@@ -156,6 +153,13 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func userBookingFormSubmitAction(_ sender: Any) {
         viewModel.submitAppointment()
+    }
+}
+
+extension BookingFormViewController: RadioButtonGroupViewDelegate {
+    func radioButtonGroup(_ group: RadioButtonGroupView, didSelect option: String) {
+        viewModel.updateGender(option)
+        viewModel.validateForm()
     }
 }
 
