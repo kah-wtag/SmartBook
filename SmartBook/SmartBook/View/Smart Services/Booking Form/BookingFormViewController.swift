@@ -200,12 +200,15 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         switch (isDatePlaceholderVisible, isTimePlaceholderVisible) {
         case (true, true):
             appointmentMessageLabel.text = "Please select date and time for your appointment first."
+            appointmentMessageLabel.textColor = .warning
             
         case (false, true):
             appointmentMessageLabel.text = "Now select a time for your appointment."
+            appointmentMessageLabel.textColor = .warning
             
         case (true, false):
             appointmentMessageLabel.text = "Now select a date for your appointment."
+            appointmentMessageLabel.textColor = .warning
             
         case (false, false):
             let date = selectedAppointmentDate ?? Date()
@@ -240,7 +243,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
                 remainingText = "(\(remainingString) remaining)"
             }
             appointmentMessageLabel.text = "Your appointment will be scheduled on \(dateFormatter.string(from: date)) at \(timeFormatter.string(from: time)). Fill in your information and press Submit to finalize the booking. \(remainingText)"
-            appointmentMessageLabel.textColor = .primaryText
+            appointmentMessageLabel.textColor = .reverseWarning
         }
     }
     
