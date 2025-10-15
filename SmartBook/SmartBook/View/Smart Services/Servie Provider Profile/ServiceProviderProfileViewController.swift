@@ -37,8 +37,8 @@ final class ServiceProviderProfileViewController: UIViewController {
     }
     
     private func setupButtonFontSize() {
-        bookAppointmentButton.setFontSize(.large, weight: .medium, dynamic: true)
-        mapViewButton.setFontSize(.regular, weight: .medium, dynamic: true)
+        bookAppointmentButton.setFont(.large, weight: .medium, dynamic: true, title: "Book Appointment")
+        mapViewButton.setFont(.regular, weight: .medium, dynamic: true, title: "Map")
     }
     
     private func setupLabelFontSize() {
@@ -46,7 +46,7 @@ final class ServiceProviderProfileViewController: UIViewController {
         professionalsProfilePatientNumber.setFontSize(.regular, weight: .regular, dynamic: true)
         professionalsProfileExperience.setFontSize(.regular, weight: .regular, dynamic: true)
         medicalCollege.setFontSize(.small, weight: .thin, dynamic: true)
-        professionalsPersonalBio.setFontSize(.large, weight: .medium, dynamic: true)
+        professionalsPersonalBio.setFontSize(.regular, weight: .medium, dynamic: true)
         professionalsPersonalBioDetials.setFontSize(.small, weight: .thin, dynamic: true)
         professionalsFieldName.setFontSize(.regular, weight: .medium, dynamic: true)
         professionalsDegree.setFontSize(.small, weight: .thin, dynamic: true)

@@ -13,6 +13,13 @@ extension UIButton {
         titleLabel?.adjustsFontForContentSizeCategory = dynamic
     }
     
+    func setFont(_ size: UIFont.TextSize, weight: UIFont.Weight = .regular, dynamic: Bool = true, title: String) {
+        let newFont = UIFont.of(size: size, weight: weight, dynamic: dynamic)
+        let attributedTitle = NSAttributedString(string: title, attributes: [.font: newFont])
+        setAttributedTitle(attributedTitle, for: .normal)
+        titleLabel?.adjustsFontForContentSizeCategory = false
+    }
+    
     func applyRoundBorder(
         color: UIColor = .border,
         width: CGFloat = 2,

@@ -9,7 +9,7 @@ import UIKit
 
 protocol BookingFormViewModelDelegate: AnyObject {
     func didUpdateFormValidity(isValid: Bool)
-    func didSubmitAppointment(with message: String)
+    func didSubmitAppointment()
 }
 
 final class BookingFormViewModel {
@@ -84,19 +84,7 @@ final class BookingFormViewModel {
     }
     
     func submitAppointment() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM"
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "hh:mm a"
-        
-        let date = dateFormatter.string(from: appointmentDate)
-        let time = timeFormatter.string(from: appointmentTime)
-        
-        let message = """
-    Your appointment has been successfully scheduled for \(date) at \(time).
-    Please contact 01749-140494 if you have any questions or need to modify your schedule.
-    """
-        delegate?.didSubmitAppointment(with: message)
+        delegate?.didSubmitAppointment()
         print("""
               Appointment Submitted
               Name: \(name)
