@@ -200,20 +200,47 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         switch (isDatePlaceholderVisible, isTimePlaceholderVisible) {
         case (true, true):
             appointmentMessageLabel.text = "Please select date and time for your appointment first."
-            appointmentMessageLabel.textColor = .placeholderText
             
         case (false, true):
             appointmentMessageLabel.text = "Now select a time for your appointment."
-            appointmentMessageLabel.textColor = .placeholderText
             
         case (true, false):
             appointmentMessageLabel.text = "Now select a date for your appointment."
-            appointmentMessageLabel.textColor = .placeholderText
             
         case (false, false):
-            let date = selectedAppointmentDate ?? Date(), time = selectedAppointmentTime ?? Date()
-            appointmentMessageLabel.text = "Your appointment will be scheduled on \(dateFormatter.string(from: date)) at \(timeFormatter.string(from: time)). Please arrive 10 minutes early."
-            appointmentMessageLabel.textColor = .placeholderText
+            let date = selectedAppointmentDate ?? Date()
+            let time = selectedAppointmentTime ?? Date()
+            let calendar = Calendar.current
+            let appointmentDateTime = calendar.date(
+                bySettingHour: calendar.component(.hour, from: time),
+                minute: calendar.component(.minute, from: time),
+                second: 0,
+                of: date
+            ) ?? Date()
+            let interval = Int(appointmentDateTime.timeIntervalSinceNow)
+            let remainingMinutes = max(0, interval / 60)
+            let remainingText: String
+            
+            if remainingMinutes < 10 {
+                if remainingMinutes >= 5 {
+                    remainingText = " (Less than 10 minutes remaining)"
+                } else {
+                    remainingText = " (Less than 5 minutes remaining)"
+                }
+            } else {
+                let days = remainingMinutes / (24 * 60)
+                let hours = (remainingMinutes % (24 * 60)) / 60
+                let minutes = remainingMinutes % 60
+                var parts: [String] = []
+                if days > 0 { parts.append("\(days)d") }
+                if hours > 0 { parts.append("\(hours)h") }
+                if minutes > 0 { parts.append("\(minutes)m") }
+                let remainingString = parts.joined(separator: " ")
+                
+                remainingText = "(\(remainingString) remaining)"
+            }
+            appointmentMessageLabel.text = "Your appointment will be scheduled on \(dateFormatter.string(from: date)) at \(timeFormatter.string(from: time)). Fill in your information and press Submit to finalize the booking. \(remainingText)"
+            appointmentMessageLabel.textColor = .primaryText
         }
     }
     
@@ -231,21 +258,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         userAppointmentTimePicker.alpha = 1.0
         viewModel.updateAppointmentTime(picker.date)
         updateMessageAfterPlaceholderTap()
-    }
-    
-    private func updateMessageIfPickersVisible() {
-        if userAppointmentDatePicker.alpha == 1.0 && userAppointmentTimePicker.alpha == 1.0 {
-            let date = selectedAppointmentDate ?? Date()
-            let time = selectedAppointmentTime ?? Date()
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd MMM"
-            let timeFormatter = DateFormatter()
-            timeFormatter.dateFormat = "h:mm a"
-            
-            appointmentMessageLabel.text = "Your appointment will be scheduled on \(dateFormatter.string(from: date)) at \(timeFormatter.string(from: time)). Please arrive 10 minutes early."
-            appointmentMessageLabel.textColor = .placeholder
-        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
