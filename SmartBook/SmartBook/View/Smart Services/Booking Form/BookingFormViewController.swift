@@ -85,7 +85,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     private func setupFontSize() {
         appointmentMessageLabel.setFontSize(.small, weight: .regular, dynamic: true)
         basicInformationLabel.setFontSize(.large, weight: .regular, dynamic: true)
-        bookingServiceProviderLabel.setFontSize(.large, weight: .regular, dynamic: true)
+        bookingServiceProviderLabel.setFontSize(.large, weight: .bold, dynamic: true)
         appointmentSubmitButton.setFont(.large, weight: .medium, dynamic: true, title: "Submit")
         userBookingFormNameTextField.setFontSize(.large, weight: .regular, dynamic: true)
         userBookingFormMailTextField.setFontSize(.large, weight: .regular, dynamic: true)
@@ -152,12 +152,12 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @objc private func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-
+        
         let keyboardHeight = keyboardFrame.height
         scrollView.contentInset.bottom = keyboardHeight + 16
         scrollView.verticalScrollIndicatorInsets.bottom = keyboardHeight
     }
-
+    
     @objc private func keyboardWillHide(_ notification: Notification) {
         scrollView.contentInset.bottom = 0
         scrollView.verticalScrollIndicatorInsets.bottom = 0
@@ -215,6 +215,10 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         appointmentDatePlaceholderLabel.alpha = 0.0
         userAppointmentDatePicker.alpha = 1.0
         userAppointmentDatePicker.isUserInteractionEnabled = true
+        if selectedAppointmentDate == nil {
+            selectedAppointmentDate = userAppointmentDatePicker.date
+            viewModel.updateAppointmentDate(userAppointmentDatePicker.date)
+        }
         updateMessageAfterPlaceholderTap()
     }
     
@@ -222,67 +226,20 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         appointmentTimePlaceholderLabel.alpha = 0.0
         userAppointmentTimePicker.alpha = 1.0
         userAppointmentTimePicker.isUserInteractionEnabled = true
+        if selectedAppointmentTime == nil {
+            selectedAppointmentTime = userAppointmentTimePicker.date
+            viewModel.updateAppointmentTime(userAppointmentTimePicker.date)
+        }
         updateMessageAfterPlaceholderTap()
     }
     
     private func updateMessageAfterPlaceholderTap() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM"
-        
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "h:mm a"
-        
-        let isDatePlaceholderVisible = appointmentDatePlaceholderLabel.alpha == 1.0
-        let isTimePlaceholderVisible = appointmentTimePlaceholderLabel.alpha == 1.0
-        
-        switch (isDatePlaceholderVisible, isTimePlaceholderVisible) {
-        case (true, true):
-            appointmentMessageLabel.text = "Please select date and time for your appointment first."
-            appointmentMessageLabel.textColor = .warning
-            
-        case (false, true):
-            appointmentMessageLabel.text = "Now select a time for your appointment."
-            appointmentMessageLabel.textColor = .warning
-            
-        case (true, false):
-            appointmentMessageLabel.text = "Now select a date for your appointment."
-            appointmentMessageLabel.textColor = .warning
-            
-        case (false, false):
-            let date = selectedAppointmentDate ?? Date()
-            let time = selectedAppointmentTime ?? Date()
-            let calendar = Calendar.current
-            let appointmentDateTime = calendar.date(
-                bySettingHour: calendar.component(.hour, from: time),
-                minute: calendar.component(.minute, from: time),
-                second: 0,
-                of: date
-            ) ?? Date()
-            let interval = Int(appointmentDateTime.timeIntervalSinceNow)
-            let remainingMinutes = max(0, interval / 60)
-            let remainingText: String
-            
-            if remainingMinutes < 10 {
-                if remainingMinutes >= 5 {
-                    remainingText = " (Less than 10 minutes remaining)"
-                } else {
-                    remainingText = " (Less than 5 minutes remaining)"
-                }
-            } else {
-                let days = remainingMinutes / (24 * 60)
-                let hours = (remainingMinutes % (24 * 60)) / 60
-                let minutes = remainingMinutes % 60
-                var parts: [String] = []
-                if days > 0 { parts.append("\(days)d") }
-                if hours > 0 { parts.append("\(hours)h") }
-                if minutes > 0 { parts.append("\(minutes)m") }
-                let remainingString = parts.joined(separator: " ")
-                
-                remainingText = "(\(remainingString) remaining)"
-            }
-            appointmentMessageLabel.text = "Your appointment will be scheduled on \(dateFormatter.string(from: date)) at \(timeFormatter.string(from: time)). Fill in your information and press Submit to finalize the booking. \(remainingText)"
-            appointmentMessageLabel.textColor = .reverseWarning
-        }
+        let result = viewModel.getAppointmentMessage(
+            isDateSelected: appointmentDatePlaceholderLabel.alpha == 0.0,
+            isTimeSelected: appointmentTimePlaceholderLabel.alpha == 0.0
+        )
+        appointmentMessageLabel.text = result.text
+        appointmentMessageLabel.textColor = result.color
     }
     
     @objc private func appointmentDateChanged(_ picker: UIDatePicker) {
@@ -327,6 +284,8 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
     
     func didSubmitAppointment() {
         let bookedFormVC = Routes.bookedFormVC
+        bookedFormVC.appointmentDate = selectedAppointmentDate
+        bookedFormVC.appointmentTime = selectedAppointmentTime
         navigationItem.backButtonTitle = ""
         navigationController?.pushViewController(bookedFormVC, animated: true)
     }

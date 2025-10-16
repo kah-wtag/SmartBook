@@ -80,7 +80,59 @@ final class BookingFormViewModel {
     func validateForm() {
         let allFieldsFilled = !name.isEmpty && !phone.isEmpty && !email.isEmpty
         let genderChosen = (selectedGender != nil)
-        isFormValid = allFieldsFilled && genderChosen
+        let emailValid = EmailValidation.isValid(email)
+        isFormValid = allFieldsFilled && genderChosen && emailValid
+    }
+    
+    func isEmailValid() -> Bool {
+        return EmailValidation.isValid(email)
+    }
+    
+    func getAppointmentMessage(isDateSelected: Bool, isTimeSelected: Bool) -> (text: String, color: UIColor) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM"
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        
+        switch (isDateSelected, isTimeSelected) {
+        case (false, false):
+            return ("Please select date and time for your appointment first.", .warning)
+        case (true, false):
+            return ("Now select a time for your appointment.", .warning)
+        case (false, true):
+            return ("Now select a date for your appointment.", .warning)
+        case (true, true):
+            let calendar = Calendar.current
+            let appointmentDateTime = calendar.date(
+                bySettingHour: calendar.component(.hour, from: appointmentTime),
+                minute: calendar.component(.minute, from: appointmentTime),
+                second: 0,
+                of: appointmentDate
+            ) ?? Date()
+            
+            let interval = Int(appointmentDateTime.timeIntervalSinceNow)
+            let remainingMinutes = max(0, interval / 60)
+            let remainingText: String
+            
+            if remainingMinutes < 10 {
+                remainingText = remainingMinutes >= 5 ?
+                " (Less than 10 minutes remaining)" :
+                " (Less than 5 minutes remaining)"
+            } else {
+                let days = remainingMinutes / (24 * 60)
+                let hours = (remainingMinutes % (24 * 60)) / 60
+                let minutes = remainingMinutes % 60
+                var parts: [String] = []
+                if days > 0 { parts.append("\(days)d") }
+                if hours > 0 { parts.append("\(hours)h") }
+                if minutes > 0 { parts.append("\(minutes)m") }
+                remainingText = "(\(parts.joined(separator: " ")) remaining)"
+            }
+            
+            let message = "Your appointment will be scheduled on \(dateFormatter.string(from: appointmentDate)) at \(timeFormatter.string(from: appointmentTime)). Fill in your information and press Submit to finalize the booking. \(remainingText)"
+            return (message, .reverseWarning)
+        }
     }
     
     func submitAppointment() {

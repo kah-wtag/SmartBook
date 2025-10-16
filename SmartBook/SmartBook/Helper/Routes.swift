@@ -127,14 +127,6 @@ extension Routes {
         if !hideNavigationBar {
             setupNavBar(for: navController)
         }
-        
-        UIView.transition(with: window,
-                          duration: 0.3,
-                          options: .transitionCurlUp,
-                          animations: {
-            window.rootViewController = navController
-        },
-                          completion: nil)
         window.rootViewController = navController
         window.makeKeyAndVisible()
     }

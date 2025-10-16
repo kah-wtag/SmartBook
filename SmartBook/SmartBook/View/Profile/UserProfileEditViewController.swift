@@ -81,7 +81,7 @@ extension UserProfileEditViewController {
     func saveButtonTapped() {
         userProfileEditTextField.resignFirstResponder()
         guard !currentText.isEmpty, currentText.count <= characterLimit else { return }
-        if isEmailField, !isValidEmail(currentText) { return }
+        if isEmailField, !EmailValidation.isValid(currentText) { return }
         onSave?(currentText)
         dismiss(animated: true)
     }
@@ -110,7 +110,7 @@ extension UserProfileEditViewController {
         let remaining = isNameField ? (characterLimit - trimmed.count) : Int.max
         var isValid = !trimmed.isEmpty && remaining >= 0
         
-        if isEmailField, !isValidEmail(trimmed) {
+        if isEmailField, !EmailValidation.isValid(trimmed) {
             isValid = false
         }
         userProfileEditSaveButton.isEnabled = isValid
@@ -135,9 +135,7 @@ extension UserProfileEditViewController {
     }
     
     private func isValidEmail(_ email: String) -> Bool {
-        guard !email.contains(" ") else { return false }
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,5}"
-        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
+        return EmailValidation.isValid(email)
     }
 }
 
