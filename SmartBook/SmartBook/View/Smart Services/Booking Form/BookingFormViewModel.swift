@@ -31,7 +31,20 @@ final class BookingFormViewModel {
         }
     }
     
-    func setDoctorName(_ name: String?) {
+    var minimumAppointmentDate: Date {
+        let now = Date()
+        if let advanceTime = serviceProvider?.minimumAdvanceTime {
+            return now.addingTimeInterval(advanceTime)
+        }
+        return now
+    }
+    var serviceProvider: ServiceProvider?
+
+    func setServiceProvider(_ provider: ServiceProvider) {
+        serviceProvider = provider
+    }
+    
+    func setServiceProviderName(_ name: String?) {
         screenTitle = "Book Appointment with \(name ?? "unknown")"
     }
     
