@@ -20,10 +20,22 @@ final class RadioButtonGroupView: UIView {
     var selectedIndex: Int? = nil
     var onSelectionChanged: ((String) -> Void)?
     
-    func configure(options: [String], selectedColor: UIColor = .secondaryText, unselectedColor: UIColor = .primaryText) {
+    /// Configure radio button group
+    /// - Parameters:
+    ///   - options: array of option titles
+    ///   - preselectedOption: optional string to preselect ("Male", "Female" etc.)
+    ///   - selectedColor: color for selected circle
+    ///   - unselectedColor: color for unselected circle
+    func configure(
+        options: [String],
+        preselectedOption: String? = nil,
+        selectedColor: UIColor = .secondaryText,
+        unselectedColor: UIColor = .primaryText
+    ) {
         subviews.forEach { $0.removeFromSuperview() }
         buttons.removeAll()
         circles.removeAll()
+        selectedIndex = nil
         
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -71,15 +83,17 @@ final class RadioButtonGroupView: UIView {
             
             buttons.append(button)
             circles.append(circle)
+            
+            // Preselect if title matches preselectedOption
+            if let preselected = preselectedOption, preselected.lowercased() == title.lowercased() {
+                circle.isSelected = true
+                selectedIndex = index
+            }
         }
     }
     
     @objc private func optionTapped(_ sender: UIButton) {
-        for (index, circle) in circles.enumerated() {
-            circle.isSelected = (index == sender.tag)
-        }
-        let selectedOption = buttons[sender.tag].title(for: .normal) ?? ""
-        delegate?.radioButtonGroup(self, didSelect: selectedOption)
+        selectIndex(sender.tag)
     }
     
     @objc private func circleTapped(_ sender: UITapGestureRecognizer) {
@@ -91,7 +105,9 @@ final class RadioButtonGroupView: UIView {
         for (i, circle) in circles.enumerated() {
             circle.isSelected = (i == index)
         }
+        selectedIndex = index
         let selectedOption = buttons[index].title(for: .normal) ?? ""
         delegate?.radioButtonGroup(self, didSelect: selectedOption)
+        onSelectionChanged?(selectedOption)
     }
 }

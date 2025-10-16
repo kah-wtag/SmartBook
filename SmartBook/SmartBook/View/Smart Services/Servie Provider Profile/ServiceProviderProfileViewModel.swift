@@ -15,6 +15,9 @@ final class ServiceProviderProfileViewModel {
         self.serviceProvider = serviceProvider
     }
     
+    var minimumAdvanceTime: TimeInterval {
+        serviceProvider.minimumAdvanceTime ?? 0
+    }
     var nameText: String {
         serviceProvider.name ?? "Unknown"
     }

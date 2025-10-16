@@ -72,6 +72,7 @@ final class ServiceProviderProfileViewController: UIViewController {
     @IBAction func bookAppointmentButtonTapped(_ sender: UIButton) {
         let bookingFormVC = Routes.bookingFormVC
         bookingFormVC.viewModel.setServiceProviderName(viewModel.nameText)
+        bookingFormVC.viewModel.setMinimumAdvanceTime(viewModel.minimumAdvanceTime)
         navigationItem.backButtonTitle = ""
         navigationController?.pushViewController(bookingFormVC, animated: true)
     }

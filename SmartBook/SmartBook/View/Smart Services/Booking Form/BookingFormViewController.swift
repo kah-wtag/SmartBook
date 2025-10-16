@@ -83,7 +83,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupFontSize() {
-        appointmentMessageLabel.setFontSize(.small, weight: .regular, dynamic: true)
+        appointmentMessageLabel.setFontSize(.regular, weight: .regular, dynamic: true)
         basicInformationLabel.setFontSize(.large, weight: .regular, dynamic: true)
         bookingServiceProviderLabel.setFontSize(.large, weight: .bold, dynamic: true)
         appointmentSubmitButton.setFont(.large, weight: .medium, dynamic: true, title: "Submit")
@@ -110,8 +110,9 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         userAppointmentDatePicker.contentHorizontalAlignment = .center
         userAppointmentTimePicker.contentHorizontalAlignment = .center
         userBookingFormBirthDatePicker.maximumDate = Date()
-        userAppointmentDatePicker.minimumDate = Date()
-        userAppointmentTimePicker.minimumDate = Date()
+        userAppointmentDatePicker.minimumDate = Date() + viewModel.minimumAdvanceTime
+        userAppointmentTimePicker.minimumDate = Date() + viewModel.minimumAdvanceTime
+        print(viewModel.minimumAdvanceTime)
     }
     
     private func setupDatePickerPlaceholders() {
@@ -120,13 +121,13 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         
         appointmentDatePlaceholderLabel.text = "Select date"
         appointmentDatePlaceholderLabel.setFontSize(.regular)
-        appointmentDatePlaceholderLabel.textColor = .secondaryLabel
+        appointmentDatePlaceholderLabel.textColor = .primaryText
         appointmentDatePlaceholderLabel.isUserInteractionEnabled = true
         appointmentDatePlaceholderLabel.alpha = 1.0
         
         appointmentTimePlaceholderLabel.text = "Select time"
         appointmentTimePlaceholderLabel.setFontSize(.regular)
-        appointmentTimePlaceholderLabel.textColor = .secondaryLabel
+        appointmentTimePlaceholderLabel.textColor = .primaryText
         appointmentTimePlaceholderLabel.isUserInteractionEnabled = true
         appointmentTimePlaceholderLabel.alpha = 1.0
         
@@ -184,7 +185,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func configureRadioButton() {
-        genderRadioGroup.configure(options: ["Male", "Female"])
+        genderRadioGroup.configure(options: ["Male", "Female"], preselectedOption: nil)
         genderRadioGroup.delegate = self
     }
     

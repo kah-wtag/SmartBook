@@ -24,6 +24,7 @@ final class BookingFormViewModel {
     private(set) var dateOfBirth: Date = Date()
     private(set) var appointmentDate: Date = Date()
     private(set) var appointmentTime: Date = Date()
+    private(set) var minimumAdvanceTime: TimeInterval = 0
     
     private var isFormValid: Bool = false {
         didSet {
@@ -33,15 +34,18 @@ final class BookingFormViewModel {
     
     var minimumAppointmentDate: Date {
         let now = Date()
-        if let advanceTime = serviceProvider?.minimumAdvanceTime {
-            return now.addingTimeInterval(advanceTime)
-        }
-        return now
+        guard let advanceTime = serviceProvider?.minimumAdvanceTime else { return now }
+        return now + advanceTime
     }
+    
     var serviceProvider: ServiceProvider?
-
+    
     func setServiceProvider(_ provider: ServiceProvider) {
         serviceProvider = provider
+    }
+    
+    func setMinimumAdvanceTime(_ time: TimeInterval?) {
+        minimumAdvanceTime = time ?? 0
     }
     
     func setServiceProviderName(_ name: String?) {
@@ -130,8 +134,8 @@ final class BookingFormViewModel {
             
             if remainingMinutes < 10 {
                 remainingText = remainingMinutes >= 5 ?
-                " (Less than 10 minutes remaining)" :
-                " (Less than 5 minutes remaining)"
+                " (Less than 10 minutes will be remained)" :
+                " (Less than 5 minutes will be remained)"
             } else {
                 let days = remainingMinutes / (24 * 60)
                 let hours = (remainingMinutes % (24 * 60)) / 60
@@ -143,7 +147,7 @@ final class BookingFormViewModel {
                 remainingText = "(\(parts.joined(separator: " ")) remaining)"
             }
             
-            let message = "Your appointment will be scheduled on \(dateFormatter.string(from: appointmentDate)) at \(timeFormatter.string(from: appointmentTime)). Fill in your information and press Submit to finalize the booking. \(remainingText)"
+            let message = "Your appointment will be scheduled on \(dateFormatter.string(from: appointmentDate)) at \(timeFormatter.string(from: appointmentTime))."
             return (message, .reverseWarning)
         }
     }
