@@ -25,6 +25,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var appointmentMessageLabel: UILabel!
     @IBOutlet var appointmentDatePlaceholderLabel: UILabel!
     @IBOutlet var appointmentTimePlaceholderLabel: UILabel!
+    @IBOutlet var scrollView: UIScrollView!
     
     let viewModel = BookingFormViewModel()
     private var bookingFormTextFields: [UITextField] = []
@@ -41,6 +42,12 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         setupServiceProviderName()
         configureRadioButton()
         updateMessageAfterPlaceholderTap()
+        registerForKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func configureViewModel() {
@@ -54,6 +61,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         setupTextColor()
         setupDatePicker()
         setupDatePickerPlaceholders()
+        registerForKeyboardNotifications()
     }
     
     private func setupTextFields() {
@@ -128,6 +136,36 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         appointmentTimePlaceholderLabel.addGestureRecognizer(
             UITapGestureRecognizer(target: self, action: #selector(showTimePicker))
         )
+    }
+    
+    private func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+
+        let keyboardHeight = keyboardFrame.height
+        scrollView.contentInset.bottom = keyboardHeight + 16
+        scrollView.verticalScrollIndicatorInsets.bottom = keyboardHeight
+    }
+
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        scrollView.contentInset.bottom = 0
+        scrollView.verticalScrollIndicatorInsets.bottom = 0
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let rect = textField.convert(textField.bounds, to: scrollView)
+        scrollView.scrollRectToVisible(rect, animated: true)
     }
     
     private func setupTargets() {
