@@ -10,6 +10,7 @@ import UIKit
 protocol BookingFormViewModelDelegate: AnyObject {
     func didUpdateFormValidity(isValid: Bool)
     func didSubmitAppointment()
+    func didUpdateFieldValidation()
 }
 
 final class BookingFormViewModel {
@@ -31,7 +32,10 @@ final class BookingFormViewModel {
             delegate?.didUpdateFormValidity(isValid: isFormValid)
         }
     }
-    
+    var isNameValid: Bool { NameValidation.isValid(name) }
+    var isPhoneValid: Bool { PhoneValidation.isValid(phone) }
+    var isEmailValid: Bool { EmailValidation.isValid(email) }
+    var isGenderSelected: Bool { selectedGender != nil }
     var minimumAppointmentDate: Date {
         let now = Date()
         guard let advanceTime = serviceProvider?.minimumAdvanceTime else { return now }
@@ -54,18 +58,22 @@ final class BookingFormViewModel {
     
     func updateName(_ text: String?) {
         name = text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        validateForm()
     }
     
     func updatePhone(_ text: String?) {
         phone = text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        validateForm()
     }
     
     func updateEmail(_ text: String?) {
         email = text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        validateForm()
     }
     
     func updateGender(_ gender: String) {
         selectedGender = gender
+        validateForm()
     }
     
     func updateDateOfBirth(_ date: Date) {
@@ -95,14 +103,8 @@ final class BookingFormViewModel {
     }
     
     func validateForm() {
-        let allFieldsFilled = !name.isEmpty && !phone.isEmpty && !email.isEmpty
-        let genderChosen = (selectedGender != nil)
-        let emailValid = EmailValidation.isValid(email)
-        isFormValid = allFieldsFilled && genderChosen && emailValid
-    }
-    
-    func isEmailValid() -> Bool {
-        return EmailValidation.isValid(email)
+        isFormValid = isNameValid && isPhoneValid && isEmailValid && isGenderSelected
+        delegate?.didUpdateFieldValidation()
     }
     
     func getAppointmentMessage(isDateSelected: Bool, isTimeSelected: Bool) -> (text: String, color: UIColor) {

@@ -5,7 +5,7 @@
 //  Created by Md. Kamrul Hasan on 16/10/25.
 //
 
-import Foundation
+import UIKit
 
 struct EmailValidation {
     static func isValid(_ email: String) -> Bool {

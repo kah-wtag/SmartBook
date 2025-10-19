@@ -38,6 +38,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         configureViewModel()
         setupUI()
         setupTargets()
+        setupTextFieldBorders()
         configureTextFields()
         setupServiceProviderName()
         configureRadioButton()
@@ -74,6 +75,12 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         userBookingFormPhoneNumberTextField.setStyledPlaceholder("Phone Number", size: .large)
         userBookingFormPhoneNumberTextField.textFieldStyle(dynamic: true)
         userBookingFormPhoneNumberTextField .verticalPadding([.left, .right], width: 8)
+    }
+    
+    private func updateBorderColors() {
+        userBookingFormNameTextField.layer.borderColor = viewModel.isNameValid ? UIColor.reverseWarning.cgColor : UIColor.warning.cgColor
+        userBookingFormPhoneNumberTextField.layer.borderColor = viewModel.isPhoneValid ? UIColor.reverseWarning.cgColor : UIColor.warning.cgColor
+        userBookingFormMailTextField.layer.borderColor = viewModel.isEmailValid ? UIColor.reverseWarning.cgColor : UIColor.warning.cgColor
     }
     
     private func setupSubmitButton() {
@@ -175,11 +182,25 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         userAppointmentTimePicker.addTarget(self, action: #selector(appointmentTimeChanged(_:)), for: .valueChanged)
     }
     
+    private func setupTextFieldBorders() {
+        let fields: [UITextField] = [
+            userBookingFormNameTextField,
+            userBookingFormPhoneNumberTextField,
+            userBookingFormMailTextField
+        ]
+        
+        fields.forEach { textField in
+            textField.layer.borderWidth = 1
+            textField.layer.borderColor = UIColor.systemRed.cgColor
+        }
+    }
+    
     private func configureTextFields() {
         userBookingFormNameTextField.delegate = self
         userBookingFormPhoneNumberTextField.delegate = self
         userBookingFormMailTextField.delegate = self
     }
+    
     private func setupServiceProviderName() {
         bookingServiceProviderLabel.text = viewModel.screenTitle
     }
@@ -201,10 +222,9 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
             viewModel.updatePhone(updatedText)
         case userBookingFormMailTextField:
             viewModel.updateEmail(updatedText)
-        default:
-            break
+        default: break
         }
-        viewModel.validateForm()
+        
         return true
     }
     
@@ -281,6 +301,10 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
         appointmentSubmitButton.isEnabled = isValid
         appointmentSubmitButton.alpha = isValid ? 1.0 : 0.5
         appointmentSubmitButton.layer.borderColor = (isValid ? UIColor.border : UIColor.placeholder).cgColor
+    }
+    
+    func didUpdateFieldValidation() {
+        updateBorderColors()
     }
     
     func didSubmitAppointment() {
