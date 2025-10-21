@@ -10,11 +10,17 @@ import UIKit
 protocol BookingFormViewModelDelegate: AnyObject {
     func didUpdateFormValidity(isValid: Bool)
     func didSubmitAppointment()
-    func didUpdateFieldValidation()
+    func didUpdateFieldValidation(for field: BookingField)
+}
+
+enum BookingField {
+    case name
+    case phone
+    case email
 }
 
 final class BookingFormViewModel {
-    
+
     weak var delegate: BookingFormViewModelDelegate?
     
     private(set) var screenTitle: String = ""
@@ -58,16 +64,19 @@ final class BookingFormViewModel {
     
     func updateName(_ text: String?) {
         name = text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        delegate?.didUpdateFieldValidation(for: .name)
         validateForm()
     }
     
     func updatePhone(_ text: String?) {
         phone = text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        delegate?.didUpdateFieldValidation(for: .phone)
         validateForm()
     }
     
     func updateEmail(_ text: String?) {
         email = text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        delegate?.didUpdateFieldValidation(for: .email)
         validateForm()
     }
     
@@ -104,7 +113,6 @@ final class BookingFormViewModel {
     
     func validateForm() {
         isFormValid = isNameValid && isPhoneValid && isEmailValid && isGenderSelected
-        delegate?.didUpdateFieldValidation()
     }
     
     func getAppointmentMessage(isDateSelected: Bool, isTimeSelected: Bool) -> (text: String, color: UIColor) {

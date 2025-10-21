@@ -38,7 +38,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         configureViewModel()
         setupUI()
         setupTargets()
-        setupTextFieldBorders()
         configureTextFields()
         setupServiceProviderName()
         configureRadioButton()
@@ -182,19 +181,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         userAppointmentTimePicker.addTarget(self, action: #selector(appointmentTimeChanged(_:)), for: .valueChanged)
     }
     
-    private func setupTextFieldBorders() {
-        let fields: [UITextField] = [
-            userBookingFormNameTextField,
-            userBookingFormPhoneNumberTextField,
-            userBookingFormMailTextField
-        ]
-        
-        fields.forEach { textField in
-            textField.layer.borderWidth = 1
-            textField.layer.borderColor = UIColor.warning.cgColor
-        }
-    }
-    
     private func configureTextFields() {
         userBookingFormNameTextField.delegate = self
         userBookingFormPhoneNumberTextField.delegate = self
@@ -304,8 +290,15 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
         appointmentSubmitButton.layer.borderColor = (canSubmit ? UIColor.border : UIColor.placeholder).cgColor
     }
     
-    func didUpdateFieldValidation() {
-        updateBorderColors()
+    func didUpdateFieldValidation(for field: BookingField) {
+        switch field {
+        case .name:
+            userBookingFormNameTextField.layer.borderColor = viewModel.isNameValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
+        case .phone:
+            userBookingFormPhoneNumberTextField.layer.borderColor = viewModel.isPhoneValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
+        case .email:
+            userBookingFormMailTextField.layer.borderColor = viewModel.isEmailValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
+        }
     }
     
     func didSubmitAppointment() {
