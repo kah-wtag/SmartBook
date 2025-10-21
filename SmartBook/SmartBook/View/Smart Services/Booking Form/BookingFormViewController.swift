@@ -78,9 +78,9 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func updateBorderColors() {
-        userBookingFormNameTextField.layer.borderColor = viewModel.isNameValid ? UIColor.reverseWarning.cgColor : UIColor.warning.cgColor
-        userBookingFormPhoneNumberTextField.layer.borderColor = viewModel.isPhoneValid ? UIColor.reverseWarning.cgColor : UIColor.warning.cgColor
-        userBookingFormMailTextField.layer.borderColor = viewModel.isEmailValid ? UIColor.reverseWarning.cgColor : UIColor.warning.cgColor
+        userBookingFormNameTextField.layer.borderColor = viewModel.isNameValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
+        userBookingFormPhoneNumberTextField.layer.borderColor = viewModel.isPhoneValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
+        userBookingFormMailTextField.layer.borderColor = viewModel.isEmailValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
     }
     
     private func setupSubmitButton() {
@@ -191,7 +191,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         
         fields.forEach { textField in
             textField.layer.borderWidth = 1
-            textField.layer.borderColor = UIColor.systemRed.cgColor
+            textField.layer.borderColor = UIColor.warning.cgColor
         }
     }
     
@@ -298,9 +298,10 @@ extension BookingFormViewController: RadioButtonGroupViewDelegate {
 
 extension BookingFormViewController: BookingFormViewModelDelegate {
     func didUpdateFormValidity(isValid: Bool) {
-        appointmentSubmitButton.isEnabled = isValid
-        appointmentSubmitButton.alpha = isValid ? 1.0 : 0.5
-        appointmentSubmitButton.layer.borderColor = (isValid ? UIColor.border : UIColor.placeholder).cgColor
+        let canSubmit = isValid && appointmentMessageLabel.textColor == .reverseWarning
+        appointmentSubmitButton.isEnabled = canSubmit
+        appointmentSubmitButton.alpha = canSubmit ? 1.0 : 0.5
+        appointmentSubmitButton.layer.borderColor = (canSubmit ? UIColor.border : UIColor.placeholder).cgColor
     }
     
     func didUpdateFieldValidation() {
