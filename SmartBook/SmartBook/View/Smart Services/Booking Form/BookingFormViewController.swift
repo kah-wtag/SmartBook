@@ -283,13 +283,24 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
     }
     
     func didUpdateFieldValidation(for field: BookingFormViewModel.BookingField) {
+        updateBorder(for: field, isValid: isFieldValid(field))
+    }
+    
+    private func isFieldValid(_ field: BookingFormViewModel.BookingField) -> Bool {
         switch field {
-        case .name:
-            userBookingFormNameTextField.layer.borderColor = viewModel.isNameValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
-        case .phone:
-            userBookingFormPhoneNumberTextField.layer.borderColor = viewModel.isPhoneValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
-        case .email:
-            userBookingFormMailTextField.layer.borderColor = viewModel.isEmailValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
+        case .name: return viewModel.isNameValid
+        case .phone: return viewModel.isPhoneValid
+        case .email: return viewModel.isEmailValid
+        }
+    }
+    
+    private func updateBorder(for field: BookingFormViewModel.BookingField, isValid: Bool) {
+        let color = isValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
+        
+        switch field {
+        case .name: userBookingFormNameTextField.layer.borderColor = color
+        case .phone: userBookingFormPhoneNumberTextField.layer.borderColor = color
+        case .email: userBookingFormMailTextField.layer.borderColor = color
         }
     }
     
