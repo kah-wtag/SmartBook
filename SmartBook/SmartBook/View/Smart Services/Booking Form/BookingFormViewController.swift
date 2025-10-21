@@ -28,7 +28,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var scrollView: UIScrollView!
     
     let viewModel = BookingFormViewModel()
-    private var bookingFormTextFields: [UITextField] = []
     private var selectedAppointmentDate: Date? = nil
     private var selectedAppointmentTime: Date? = nil
     
@@ -42,7 +41,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         setupServiceProviderName()
         configureRadioButton()
         updateMessageAfterPlaceholderTap()
-        registerForKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,12 +72,6 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         userBookingFormPhoneNumberTextField.setStyledPlaceholder("Phone Number", size: .large)
         userBookingFormPhoneNumberTextField.textFieldStyle(dynamic: true)
         userBookingFormPhoneNumberTextField .verticalPadding([.left, .right], width: 8)
-    }
-    
-    private func updateBorderColors() {
-        userBookingFormNameTextField.layer.borderColor = viewModel.isNameValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
-        userBookingFormPhoneNumberTextField.layer.borderColor = viewModel.isPhoneValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
-        userBookingFormMailTextField.layer.borderColor = viewModel.isEmailValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
     }
     
     private func setupSubmitButton() {
@@ -188,7 +180,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupServiceProviderName() {
-        bookingServiceProviderLabel.text = viewModel.screenTitle
+        bookingServiceProviderLabel.text = viewModel.serviceProviderName
     }
     
     private func configureRadioButton() {

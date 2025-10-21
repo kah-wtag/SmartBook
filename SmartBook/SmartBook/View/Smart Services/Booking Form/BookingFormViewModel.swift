@@ -23,7 +23,7 @@ final class BookingFormViewModel {
 
     weak var delegate: BookingFormViewModelDelegate?
     
-    private(set) var screenTitle: String = ""
+    private(set) var serviceProviderName: String = ""
     private(set) var name: String = ""
     private(set) var phone: String = ""
     private(set) var email: String = ""
@@ -59,7 +59,7 @@ final class BookingFormViewModel {
     }
     
     func setServiceProviderName(_ name: String?) {
-        screenTitle = "Book Appointment with \(name ?? "unknown")"
+        serviceProviderName = "Book Appointment with \(name ?? "unknown")"
     }
     
     func updateName(_ text: String?) {
