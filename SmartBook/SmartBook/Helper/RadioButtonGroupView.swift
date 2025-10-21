@@ -19,13 +19,7 @@ final class RadioButtonGroupView: UIView {
     
     var selectedIndex: Int? = nil
     var onSelectionChanged: ((String) -> Void)?
-    
-    /// Configure radio button group
-    /// - Parameters:
-    ///   - options: array of option titles
-    ///   - preselectedOption: optional string to preselect ("Male", "Female" etc.)
-    ///   - selectedColor: color for selected circle
-    ///   - unselectedColor: color for unselected circle
+
     func configure(
         options: [String],
         preselectedOption: String? = nil,
@@ -84,7 +78,6 @@ final class RadioButtonGroupView: UIView {
             buttons.append(button)
             circles.append(circle)
             
-            // Preselect if title matches preselectedOption
             if let preselected = preselectedOption, preselected.lowercased() == title.lowercased() {
                 circle.isSelected = true
                 selectedIndex = index
