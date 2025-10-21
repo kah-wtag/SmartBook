@@ -10,34 +10,35 @@ import UIKit
 protocol BookingFormViewModelDelegate: AnyObject {
     func didUpdateFormValidity(isValid: Bool)
     func didSubmitAppointment()
-    func didUpdateFieldValidation(for field: BookingField)
-}
-
-enum BookingField {
-    case name
-    case phone
-    case email
+    func didUpdateFieldValidation(for field: BookingFormViewModel.BookingField)
 }
 
 final class BookingFormViewModel {
-
+    
+    enum BookingField {
+        case name
+        case phone
+        case email
+    }
+    
     weak var delegate: BookingFormViewModelDelegate?
     
     private(set) var serviceProviderName: String = ""
     private(set) var name: String = ""
     private(set) var phone: String = ""
     private(set) var email: String = ""
-    private var selectedGender: String? = nil
     private(set) var dateOfBirth: Date = Date()
     private(set) var appointmentDate: Date = Date()
     private(set) var appointmentTime: Date = Date()
     private(set) var minimumAdvanceTime: TimeInterval = 0
     
+    private var selectedGender: String? = nil
     private var isFormValid: Bool = false {
         didSet {
             delegate?.didUpdateFormValidity(isValid: isFormValid)
         }
     }
+    
     var isNameValid: Bool { NameValidation.isValid(name) }
     var isPhoneValid: Bool { PhoneValidation.isValid(phone) }
     var isEmailValid: Bool { EmailValidation.isValid(email) }

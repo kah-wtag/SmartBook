@@ -282,7 +282,7 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
         appointmentSubmitButton.layer.borderColor = (canSubmit ? UIColor.border : UIColor.placeholder).cgColor
     }
     
-    func didUpdateFieldValidation(for field: BookingField) {
+    func didUpdateFieldValidation(for field: BookingFormViewModel.BookingField) {
         switch field {
         case .name:
             userBookingFormNameTextField.layer.borderColor = viewModel.isNameValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
