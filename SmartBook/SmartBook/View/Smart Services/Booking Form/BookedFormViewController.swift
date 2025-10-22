@@ -43,7 +43,7 @@ final class BookedFormViewController: UIViewController {
     
     private func updateUI() {
         bookingSuccessfulLabel.text = viewModel.bookingSuccessTitle
-        bookedSuccessfulMessageLabel.text = viewModel.bookingSuccessMessage
+        bookedSuccessfulMessageLabel.text = viewModel.bookingConfirmationMessage
         goToHomescreenButton.setTitle(viewModel.goHomeButtonTitle, for: .normal)
     }
 }

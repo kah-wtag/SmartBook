@@ -9,23 +9,24 @@ import UIKit
 
 final class BookedFormViewModel {
     
+    private let appointmentDate: Date
+    private let appointmentTime: Date
     let bookingSuccessTitle = "Congratulations!!"
     let goHomeButtonTitle = "Go to Services"
     
-    private(set) var bookingSuccessMessage: String = ""
-    
     init(appointmentDate: Date, appointmentTime: Date) {
-        bookingSuccessMessage = generateBookingMessage(appointmentDate: appointmentDate, appointmentTime: appointmentTime)
+        self.appointmentDate = appointmentDate
+        self.appointmentTime = appointmentTime
     }
     
-    private func generateBookingMessage(appointmentDate: Date, appointmentTime: Date) -> String {
+    var bookingConfirmationMessage: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM"
-
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
-
-        return "Your appointment has been successfully booked on \(dateFormatter.string(from: appointmentDate)) at \(timeFormatter.string(from: appointmentTime))."
+        
+        return "Your appointment is scheduled on \(dateFormatter.string(from: appointmentDate)) at \(timeFormatter.string(from: appointmentTime))."
     }
     
     func goToHome() {

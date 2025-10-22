@@ -43,17 +43,16 @@ final class RadioButtonGroupView: UIView {
             let circle = RadioCircleView()
             circle.selectedColor = selectedColor
             circle.unselectedColor = unselectedColor
+            circle.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 circle.widthAnchor.constraint(equalToConstant: 20),
                 circle.heightAnchor.constraint(equalToConstant: 20)
             ])
-            circle.tag = index
             
             let label = UILabel()
             label.text = title
-            label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-            label.textColor = .label
-            label.isUserInteractionEnabled = false 
+            label.font = .systemFont(ofSize: 16, weight: .medium)
+            label.textColor = unselectedColor
             
             let horizontal = UIStackView(arrangedSubviews: [circle, label])
             horizontal.axis = .horizontal
@@ -61,16 +60,18 @@ final class RadioButtonGroupView: UIView {
             horizontal.alignment = .center
             horizontal.distribution = .fill
             horizontal.tag = index
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(optionTapped(_:)))
             horizontal.isUserInteractionEnabled = true
-            horizontal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(optionTapped(_:))))
+            horizontal.addGestureRecognizer(tap)
             
             stack.addArrangedSubview(horizontal)
+            
             circles.append(circle)
             
             if let preselected = preselectedOption,
                preselected.lowercased() == title.lowercased() {
                 circle.isSelected = true
-                delegate?.radioButtonGroup(self, didSelect: title)
             }
         }
     }
@@ -84,12 +85,9 @@ final class RadioButtonGroupView: UIView {
         for (i, circle) in circles.enumerated() {
             circle.isSelected = (i == index)
         }
-        let selectedTitle = (subviews.first as? UIStackView)?
-            .arrangedSubviews[index]
-            .subviews
-            .compactMap { $0 as? UILabel }
-            .first?
-            .text ?? ""
-        delegate?.radioButtonGroup(self, didSelect: selectedTitle)
+        if let horizontalStack = circles[index].superview as? UIStackView,
+           let label = horizontalStack.arrangedSubviews[1] as? UILabel {
+            delegate?.radioButtonGroup(self, didSelect: label.text ?? "")
+        }
     }
 }

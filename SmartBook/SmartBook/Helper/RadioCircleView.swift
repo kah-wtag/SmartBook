@@ -10,17 +10,17 @@ import UIKit
 final class RadioCircleView: UIView {
     
     var selectedColor: UIColor = .secondaryText {
-        didSet { dotView.backgroundColor = selectedColor }
+        didSet { updateDotLayer() }
     }
     
     var unselectedColor: UIColor = .primaryText {
         didSet { layer.borderColor = unselectedColor.cgColor }
     }
     
-    private let dotView = UIView()
+    private let dotLayer = CAShapeLayer()
     
     var isSelected: Bool = false {
-        didSet { dotView.isHidden = !isSelected }
+        didSet { updateDotLayer() }
     }
     
     override init(frame: CGRect) {
@@ -38,21 +38,27 @@ final class RadioCircleView: UIView {
         layer.borderColor = unselectedColor.cgColor
         clipsToBounds = true
         
-        dotView.backgroundColor = selectedColor
-        dotView.isHidden = true
-        addSubview(dotView)
-        dotView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            dotView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
-            dotView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
-            dotView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            dotView.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
+        dotLayer.fillColor = selectedColor.cgColor
+        layer.addSublayer(dotLayer)
+    }
+    
+    private func updateDotLayer() {
+        dotLayer.fillColor = isSelected ? selectedColor.cgColor : UIColor.clear.cgColor
+        setNeedsLayout()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.width / 2
-        dotView.layer.cornerRadius = dotView.bounds.width / 2
+        
+        let dotRadius = bounds.width * 0.25
+        let dotRect = CGRect(
+            x: bounds.midX - dotRadius,
+            y: bounds.midY - dotRadius,
+            width: dotRadius * 2,
+            height: dotRadius * 2
+        )
+        let path = UIBezierPath(ovalIn: dotRect)
+        dotLayer.path = path.cgPath
     }
 }
