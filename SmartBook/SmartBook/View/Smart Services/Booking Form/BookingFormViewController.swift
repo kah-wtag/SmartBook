@@ -184,7 +184,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func configureRadioButton() {
-        genderRadioGroup.configure(options: ["Male", "Female"], preselectedOption: nil)
+        genderRadioGroup.configure(options: ["Male", "Female"], preselectedOption: viewModel.selectedGender)
         genderRadioGroup.delegate = self
     }
     

@@ -5,6 +5,13 @@
 //  Created by Md. Kamrul Hasan on 13/10/25.
 //
 
+//
+//  RadioButtonGroupView.swift
+//  SmartBook
+//
+//  Created by Md. Kamrul Hasan on 13/10/25.
+//
+
 import UIKit
 
 protocol RadioButtonGroupViewDelegate: AnyObject {
@@ -16,10 +23,8 @@ final class RadioButtonGroupView: UIView {
     weak var delegate: RadioButtonGroupViewDelegate?
     private var buttons: [UIButton] = []
     private var circles: [RadioCircleView] = []
+    private(set) var selectedIndex: Int? = nil
     
-    var selectedIndex: Int? = nil
-    var onSelectionChanged: ((String) -> Void)?
-
     func configure(
         options: [String],
         preselectedOption: String? = nil,
@@ -54,8 +59,9 @@ final class RadioButtonGroupView: UIView {
                 circle.widthAnchor.constraint(equalToConstant: 20),
                 circle.heightAnchor.constraint(equalToConstant: 20)
             ])
-            circle.isUserInteractionEnabled = true
+            
             let circleTap = UITapGestureRecognizer(target: self, action: #selector(circleTapped(_:)))
+            circle.isUserInteractionEnabled = true
             circle.addGestureRecognizer(circleTap)
             circle.tag = index
             
@@ -78,7 +84,8 @@ final class RadioButtonGroupView: UIView {
             buttons.append(button)
             circles.append(circle)
             
-            if let preselected = preselectedOption, preselected.lowercased() == title.lowercased() {
+            if let preselected = preselectedOption,
+               preselected.lowercased() == title.lowercased() {
                 circle.isSelected = true
                 selectedIndex = index
             }
@@ -95,12 +102,13 @@ final class RadioButtonGroupView: UIView {
     }
     
     private func selectIndex(_ index: Int) {
+        guard selectedIndex != index else { return }
+        
         for (i, circle) in circles.enumerated() {
             circle.isSelected = (i == index)
         }
         selectedIndex = index
         let selectedOption = buttons[index].title(for: .normal) ?? ""
         delegate?.radioButtonGroup(self, didSelect: selectedOption)
-        onSelectionChanged?(selectedOption)
     }
 }

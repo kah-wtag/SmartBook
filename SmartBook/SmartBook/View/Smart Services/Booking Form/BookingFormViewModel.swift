@@ -31,8 +31,8 @@ final class BookingFormViewModel {
     private(set) var appointmentDate: Date = Date()
     private(set) var appointmentTime: Date = Date()
     private(set) var minimumAdvanceTime: TimeInterval = 0
+    private(set) var selectedGender: String? = nil
     
-    private var selectedGender: String? = nil
     private var isFormValid: Bool = false {
         didSet {
             delegate?.didUpdateFormValidity(isValid: isFormValid)
@@ -138,25 +138,6 @@ final class BookingFormViewModel {
                 second: 0,
                 of: appointmentDate
             ) ?? Date()
-            
-            let interval = Int(appointmentDateTime.timeIntervalSinceNow)
-            let remainingMinutes = max(0, interval / 60)
-            let remainingText: String
-            
-            if remainingMinutes < 10 {
-                remainingText = remainingMinutes >= 5 ?
-                " (Less than 10 minutes will be remained)" :
-                " (Less than 5 minutes will be remained)"
-            } else {
-                let days = remainingMinutes / (24 * 60)
-                let hours = (remainingMinutes % (24 * 60)) / 60
-                let minutes = remainingMinutes % 60
-                var parts: [String] = []
-                if days > 0 { parts.append("\(days)d") }
-                if hours > 0 { parts.append("\(hours)h") }
-                if minutes > 0 { parts.append("\(minutes)m") }
-                remainingText = "(\(parts.joined(separator: " ")) remaining)"
-            }
             
             let message = "Your appointment will be scheduled on \(dateFormatter.string(from: appointmentDate)) at \(timeFormatter.string(from: appointmentTime))."
             return (message, .reverseWarning)
