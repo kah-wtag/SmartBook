@@ -81,7 +81,7 @@ extension UserProfileEditViewController {
     func saveButtonTapped() {
         userProfileEditTextField.resignFirstResponder()
         guard !currentText.isEmpty, currentText.count <= characterLimit else { return }
-        if isEmailField, !EmailValidation.isValid(currentText) { return }
+        if isEmailField, !currentText.isValidEmail() { return }
         onSave?(currentText)
         dismiss(animated: true)
     }
@@ -110,7 +110,7 @@ extension UserProfileEditViewController {
         let remaining = isNameField ? (characterLimit - trimmed.count) : Int.max
         var isValid = !trimmed.isEmpty && remaining >= 0
         
-        if isEmailField, !EmailValidation.isValid(trimmed) {
+        if isEmailField, !trimmed.isValidEmail() {
             isValid = false
         }
         userProfileEditSaveButton.isEnabled = isValid
@@ -132,10 +132,6 @@ extension UserProfileEditViewController {
                 textFieldCharacterCount.textColor = .warning
             }
         }
-    }
-    
-    private func isValidEmail(_ email: String) -> Bool {
-        return EmailValidation.isValid(email)
     }
 }
 

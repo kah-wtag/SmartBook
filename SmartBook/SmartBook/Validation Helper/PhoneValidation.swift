@@ -7,10 +7,9 @@
 
 import Foundation
 
-struct PhoneValidation {
-    static func isValid(_ phone: String) -> Bool {
-        let trimmed = phone.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+extension String {
+    func isValidPhone() -> Bool {
+        let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return false }
         let internationalPhoneNumberRegex = #"^\+?[1-9]\d{0,3}[-.\s]?\d{1,14}$"#
         let predicate = NSPredicate(format: "SELF MATCHES %@", internationalPhoneNumberRegex)

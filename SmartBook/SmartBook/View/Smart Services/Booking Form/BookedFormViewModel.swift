@@ -11,6 +11,7 @@ final class BookedFormViewModel {
     
     private let appointmentDate: Date
     private let appointmentTime: Date
+    
     let bookingSuccessTitle = "Congratulations!!"
     let goHomeButtonTitle = "Go to Services"
     

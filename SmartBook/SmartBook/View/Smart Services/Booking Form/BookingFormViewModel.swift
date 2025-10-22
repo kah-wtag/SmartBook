@@ -39,9 +39,9 @@ final class BookingFormViewModel {
         }
     }
     
-    var isNameValid: Bool { NameValidation.isValid(name) }
-    var isPhoneValid: Bool { PhoneValidation.isValid(phone) }
-    var isEmailValid: Bool { EmailValidation.isValid(email) }
+    var isNameValid: Bool { name.isValidName() }
+    var isPhoneValid: Bool { phone.isValidPhone() }
+    var isEmailValid: Bool { email.isValidEmail() }
     var isGenderSelected: Bool { selectedGender != nil }
     var minimumAppointmentDate: Date {
         let now = Date()
