@@ -181,7 +181,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupServiceProviderName() {
-        bookingServiceProviderLabel.text = viewModel.screenTitle
+        bookingServiceProviderLabel.text = viewModel.serviceProvidersName
     }
     
     private func configureRadioButton() {

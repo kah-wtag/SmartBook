@@ -35,13 +35,14 @@ final class BookingFormViewModel {
         }
     }
     
+    var serviceProvider: ServiceProvider?
     var gender: String? {
         return selectedGender
     }
     var minAdvanceTime: TimeInterval {
         minimumAdvanceTime
     }
-    var screenTitle: String {
+    var serviceProvidersName: String {
         serviceProviderName
     }
     var isNameValid: Bool {
@@ -67,7 +68,6 @@ final class BookingFormViewModel {
         guard let advanceTime = serviceProvider?.minimumAdvanceTime else { return now }
         return now + advanceTime
     }
-    var serviceProvider: ServiceProvider?
     
     func setServiceProvider(_ provider: ServiceProvider) {
         serviceProvider = provider
