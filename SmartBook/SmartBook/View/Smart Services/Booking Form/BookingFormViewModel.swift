@@ -98,20 +98,6 @@ final class BookingFormViewModel {
         appointmentTime = time
     }
     
-    private var combinedAppointmentDateTime: Date {
-        let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: appointmentDate)
-        let timeComponents = calendar.dateComponents([.hour, .minute], from: appointmentTime)
-        var merged = DateComponents()
-        merged.year = dateComponents.year
-        merged.month = dateComponents.month
-        merged.day = dateComponents.day
-        merged.hour = timeComponents.hour
-        merged.minute = timeComponents.minute
-        
-        return calendar.date(from: merged) ?? appointmentDate
-    }
-    
     func validateForm() {
         isFormValid = isNameValid && isPhoneValid && isEmailValid && isGenderSelected
     }

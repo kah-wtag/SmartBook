@@ -288,9 +288,9 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
     
     private func isFieldValid(_ field: BookingFormViewModel.BookingField) -> Bool {
         switch field {
-        case .name: return viewModel.isNameValid
-        case .phone: return viewModel.isPhoneValid
-        case .email: return viewModel.isEmailValid
+        case .name: viewModel.isNameValid
+        case .phone: viewModel.isPhoneValid
+        case .email: viewModel.isEmailValid
         }
     }
     
@@ -306,8 +306,8 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
     
     func didSubmitAppointment() {
         let bookedFormVC = Routes.bookedFormVC
-        bookedFormVC.appointmentDate = selectedAppointmentDate
-        bookedFormVC.appointmentTime = selectedAppointmentTime
+        bookedFormVC.appointmentDate = viewModel.appointmentDate
+        bookedFormVC.appointmentTime = viewModel.appointmentTime
         navigationItem.backButtonTitle = ""
         navigationController?.pushViewController(bookedFormVC, animated: true)
     }

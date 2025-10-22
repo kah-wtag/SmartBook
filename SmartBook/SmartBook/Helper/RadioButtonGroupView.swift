@@ -5,13 +5,6 @@
 //  Created by Md. Kamrul Hasan on 13/10/25.
 //
 
-//
-//  RadioButtonGroupView.swift
-//  SmartBook
-//
-//  Created by Md. Kamrul Hasan on 13/10/25.
-//
-
 import UIKit
 
 protocol RadioButtonGroupViewDelegate: AnyObject {
@@ -19,12 +12,11 @@ protocol RadioButtonGroupViewDelegate: AnyObject {
 }
 
 final class RadioButtonGroupView: UIView {
-    
+
     weak var delegate: RadioButtonGroupViewDelegate?
     private var buttons: [UIButton] = []
     private var circles: [RadioCircleView] = []
-    private(set) var selectedIndex: Int? = nil
-    
+
     func configure(
         options: [String],
         preselectedOption: String? = nil,
@@ -34,8 +26,7 @@ final class RadioButtonGroupView: UIView {
         subviews.forEach { $0.removeFromSuperview() }
         buttons.removeAll()
         circles.removeAll()
-        selectedIndex = nil
-        
+
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.spacing = 5
@@ -49,7 +40,7 @@ final class RadioButtonGroupView: UIView {
             stack.leadingAnchor.constraint(equalTo: leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-        
+
         for (index, title) in options.enumerated() {
             let circle = RadioCircleView()
             circle.selectedColor = selectedColor
@@ -60,11 +51,10 @@ final class RadioButtonGroupView: UIView {
                 circle.heightAnchor.constraint(equalToConstant: 20)
             ])
             
-            let circleTap = UITapGestureRecognizer(target: self, action: #selector(circleTapped(_:)))
             circle.isUserInteractionEnabled = true
-            circle.addGestureRecognizer(circleTap)
+            circle.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(circleTapped(_:))))
             circle.tag = index
-            
+
             let button = UIButton(type: .system)
             button.setTitle(title, for: .normal)
             button.titleLabel?.setFontSize(.regular, weight: .medium)
@@ -72,42 +62,39 @@ final class RadioButtonGroupView: UIView {
             button.tag = index
             button.contentHorizontalAlignment = .leading
             button.addTarget(self, action: #selector(optionTapped(_:)), for: .touchUpInside)
-            
+
             let horizontal = UIStackView(arrangedSubviews: [circle, button])
             horizontal.axis = .horizontal
             horizontal.spacing = 5
             horizontal.alignment = .center
             horizontal.distribution = .fill
-            
+
             stack.addArrangedSubview(horizontal)
-            
+
             buttons.append(button)
             circles.append(circle)
-            
+
             if let preselected = preselectedOption,
                preselected.lowercased() == title.lowercased() {
                 circle.isSelected = true
-                selectedIndex = index
+                delegate?.radioButtonGroup(self, didSelect: title)
             }
         }
     }
-    
+
     @objc private func optionTapped(_ sender: UIButton) {
         selectIndex(sender.tag)
     }
-    
+
     @objc private func circleTapped(_ sender: UITapGestureRecognizer) {
         guard let circle = sender.view else { return }
         selectIndex(circle.tag)
     }
-    
+
     private func selectIndex(_ index: Int) {
-        guard selectedIndex != index else { return }
-        
         for (i, circle) in circles.enumerated() {
             circle.isSelected = (i == index)
         }
-        selectedIndex = index
         let selectedOption = buttons[index].title(for: .normal) ?? ""
         delegate?.radioButtonGroup(self, didSelect: selectedOption)
     }
