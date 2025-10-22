@@ -15,23 +15,19 @@ protocol BookingFormViewModelDelegate: AnyObject {
 
 final class BookingFormViewModel {
     
-    enum BookingField {
-        case name
-        case phone
-        case email
-    }
+    enum BookingField { case name, phone, email }
+    
+    private var serviceProviderName = ""
+    private var name = ""
+    private var phone = ""
+    private var email = ""
+    private var dateOfBirth = Date()
+    private var appointmentDate = Date()
+    private var appointmentTime = Date()
+    private var minimumAdvanceTime: TimeInterval = 0
+    private var selectedGender: String? = nil
     
     weak var delegate: BookingFormViewModelDelegate?
-    
-    private(set) var serviceProviderName: String = ""
-    private(set) var name: String = ""
-    private(set) var phone: String = ""
-    private(set) var email: String = ""
-    private(set) var dateOfBirth: Date = Date()
-    private(set) var appointmentDate: Date = Date()
-    private(set) var appointmentTime: Date = Date()
-    private(set) var minimumAdvanceTime: TimeInterval = 0
-    private(set) var selectedGender: String? = nil
     
     private var isFormValid: Bool = false {
         didSet {
@@ -39,16 +35,38 @@ final class BookingFormViewModel {
         }
     }
     
-    var isNameValid: Bool { name.isValidName() }
-    var isPhoneValid: Bool { phone.isValidPhone() }
-    var isEmailValid: Bool { email.isValidEmail() }
-    var isGenderSelected: Bool { selectedGender != nil }
+    var gender: String? {
+        return selectedGender
+    }
+    var minAdvanceTime: TimeInterval {
+        minimumAdvanceTime
+    }
+    var screenTitle: String {
+        serviceProviderName
+    }
+    var isNameValid: Bool {
+        name.isValidName()
+    }
+    var isPhoneValid: Bool {
+        phone.isValidPhone()
+    }
+    var isEmailValid: Bool {
+        email.isValidEmail()
+    }
+    var isGenderSelected: Bool {
+        selectedGender != nil
+    }
+    var bookedDate: Date {
+        return appointmentDate
+    }
+    var bookedTime: Date {
+        return appointmentTime
+    }
     var minimumAppointmentDate: Date {
         let now = Date()
         guard let advanceTime = serviceProvider?.minimumAdvanceTime else { return now }
         return now + advanceTime
     }
-    
     var serviceProvider: ServiceProvider?
     
     func setServiceProvider(_ provider: ServiceProvider) {
@@ -117,14 +135,6 @@ final class BookingFormViewModel {
         case (false, true):
             return ("Now select a date for your appointment.", .warning)
         case (true, true):
-            let calendar = Calendar.current
-            let appointmentDateTime = calendar.date(
-                bySettingHour: calendar.component(.hour, from: appointmentTime),
-                minute: calendar.component(.minute, from: appointmentTime),
-                second: 0,
-                of: appointmentDate
-            ) ?? Date()
-            
             let message = "Your appointment will be scheduled on \(dateFormatter.string(from: appointmentDate)) at \(timeFormatter.string(from: appointmentTime))."
             return (message, .reverseWarning)
         }

@@ -108,9 +108,10 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         userAppointmentDatePicker.contentHorizontalAlignment = .center
         userAppointmentTimePicker.contentHorizontalAlignment = .center
         userBookingFormBirthDatePicker.maximumDate = Date()
-        userAppointmentDatePicker.minimumDate = Date() + viewModel.minimumAdvanceTime
-        userAppointmentTimePicker.minimumDate = Date() + viewModel.minimumAdvanceTime
-        print(viewModel.minimumAdvanceTime)
+        
+        let minDate = Date() + viewModel.minAdvanceTime
+        userAppointmentDatePicker.minimumDate = minDate
+        userAppointmentTimePicker.minimumDate = minDate
     }
     
     private func setupDatePickerPlaceholders() {
@@ -180,11 +181,11 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupServiceProviderName() {
-        bookingServiceProviderLabel.text = viewModel.serviceProviderName
+        bookingServiceProviderLabel.text = viewModel.screenTitle
     }
     
     private func configureRadioButton() {
-        genderRadioGroup.configure(options: ["Male", "Female"], preselectedOption: viewModel.selectedGender)
+        genderRadioGroup.configure(options: ["Male", "Female"], preselectedOption: viewModel.gender)
         genderRadioGroup.delegate = self
     }
     
@@ -312,8 +313,8 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
     
     func didSubmitAppointment() {
         let bookedFormVC = Routes.bookedFormVC
-        bookedFormVC.appointmentDate = viewModel.appointmentDate
-        bookedFormVC.appointmentTime = viewModel.appointmentTime
+        bookedFormVC.appointmentDate = viewModel.bookedDate
+        bookedFormVC.appointmentTime = viewModel.bookedTime
         navigationItem.backButtonTitle = ""
         navigationController?.pushViewController(bookedFormVC, animated: true)
     }
