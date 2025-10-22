@@ -12,11 +12,10 @@ protocol RadioButtonGroupViewDelegate: AnyObject {
 }
 
 final class RadioButtonGroupView: UIView {
-
+    
     weak var delegate: RadioButtonGroupViewDelegate?
-    private var buttons: [UIButton] = []
     private var circles: [RadioCircleView] = []
-
+    
     func configure(
         options: [String],
         preselectedOption: String? = nil,
@@ -24,12 +23,11 @@ final class RadioButtonGroupView: UIView {
         unselectedColor: UIColor = .primaryText
     ) {
         subviews.forEach { $0.removeFromSuperview() }
-        buttons.removeAll()
         circles.removeAll()
-
+        
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.spacing = 5
+        stack.spacing = 10
         stack.alignment = .center
         stack.distribution = .fill
         addSubview(stack)
@@ -40,40 +38,35 @@ final class RadioButtonGroupView: UIView {
             stack.leadingAnchor.constraint(equalTo: leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-
+        
         for (index, title) in options.enumerated() {
             let circle = RadioCircleView()
             circle.selectedColor = selectedColor
             circle.unselectedColor = unselectedColor
-            circle.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 circle.widthAnchor.constraint(equalToConstant: 20),
                 circle.heightAnchor.constraint(equalToConstant: 20)
             ])
-            
-            circle.isUserInteractionEnabled = true
-            circle.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(circleTapped(_:))))
             circle.tag = index
-
-            let button = UIButton(type: .system)
-            button.setTitle(title, for: .normal)
-            button.titleLabel?.setFontSize(.regular, weight: .medium)
-            button.tintColor = .label
-            button.tag = index
-            button.contentHorizontalAlignment = .leading
-            button.addTarget(self, action: #selector(optionTapped(_:)), for: .touchUpInside)
-
-            let horizontal = UIStackView(arrangedSubviews: [circle, button])
+            
+            let label = UILabel()
+            label.text = title
+            label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+            label.textColor = .label
+            label.isUserInteractionEnabled = false 
+            
+            let horizontal = UIStackView(arrangedSubviews: [circle, label])
             horizontal.axis = .horizontal
             horizontal.spacing = 5
             horizontal.alignment = .center
             horizontal.distribution = .fill
-
+            horizontal.tag = index
+            horizontal.isUserInteractionEnabled = true
+            horizontal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(optionTapped(_:))))
+            
             stack.addArrangedSubview(horizontal)
-
-            buttons.append(button)
             circles.append(circle)
-
+            
             if let preselected = preselectedOption,
                preselected.lowercased() == title.lowercased() {
                 circle.isSelected = true
@@ -81,21 +74,22 @@ final class RadioButtonGroupView: UIView {
             }
         }
     }
-
-    @objc private func optionTapped(_ sender: UIButton) {
-        selectIndex(sender.tag)
+    
+    @objc private func optionTapped(_ sender: UITapGestureRecognizer) {
+        guard let tappedView = sender.view else { return }
+        selectIndex(tappedView.tag)
     }
-
-    @objc private func circleTapped(_ sender: UITapGestureRecognizer) {
-        guard let circle = sender.view else { return }
-        selectIndex(circle.tag)
-    }
-
+    
     private func selectIndex(_ index: Int) {
         for (i, circle) in circles.enumerated() {
             circle.isSelected = (i == index)
         }
-        let selectedOption = buttons[index].title(for: .normal) ?? ""
-        delegate?.radioButtonGroup(self, didSelect: selectedOption)
+        let selectedTitle = (subviews.first as? UIStackView)?
+            .arrangedSubviews[index]
+            .subviews
+            .compactMap { $0 as? UILabel }
+            .first?
+            .text ?? ""
+        delegate?.radioButtonGroup(self, didSelect: selectedTitle)
     }
 }
