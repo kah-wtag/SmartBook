@@ -288,9 +288,12 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
     
     private func isFieldValid(_ field: BookingFormViewModel.BookingField) -> Bool {
         switch field {
-        case .name: viewModel.isNameValid
-        case .phone: viewModel.isPhoneValid
-        case .email: viewModel.isEmailValid
+        case .name:
+            viewModel.isNameValid
+        case .phone:
+            viewModel.isPhoneValid
+        case .email:
+            viewModel.isEmailValid
         }
     }
     
@@ -298,9 +301,12 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
         let color = isValid ? UIColor.textfield.cgColor : UIColor.warning.cgColor
         
         switch field {
-        case .name: userBookingFormNameTextField.layer.borderColor = color
-        case .phone: userBookingFormPhoneNumberTextField.layer.borderColor = color
-        case .email: userBookingFormMailTextField.layer.borderColor = color
+        case .name:
+            userBookingFormNameTextField.layer.borderColor = color
+        case .phone:
+            userBookingFormPhoneNumberTextField.layer.borderColor = color
+        case .email:
+            userBookingFormMailTextField.layer.borderColor = color
         }
     }
     
