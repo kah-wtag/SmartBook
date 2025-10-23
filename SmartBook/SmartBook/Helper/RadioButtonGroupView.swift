@@ -22,58 +22,87 @@ final class RadioButtonGroupView: UIView {
         selectedColor: UIColor = .secondaryText,
         unselectedColor: UIColor = .primaryText
     ) {
-        subviews.forEach { $0.removeFromSuperview() }
-        redioButtonsCircle.removeAll()
+        clearExistingButtons()
         
-        let radioButtonsStackView = UIStackView()
-        radioButtonsStackView.axis = .horizontal
-        radioButtonsStackView.spacing = 10
-        radioButtonsStackView.alignment = .center
-        radioButtonsStackView.distribution = .fill
-        addSubview(radioButtonsStackView)
-        radioButtonsStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            radioButtonsStackView.topAnchor.constraint(equalTo: topAnchor),
-            radioButtonsStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            radioButtonsStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            radioButtonsStackView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        let radioButtonStackView = createMainStackView()
+        addSubview(radioButtonStackView)
+        constrainToEdges(radioButtonStackView)
         
         for (index, title) in options.enumerated() {
-            let radioButtonIcon = RadioCircleView()
-            radioButtonIcon.selectedColor = selectedColor
-            radioButtonIcon.unselectedColor = unselectedColor
-            radioButtonIcon.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                radioButtonIcon.widthAnchor.constraint(equalToConstant: 20),
-                radioButtonIcon.heightAnchor.constraint(equalToConstant: 20)
-            ])
+            let radioButtonIcon = createRadioCircle(selectedColor: selectedColor, unselectedColor: unselectedColor)
+            let radioButtonLabel = createRadioButtonTitle(title: title, color: unselectedColor)
             
-            let radioButtonTitle = UILabel()
-            radioButtonTitle.text = title
-            radioButtonTitle.font = .systemFont(ofSize: 16, weight: .medium)
-            radioButtonTitle.textColor = unselectedColor
+            let radioButtonRowStack = createHorizontalStack(views: [radioButtonIcon, radioButtonLabel], tag: index)
+            addTapRecognizer(to: radioButtonRowStack)
             
-            let horizontalRadioButtonStackView = UIStackView(arrangedSubviews: [radioButtonIcon, radioButtonTitle])
-            horizontalRadioButtonStackView.axis = .horizontal
-            horizontalRadioButtonStackView.spacing = 5
-            horizontalRadioButtonStackView.alignment = .center
-            horizontalRadioButtonStackView.distribution = .fill
-            horizontalRadioButtonStackView.tag = index
-            
-            let radioButtonsTap = UITapGestureRecognizer(target: self, action: #selector(radioButtonDidTap(_:)))
-            horizontalRadioButtonStackView.isUserInteractionEnabled = true
-            horizontalRadioButtonStackView.addGestureRecognizer(radioButtonsTap)
-            
-            radioButtonsStackView.addArrangedSubview(horizontalRadioButtonStackView)
-            
+            radioButtonStackView.addArrangedSubview(radioButtonRowStack)
             redioButtonsCircle.append(radioButtonIcon)
             
-            if let radioButtonPreselected = preselectedOption,
-               radioButtonPreselected.lowercased() == title.lowercased() {
+            if let preselectedRadioButton = preselectedOption,
+               preselectedRadioButton.lowercased() == title.lowercased() {
                 radioButtonIcon.isSelected = true
             }
         }
+    }
+    
+    private func clearExistingButtons() {
+        subviews.forEach { $0.removeFromSuperview() }
+        redioButtonsCircle.removeAll()
+    }
+    
+    private func createMainStackView() -> UIStackView {
+        let radioButtonStack = UIStackView()
+        radioButtonStack.axis = .horizontal
+        radioButtonStack.spacing = 10
+        radioButtonStack.alignment = .center
+        radioButtonStack.distribution = .fill
+        radioButtonStack.translatesAutoresizingMaskIntoConstraints = false
+        return radioButtonStack
+    }
+    
+    private func constrainToEdges(_ view: UIView) {
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: topAnchor),
+            view.bottomAnchor.constraint(equalTo: bottomAnchor),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+    
+    private func createRadioCircle(selectedColor: UIColor, unselectedColor: UIColor) -> RadioCircleView {
+        let radioButtonIcon = RadioCircleView()
+        radioButtonIcon.selectedColor = selectedColor
+        radioButtonIcon.unselectedColor = unselectedColor
+        radioButtonIcon.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            radioButtonIcon.widthAnchor.constraint(equalToConstant: 20),
+            radioButtonIcon.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        return radioButtonIcon
+    }
+    
+    private func createRadioButtonTitle(title: String, color: UIColor) -> UILabel {
+        let radioButtonTitle = UILabel()
+        radioButtonTitle.text = title
+        radioButtonTitle.font = .systemFont(ofSize: 16, weight: .medium)
+        radioButtonTitle.textColor = color
+        return radioButtonTitle
+    }
+    
+    private func createHorizontalStack(views: [UIView], tag: Int) -> UIStackView {
+        let radioButtonsStackView = UIStackView(arrangedSubviews: views)
+        radioButtonsStackView.axis = .horizontal
+        radioButtonsStackView.spacing = 5
+        radioButtonsStackView.alignment = .center
+        radioButtonsStackView.distribution = .fill
+        radioButtonsStackView.tag = tag
+        radioButtonsStackView.isUserInteractionEnabled = true
+        return radioButtonsStackView
+    }
+    
+    private func addTapRecognizer(to view: UIView) {
+        let radioButtonTap = UITapGestureRecognizer(target: self, action: #selector(radioButtonDidTap(_:)))
+        view.addGestureRecognizer(radioButtonTap)
     }
     
     @objc private func radioButtonDidTap(_ sender: UITapGestureRecognizer) {
@@ -86,8 +115,8 @@ final class RadioButtonGroupView: UIView {
             radioButtonIcon.isSelected = (i == index)
         }
         if let radioButtonHorizontalStack = redioButtonsCircle[index].superview as? UIStackView,
-           let label = radioButtonHorizontalStack.arrangedSubviews[1] as? UILabel {
-            delegate?.radioButtonGroup(self, didSelect: label.text ?? "")
+           let radioButtonsTitle = radioButtonHorizontalStack.arrangedSubviews[1] as? UILabel {
+            delegate?.radioButtonGroup(self, didSelect: radioButtonsTitle.text ?? "")
         }
     }
 }
