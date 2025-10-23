@@ -14,13 +14,24 @@ protocol RadioButtonGroupViewDelegate: AnyObject {
 final class RadioButtonGroupView: UIView {
     
     weak var delegate: RadioButtonGroupViewDelegate?
-    private var redioButtonsCircle: [RadioCircleView] = []
+    private var preselectedOption: String?
+    private var options: [String] = []
+    private var radioButtonsCircle: [RadioCircleView] = []
+    private var axis: NSLayoutConstraint.Axis = .horizontal
     
-    func configure(
-        options: [String],
-        preselectedOption: String? = nil,
-        axis: NSLayoutConstraint.Axis = .horizontal
-    ) {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func configure(delegate: RadioButtonGroupViewDelegate?, options: [String], preselectedOption: String? = nil, axis: NSLayoutConstraint.Axis = .horizontal) {
+        self.delegate = delegate
+        self.options = options
+        self.preselectedOption = preselectedOption
+        self.axis = axis
+        configureButtons()
+    }
+    
+    func configureButtons() {
         clearExistingButtons()
         
         let radioButtonStackView = createMainStackView(axis: axis)
@@ -35,7 +46,7 @@ final class RadioButtonGroupView: UIView {
             addTapRecognizer(to: radioButtonRowStack)
             
             radioButtonStackView.addArrangedSubview(radioButtonRowStack)
-            redioButtonsCircle.append(radioButtonIcon)
+            radioButtonsCircle.append(radioButtonIcon)
             
             if let preselectedRadioButton = preselectedOption,
                preselectedRadioButton.lowercased() == title.lowercased() {
@@ -46,15 +57,13 @@ final class RadioButtonGroupView: UIView {
     
     private func clearExistingButtons() {
         subviews.forEach { $0.removeFromSuperview() }
-        redioButtonsCircle.removeAll()
+        radioButtonsCircle.removeAll()
     }
     
     private func createMainStackView(axis: NSLayoutConstraint.Axis) -> UIStackView {
         let radioButtonStack = UIStackView()
         radioButtonStack.axis = axis
-        radioButtonStack.spacing = axis == .horizontal ? 10 : 8
-        radioButtonStack.alignment = .center
-        radioButtonStack.distribution = .fill
+        radioButtonStack.spacing = 10
         radioButtonStack.translatesAutoresizingMaskIntoConstraints = false
         return radioButtonStack
     }
@@ -83,7 +92,7 @@ final class RadioButtonGroupView: UIView {
     private func createRadioButtonTitle(title: String, color: UIColor) -> UILabel {
         let radioButtonTitle = UILabel()
         radioButtonTitle.text = title
-        radioButtonTitle.setFontSize(.regular)
+        radioButtonTitle.setFontSize(.large)
         radioButtonTitle.textColor = .primaryText
         return radioButtonTitle
     }
@@ -110,10 +119,10 @@ final class RadioButtonGroupView: UIView {
     }
     
     private func selectIndex(_ index: Int) {
-        for (i, radioButtonIcon) in redioButtonsCircle.enumerated() {
+        for (i, radioButtonIcon) in radioButtonsCircle.enumerated() {
             radioButtonIcon.isSelected = (i == index)
         }
-        if let radioButtonHorizontalStack = redioButtonsCircle[index].superview as? UIStackView,
+        if let radioButtonHorizontalStack = radioButtonsCircle[index].superview as? UIStackView,
            let radioButtonsTitle = radioButtonHorizontalStack.arrangedSubviews[1] as? UILabel {
             delegate?.radioButtonGroup(self, didSelect: radioButtonsTitle.text ?? "")
         }
