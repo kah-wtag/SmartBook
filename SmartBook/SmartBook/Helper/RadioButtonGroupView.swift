@@ -19,20 +19,19 @@ final class RadioButtonGroupView: UIView {
     func configure(
         options: [String],
         preselectedOption: String? = nil,
-        selectedColor: UIColor = .secondaryText,
-        unselectedColor: UIColor = .primaryText
+        axis: NSLayoutConstraint.Axis = .horizontal
     ) {
         clearExistingButtons()
         
-        let radioButtonStackView = createMainStackView()
+        let radioButtonStackView = createMainStackView(axis: axis)
         addSubview(radioButtonStackView)
         constrainToEdges(radioButtonStackView)
         
         for (index, title) in options.enumerated() {
-            let radioButtonIcon = createRadioCircle(selectedColor: selectedColor, unselectedColor: unselectedColor)
-            let radioButtonLabel = createRadioButtonTitle(title: title, color: unselectedColor)
+            let radioButtonIcon = createRadioCircle(selectedColor: .secondaryText, unselectedColor: .primaryText)
+            let radioButtonLabel = createRadioButtonTitle(title: title, color: .primaryText)
             
-            let radioButtonRowStack = createHorizontalStack(views: [radioButtonIcon, radioButtonLabel], tag: index)
+            let radioButtonRowStack = createRadioButtonStackView(views: [radioButtonIcon, radioButtonLabel], tag: index)
             addTapRecognizer(to: radioButtonRowStack)
             
             radioButtonStackView.addArrangedSubview(radioButtonRowStack)
@@ -50,10 +49,10 @@ final class RadioButtonGroupView: UIView {
         redioButtonsCircle.removeAll()
     }
     
-    private func createMainStackView() -> UIStackView {
+    private func createMainStackView(axis: NSLayoutConstraint.Axis) -> UIStackView {
         let radioButtonStack = UIStackView()
-        radioButtonStack.axis = .horizontal
-        radioButtonStack.spacing = 10
+        radioButtonStack.axis = axis
+        radioButtonStack.spacing = axis == .horizontal ? 10 : 8
         radioButtonStack.alignment = .center
         radioButtonStack.distribution = .fill
         radioButtonStack.translatesAutoresizingMaskIntoConstraints = false
@@ -84,12 +83,12 @@ final class RadioButtonGroupView: UIView {
     private func createRadioButtonTitle(title: String, color: UIColor) -> UILabel {
         let radioButtonTitle = UILabel()
         radioButtonTitle.text = title
-        radioButtonTitle.font = .systemFont(ofSize: 16, weight: .medium)
-        radioButtonTitle.textColor = color
+        radioButtonTitle.setFontSize(.regular)
+        radioButtonTitle.textColor = .primaryText
         return radioButtonTitle
     }
     
-    private func createHorizontalStack(views: [UIView], tag: Int) -> UIStackView {
+    private func createRadioButtonStackView(views: [UIView], tag: Int) -> UIStackView {
         let radioButtonsStackView = UIStackView(arrangedSubviews: views)
         radioButtonsStackView.axis = .horizontal
         radioButtonsStackView.spacing = 5
