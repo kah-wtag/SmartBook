@@ -14,7 +14,7 @@ protocol RadioButtonGroupViewDelegate: AnyObject {
 final class RadioButtonGroupView: UIView {
     
     weak var delegate: RadioButtonGroupViewDelegate?
-    private var circles: [RadioCircleView] = []
+    private var redioButtonsCircle: [RadioCircleView] = []
     
     func configure(
         options: [String],
@@ -23,7 +23,7 @@ final class RadioButtonGroupView: UIView {
         unselectedColor: UIColor = .primaryText
     ) {
         subviews.forEach { $0.removeFromSuperview() }
-        circles.removeAll()
+        redioButtonsCircle.removeAll()
         
         let radioButtonsStackView = UIStackView()
         radioButtonsStackView.axis = .horizontal
@@ -61,32 +61,32 @@ final class RadioButtonGroupView: UIView {
             horizontalRadioButtonStackView.distribution = .fill
             horizontalRadioButtonStackView.tag = index
             
-            let tap = UITapGestureRecognizer(target: self, action: #selector(radioButtonDidTap(_:)))
+            let radioButtonsTap = UITapGestureRecognizer(target: self, action: #selector(radioButtonDidTap(_:)))
             horizontalRadioButtonStackView.isUserInteractionEnabled = true
-            horizontalRadioButtonStackView.addGestureRecognizer(tap)
+            horizontalRadioButtonStackView.addGestureRecognizer(radioButtonsTap)
             
             radioButtonsStackView.addArrangedSubview(horizontalRadioButtonStackView)
             
-            circles.append(radioButtonIcon)
+            redioButtonsCircle.append(radioButtonIcon)
             
-            if let preselected = preselectedOption,
-               preselected.lowercased() == title.lowercased() {
+            if let radioButtonPreselected = preselectedOption,
+               radioButtonPreselected.lowercased() == title.lowercased() {
                 radioButtonIcon.isSelected = true
             }
         }
     }
     
     @objc private func radioButtonDidTap(_ sender: UITapGestureRecognizer) {
-        guard let tappedView = sender.view else { return }
-        selectIndex(tappedView.tag)
+        guard let radioButtonTappedView = sender.view else { return }
+        selectIndex(radioButtonTappedView.tag)
     }
     
     private func selectIndex(_ index: Int) {
-        for (i, circle) in circles.enumerated() {
-            circle.isSelected = (i == index)
+        for (i, radioButtonIcon) in redioButtonsCircle.enumerated() {
+            radioButtonIcon.isSelected = (i == index)
         }
-        if let horizontalStack = circles[index].superview as? UIStackView,
-           let label = horizontalStack.arrangedSubviews[1] as? UILabel {
+        if let radioButtonHorizontalStack = redioButtonsCircle[index].superview as? UIStackView,
+           let label = radioButtonHorizontalStack.arrangedSubviews[1] as? UILabel {
             delegate?.radioButtonGroup(self, didSelect: label.text ?? "")
         }
     }
