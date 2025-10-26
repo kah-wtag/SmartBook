@@ -34,5 +34,7 @@ class AppointmentListTableViewCell: UITableViewCell {
         appointmentListDate.text = viewModel.dateText
         appointmentListProfessionalsName.text = viewModel.providerName
         appointmentListTime.text = viewModel.timeText
+        selectionStyle = .none
+        separatorInset = .zero
     }
 }

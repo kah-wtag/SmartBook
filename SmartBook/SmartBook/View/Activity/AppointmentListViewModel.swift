@@ -10,6 +10,15 @@ import Foundation
 final class AppointmentListViewModel {
     
     private(set) var appointments: [Appointment] = []
+    private let displayFormatter: DateFormatter
+    
+    init(displayFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy, h:mm a"
+        return formatter
+    }()) {
+        self.displayFormatter = displayFormatter
+    }
     
     func loadAppointments(completion: @escaping () -> Void) {
         SmartBookingService.shared.fetchAppointments { [weak self] appointments, _ in
@@ -20,36 +29,28 @@ final class AppointmentListViewModel {
     }
     
     var upcomingAppointments: [Appointment] {
-        let now = Date()
-        let formatter = ISO8601DateFormatter()
-        return appointments.compactMap { appointment in
-            guard let dateStr = appointment.date, let date = formatter.date(from: dateStr), date >= now else { return nil }
-            return appointment
-        }
-        .sorted { formatter.date(from: $0.date!)! < formatter.date(from: $1.date!)! }
+        filterAppointments(isUpcoming: true)
     }
     
     var pastAppointments: [Appointment] {
+        filterAppointments(isUpcoming: false)
+    }
+    
+    private func filterAppointments(isUpcoming: Bool) -> [Appointment] {
         let now = Date()
         let formatter = ISO8601DateFormatter()
-        return appointments.compactMap { appointment in
-            guard let dateStr = appointment.date, let date = formatter.date(from: dateStr), date < now else { return nil }
-            return appointment
+        
+        let filtered = appointments.compactMap { appointment -> Appointment? in
+            guard let dateStr = appointment.date,
+                  let date = formatter.date(from: dateStr) else { return nil }
+            return isUpcoming ? (date >= now ? appointment : nil)
+            : (date < now ? appointment : nil)
         }
-        .sorted { formatter.date(from: $0.date!)! > formatter.date(from: $1.date!)! }
-    }
-    
-    var count: Int { appointments.count }
-    
-    func appointment(at index: Int) -> Appointment {
-        return appointments[index]
-    }
-    
-    func appointments(forProvider name: String) -> [Appointment] {
-        return appointments.filter { $0.providerName == name }
-    }
-    
-    func appointments(forServiceField fieldName: String) -> [Appointment] {
-        return appointments.filter { $0.serviceFieldName == fieldName }
+        
+        return filtered.sorted {
+            guard let d1 = formatter.date(from: $0.date ?? ""),
+                  let d2 = formatter.date(from: $1.date ?? "") else { return false }
+            return isUpcoming ? d1 < d2 : d1 > d2
+        }
     }
 }

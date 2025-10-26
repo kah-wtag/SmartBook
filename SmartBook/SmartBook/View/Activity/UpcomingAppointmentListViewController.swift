@@ -45,22 +45,15 @@ extension UpcomingAppointmentListViewController: UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
+        let cell = tableView.dequeueReusableCell(
             withIdentifier: Routes.Identifier.appointmentCell,
             for: indexPath
-        ) as? AppointmentListTableViewCell else {
-            return UITableViewCell()
-        }
+        ) as! AppointmentListTableViewCell
         
         let appointment = upcomingAppointments[indexPath.row]
-        let cellVM = AppointmentCellViewModel(appointment: appointment, dateFormatter: displayFormatter, isoFormatter: ISO8601DateFormatter())
+        let cellVM = AppointmentCellViewModel(appointment: appointment)
         cell.configure(with: cellVM)
-        cell.separatorInset = .zero
+        
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        print("Selected row: \(indexPath.row)")
     }
 }

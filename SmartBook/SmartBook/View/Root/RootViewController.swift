@@ -53,11 +53,9 @@ final class RootViewController: UITabBarController {
     
     private func configureTabBar() {
         mainTabBar.tintColor = .secondaryText
-            mainTabBar.unselectedItemTintColor = .primaryText
-            mainTabBar.backgroundColor = .tabBarBackground
-            
-            mainTabBar.isTranslucent = false
-            mainTabBar.barTintColor = .tabBarBackground
+        mainTabBar.unselectedItemTintColor = .primaryText
+        mainTabBar.backgroundColor = .tabBarBackground
+        mainTabBar.barTintColor = .tabBarBackground
         setupTabs()
     }
     

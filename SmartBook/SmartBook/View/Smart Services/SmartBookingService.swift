@@ -69,7 +69,7 @@ final class SmartBookingService {
                 return
             }
             do {
-                let response = try JSONDecoder().decode(AppointmentListResponse.self, from: data)
+                let response = try JSONDecoder().decode(AppointmentList.self, from: data)
                 let appointments = response.appointments
                 DispatchQueue.main.async { completion(appointments, nil) }
             } catch {

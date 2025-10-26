@@ -18,8 +18,8 @@ class AppointmentListViewController: UIViewController {
     }
     
     private let viewModel = AppointmentListViewModel()
-    private lazy var upcomingVC: UpcomingAppointmentListViewController? = Routes.upcomingAppointmentVC
-    private lazy var pastVC: PastAppointmentListViewController? = Routes.pastAppointmentVC
+    private lazy var upcomingVC = Routes.upcomingAppointmentVC
+    private lazy var pastVC = Routes.pastAppointmentVC
     
     private var currentContainerIndex: Int?
     
@@ -37,11 +37,10 @@ class AppointmentListViewController: UIViewController {
     
     private func loadAppointments() {
         viewModel.loadAppointments { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             
-            self.upcomingVC?.viewModel = self.viewModel
-            self.pastVC?.viewModel = self.viewModel
-            
+            self.upcomingVC.viewModel = self.viewModel
+            self.pastVC.viewModel = self.viewModel
             self.updateContainerView(.upcoming)
         }
     }
