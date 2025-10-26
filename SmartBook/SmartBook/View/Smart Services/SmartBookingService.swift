@@ -11,7 +11,7 @@ final class SmartBookingService {
     
     static let shared = SmartBookingService()
     
-    private let baseURL = "https://booking.free.beeceptor.com/data"
+    private let baseURL = "https://bookinggggggg.free.beeceptor.com/data"
     
     private init() { }
     
