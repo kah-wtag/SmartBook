@@ -10,25 +10,25 @@ import UIKit
 class CalendarViewController: UIViewController {
     
     private let appointmentListVM = AppointmentListViewModel()
+    private let calendarView = UICalendarView()
+    private let scheduleTableView = UITableView()
+    
     private lazy var viewModel = CalendarViewModel(
         appointmentListVM: appointmentListVM
     )
-    
-    private let calendarView = UICalendarView()
-    private let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .background
         setupCalendar()
         setupTableView()
-        loadAppointments()
+        loadAppointmentList()
     }
     
-    private func loadAppointments() {
+    private func loadAppointmentList() {
         appointmentListVM.loadAppointments { [weak self] in
-            guard let self = self else { return }
-            self.tableView.reloadData()
+            guard let self else { return }
+            self.scheduleTableView.reloadData()
             self.calendarView.reloadDecorations(
                 forDateComponents: self.generateAllDateComponents(), animated: true
             )
@@ -62,18 +62,18 @@ class CalendarViewController: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.backgroundColor = .background
-        tableView.bounces = false
-        view.addSubview(tableView)
+        scheduleTableView.translatesAutoresizingMaskIntoConstraints = false
+        scheduleTableView.dataSource = self
+        scheduleTableView.delegate = self
+        scheduleTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        scheduleTableView.backgroundColor = .background
+        scheduleTableView.bounces = false
+        view.addSubview(scheduleTableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            scheduleTableView.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
+            scheduleTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scheduleTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scheduleTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
@@ -118,12 +118,12 @@ extension CalendarViewController: UICalendarViewDelegate {
 
 extension CalendarViewController: UICalendarSelectionSingleDateDelegate {
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-        tableView.reloadData()
+        scheduleTableView.reloadData()
     }
 }
 
 extension CalendarViewController {
     func dateSelection(_ calendar: UICalendarView, didDeselectDate dateComponents: DateComponents) {
-        tableView.reloadData()
+        scheduleTableView.reloadData()
     }
 }
