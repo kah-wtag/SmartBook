@@ -99,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Juy-Mp-2zQ">
-                                <rect key="frame" x="114" y="128" width="165" height="41"/>
+                                <rect key="frame" x="70" y="128" width="253" height="41"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TRE-fz-Hrg"/>
@@ -121,6 +121,8 @@
                         <viewLayoutGuide key="safeArea" id="eco-VZ-MhH"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
+                            <constraint firstItem="eco-VZ-MhH" firstAttribute="trailing" secondItem="Juy-Mp-2zQ" secondAttribute="trailing" constant="70" id="EM8-aR-0l1"/>
+                            <constraint firstItem="Juy-Mp-2zQ" firstAttribute="leading" secondItem="eco-VZ-MhH" secondAttribute="leading" constant="70" id="SNf-tZ-yNs"/>
                             <constraint firstItem="Juy-Mp-2zQ" firstAttribute="top" secondItem="eco-VZ-MhH" secondAttribute="top" constant="10" id="b22-lQ-Upk"/>
                             <constraint firstItem="kSg-Zt-gN5" firstAttribute="leading" secondItem="eco-VZ-MhH" secondAttribute="leading" id="grO-ES-xkM"/>
                             <constraint firstItem="eco-VZ-MhH" firstAttribute="trailing" secondItem="kSg-Zt-gN5" secondAttribute="trailing" id="jmD-RZ-CGq"/>

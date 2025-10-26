@@ -18,10 +18,11 @@ class AppointmentListViewController: UIViewController {
     }
     
     private let viewModel = AppointmentListViewModel()
-    private lazy var upcomingVC = Routes.upcomingAppointmentVC
-    private lazy var pastVC = Routes.pastAppointmentVC
     
     private var currentContainerIndex: Int?
+    
+    private lazy var upcomingVC = Routes.upcomingAppointmentVC
+    private lazy var pastVC = Routes.pastAppointmentVC
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +32,6 @@ class AppointmentListViewController: UIViewController {
     
     private func setupSegmentedControl() {
         segmentedControl.setFontSize(.regular, weight: .bold, dynamic: true)
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.tabBarBackground]
-        segmentedControl.setTitleTextAttributes(attributes, for: .normal)
     }
     
     private func loadAppointments() {
@@ -46,7 +45,9 @@ class AppointmentListViewController: UIViewController {
     }
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-        guard let segment = AppointmentSegment(rawValue: sender.selectedSegmentIndex) else { return }
+        guard let segment = AppointmentSegment(
+            rawValue: sender.selectedSegmentIndex
+        ) else { return }
         updateContainerView(segment)
     }
     

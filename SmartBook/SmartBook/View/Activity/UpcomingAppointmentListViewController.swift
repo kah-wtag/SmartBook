@@ -10,26 +10,13 @@ import UIKit
 class UpcomingAppointmentListViewController: UIViewController {
     
     @IBOutlet var appointmentListTableView: UITableView!
+    
     var viewModel: AppointmentListViewModel!
-    private var upcomingAppointments: [Appointment] {
-        viewModel.upcomingAppointments
-    }
-    
-    private let isoFormatter: ISO8601DateFormatter = {
-        let f = ISO8601DateFormatter()
-        f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return f
-    }()
-    
-    private let displayFormatter: DateFormatter = {
-        let f = DateFormatter()
-        f.dateFormat = "dd MMM yyyy"
-        return f
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        addTableViewHeaderLine()
         appointmentListTableView.reloadData()
     }
     
@@ -37,11 +24,24 @@ class UpcomingAppointmentListViewController: UIViewController {
         appointmentListTableView.dataSource = self
         appointmentListTableView.delegate = self
     }
+    
+    private func addTableViewHeaderLine() {
+        let headerLine = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: appointmentListTableView.frame.width,
+                height: 1
+            )
+        )
+        headerLine.backgroundColor = .separator
+        appointmentListTableView.tableHeaderView = headerLine
+    }
 }
 
 extension UpcomingAppointmentListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        upcomingAppointments.count
+        viewModel.numberOfUpcomingAppointments
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,9 +50,8 @@ extension UpcomingAppointmentListViewController: UITableViewDataSource, UITableV
             for: indexPath
         ) as! AppointmentListTableViewCell
         
-        let appointment = upcomingAppointments[indexPath.row]
-        let cellVM = AppointmentCellViewModel(appointment: appointment)
-        cell.configure(with: cellVM)
+        cell.viewModel = viewModel.upcomingAppointmentCellViewModel(at: indexPath.row)
+        cell.updateUI()
         
         return cell
     }
