@@ -3,8 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,13 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="IL0-4Z-q8m"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="tabBarBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="L6c-up-mZZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSQ-Ei-9IW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-860" y="172"/>
+            <point key="canvasLocation" x="-860" y="187"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="fTb-QD-hNR">
@@ -32,13 +32,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="khw-ye-G1b"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="tabBarBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="PSa-AQ-I3l"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQu-wU-DAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-860" y="-435"/>
+            <point key="canvasLocation" x="-860" y="-482"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="Vei-Z2-SKN">
@@ -47,7 +47,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="m9D-ym-7jE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="tabBarBackgroundColor"/>
                     </tabBar>
                     <connections>
                         <outlet property="mainTabBar" destination="m9D-ym-7jE" id="0zF-sd-9tM"/>
@@ -61,8 +61,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="tabBarBackgroundColor">
+            <color red="0.98039215686274506" green="0.85490196078431369" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

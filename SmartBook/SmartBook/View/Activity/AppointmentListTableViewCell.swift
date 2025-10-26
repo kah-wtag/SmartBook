@@ -30,10 +30,9 @@ class AppointmentListTableViewCell: UITableViewCell {
         appointmentListTime.textColor = .primaryText
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
+    func configure(with viewModel: AppointmentCellViewModel) {
+        appointmentListDate.text = viewModel.dateText
+        appointmentListProfessionalsName.text = viewModel.providerName
+        appointmentListTime.text = viewModel.timeText
     }
-    
 }
