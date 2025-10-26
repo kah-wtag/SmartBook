@@ -7,4 +7,13 @@
 
 struct AppointmentList: Codable {
     let appointments: [Appointment]
+    
+    enum CodingKeys: String, CodingKey {
+        case appointments
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        appointments = try container.decodeIfPresent([Appointment].self, forKey: .appointments) ?? []
+    }
 }
