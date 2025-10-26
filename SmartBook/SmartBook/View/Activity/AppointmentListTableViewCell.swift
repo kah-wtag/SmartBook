@@ -7,10 +7,13 @@
 
 import UIKit
 
-class AppointmentListTableViewCell: UITableViewCell {
+final class AppointmentListTableViewCell: UITableViewCell {
+    
     @IBOutlet var appointmentListDate: UILabel!
     @IBOutlet var appointmentListProfessionalsName: UILabel!
     @IBOutlet var appointmentListTime: UILabel!
+    
+    var viewModel: AppointmentCellViewModel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,10 +33,11 @@ class AppointmentListTableViewCell: UITableViewCell {
         appointmentListTime.textColor = .primaryText
     }
     
-    func configure(with viewModel: AppointmentCellViewModel) {
-        appointmentListDate.text = viewModel.dateText
-        appointmentListProfessionalsName.text = viewModel.providerName
-        appointmentListTime.text = viewModel.timeText
+    func updateUI() {
+        guard let viewModel else { return }
+        appointmentListDate.text = viewModel.appointmentDateText
+        appointmentListProfessionalsName.text = viewModel.serviceProviderName
+        appointmentListTime.text = viewModel.appointmentTimeText
         selectionStyle = .none
         separatorInset = .zero
     }

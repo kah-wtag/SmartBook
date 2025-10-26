@@ -10,34 +10,22 @@ import Foundation
 final class AppointmentCellViewModel {
     
     private let appointment: Appointment
-    private let dateFormatter: DateFormatter
-    private let isoFormatter: ISO8601DateFormatter
     
-    init(appointment: Appointment,
-         dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy, h:mm a"
-        return formatter
-    }(),
-         isoFormatter: ISO8601DateFormatter = ISO8601DateFormatter()) {
+    init(appointment: Appointment) {
         self.appointment = appointment
-        self.dateFormatter = dateFormatter
-        self.isoFormatter = isoFormatter
     }
     
-    var providerName: String {
+    var serviceProviderName: String {
         appointment.providerName ?? "Unknown"
     }
     
-    var dateText: String {
-        guard let isoString = appointment.date,
-              let date = isoFormatter.date(from: isoString) else {
-            return "N/A"
-        }
-        return dateFormatter.string(from: date)
+    var appointmentDateText: String {
+        guard let dateStr = appointment.date,
+              let date = DateFormatter.appointmentDateParser.date(from: dateStr) else { return "N/A" }
+        return DateFormatter.displayFormatter.string(from: date)
     }
     
-    var timeText: String {
+    var appointmentTimeText: String {
         appointment.time ?? "N/A"
     }
 }
