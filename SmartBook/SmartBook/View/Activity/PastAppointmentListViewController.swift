@@ -11,7 +11,10 @@ class PastAppointmentListViewController: UIViewController {
     
     @IBOutlet var appointmentListTableView: UITableView!
     var viewModel: AppointmentListViewModel!
-    private var pastAppointments: [Appointment] = []
+    
+    private var pastAppointments: [Appointment] {
+        viewModel.pastAppointments
+    }
     
     private let displayFormatter: DateFormatter = {
         let f = DateFormatter()
@@ -22,36 +25,12 @@ class PastAppointmentListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        loadAppointments()
+        appointmentListTableView.reloadData()
     }
     
     private func setupTableView() {
         appointmentListTableView.dataSource = self
         appointmentListTableView.delegate = self
-    }
-    
-    private func loadAppointments() {
-        viewModel.loadAppointments { [weak self] in
-            self?.filterPastAppointments()
-        }
-    }
-    
-    private func filterPastAppointments() {
-        let now = Date()
-        
-        pastAppointments = viewModel.appointments.compactMap { appointment in
-            guard let dateString = appointment.date,
-                  let date = isoFormatter.date(from: dateString),
-                  date < now else { return nil }
-            return appointment
-        }
-        pastAppointments.sort {
-            let date1 = isoFormatter.date(from: $0.date!)!
-            let date2 = isoFormatter.date(from: $1.date!)!
-            return date1 > date2
-        }
-        
-        appointmentListTableView.reloadData()
     }
 }
 
@@ -69,15 +48,8 @@ extension PastAppointmentListViewController: UITableViewDataSource, UITableViewD
         }
         
         let appointment = pastAppointments[indexPath.row]
-        
-        if let dateString = appointment.date, let date = isoFormatter.date(from: dateString) {
-            cell.appointmentListDate.text = displayFormatter.string(from: date)
-        } else {
-            cell.appointmentListDate.text = "N/A"
-        }
-        
-        cell.appointmentListProfessionalsName.text = appointment.providerName
-        cell.appointmentListTime.text = appointment.time
+        let cellVM = AppointmentCellViewModel(appointment: appointment, dateFormatter: displayFormatter, isoFormatter: ISO8601DateFormatter())
+        cell.configure(with: cellVM)
         cell.separatorInset = .zero
         return cell
     }

@@ -99,13 +99,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Juy-Mp-2zQ">
-                                <rect key="frame" x="112" y="128" width="169" height="41"/>
+                                <rect key="frame" x="114" y="128" width="165" height="41"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TRE-fz-Hrg"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="UpComing"/>
+                                    <segment title="Upcoming"/>
                                     <segment title="Past"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
