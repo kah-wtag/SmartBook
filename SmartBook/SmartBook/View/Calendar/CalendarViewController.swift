@@ -52,7 +52,6 @@ final class CalendarViewController: UIViewController {
             calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             calendarView.heightAnchor.constraint(equalToConstant: 450)
         ])
-        UILabel.appearance(whenContainedInInstancesOf: [UICalendarView.self]).font = UIFont.of(size: .regular, weight: .regular)
     }
     
     private func setupTableView() {
@@ -119,7 +118,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 extension CalendarViewController: UICalendarViewDelegate {
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         guard let date = dateComponents.date else { return nil }
-        
+
         if viewModel.hasAppointment(on: date) {
             return .default(color: .secondaryText, size: .small)
         }
