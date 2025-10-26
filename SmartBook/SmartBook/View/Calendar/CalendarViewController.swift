@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController {
+final class CalendarViewController: UIViewController {
     
     private let appointmentListVM = AppointmentListViewModel()
     private let calendarView = UICalendarView()
@@ -30,16 +30,9 @@ class CalendarViewController: UIViewController {
             guard let self else { return }
             self.scheduleTableView.reloadData()
             self.calendarView.reloadDecorations(
-                forDateComponents: self.generateAllDateComponents(), animated: true
+                forDateComponents: self.viewModel.allUpcomingDateComponents(),
+                animated: true
             )
-        }
-    }
-    
-    private func generateAllDateComponents() -> [DateComponents] {
-        let calendar = Calendar.current
-        return viewModel.upcomingAppointments.compactMap { appointment in
-            guard let date = ISO8601DateFormatter().date(from: appointment.date ?? "") else { return nil }
-            return calendar.dateComponents([.year, .month, .day], from: date)
         }
     }
     
@@ -49,6 +42,7 @@ class CalendarViewController: UIViewController {
         calendarView.locale = .current
         calendarView.backgroundColor = .background
         calendarView.layer.cornerRadius = 20
+        calendarView.delegate = self
         view.addSubview(calendarView)
         let selection = UICalendarSelectionSingleDate(delegate: self)
         calendarView.selectionBehavior = selection
@@ -56,7 +50,7 @@ class CalendarViewController: UIViewController {
             calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            calendarView.heightAnchor.constraint(equalToConstant: 400)
+            calendarView.heightAnchor.constraint(equalToConstant: 450)
         ])
         UILabel.appearance(whenContainedInInstancesOf: [UICalendarView.self]).font = UIFont.of(size: .regular, weight: .regular)
     }
@@ -70,32 +64,49 @@ class CalendarViewController: UIViewController {
         scheduleTableView.bounces = false
         view.addSubview(scheduleTableView)
         NSLayoutConstraint.activate([
-            scheduleTableView.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
-            scheduleTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scheduleTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scheduleTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            scheduleTableView.topAnchor.constraint(
+                equalTo: calendarView.bottomAnchor
+            ),
+            scheduleTableView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor
+            ),
+            scheduleTableView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor
+            ),
+            scheduleTableView.bottomAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor
+            )
         ])
+        addTableViewHeaderLine()
+    }
+    
+    private func addTableViewHeaderLine() {
+        let headerLine = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: scheduleTableView.frame.width,
+                height: 1
+            )
+        )
+        headerLine.backgroundColor = .separator
+        scheduleTableView.tableHeaderView = headerLine
     }
 }
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.upcomingAppointments.count
+        viewModel.numberOfUpcomingAppointments
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let appointment = viewModel.upcomingAppointments[indexPath.row]
         
-        cell.backgroundColor = .secondaryBackground
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy"
-        
-        cell.separatorInset = UIEdgeInsets.zero
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.text = "\(formatter.string(from: ISO8601DateFormatter().date(from: appointment.date!)!)) - \(appointment.providerName ?? "Unknown")\nTime: \(appointment.time ?? "N/A")"
+        cell.textLabel?.text = viewModel.displayText(for: indexPath.row)
         cell.textLabel?.setFontSize(.regular, weight: .regular, dynamic: true)
+        cell.backgroundColor = .secondaryBackground
+        cell.separatorInset = .zero
         
         return cell
     }
@@ -110,7 +121,7 @@ extension CalendarViewController: UICalendarViewDelegate {
         guard let date = dateComponents.date else { return nil }
         
         if viewModel.hasAppointment(on: date) {
-            return .default(color: .secondaryText, size: .large)
+            return .default(color: .secondaryText, size: .small)
         }
         return nil
     }
