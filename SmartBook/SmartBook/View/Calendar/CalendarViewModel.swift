@@ -21,7 +21,7 @@ final class CalendarViewModel {
     
     func hasAppointment(on date: Date) -> Bool {
         let calendar = Calendar.current
-        return upcomingAppointments.contains {
+        return appointmentListVM.upcomingAppointments.contains {
             guard let dateStr = $0.date,
                   let appointmentDate = ISO8601DateFormatter().date(from: dateStr) else { return false }
             return calendar.isDate(appointmentDate, inSameDayAs: date)
