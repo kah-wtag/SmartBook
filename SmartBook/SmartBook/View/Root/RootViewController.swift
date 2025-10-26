@@ -27,7 +27,7 @@ final class RootViewController: UITabBarController {
             switch self {
             case .smartServices: Routes.smartServicesVC
             case .calendar: CalendarViewController()
-            case .activity: ActivityViewController()
+            case .activity: Routes.appointmentListVC
             case .search: SearchViewController()
             case .profile: Routes.userProfileVC
             }

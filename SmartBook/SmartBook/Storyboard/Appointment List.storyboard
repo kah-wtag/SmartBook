@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zAO-ZC-39d">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Upcoming Appointment List View Controller-->
+        <scene sceneID="n4o-nK-MWB">
+            <objects>
+                <viewController storyboardIdentifier="UpcomingAppointmentListViewController" id="XfD-ZI-IZP" customClass="UpcomingAppointmentListViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xKe-s4-fGS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ycX-mw-lvt">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AppointmentListTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppointmentListTableViewCell" rowHeight="180" id="jjz-mg-z2q" customClass="AppointmentListTableViewCell" customModule="SmartBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jjz-mg-z2q" id="0GQ-dO-kO3">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ASh-mc-KZs">
+                                                    <rect key="frame" x="20" y="30" width="353" height="120"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mnC-l3-lMX">
+                                                            <rect key="frame" x="0.0" y="27.333333333333336" width="204.33333333333334" height="65.333333333333314"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 10, 2025" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b49-1L-Nbb">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="204.33333333333334" height="27.666666666666668"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                                                    <color key="textColor" name="primaryTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr Md Kamrul Hasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-aw-jdK">
+                                                                    <rect key="frame" x="0.0" y="37.666666666666664" width="204.33333333333334" height="27.666666666666664"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                                    <color key="textColor" name="primaryTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:00 AM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVG-b4-xzy">
+                                                            <rect key="frame" x="204.33333333333337" y="43.333333333333329" width="148.66666666666663" height="33.666666666666671"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                            <color key="textColor" name="primaryTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ASh-mc-KZs" secondAttribute="bottom" constant="30" id="1pG-ap-dAT"/>
+                                                <constraint firstAttribute="trailing" secondItem="ASh-mc-KZs" secondAttribute="trailing" constant="20" id="NWA-bt-3vV"/>
+                                                <constraint firstItem="ASh-mc-KZs" firstAttribute="leading" secondItem="0GQ-dO-kO3" secondAttribute="leading" constant="20" id="raL-0Q-q0l"/>
+                                                <constraint firstItem="ASh-mc-KZs" firstAttribute="top" secondItem="0GQ-dO-kO3" secondAttribute="top" constant="30" id="uDP-ap-m0n"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="backgroundColor"/>
+                                        <connections>
+                                            <outlet property="appointmentListDate" destination="b49-1L-Nbb" id="f9E-jE-Cbp"/>
+                                            <outlet property="appointmentListProfessionalsName" destination="R8Y-aw-jdK" id="JRo-lf-fHW"/>
+                                            <outlet property="appointmentListTime" destination="pVG-b4-xzy" id="2iU-99-ZeM"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0UQ-sT-pnA"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ycX-mw-lvt" firstAttribute="top" secondItem="0UQ-sT-pnA" secondAttribute="top" id="Ftl-OF-aZm"/>
+                            <constraint firstItem="ycX-mw-lvt" firstAttribute="leading" secondItem="0UQ-sT-pnA" secondAttribute="leading" id="RvJ-Dz-Dep"/>
+                            <constraint firstItem="ycX-mw-lvt" firstAttribute="trailing" secondItem="0UQ-sT-pnA" secondAttribute="trailing" id="i6f-YA-GmA"/>
+                            <constraint firstItem="ycX-mw-lvt" firstAttribute="bottom" secondItem="0UQ-sT-pnA" secondAttribute="bottom" id="rXq-sL-xPs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appointmentListTableView" destination="ycX-mw-lvt" id="z35-NA-ObC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VHV-5V-smh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2415" y="-13"/>
+        </scene>
+        <!--Appointment List View Controller-->
+        <scene sceneID="pNH-pd-yBJ">
+            <objects>
+                <viewController storyboardIdentifier="AppointmentListViewController" id="zAO-ZC-39d" customClass="AppointmentListViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C6r-I0-NMd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Juy-Mp-2zQ">
+                                <rect key="frame" x="112" y="128" width="169" height="41"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="TRE-fz-Hrg"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="UpComing"/>
+                                    <segment title="Past"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="zAO-ZC-39d" eventType="valueChanged" id="yKx-11-owi"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSg-Zt-gN5">
+                                <rect key="frame" x="0.0" y="178" width="393" height="606"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eco-VZ-MhH"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Juy-Mp-2zQ" firstAttribute="top" secondItem="eco-VZ-MhH" secondAttribute="top" constant="10" id="b22-lQ-Upk"/>
+                            <constraint firstItem="kSg-Zt-gN5" firstAttribute="leading" secondItem="eco-VZ-MhH" secondAttribute="leading" id="grO-ES-xkM"/>
+                            <constraint firstItem="eco-VZ-MhH" firstAttribute="trailing" secondItem="kSg-Zt-gN5" secondAttribute="trailing" id="jmD-RZ-CGq"/>
+                            <constraint firstItem="kSg-Zt-gN5" firstAttribute="top" secondItem="Juy-Mp-2zQ" secondAttribute="bottom" constant="10" id="t6a-Pp-gQA"/>
+                            <constraint firstItem="Juy-Mp-2zQ" firstAttribute="centerX" secondItem="C6r-I0-NMd" secondAttribute="centerX" id="tCW-Vz-R2X"/>
+                            <constraint firstItem="eco-VZ-MhH" firstAttribute="bottom" secondItem="kSg-Zt-gN5" secondAttribute="bottom" id="vAS-uR-dCi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="kSg-Zt-gN5" id="ajM-Cm-l8Y"/>
+                        <outlet property="segmentedControl" destination="Juy-Mp-2zQ" id="jTg-hF-eiP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MpK-e4-8sp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1500" y="-12"/>
+        </scene>
+        <!--Past Appointment List View Controller-->
+        <scene sceneID="HXa-tn-D1x">
+            <objects>
+                <viewController storyboardIdentifier="PastAppointmentListViewController" id="Imo-Pj-JP0" customClass="PastAppointmentListViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Rs-Ib-UKt">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uTo-aC-mT1">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AppointmentListTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppointmentListTableViewCell" rowHeight="180" id="8LN-Ea-BUk" customClass="AppointmentListTableViewCell" customModule="SmartBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8LN-Ea-BUk" id="vYp-CT-M5q">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rxv-dH-hcn">
+                                                    <rect key="frame" x="20" y="30" width="353" height="120"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="paP-xi-VMM">
+                                                            <rect key="frame" x="0.0" y="27.333333333333336" width="204.33333333333334" height="65.333333333333314"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 10, 2025" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuY-ea-NR6">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="204.33333333333334" height="27.666666666666668"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                                                    <color key="textColor" name="primaryTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr Md Kamrul Hasan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyI-xE-1tq">
+                                                                    <rect key="frame" x="0.0" y="37.666666666666664" width="204.33333333333334" height="27.666666666666664"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                                    <color key="textColor" name="primaryTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:00 AM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txq-WV-v8y">
+                                                            <rect key="frame" x="204.33333333333337" y="43.333333333333329" width="148.66666666666663" height="33.666666666666671"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                            <color key="textColor" name="primaryTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Rxv-dH-hcn" secondAttribute="trailing" constant="20" id="4Nt-UW-2gg"/>
+                                                <constraint firstAttribute="bottom" secondItem="Rxv-dH-hcn" secondAttribute="bottom" constant="30" id="Fcq-cs-XvT"/>
+                                                <constraint firstItem="Rxv-dH-hcn" firstAttribute="leading" secondItem="vYp-CT-M5q" secondAttribute="leading" constant="20" id="KyH-PW-2JX"/>
+                                                <constraint firstItem="Rxv-dH-hcn" firstAttribute="top" secondItem="vYp-CT-M5q" secondAttribute="top" constant="30" id="s7X-av-hun"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="backgroundColor"/>
+                                        <connections>
+                                            <outlet property="appointmentListDate" destination="tuY-ea-NR6" id="Mag-3e-uxE"/>
+                                            <outlet property="appointmentListProfessionalsName" destination="ZyI-xE-1tq" id="KB3-li-V3Y"/>
+                                            <outlet property="appointmentListTime" destination="txq-WV-v8y" id="KKs-dq-aqg"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gh8-uK-Pzi"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uTo-aC-mT1" firstAttribute="bottom" secondItem="Gh8-uK-Pzi" secondAttribute="bottom" id="Aou-dP-lUQ"/>
+                            <constraint firstItem="uTo-aC-mT1" firstAttribute="leading" secondItem="Gh8-uK-Pzi" secondAttribute="leading" id="CAG-sl-eCx"/>
+                            <constraint firstItem="uTo-aC-mT1" firstAttribute="trailing" secondItem="Gh8-uK-Pzi" secondAttribute="trailing" id="mXO-5w-i0f"/>
+                            <constraint firstItem="uTo-aC-mT1" firstAttribute="top" secondItem="Gh8-uK-Pzi" secondAttribute="top" id="zle-Qi-RKF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appointmentListTableView" destination="uTo-aC-mT1" id="5vP-eh-shB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ntF-dI-eni" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3276" y="-13"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="backgroundColor">
+            <color red="1" green="0.93725490196078431" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryTextColor">
+            <color red="0.027450980392156862" green="0.0039215686274509803" blue="0.015686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

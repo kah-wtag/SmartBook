@@ -12,6 +12,7 @@ final class SmartBookingAPIService {
     static let shared = SmartBookingAPIService()
     
     private let baseURL = "https://booking.free.beeceptor.com/data"
+    private let appointmentURL = "https://booking.free.beeceptor.com/data1"
     
     private init() { }
     
@@ -57,5 +58,24 @@ final class SmartBookingAPIService {
             let providers = allFields.first(where: { $0.fieldTypeID == fieldTypeID })?.serviceProvider ?? []
             completion(providers, nil)
         }
+    }
+    
+    func fetchAppointments(completion: @escaping ([Appointment]?, Error?) -> Void) {
+        guard let url = URL(string: appointmentURL) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data, error == nil else {
+                DispatchQueue.main.async { completion(nil, error) }
+                return
+            }
+            do {
+                let response = try JSONDecoder().decode(AppointmentListResponse.self, from: data)
+                let appointments = response.appointments
+                DispatchQueue.main.async { completion(appointments, nil) }
+            } catch {
+                print("Decode error:", error)
+                DispatchQueue.main.async { completion(nil, error) }
+            }
+        }.resume()
     }
 }
