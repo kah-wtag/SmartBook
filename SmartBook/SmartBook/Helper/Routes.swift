@@ -103,7 +103,7 @@ extension Routes {
         instantiateVC(from: StoryboardName.bookingForm, identifier: Identifier.bookingFormVC)
     }
     
-    static var bookedFormVC: BookedFormViewController {
+    static var bookedFormVC: BookingSuccessfullViewController {
         instantiateVC(from: StoryboardName.bookingForm, identifier: Identifier.bookedFormVC)
     }
 }

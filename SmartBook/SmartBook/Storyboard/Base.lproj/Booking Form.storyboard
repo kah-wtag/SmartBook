@@ -277,33 +277,33 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="appointmentDatePicker" destination="2oC-Qm-zNf" id="YhO-Cp-N96"/>
                         <outlet property="appointmentDatePlaceholderLabel" destination="pIg-3n-qUV" id="cCN-rg-Evt"/>
                         <outlet property="appointmentMessageLabel" destination="7t5-pq-TQJ" id="Fwd-lP-UeP"/>
                         <outlet property="appointmentSubmitButton" destination="91l-72-WGk" id="v3j-qY-1yh"/>
+                        <outlet property="appointmentTimePicker" destination="Hfo-wD-6F5" id="Jzb-sh-Xlt"/>
                         <outlet property="appointmentTimePlaceholderLabel" destination="jyU-AJ-WpZ" id="5AF-uI-fAF"/>
                         <outlet property="basicInformationLabel" destination="Dsh-am-X6B" id="RYh-a2-7Gh"/>
+                        <outlet property="birthDatePicker" destination="LUh-gr-Z3n" id="asW-MM-Nvr"/>
                         <outlet property="bookingServiceProviderLabel" destination="M5N-4Y-FDH" id="x1N-j7-x1f"/>
                         <outlet property="dateOfBirthLabel" destination="pCB-ED-F0o" id="8ek-MZ-PUf"/>
                         <outlet property="dateTimeLabel" destination="R0j-0U-TMr" id="7Uu-E4-Pqv"/>
                         <outlet property="gendarLabel" destination="wr7-WN-jiS" id="3UY-uL-fyW"/>
                         <outlet property="genderRadioGroup" destination="3cR-6p-uXt" id="hrc-6Z-P35"/>
+                        <outlet property="mailTextField" destination="cqM-uU-8Ss" id="Xdd-9r-vNc"/>
+                        <outlet property="nameTextField" destination="zPw-dg-Tag" id="pum-R0-ogo"/>
+                        <outlet property="phoneNumberTextField" destination="ijj-gE-aia" id="fyW-Fl-UgD"/>
                         <outlet property="scrollView" destination="1NV-c6-LWU" id="Uc3-kG-A4h"/>
-                        <outlet property="userAppointmentDatePicker" destination="2oC-Qm-zNf" id="YhO-Cp-N96"/>
-                        <outlet property="userAppointmentTimePicker" destination="Hfo-wD-6F5" id="Jzb-sh-Xlt"/>
-                        <outlet property="userBookingFormBirthDatePicker" destination="LUh-gr-Z3n" id="asW-MM-Nvr"/>
-                        <outlet property="userBookingFormMailTextField" destination="cqM-uU-8Ss" id="Xdd-9r-vNc"/>
-                        <outlet property="userBookingFormNameTextField" destination="zPw-dg-Tag" id="pum-R0-ogo"/>
-                        <outlet property="userBookingFormPhoneNumberTextField" destination="ijj-gE-aia" id="fyW-Fl-UgD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rso-PS-Kfw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1441.7910447761194" y="-22.654462242562929"/>
         </scene>
-        <!--Booked Form View Controller-->
+        <!--Booking Successfull View Controller-->
         <scene sceneID="wdo-nk-8kf">
             <objects>
-                <viewController storyboardIdentifier="BookedFormViewController" id="Z4r-Eq-1mm" customClass="BookedFormViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookedFormViewController" id="Z4r-Eq-1mm" customClass="BookingSuccessfullViewController" customModule="SmartBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZmC-eH-gCy">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

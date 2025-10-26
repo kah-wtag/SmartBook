@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BookedFormViewModel {
+final class BookingSuccessfullViewModel {
     
     private let appointmentDate: Date
     private let appointmentTime: Date

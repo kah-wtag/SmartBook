@@ -16,7 +16,7 @@ protocol AuthenticationViewModelDelegate: AnyObject {
 final class AuthenticationViewModel {
     
     private let authService = AuthenticationService.shared
-    private let bookingService = SmartBookingService.shared
+    private let bookingService = SmartBookingAPIService.shared
     weak var delegate: AuthenticationViewModelDelegate?
     
     func loginButtonDidTap(username: String? = nil, password: String? = nil) {

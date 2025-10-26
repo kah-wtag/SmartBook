@@ -29,6 +29,7 @@ final class RadioButtonGroupView: UIView {
         self.options = options
         self.preselectedOption = preselectedOption
         self.axis = axis
+        
         let radioButtonStackView = UIStackView()
         radioButtonStackView.axis = axis
         radioButtonStackView.spacing = 30

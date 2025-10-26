@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class BookedFormViewController: UIViewController {
+final class BookingSuccessfullViewController: UIViewController {
     @IBOutlet var bookingSuccessfulLabel: UILabel!
     @IBOutlet var bookedSuccessfulMessageLabel: UILabel!
     @IBOutlet var goToHomescreenButton: UIButton!
     @IBOutlet var bookedSuccessfulBackgroundView: UIView!
     
-    private var viewModel: BookedFormViewModel!
+    private var viewModel: BookingSuccessfullViewModel!
     var appointmentDate: Date!
     var appointmentTime: Date!
     
@@ -34,7 +34,7 @@ final class BookedFormViewController: UIViewController {
     }
     
     private func setupViewModel() {
-        viewModel = BookedFormViewModel(appointmentDate: appointmentDate, appointmentTime: appointmentTime)
+        viewModel = BookingSuccessfullViewModel(appointmentDate: appointmentDate, appointmentTime: appointmentTime)
     }
     
     @IBAction func goToHomescreenButtonAction(_ sender: Any) {

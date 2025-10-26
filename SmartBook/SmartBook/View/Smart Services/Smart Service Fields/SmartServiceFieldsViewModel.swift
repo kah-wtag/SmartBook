@@ -14,7 +14,7 @@ protocol SmartServiceFieldsViewModelDelegate: AnyObject {
 
 final class SmartServiceFieldsViewModel {
     
-    private let service = SmartBookingService.shared
+    private let service = SmartBookingAPIService.shared
     private let serviceID: Int
     private let serviceName: String
     private var fields: [SmartServiceField] = []

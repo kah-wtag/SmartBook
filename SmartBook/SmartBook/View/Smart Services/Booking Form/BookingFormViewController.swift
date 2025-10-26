@@ -9,12 +9,12 @@ import UIKit
 
 final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet var userBookingFormNameTextField: UITextField!
-    @IBOutlet var userBookingFormPhoneNumberTextField: UITextField!
-    @IBOutlet var userBookingFormMailTextField: UITextField!
-    @IBOutlet var userBookingFormBirthDatePicker: UIDatePicker!
-    @IBOutlet var userAppointmentTimePicker: UIDatePicker!
-    @IBOutlet var userAppointmentDatePicker: UIDatePicker!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var phoneNumberTextField: UITextField!
+    @IBOutlet var mailTextField: UITextField!
+    @IBOutlet var birthDatePicker: UIDatePicker!
+    @IBOutlet var appointmentTimePicker: UIDatePicker!
+    @IBOutlet var appointmentDatePicker: UIDatePicker!
     @IBOutlet var appointmentSubmitButton: UIButton!
     @IBOutlet var dateOfBirthLabel: UILabel!
     @IBOutlet var gendarLabel: UILabel!
@@ -63,15 +63,15 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupTextFields() {
-        userBookingFormNameTextField.setStyledPlaceholder("Full Name", size: .large)
-        userBookingFormNameTextField.textFieldStyle(dynamic: true)
-        userBookingFormNameTextField .verticalPadding([.left, .right], width: 8)
-        userBookingFormMailTextField.setStyledPlaceholder("Email Address", size: .large)
-        userBookingFormMailTextField.textFieldStyle(dynamic: true)
-        userBookingFormMailTextField .verticalPadding([.left, .right], width: 8)
-        userBookingFormPhoneNumberTextField.setStyledPlaceholder("Phone Number", size: .large)
-        userBookingFormPhoneNumberTextField.textFieldStyle(dynamic: true)
-        userBookingFormPhoneNumberTextField .verticalPadding([.left, .right], width: 8)
+        nameTextField.setStyledPlaceholder("Full Name", size: .large)
+        nameTextField.textFieldStyle(dynamic: true)
+        nameTextField .verticalPadding([.left, .right], width: 8)
+        mailTextField.setStyledPlaceholder("Email Address", size: .large)
+        mailTextField.textFieldStyle(dynamic: true)
+        mailTextField .verticalPadding([.left, .right], width: 8)
+        phoneNumberTextField.setStyledPlaceholder("Phone Number", size: .large)
+        phoneNumberTextField.textFieldStyle(dynamic: true)
+        phoneNumberTextField .verticalPadding([.left, .right], width: 8)
     }
     
     private func setupSubmitButton() {
@@ -85,9 +85,9 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         basicInformationLabel.setFontSize(.large, weight: .regular, dynamic: true)
         bookingServiceProviderLabel.setFontSize(.large, weight: .bold, dynamic: true)
         appointmentSubmitButton.setFont(.large, weight: .medium, dynamic: true, title: "Submit")
-        userBookingFormNameTextField.setFontSize(.large, weight: .regular, dynamic: true)
-        userBookingFormMailTextField.setFontSize(.large, weight: .regular, dynamic: true)
-        userBookingFormPhoneNumberTextField.setFontSize(.large, weight: .regular, dynamic: true)
+        nameTextField.setFontSize(.large, weight: .regular, dynamic: true)
+        mailTextField.setFontSize(.large, weight: .regular, dynamic: true)
+        phoneNumberTextField.setFontSize(.large, weight: .regular, dynamic: true)
         dateOfBirthLabel.setFontSize(.large, weight: .regular, dynamic: true)
         gendarLabel.setFontSize(.large, weight: .regular, dynamic: true)
         dateTimeLabel.setFontSize(.large, weight: .regular, dynamic: true)
@@ -95,28 +95,28 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     
     private func setupTextColor() {
         bookingServiceProviderLabel.textColor = .primaryText
-        userBookingFormNameTextField.textColor = .primaryText
-        userBookingFormPhoneNumberTextField.textColor = .primaryText
-        userBookingFormMailTextField.textColor = .primaryText
+        nameTextField.textColor = .primaryText
+        phoneNumberTextField.textColor = .primaryText
+        mailTextField.textColor = .primaryText
         dateOfBirthLabel.textColor = .primaryText
         gendarLabel.textColor = .primaryText
         dateTimeLabel.textColor = .primaryText
     }
     
     private func setupDatePicker() {
-        userBookingFormBirthDatePicker.contentHorizontalAlignment = .center
-        userAppointmentDatePicker.contentHorizontalAlignment = .center
-        userAppointmentTimePicker.contentHorizontalAlignment = .center
-        userBookingFormBirthDatePicker.maximumDate = Date()
+        birthDatePicker.contentHorizontalAlignment = .center
+        appointmentDatePicker.contentHorizontalAlignment = .center
+        appointmentTimePicker.contentHorizontalAlignment = .center
+        birthDatePicker.maximumDate = Date()
         
         let minDate = Date() + viewModel.minAdvanceTime
-        userAppointmentDatePicker.minimumDate = minDate
-        userAppointmentTimePicker.minimumDate = minDate
+        appointmentDatePicker.minimumDate = minDate
+        appointmentTimePicker.minimumDate = minDate
     }
     
     private func setupDatePickerPlaceholders() {
-        userAppointmentDatePicker.alpha = 0.0
-        userAppointmentTimePicker.alpha = 0.0
+        appointmentDatePicker.alpha = 0.0
+        appointmentTimePicker.alpha = 0.0
         
         appointmentDatePlaceholderLabel.text = "Select date"
         appointmentDatePlaceholderLabel.setFontSize(.regular)
@@ -169,15 +169,15 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupTargets() {
-        userBookingFormBirthDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
-        userAppointmentDatePicker.addTarget(self, action: #selector(appointmentDateChanged(_:)), for: .valueChanged)
-        userAppointmentTimePicker.addTarget(self, action: #selector(appointmentTimeChanged(_:)), for: .valueChanged)
+        birthDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+        appointmentDatePicker.addTarget(self, action: #selector(appointmentDateChanged(_:)), for: .valueChanged)
+        appointmentTimePicker.addTarget(self, action: #selector(appointmentTimeChanged(_:)), for: .valueChanged)
     }
     
     private func configureTextFields() {
-        userBookingFormNameTextField.delegate = self
-        userBookingFormPhoneNumberTextField.delegate = self
-        userBookingFormMailTextField.delegate = self
+        nameTextField.delegate = self
+        phoneNumberTextField.delegate = self
+        mailTextField.delegate = self
     }
     
     private func setupServiceProviderName() {
@@ -194,11 +194,11 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         
         switch textField {
-        case userBookingFormNameTextField:
+        case nameTextField:
             viewModel.updateName(updatedText)
-        case userBookingFormPhoneNumberTextField:
+        case phoneNumberTextField:
             viewModel.updatePhone(updatedText)
-        case userBookingFormMailTextField:
+        case mailTextField:
             viewModel.updateEmail(updatedText)
         default: break
         }
@@ -212,22 +212,22 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func showDatePicker() {
         appointmentDatePlaceholderLabel.alpha = 0.0
-        userAppointmentDatePicker.alpha = 1.0
-        userAppointmentDatePicker.isUserInteractionEnabled = true
+        appointmentDatePicker.alpha = 1.0
+        appointmentDatePicker.isUserInteractionEnabled = true
         if selectedAppointmentDate == nil {
-            selectedAppointmentDate = userAppointmentDatePicker.date
-            viewModel.updateAppointmentDate(userAppointmentDatePicker.date)
+            selectedAppointmentDate = appointmentDatePicker.date
+            viewModel.updateAppointmentDate(appointmentDatePicker.date)
         }
         updateMessageAfterPlaceholderTap()
     }
     
     @objc private func showTimePicker() {
         appointmentTimePlaceholderLabel.alpha = 0.0
-        userAppointmentTimePicker.alpha = 1.0
-        userAppointmentTimePicker.isUserInteractionEnabled = true
+        appointmentTimePicker.alpha = 1.0
+        appointmentTimePicker.isUserInteractionEnabled = true
         if selectedAppointmentTime == nil {
-            selectedAppointmentTime = userAppointmentTimePicker.date
-            viewModel.updateAppointmentTime(userAppointmentTimePicker.date)
+            selectedAppointmentTime = appointmentTimePicker.date
+            viewModel.updateAppointmentTime(appointmentTimePicker.date)
         }
         updateMessageAfterPlaceholderTap()
     }
@@ -244,7 +244,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @objc private func appointmentDateChanged(_ picker: UIDatePicker) {
         selectedAppointmentDate = picker.date
         appointmentDatePlaceholderLabel.alpha = 0.0
-        userAppointmentDatePicker.alpha = 1.0
+        appointmentDatePicker.alpha = 1.0
         viewModel.updateAppointmentDate(picker.date)
         updateMessageAfterPlaceholderTap()
     }
@@ -252,7 +252,7 @@ final class BookingFormViewController: UIViewController, UITextFieldDelegate {
     @objc private func appointmentTimeChanged(_ picker: UIDatePicker) {
         selectedAppointmentTime = picker.date
         appointmentTimePlaceholderLabel.alpha = 0.0
-        userAppointmentTimePicker.alpha = 1.0
+        appointmentTimePicker.alpha = 1.0
         viewModel.updateAppointmentTime(picker.date)
         updateMessageAfterPlaceholderTap()
     }
@@ -302,11 +302,11 @@ extension BookingFormViewController: BookingFormViewModelDelegate {
         
         switch field {
         case .name:
-            userBookingFormNameTextField.layer.borderColor = color
+            nameTextField.layer.borderColor = color
         case .phone:
-            userBookingFormPhoneNumberTextField.layer.borderColor = color
+            phoneNumberTextField.layer.borderColor = color
         case .email:
-            userBookingFormMailTextField.layer.borderColor = color
+            mailTextField.layer.borderColor = color
         }
     }
     

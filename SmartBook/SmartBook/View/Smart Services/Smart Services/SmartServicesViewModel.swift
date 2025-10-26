@@ -14,7 +14,7 @@ protocol SmartServicesViewModelDelegate: AnyObject {
 
 final class SmartServicesViewModel {
     
-    private let service = SmartBookingService.shared
+    private let service = SmartBookingAPIService.shared
     private var services: [SmartService] = []
     
     weak var delegate: SmartServicesViewModelDelegate?
