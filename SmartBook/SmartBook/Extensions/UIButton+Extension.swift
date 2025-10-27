@@ -13,7 +13,7 @@ extension UIButton {
         titleLabel?.adjustsFontForContentSizeCategory = dynamic
     }
 
-    func applyRoundBorder(color: UIColor = .border, width: CGFloat = 4, radius: CGFloat = 8) {
+    func applyRoundBorder(color: UIColor = .border, width: CGFloat = 2, radius: CGFloat = 8) {
         layer.borderColor = color.cgColor
         layer.borderWidth = width
         layer.cornerRadius = radius

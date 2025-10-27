@@ -15,6 +15,7 @@ struct Routes {
         static let smartServices = "Smart Services"
         static let smartServiceFields = "Smart Service Fields"
         static let serviceProvider = "Service Provider"
+        static let serviceProviderProfile = "Service Provider Profile"
     }
     
     struct Identifier {
@@ -30,6 +31,7 @@ struct Routes {
         static let smartServiceFieldCell = "SmartServiceFieldCell"
         static let serviceProviderVC = "ServiceProviderViewController"
         static let serviceProviderCell = "ServiceProviderCell"
+        static let sericeProviderProfileVC = "ServiceProviderProfileViewController"
     }
 }
 
@@ -86,6 +88,10 @@ extension Routes {
 extension Routes {
     static var serviceProviderVC: ServiceProviderViewController {
         instantiateVC(from: StoryboardName.serviceProvider, identifier: Identifier.serviceProviderVC)
+    }
+    
+    static var serviceProviderProfileVC: ServiceProviderProfileViewController {
+        instantiateVC(from: StoryboardName.serviceProviderProfile, identifier: Identifier.sericeProviderProfileVC)
     }
 }
 
