@@ -15,6 +15,10 @@ final class ServiceProviderProfileViewModel {
         self.serviceProvider = serviceProvider
     }
     
+    var provider: ServiceProvider {
+        return serviceProvider
+    }
+    
     var minimumAdvanceTime: TimeInterval {
         serviceProvider.minimumAdvanceTime ?? 0
     }
