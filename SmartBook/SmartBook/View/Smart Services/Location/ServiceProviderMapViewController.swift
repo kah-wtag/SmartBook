@@ -12,22 +12,23 @@ class ServiceProviderMapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var professional: ProfessionalsViewModel.Professional?
+    var viewModel: ServiceProviderMapViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showProfessionalLocation()
+        title = viewModel.name
+        setupMap()
     }
     
-    private func showProfessionalLocation() {
-        guard let doctor = professional else { return }
-        let coordinate = CLLocationCoordinate2D(latitude: doctor.latitude, longitude: doctor.longitude)
-        let annotation = MKPointAnnotation()
-        annotation.title = doctor.name
-        annotation.subtitle = doctor.field
-        annotation.coordinate = coordinate
+    private func setupMap() {
+        guard viewModel.isLocationAvailable,
+              let annotation = viewModel.annotation(),
+              let region = viewModel.mapRegion else {
+            present(viewModel.locationUnavailableAlert, animated: true)
+            return
+        }
+        
         mapView.addAnnotation(annotation)
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
         mapView.setRegion(region, animated: true)
     }
 }
