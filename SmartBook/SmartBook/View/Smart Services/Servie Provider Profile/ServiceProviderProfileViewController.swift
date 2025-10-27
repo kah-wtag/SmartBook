@@ -70,6 +70,14 @@ final class ServiceProviderProfileViewController: UIViewController {
     }
     
     @IBAction func mapButtonTapped(_ sender: Any) {
+        let mapVM = ServiceProviderMapViewModel(
+            provider: viewModel.provider
+        )
+        
+        guard mapVM.isLocationAvailable else {
+            present(viewModel.locationUnavailableAlert, animated: true)
+            return
+        }
         let vc = Routes.serviceProviderMapVC
         vc.viewModel = ServiceProviderMapViewModel(provider: viewModel.provider)
         navigationItem.backButtonTitle = ""

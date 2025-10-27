@@ -16,7 +16,7 @@ final class ServiceProviderProfileViewModel {
     }
     
     var provider: ServiceProvider {
-        return serviceProvider
+        serviceProvider
     }
     
     var minimumAdvanceTime: TimeInterval {
@@ -48,5 +48,15 @@ final class ServiceProviderProfileViewModel {
     }
     var bioText: String {
         serviceProvider.bio ?? "-"
+    }
+    
+    var locationUnavailableAlert: UIAlertController {
+        let alert = UIAlertController(
+            title: "Location Not Available",
+            message: "This service provider has no location information.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        return alert
     }
 }

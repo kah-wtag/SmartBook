@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class ServiceProviderMapViewController: UIViewController {
+final class ServiceProviderMapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -21,12 +21,8 @@ class ServiceProviderMapViewController: UIViewController {
     }
     
     private func setupMap() {
-        guard viewModel.isLocationAvailable,
-              let annotation = viewModel.annotation(),
-              let region = viewModel.mapRegion else {
-            present(viewModel.locationUnavailableAlert, animated: true)
-            return
-        }
+        guard let annotation = viewModel.annotation(),
+              let region = viewModel.mapRegion else { return }
         
         mapView.addAnnotation(annotation)
         mapView.setRegion(region, animated: true)
