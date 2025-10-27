@@ -62,9 +62,18 @@ final class RootViewController: UITabBarController {
     private func setupTabs() {
         let vcs = Tab.allCases.map { tab -> UIViewController in
             let vc = tab.viewController
-            vc.tabBarItem = UITabBarItem(title: tab.title,
-                                         image: UIImage(systemName: tab.iconName),
-                                         tag: tab.rawValue)
+            let item = UITabBarItem(
+                title: tab.title,
+                image: UIImage(systemName: tab.iconName),
+                tag: tab.rawValue
+            )
+            
+            if tab == .search {
+                let alphaColor = UIColor.primaryText.withAlphaComponent(0.2)
+                item.setTitleTextAttributes([.foregroundColor: alphaColor], for: .normal)
+                item.image = UIImage(systemName: tab.iconName)?.withTintColor(alphaColor, renderingMode: .alwaysOriginal)
+            }
+            vc.tabBarItem = item
             return vc
         }
         viewControllers = vcs
@@ -103,7 +112,14 @@ final class RootViewController: UITabBarController {
     }
     
     @objc private func notificationTapped() {
-        print("Notification tapped")
+        let notificationVC = Routes.instantiateVC(
+            from: Routes.StoryboardName.notification,
+            identifier: Routes.Identifier.notificationVC
+        ) as NotificationViewController
+        
+        notificationVC.title = "Notifications"
+        navigationItem.backButtonTitle = ""
+        navigationController?.pushViewController(notificationVC, animated: true)
     }
     
     @objc private func signOutTapped() {
@@ -112,6 +128,15 @@ final class RootViewController: UITabBarController {
 }
 
 extension RootViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
+           let tab = Tab(rawValue: index),
+           tab == .search {
+            return false
+        }
+        return true
+    }
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         updateNavigation(for: tabBarController.selectedIndex)
     }
