@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SmartService: Codable {   
+struct SmartService: Codable {
     let serviceID: Int?
     let serviceName: String?
     let fields: [SmartServiceField]?
@@ -23,5 +23,11 @@ struct SmartService: Codable {
         serviceID = try container.decodeIfPresent(Int.self, forKey: .serviceID)
         serviceName = try container.decodeIfPresent(String.self, forKey: .serviceName)
         fields = try container.decodeIfPresent([SmartServiceField].self, forKey: .fields)
+    }
+    
+    init(serviceID: Int?, serviceName: String?, fields: [SmartServiceField]?) {
+        self.serviceID = serviceID
+        self.serviceName = serviceName
+        self.fields = fields
     }
 }
