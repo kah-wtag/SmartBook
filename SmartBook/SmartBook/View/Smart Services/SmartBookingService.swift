@@ -7,7 +7,14 @@
 
 import UIKit
 
-final class SmartBookingService {
+protocol SmartBookingServiceProtocol {
+    func fetchServices(completion: @escaping ([SmartService]?, Error?) -> Void)
+    func fetchFields(serviceID: Int, completion: @escaping ([SmartServiceField]?, Error?) -> Void)
+    func fetchProviders(fieldTypeID: Int, completion: @escaping ([ServiceProvider]?, Error?) -> Void)
+    func fetchAppointments(completion: @escaping ([Appointment]?, Error?) -> Void)
+}
+
+final class SmartBookingService: SmartBookingServiceProtocol {
     
     static let shared = SmartBookingService()
     
