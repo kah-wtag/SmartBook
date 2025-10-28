@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppointmentListTableViewCell: UITableViewCell {
+final class AppointmentListTableViewCell: UITableViewCell {
     
     @IBOutlet var appointmentListDate: UILabel!
     @IBOutlet var appointmentListProfessionalsName: UILabel!

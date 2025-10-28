@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppointmentListViewController: UIViewController {
+final class AppointmentListViewController: UIViewController {
     
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var containerView: UIView!

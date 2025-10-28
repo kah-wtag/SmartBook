@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PastAppointmentListViewController: UIViewController {
+final class PastAppointmentListViewController: UIViewController {
     
     @IBOutlet var appointmentListTableView: UITableView!
     
