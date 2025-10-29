@@ -45,4 +45,28 @@ struct ServiceProvider: Codable {
         institution = try container.decodeIfPresent(String.self, forKey: .institution)
         minimumAdvanceTime = try container.decodeIfPresent(TimeInterval.self, forKey: .minimumAdvanceTime)
     }
+    
+    init(
+        name: String? = nil,
+        experience: Int? = nil,
+        imageName: String? = nil,
+        latitude: Double? = nil,
+        longitude: Double? = nil,
+        clientsCount: Int? = nil,
+        bio: String? = nil,
+        degrees: [String]? = nil,
+        institution: String? = nil,
+        minimumAdvanceTime: TimeInterval? = nil
+    ) {
+        self.name = name
+        self.experience = experience
+        self.imageName = imageName
+        self.latitude = latitude
+        self.longitude = longitude
+        self.clientsCount = clientsCount
+        self.bio = bio
+        self.degrees = degrees
+        self.institution = institution
+        self.minimumAdvanceTime = minimumAdvanceTime
+    }
 }
