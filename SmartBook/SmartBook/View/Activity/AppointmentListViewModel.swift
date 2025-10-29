@@ -5,7 +5,7 @@
 //  Created by Md. Kamrul Hasan on 8/10/25.
 //
 
-import Foundation
+import UIKit
 
 final class AppointmentListViewModel {
     
@@ -30,7 +30,7 @@ final class AppointmentListViewModel {
     init() { }
     
     func loadAppointments(completion: @escaping () -> Void) {
-        SmartBookingService.shared.fetchAppointments { [weak self] appointments, _ in
+        SmartBookingAPIService.shared.fetchAppointments { [weak self] appointments, _ in
             guard let self else { return }
             self.appointments = appointments ?? []
             completion()
@@ -42,8 +42,9 @@ final class AppointmentListViewModel {
         
         let filtered = appointments.compactMap { appointment -> Appointment? in
             guard let dateStr = appointment.date,
-                  let date = DateFormatter.appointmentDateParser.date(
-                    from: dateStr
+                  let date = DateTimeHelper.date(
+                    from: dateStr,
+                    format: DateFormat.appointmentAPI
                   ) else {
                 return nil
             }
@@ -51,12 +52,14 @@ final class AppointmentListViewModel {
             : (date < now ? appointment : nil)
         }
         
-        return filtered.sorted {
-            guard let d1 = DateFormatter.appointmentDateParser.date(
-                from: $0.date ?? ""
+        return filtered.sorted { a1, a2 in
+            guard let d1 = DateTimeHelper.date(
+                from: a1.date ?? "",
+                format: DateFormat.appointmentAPI
             ),
-                  let d2 = DateFormatter.appointmentDateParser.date(
-                    from: $1.date ?? ""
+                  let d2 = DateTimeHelper.date(
+                    from: a2.date ?? "",
+                    format: DateFormat.appointmentAPI
                   ) else {
                 return false
             }
@@ -68,11 +71,15 @@ final class AppointmentListViewModel {
 extension AppointmentListViewModel {
     func pastAppointmentCellViewModel(at index: Int) -> AppointmentCellViewModel? {
         guard pastAppointments.indices.contains(index) else { return nil }
-        return AppointmentCellViewModel(appointment: pastAppointments[index])
+        return AppointmentCellViewModel(
+            appointment: pastAppointments[index]
+        )
     }
     
     func upcomingAppointmentCellViewModel(at index: Int) -> AppointmentCellViewModel? {
         guard upcomingAppointments.indices.contains(index) else { return nil }
-        return AppointmentCellViewModel(appointment: upcomingAppointments[index])
+        return AppointmentCellViewModel(
+            appointment: upcomingAppointments[index]
+        )
     }
 }

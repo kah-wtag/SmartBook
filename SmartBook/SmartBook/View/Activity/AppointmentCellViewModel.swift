@@ -5,7 +5,7 @@
 //  Created by Md. Kamrul Hasan on 8/10/25.
 //
 
-import Foundation
+import UIKit
 
 final class AppointmentCellViewModel {
     
@@ -20,9 +20,11 @@ final class AppointmentCellViewModel {
     }
     
     var appointmentDateText: String {
-        guard let dateStr = appointment.date,
-              let date = DateFormatter.appointmentDateParser.date(from: dateStr) else { return "N/A" }
-        return DateFormatter.displayFormatter.string(from: date)
+        DateTimeHelper.convertToDate(
+            dateString: appointment.date,
+            from: DateFormat.appointmentAPI,
+            to: DateFormat.dateOnly
+        )
     }
     
     var appointmentTimeText: String {

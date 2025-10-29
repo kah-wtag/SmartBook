@@ -65,9 +65,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="backgroundColor"/>
                                         <connections>
-                                            <outlet property="appointmentListDate" destination="b49-1L-Nbb" id="f9E-jE-Cbp"/>
-                                            <outlet property="appointmentListProfessionalsName" destination="R8Y-aw-jdK" id="JRo-lf-fHW"/>
-                                            <outlet property="appointmentListTime" destination="pVG-b4-xzy" id="2iU-99-ZeM"/>
+                                            <outlet property="appointmentDateLabel" destination="b49-1L-Nbb" id="f9E-jE-Cbp"/>
+                                            <outlet property="appointmentTimeLabel" destination="pVG-b4-xzy" id="2iU-99-ZeM"/>
+                                            <outlet property="serviceProvidersNameLabel" destination="R8Y-aw-jdK" id="JRo-lf-fHW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -197,9 +197,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="backgroundColor"/>
                                         <connections>
-                                            <outlet property="appointmentListDate" destination="tuY-ea-NR6" id="Mag-3e-uxE"/>
-                                            <outlet property="appointmentListProfessionalsName" destination="ZyI-xE-1tq" id="KB3-li-V3Y"/>
-                                            <outlet property="appointmentListTime" destination="txq-WV-v8y" id="KKs-dq-aqg"/>
+                                            <outlet property="appointmentDateLabel" destination="tuY-ea-NR6" id="Mag-3e-uxE"/>
+                                            <outlet property="appointmentTimeLabel" destination="txq-WV-v8y" id="KKs-dq-aqg"/>
+                                            <outlet property="serviceProvidersNameLabel" destination="ZyI-xE-1tq" id="KB3-li-V3Y"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

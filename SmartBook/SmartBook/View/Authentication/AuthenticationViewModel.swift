@@ -5,7 +5,7 @@
 //  Created by Md. Kamrul Hasan on 23/9/25.
 //
 
-import Foundation
+import UIKit
 
 protocol AuthenticationViewModelDelegate: AnyObject {
     func showLoader()

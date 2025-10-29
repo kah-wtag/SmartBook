@@ -9,9 +9,9 @@ import UIKit
 
 final class AppointmentListTableViewCell: UITableViewCell {
     
-    @IBOutlet var appointmentListDate: UILabel!
-    @IBOutlet var appointmentListProfessionalsName: UILabel!
-    @IBOutlet var appointmentListTime: UILabel!
+    @IBOutlet var appointmentDateLabel: UILabel!
+    @IBOutlet var serviceProvidersNameLabel: UILabel!
+    @IBOutlet var appointmentTimeLabel: UILabel!
     
     var viewModel: AppointmentCellViewModel!
     
@@ -21,23 +21,23 @@ final class AppointmentListTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        appointmentListDate.setFontSize(.regular, weight: .bold)
-        appointmentListProfessionalsName.setFontSize(.regular, weight: .regular)
-        appointmentListTime.setFontSize(.regular, weight: .bold)
+        appointmentDateLabel.setFontSize(.regular, weight: .bold)
+        serviceProvidersNameLabel.setFontSize(.regular, weight: .regular)
+        appointmentTimeLabel.setFontSize(.regular, weight: .bold)
         setupTextColor()
     }
     
     private func setupTextColor() {
-        appointmentListDate.textColor = .primaryText
-        appointmentListProfessionalsName.textColor = .primaryText
-        appointmentListTime.textColor = .primaryText
+        appointmentDateLabel.textColor = .primaryText
+        serviceProvidersNameLabel.textColor = .primaryText
+        appointmentTimeLabel.textColor = .primaryText
     }
     
     func updateUI() {
         guard let viewModel else { return }
-        appointmentListDate.text = viewModel.appointmentDateText
-        appointmentListProfessionalsName.text = viewModel.serviceProviderName
-        appointmentListTime.text = viewModel.appointmentTimeText
+        appointmentDateLabel.text = viewModel.appointmentDateText
+        serviceProvidersNameLabel.text = viewModel.serviceProviderName
+        appointmentTimeLabel.text = viewModel.appointmentTimeText
         selectionStyle = .none
         separatorInset = .zero
     }
