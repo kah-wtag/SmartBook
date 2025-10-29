@@ -14,6 +14,7 @@ protocol ServiceProviderViewModelDelegate: AnyObject {
 
 final class ServiceProviderViewModel {
     
+    private let bookingService: SmartBookingServiceProtocol
     private var field: SmartServiceField
     private var serviceProviders: [ServiceProvider] = []
     weak var delegate: ServiceProviderViewModelDelegate?
@@ -23,9 +24,13 @@ final class ServiceProviderViewModel {
         field.fieldName ?? "Professionals"
     }
     
-    init(field: SmartServiceField) {
+    init(
+        field: SmartServiceField,
+        bookingService: SmartBookingServiceProtocol = SmartBookingService.shared
+    ) {
         self.field = field
         self.serviceProviders = field.serviceProvider ?? []
+        self.bookingService = bookingService
     }
     
     func providerCellViewModel(at index: Int) -> ServiceProviderCellViewModel {
@@ -35,7 +40,7 @@ final class ServiceProviderViewModel {
     func fetchServiceProviders() {
         guard let fieldTypeID = field.fieldTypeID else { return }
         
-        SmartBookingService.shared.fetchProviders(fieldTypeID: fieldTypeID) { [weak self] providers, _ in
+        bookingService.fetchProviders(fieldTypeID: fieldTypeID) { [weak self] providers, _ in
             guard let self, let providers else {
                 self?.delegate?.didFailedWithError()
                 return

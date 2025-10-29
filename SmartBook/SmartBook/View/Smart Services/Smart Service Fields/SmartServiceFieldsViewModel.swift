@@ -14,7 +14,7 @@ protocol SmartServiceFieldsViewModelDelegate: AnyObject {
 
 final class SmartServiceFieldsViewModel {
     
-    private let service = SmartBookingService.shared
+    private let service: SmartBookingServiceProtocol
     private let serviceID: Int
     private let serviceName: String
     private var fields: [SmartServiceField] = []
@@ -24,10 +24,11 @@ final class SmartServiceFieldsViewModel {
     
     weak var delegate: SmartServiceFieldsViewModelDelegate?
     
-    init(service: SmartService) {
-        self.serviceID = service.serviceID ?? 0
-        self.serviceName = service.serviceName ?? "Service"
-    }
+    init(service: SmartService, bookingService: SmartBookingServiceProtocol = SmartBookingService.shared) {
+            self.serviceID = service.serviceID ?? 0
+            self.serviceName = service.serviceName ?? "Service"
+            self.service = bookingService
+        }
     
     func cellViewModel(for index: Int) -> SmartServiceFieldCellViewModel? {
         guard index < fields.count else { return nil }
