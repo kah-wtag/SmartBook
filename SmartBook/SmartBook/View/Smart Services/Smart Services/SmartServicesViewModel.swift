@@ -14,13 +14,17 @@ protocol SmartServicesViewModelDelegate: AnyObject {
 
 final class SmartServicesViewModel {
     
-    private let service = SmartBookingAPIService.shared
+    private let service: SmartBookingServiceProtocol
     private var services: [SmartService] = []
     
     weak var delegate: SmartServicesViewModelDelegate?
     
     var numberOfServices: Int { services.count }
-
+    
+    init(service: SmartBookingServiceProtocol = SmartBookingAPIService.shared) {
+        self.service = service
+    }
+    
     func fetchServices() {
         service.fetchServices { [weak self] newServices, error in
             guard let self, let newServices else {
