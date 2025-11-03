@@ -18,8 +18,8 @@ final class SmartBookingService: SmartBookingServiceProtocol {
     
     static let shared = SmartBookingService()
     
-    private let baseURL = "https://bookingggggggg.free.beeceptor.com/data"
-    private let appointmentURL = "https://bookingggggggg.free.beeceptor.com/data1"
+    private let baseURL = "https://booking.free.beeceptor.com/data"
+    private let appointmentURL = "https://booking.free.beeceptor.com/data1"
     
     private init() { }
     

@@ -64,4 +64,11 @@ final class NotificationViewModel {
         guard upcomingAppointments.indices.contains(index) else { return nil }
         return NotificationCellViewModel(appointment: upcomingAppointments[index])
     }
+    
+#if DEBUG
+    func setAppointmentsForTesting(_ appointments: [Appointment]?) {
+        self.appointments = appointments ?? []
+        self.onDataUpdated?()
+    }
+#endif
 }

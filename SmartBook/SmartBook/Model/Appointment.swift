@@ -12,7 +12,7 @@ struct Appointment: Codable {
     let serviceName: String?
     let serviceFieldName: String?
     let providerName: String?
-    let date: String? 
+    let date: String?
     let time: String?
     
     enum CodingKeys: String, CodingKey {
@@ -32,5 +32,21 @@ struct Appointment: Codable {
         providerName = try container.decodeIfPresent(String.self, forKey: .providerName)
         date = try container.decodeIfPresent(String.self, forKey: .date)
         time = try container.decodeIfPresent(String.self, forKey: .time)
+    }
+    
+    init(
+        id: String = UUID().uuidString,
+        serviceName: String? = nil,
+        serviceFieldName: String? = nil,
+        providerName: String? = nil,
+        date: String? = nil,
+        time: String? = nil
+    ) {
+        self.id = id
+        self.serviceName = serviceName
+        self.serviceFieldName = serviceFieldName
+        self.providerName = providerName
+        self.date = date
+        self.time = time
     }
 }

@@ -7,9 +7,15 @@
 
 import Foundation
 
+protocol AppointmentListViewModelDelegate: AnyObject {
+    func didUpdateAppointments()
+    func didFailFetchingAppointments(with error: Error)
+}
+
 final class AppointmentListViewModel {
     
     private var appointments: [Appointment] = []
+    weak var delegate: AppointmentListViewModelDelegate?
     
     var upcomingAppointments: [Appointment] {
         filterAppointments(isUpcoming: true)
@@ -63,6 +69,17 @@ final class AppointmentListViewModel {
             return isUpcoming ? d1 < d2 : d1 > d2
         }
     }
+    
+#if DEBUG
+    func setAppointmentsForTesting(_ appointments: [Appointment]?, error: Error? = nil) {
+        if let error = error {
+            delegate?.didFailFetchingAppointments(with: error)
+        } else {
+            self.appointments = appointments ?? []
+            delegate?.didUpdateAppointments()
+        }
+    }
+#endif
 }
 
 extension AppointmentListViewModel {
