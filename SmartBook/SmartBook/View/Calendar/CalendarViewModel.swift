@@ -28,7 +28,7 @@ final class CalendarViewModel {
         return appointmentListVM.upcomingAppointments.contains { appointment in
             guard let appointmentDate = DateTimeHelper.date(
                 from: appointment.date,
-                format: DateFormat.appointmentAPI
+                format: DateFormat.yyyy_MM_dd_HH_mm_ss_Z
             ) else { return false }
             return calendar.isDate(appointmentDate, inSameDayAs: date)
         }
@@ -39,7 +39,7 @@ final class CalendarViewModel {
         return upcomingAppointments.compactMap { appointment in
             guard let date = DateTimeHelper.date(
                 from: appointment.date,
-                format: DateFormat.appointmentAPI
+                format: DateFormat.yyyy_MM_dd_HH_mm_ss_Z
             ) else { return nil }
             return calendar.dateComponents([.year, .month, .day], from: date)
         }
@@ -52,8 +52,8 @@ final class CalendarViewModel {
         
         let dateText = DateTimeHelper.convertToDate(
             dateString: appointment.date,
-            from: DateFormat.appointmentAPI,
-            to: DateFormat.dateOnly
+            from: DateFormat.yyyy_MM_dd_HH_mm_ss_Z,
+            to: DateFormat.dd_MMM_yyyy
         )
         
         let providerName = appointment.providerName ?? "Unknown"
