@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ServiceProvider: Codable {  
+struct ServiceProvider: Codable {
     let name: String?
     let experience: Int?
     let imageName: String?
@@ -17,6 +17,7 @@ struct ServiceProvider: Codable {
     let bio: String?
     let degrees: [String]?
     let institution: String?
+    let minimumAdvanceTime: TimeInterval?
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -28,6 +29,7 @@ struct ServiceProvider: Codable {
         case bio
         case degrees
         case institution
+        case minimumAdvanceTime
     }
     
     init(from decoder: Decoder) throws {
@@ -41,5 +43,6 @@ struct ServiceProvider: Codable {
         bio = try container.decodeIfPresent(String.self, forKey: .bio)
         degrees = try container.decodeIfPresent([String].self, forKey: .degrees)
         institution = try container.decodeIfPresent(String.self, forKey: .institution)
+        minimumAdvanceTime = try container.decodeIfPresent(TimeInterval.self, forKey: .minimumAdvanceTime)
     }
 }

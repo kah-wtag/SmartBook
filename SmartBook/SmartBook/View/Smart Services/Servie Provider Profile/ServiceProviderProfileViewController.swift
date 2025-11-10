@@ -37,16 +37,16 @@ final class ServiceProviderProfileViewController: UIViewController {
     }
     
     private func setupButtonFontSize() {
-        bookAppointmentButton.setFontSize(.large, weight: .medium, dynamic: true)
-        mapViewButton.setFontSize(.regular, weight: .medium, dynamic: true)
+        bookAppointmentButton.setFont(.large, weight: .medium, dynamic: true, title: "Book Appointment")
+        mapViewButton.setFont(.regular, weight: .medium, dynamic: true, title: "Map")
     }
     
     private func setupLabelFontSize() {
         professionalsProfileName.setFontSize(.large, weight: .bold, dynamic: true)
-        professionalsProfilePatientNumber.setFontSize(.regular, weight: .medium, dynamic: true)
-        professionalsProfileExperience.setFontSize(.regular, weight: .medium, dynamic: true)
+        professionalsProfilePatientNumber.setFontSize(.regular, weight: .regular, dynamic: true)
+        professionalsProfileExperience.setFontSize(.regular, weight: .regular, dynamic: true)
         medicalCollege.setFontSize(.small, weight: .thin, dynamic: true)
-        professionalsPersonalBio.setFontSize(.large, weight: .bold, dynamic: true)
+        professionalsPersonalBio.setFontSize(.regular, weight: .medium, dynamic: true)
         professionalsPersonalBioDetials.setFontSize(.small, weight: .thin, dynamic: true)
         professionalsFieldName.setFontSize(.regular, weight: .medium, dynamic: true)
         professionalsDegree.setFontSize(.small, weight: .thin, dynamic: true)
@@ -59,8 +59,6 @@ final class ServiceProviderProfileViewController: UIViewController {
     }
     
     private func setupTextColor() {
-        bookAppointmentButton.titleLabel?.textColor = .secondaryText
-        mapViewButton.titleLabel?.textColor = .secondaryLabel
         professionalsProfileName.textColor = .primaryText
         professionalsProfilePatientNumber.textColor = .primaryText
         medicalCollege.textColor = .primaryText
@@ -69,6 +67,14 @@ final class ServiceProviderProfileViewController: UIViewController {
         professionalsDegree.textColor = .primaryText
         professionalsPersonalBio.textColor = .primaryText
         professionalsPersonalBioDetials.textColor = .primaryText
+    }
+    
+    @IBAction func bookAppointmentButtonTapped(_ sender: UIButton) {
+        let bookingFormVC = Routes.bookingFormVC
+        bookingFormVC.viewModel.setServiceProviderName(viewModel.nameText)
+        bookingFormVC.viewModel.setMinimumAdvanceTime(viewModel.minimumAdvanceTime)
+        navigationItem.backButtonTitle = ""
+        navigationController?.pushViewController(bookingFormVC, animated: true)
     }
     
     private func updateUI() {

@@ -16,6 +16,7 @@ struct Routes {
         static let smartServiceFields = "Smart Service Fields"
         static let serviceProvider = "Service Provider"
         static let serviceProviderProfile = "Service Provider Profile"
+        static let bookingForm = "Booking Form"
     }
     
     struct Identifier {
@@ -32,6 +33,8 @@ struct Routes {
         static let serviceProviderVC = "ServiceProviderViewController"
         static let serviceProviderCell = "ServiceProviderCell"
         static let sericeProviderProfileVC = "ServiceProviderProfileViewController"
+        static let bookingFormVC = "BookingFormViewController"
+        static let bookedFormVC = "BookedFormViewController"
     }
 }
 
@@ -96,6 +99,16 @@ extension Routes {
 }
 
 extension Routes {
+    static var bookingFormVC: BookingFormViewController {
+        instantiateVC(from: StoryboardName.bookingForm, identifier: Identifier.bookingFormVC)
+    }
+    
+    static var bookedFormVC: BookingSuccessfullViewController {
+        instantiateVC(from: StoryboardName.bookingForm, identifier: Identifier.bookedFormVC)
+    }
+}
+
+extension Routes {
     static func displayRootScreen() {
         displayScreen(rootVC)
     }
@@ -114,7 +127,6 @@ extension Routes {
         if !hideNavigationBar {
             setupNavBar(for: navController)
         }
-        
         window.rootViewController = navController
         window.makeKeyAndVisible()
     }

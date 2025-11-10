@@ -35,7 +35,7 @@ final class ServiceProviderViewModel {
     func fetchServiceProviders() {
         guard let fieldTypeID = field.fieldTypeID else { return }
         
-        SmartBookingService.shared.fetchProviders(fieldTypeID: fieldTypeID) { [weak self] providers, _ in
+        SmartBookingAPIService.shared.fetchProviders(fieldTypeID: fieldTypeID) { [weak self] providers, _ in
             guard let self, let providers else {
                 self?.delegate?.didFailedWithError()
                 return

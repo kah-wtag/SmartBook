@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class SmartBookingService {
+final class SmartBookingAPIService {
     
-    static let shared = SmartBookingService()
+    static let shared = SmartBookingAPIService()
     
     private let baseURL = "https://booking.free.beeceptor.com/data"
     
