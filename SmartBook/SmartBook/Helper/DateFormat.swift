@@ -8,8 +8,8 @@
 import UIKit
 
 struct DateFormat {
-    static let dateOnly = "dd MMM yyyy"
-    static let appointmentAPI = "yyyy-MM-dd'T'HH:mm:ssZ"
-    static let timeOnly = "h:mm a"
-    static let fullDateTime = "dd MMM yyyy, h:mm a"
+    static let dd_MMM_yyyy = "dd MMM yyyy"
+    static let yyyy_MM_dd_HH_mm_ss_Z = "yyyy-MM-dd'T'HH:mm:ssZ"
+    static let h_mm_a = "h:mm a"
+    static let dd_MMM_yyyy_hh_mm_a = "dd MMM yyyy, h:mm a"
 }

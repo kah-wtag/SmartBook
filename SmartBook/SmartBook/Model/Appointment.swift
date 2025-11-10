@@ -12,8 +12,10 @@ struct Appointment: Codable {
     let serviceName: String?
     let serviceFieldName: String?
     let providerName: String?
-    let date: String? 
+    let date: String?
     let time: String?
+    var isUnread: Bool?
+    var dateRead: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -22,6 +24,8 @@ struct Appointment: Codable {
         case providerName
         case date
         case time
+        case isUnread
+        case dateRead
     }
     
     init(from decoder: Decoder) throws {
@@ -32,5 +36,7 @@ struct Appointment: Codable {
         providerName = try container.decodeIfPresent(String.self, forKey: .providerName)
         date = try container.decodeIfPresent(String.self, forKey: .date)
         time = try container.decodeIfPresent(String.self, forKey: .time)
+        isUnread = try container.decodeIfPresent(Bool.self, forKey: .isUnread) ?? true
+        dateRead = try container.decodeIfPresent(String.self, forKey: .dateRead)
     }
 }
