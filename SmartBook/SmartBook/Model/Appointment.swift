@@ -39,4 +39,20 @@ struct Appointment: Codable {
         isUnread = try container.decodeIfPresent(Bool.self, forKey: .isUnread) ?? true
         dateRead = try container.decodeIfPresent(String.self, forKey: .dateRead)
     }
+    
+    init(
+        id: String = UUID().uuidString,
+        serviceName: String? = nil,
+        serviceFieldName: String? = nil,
+        providerName: String? = nil,
+        date: String? = nil,
+        time: String? = nil
+    ) {
+        self.id = id
+        self.serviceName = serviceName
+        self.serviceFieldName = serviceFieldName
+        self.providerName = providerName
+        self.date = date
+        self.time = time
+    }
 }

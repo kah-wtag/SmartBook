@@ -31,4 +31,14 @@ struct SmartServiceField: Codable {
         iconName = try container.decodeIfPresent(String.self, forKey: .iconName)
         serviceProvider = try container.decodeIfPresent([ServiceProvider].self, forKey: .serviceProvider)
     }
+    
+    init(fieldTypeID: Int? = nil,
+         fieldName: String? = nil,
+         iconName: String? = nil,
+         serviceProvider: [ServiceProvider]? = nil) {
+        self.fieldTypeID = fieldTypeID
+        self.fieldName = fieldName
+        self.iconName = iconName
+        self.serviceProvider = serviceProvider
+    }
 }

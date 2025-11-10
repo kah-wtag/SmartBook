@@ -36,7 +36,17 @@ final class AuthenticationViewController: UIViewController {
     private lazy var loginVC = Routes.loginVC
     private lazy var signupVC = Routes.signupVC
     private var currentContainerViewIndex: Int?
-    private let viewModel = AuthenticationViewModel()
+    private let viewModel: AuthenticationViewModel
+    
+    init(viewModel: AuthenticationViewModel = AuthenticationViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        self.viewModel = AuthenticationViewModel()
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
