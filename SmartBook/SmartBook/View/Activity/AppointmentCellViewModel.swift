@@ -22,8 +22,8 @@ final class AppointmentCellViewModel {
     var appointmentDateText: String {
         DateTimeHelper.convertToDate(
             dateString: appointment.date,
-            from: DateFormat.appointmentAPI,
-            to: DateFormat.dateOnly
+            from: DateFormat.yyyy_MM_dd_HH_mm_ss_Z,
+            to: DateFormat.dd_MMM_yyyy
         )
     }
     

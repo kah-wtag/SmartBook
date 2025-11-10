@@ -44,7 +44,7 @@ final class AppointmentListViewModel {
             guard let dateStr = appointment.date,
                   let date = DateTimeHelper.date(
                     from: dateStr,
-                    format: DateFormat.appointmentAPI
+                    format: DateFormat.yyyy_MM_dd_HH_mm_ss_Z
                   ) else {
                 return nil
             }
@@ -55,11 +55,11 @@ final class AppointmentListViewModel {
         return filtered.sorted { a1, a2 in
             guard let d1 = DateTimeHelper.date(
                 from: a1.date ?? "",
-                format: DateFormat.appointmentAPI
+                format: DateFormat.yyyy_MM_dd_HH_mm_ss_Z
             ),
                   let d2 = DateTimeHelper.date(
                     from: a2.date ?? "",
-                    format: DateFormat.appointmentAPI
+                    format: DateFormat.yyyy_MM_dd_HH_mm_ss_Z
                   ) else {
                 return false
             }

@@ -69,6 +69,21 @@ final class ServiceProviderProfileViewController: UIViewController {
         professionalsPersonalBioDetials.textColor = .primaryText
     }
     
+    @IBAction func mapButtonTapped(_ sender: Any) {
+        let mapVM = ServiceProviderMapViewModel(
+            provider: viewModel.provider
+        )
+        
+        guard mapVM.isLocationAvailable else {
+            present(viewModel.locationUnavailableAlert, animated: true)
+            return
+        }
+        let vc = Routes.serviceProviderMapVC
+        vc.viewModel = ServiceProviderMapViewModel(provider: viewModel.provider)
+        navigationItem.backButtonTitle = ""
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func bookAppointmentButtonTapped(_ sender: UIButton) {
         let bookingFormVC = Routes.bookingFormVC
         bookingFormVC.viewModel.setServiceProviderName(viewModel.nameText)

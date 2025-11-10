@@ -18,6 +18,8 @@ struct Routes {
         static let serviceProviderProfile = "Service Provider Profile"
         static let bookingForm = "Booking Form"
         static let appointmentList = "Appointment List"
+        static let serviceProviderLocation = "Service Provider Location"
+        static let notification = "Notification"
     }
     
     struct Identifier {
@@ -40,6 +42,9 @@ struct Routes {
         static let upcomingAppointmentVC = "UpcomingAppointmentListViewController"
         static let pastAppointmentVC = "PastAppointmentListViewController"
         static let appointmentCell = "AppointmentListTableViewCell"
+        static let serviceProviderMapVC = "ServiceProviderMapViewController"
+        static let notificationVC = "NotificationViewController"
+        static let notificationCell = "NotificationTableViewCell"
     }
 }
 
@@ -122,6 +127,18 @@ extension Routes {
     }
     static var pastAppointmentVC: PastAppointmentListViewController {
         instantiateVC(from: StoryboardName.appointmentList, identifier: Identifier.pastAppointmentVC)
+    }
+}
+
+extension Routes {
+    static var serviceProviderMapVC: ServiceProviderMapViewController {
+        instantiateVC(from: StoryboardName.serviceProviderLocation, identifier: Identifier.serviceProviderMapVC)
+    }
+}
+
+extension Routes {
+    static var notificationVC: NotificationViewController? {
+        instantiateVC(from: StoryboardName.notification, identifier: Identifier.notificationVC)
     }
 }
 
