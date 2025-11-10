@@ -9,9 +9,9 @@ import UIKit
 
 final class DateTimeHelper {
     
-    private static var cachedFormatters: [String: DateFormatter] = [:]
+    static var cachedFormatters: [String: DateFormatter] = [:]
     
-    private static func formatter(for format: String) -> DateFormatter {
+    static func formatter(for format: String) -> DateFormatter {
         if let cached = cachedFormatters[format] {
             return cached
         }

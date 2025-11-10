@@ -8,7 +8,7 @@
 import XCTest
 @testable import SmartBook
 
-final class AppointmentCellViewModelTest: XCTestCase {
+final class AppointmentCellViewModelTests: XCTestCase {
     
     private var sut: AppointmentCellViewModel!
     
@@ -18,7 +18,7 @@ final class AppointmentCellViewModelTest: XCTestCase {
             serviceName: "Service A",
             serviceFieldName: nil,
             providerName: "Dr. Smith",
-            date: DateFormatter.appointmentDateParser.string(from: Date()),
+            date: DateTimeHelper.formatter(for: DateFormat.yyyy_MM_dd_HH_mm_ss_Z).string(from: Date()),
             time: "10:00 AM"
         )
         
@@ -32,7 +32,7 @@ final class AppointmentCellViewModelTest: XCTestCase {
             serviceName: "Service B",
             serviceFieldName: nil,
             providerName: nil,
-            date: DateFormatter.appointmentDateParser.string(from: Date()),
+            date: DateTimeHelper.formatter(for: DateFormat.yyyy_MM_dd_HH_mm_ss_Z).string(from: Date()),
             time: "2:00 PM"
         )
         
@@ -42,17 +42,20 @@ final class AppointmentCellViewModelTest: XCTestCase {
     
     func test_appointmentDateText_formatsCorrectly() {
         let now = Date()
+        let dateString = DateTimeHelper.formatter(for: DateFormat.yyyy_MM_dd_HH_mm_ss_Z).string(from: now)
+        
         let appointment = Appointment(
             id: "3",
             serviceName: "Service C",
             serviceFieldName: nil,
             providerName: "Provider C",
-            date: DateFormatter.appointmentDateParser.string(from: now),
+            date: dateString,
             time: "1:30 PM"
         )
         
         sut = AppointmentCellViewModel(appointment: appointment)
-        XCTAssertEqual(sut.appointmentDateText, DateFormatter.displayFormatter.string(from: now))
+        let expected = DateTimeHelper.formatter(for: DateFormat.dd_MMM_yyyy).string(from: now)
+        XCTAssertEqual(sut.appointmentDateText, expected)
     }
     
     func test_appointmentDateText_returnsNAIfInvalidDate() {
@@ -75,7 +78,7 @@ final class AppointmentCellViewModelTest: XCTestCase {
             serviceName: "Service E",
             serviceFieldName: nil,
             providerName: "Provider E",
-            date: DateFormatter.appointmentDateParser.string(from: Date()),
+            date: DateTimeHelper.formatter(for: DateFormat.yyyy_MM_dd_HH_mm_ss_Z).string(from: Date()),
             time: "3:45 PM"
         )
         
@@ -89,7 +92,7 @@ final class AppointmentCellViewModelTest: XCTestCase {
             serviceName: "Service F",
             serviceFieldName: nil,
             providerName: "Provider F",
-            date: DateFormatter.appointmentDateParser.string(from: Date()),
+            date: DateTimeHelper.formatter(for: DateFormat.yyyy_MM_dd_HH_mm_ss_Z).string(from: Date()),
             time: nil
         )
         

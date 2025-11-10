@@ -20,8 +20,8 @@ final class CalendarViewModelTests: XCTestCase {
         calendarVM = CalendarViewModel(appointmentListVM: appointmentListVM)
         
         let now = Date()
-        let futureDateStr = DateFormatter.appointmentDateParser.string(from: now.addingTimeInterval(3600))
-        let pastDateStr = DateFormatter.appointmentDateParser.string(from: now.addingTimeInterval(-3600))
+        let futureDateStr = DateTimeHelper.formatter(for: DateFormat.yyyy_MM_dd_HH_mm_ss_Z).string(from: now.addingTimeInterval(3600))
+        let pastDateStr = DateTimeHelper.formatter(for: DateFormat.yyyy_MM_dd_HH_mm_ss_Z).string(from: now.addingTimeInterval(-3600))
         
         let futureAppointment = Appointment(
             id: "1",
@@ -79,7 +79,9 @@ final class CalendarViewModelTests: XCTestCase {
         let text = calendarVM.displayText(for: 0)
         XCTAssertTrue(text.contains("Provider X"))
         XCTAssertTrue(text.contains("10:00 AM"))
-        XCTAssertTrue(text.contains(DateFormatter.displayFormatter.string(from: Date().addingTimeInterval(3600))))
+        
+        let expectedDate = DateTimeHelper.formatter(for: DateFormat.dd_MMM_yyyy).string(from: Date().addingTimeInterval(3600))
+        XCTAssertTrue(text.contains(expectedDate))
     }
     
     func testDisplayTextOutOfBounds() {

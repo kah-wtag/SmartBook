@@ -10,7 +10,7 @@ import XCTest
 
 final class BookingSuccessfullViewModelTests: XCTestCase {
     
-    private var sut: BookedFormViewModel!
+    private var sut: BookingSuccessfullViewModel!
     private var appointmentDate: Date!
     private var appointmentTime: Date!
     
@@ -19,7 +19,7 @@ final class BookingSuccessfullViewModelTests: XCTestCase {
         appointmentDate = Date(timeIntervalSince1970: 1_700_000_000)
         appointmentTime = Date(timeIntervalSince1970: 1_700_000_000 + 3600)
         
-        sut = BookedFormViewModel(appointmentDate: appointmentDate, appointmentTime: appointmentTime)
+        sut = BookingSuccessfullViewModel(appointmentDate: appointmentDate, appointmentTime: appointmentTime)
     }
     
     override func tearDown() {

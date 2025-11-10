@@ -27,8 +27,25 @@ final class AppointmentListViewModelTest: XCTestCase {
     }
     
     func test_setAppointmentsForTesting_updatesAppointments() {
-        let appointment1 = Appointment(id: "1", serviceName: "Service A", serviceFieldName: nil, providerName: nil, date: DateFormatter.appointmentDateParser.string(from: Date().addingTimeInterval(3600)), time: nil)
-        let appointment2 = Appointment(id: "2", serviceName: "Service B", serviceFieldName: nil, providerName: nil, date: DateFormatter.appointmentDateParser.string(from: Date().addingTimeInterval(-3600)), time: nil)
+        let appointment1 = Appointment(
+            id: "1",
+            serviceName: "Service A",
+            serviceFieldName: nil,
+            providerName: nil,
+            date: DateTimeHelper.formatter(for: DateFormat.yyyy_MM_dd_HH_mm_ss_Z)
+                .string(from: Date().addingTimeInterval(3600)),
+            time: nil
+        )
+        
+        let appointment2 = Appointment(
+            id: "2",
+            serviceName: "Service B",
+            serviceFieldName: nil,
+            providerName: nil,
+            date: DateTimeHelper.formatter(for: DateFormat.yyyy_MM_dd_HH_mm_ss_Z)
+                .string(from: Date().addingTimeInterval(-3600)),
+            time: nil
+        )
         
         sut.setAppointmentsForTesting([appointment1, appointment2])
         
