@@ -17,6 +17,9 @@ struct Routes {
         static let serviceProvider = "Service Provider"
         static let serviceProviderProfile = "Service Provider Profile"
         static let bookingForm = "Booking Form"
+        static let appointmentList = "Appointment List"
+        static let serviceProviderLocation = "Service Provider Location"
+        static let notification = "Notification"
     }
     
     struct Identifier {
@@ -35,6 +38,13 @@ struct Routes {
         static let sericeProviderProfileVC = "ServiceProviderProfileViewController"
         static let bookingFormVC = "BookingFormViewController"
         static let bookedFormVC = "BookedFormViewController"
+        static let appointmentListVC = "AppointmentListViewController"
+        static let upcomingAppointmentVC = "UpcomingAppointmentListViewController"
+        static let pastAppointmentVC = "PastAppointmentListViewController"
+        static let appointmentCell = "AppointmentListTableViewCell"
+        static let serviceProviderMapVC = "ServiceProviderMapViewController"
+        static let notificationVC = "NotificationViewController"
+        static let notificationCell = "NotificationTableViewCell"
     }
 }
 
@@ -105,6 +115,30 @@ extension Routes {
     
     static var bookedFormVC: BookingSuccessfullViewController {
         instantiateVC(from: StoryboardName.bookingForm, identifier: Identifier.bookedFormVC)
+    }
+}
+
+extension Routes {
+    static var appointmentListVC: AppointmentListViewController {
+        instantiateVC(from: StoryboardName.appointmentList, identifier: Identifier.appointmentListVC)
+    }
+    static var upcomingAppointmentVC: UpcomingAppointmentListViewController {
+        instantiateVC(from: StoryboardName.appointmentList, identifier: Identifier.upcomingAppointmentVC)
+    }
+    static var pastAppointmentVC: PastAppointmentListViewController {
+        instantiateVC(from: StoryboardName.appointmentList, identifier: Identifier.pastAppointmentVC)
+    }
+}
+
+extension Routes {
+    static var serviceProviderMapVC: ServiceProviderMapViewController {
+        instantiateVC(from: StoryboardName.serviceProviderLocation, identifier: Identifier.serviceProviderMapVC)
+    }
+}
+
+extension Routes {
+    static var notificationVC: NotificationViewController? {
+        instantiateVC(from: StoryboardName.notification, identifier: Identifier.notificationVC)
     }
 }
 
